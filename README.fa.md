@@ -69,7 +69,18 @@ flowchart LR
 
 ## 🚀 روش‌های نصب سریع
 
-### روش ۱: نصب ۱-خطی در ویندوز (PowerShell)
+### 🤖 روش ۰: نصب خودکار با یک پرامپت به هوش مصنوعی (بدون نیاز به کد و ترمینال)
+
+ساده‌ترین روش ممکن! کافیست متن پرامپت زیر را کپی کرده و مستقیماً به هوش مصنوعی خود (**Google Antigravity، Cursor Composer، Claude Code، GitHub Copilot یا Windsurf**) بدهید:
+
+> **متن پرامپت را کپی کرده و به هوش مصنوعی بدهید:**
+> ```text
+> لطفاً سوئیت اسکیل‌های Vibe UI را از ریپازیتوری https://github.com/omid-io/vibe-ui-skills در محیط فعال هوش مصنوعی من (پوشه skills یا تنظیمات پروژه) نصب و مستقر کن و مطمئن شو اسکیل‌های master-web-builder و ui-kit آماده استفاده هستند.
+> ```
+
+---
+
+### روش ۱: نصب ۱-خطی از طریق ترمینال ویندوز (PowerShell)
 
 ```powershell
 irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex

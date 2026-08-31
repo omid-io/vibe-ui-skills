@@ -69,7 +69,18 @@ flowchart LR
 
 ## 🚀 Instant Installation
 
-### Method 1: One-Line Installer (PowerShell for Windows)
+### 🤖 Method 0: 1-Prompt Agent Auto-Install (Zero CLI / Just Tell Your AI)
+
+The easiest way to install! Simply copy and paste this single prompt directly into your AI coding assistant (**Antigravity, Cursor Composer, Claude Code, Copilot, or Windsurf**):
+
+> **Copy & paste this prompt into your AI assistant:**
+> ```text
+> Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment (or skills directory). Clone/download the skills from the repository, place them in the appropriate agent skills path, and verify that master-web-builder and ui-kit are ready to use.
+> ```
+
+---
+
+### Method 1: One-Line Terminal Installer (PowerShell for Windows)
 
 ```powershell
 irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex
@@ -81,7 +92,7 @@ cd vibe-ui-skills
 .\install.ps1
 ```
 
-### Method 2: One-Line Installer (Bash for macOS / Linux)
+### Method 2: One-Line Terminal Installer (Bash for macOS / Linux)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash

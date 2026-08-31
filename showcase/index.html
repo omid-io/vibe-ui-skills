@@ -1833,16 +1833,26 @@
     <aside class="install-box" aria-labelledby="install-heading">
       <div class="install-info">
         <h3 id="install-heading">Install in Your AI Agent Workspace</h3>
-        <p>One-click instant installation for Claude Code, Antigravity, Cursor, and GitHub Copilot.</p>
+        <p id="install-subtext">Copy this prompt directly into your AI Assistant (Cursor, Claude, Antigravity, Copilot):</p>
+      </div>
+      <div class="code-pill-wrapper" style="margin-bottom: 8px;">
+        <div class="code-pill-text" id="agentPromptText" style="font-size: 12px;">Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment.</div>
+        <button class="copy-btn" type="button" onclick="copyText('agentPromptText', 'copyPromptText', 'copyPromptIcon')" id="copyPromptBtn" aria-label="Copy AI Agent prompt">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="copyPromptIcon" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copyPromptText">Copy Prompt</span>
+        </button>
       </div>
       <div class="code-pill-wrapper">
         <div class="code-pill-text" id="installCmd">irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex</div>
-        <button class="copy-btn" type="button" onclick="copyInstallCommand()" id="copyBtn" aria-label="Copy installation command">
+        <button class="copy-btn" type="button" onclick="copyText('installCmd', 'copyBtnText', 'copyIcon')" id="copyBtn" aria-label="Copy PowerShell command">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="copyIcon" aria-hidden="true">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
           </svg>
-          <span id="copyBtnText">Copy</span>
+          <span id="copyBtnText">Copy PS1</span>
         </button>
       </div>
     </aside>
@@ -2029,30 +2039,32 @@
     });
 
     // --------------------------------------------------------------------------
-    // 6. 1-Click Copy Command with Visual Feedback
+    // 6. 1-Click Copy Helper with Visual Feedback
     // --------------------------------------------------------------------------
-    function copyInstallCommand() {
-      const cmdText = document.getElementById('installCmd').textContent.trim();
-      const copyBtnText = document.getElementById('copyBtnText');
-      const copyIcon = document.getElementById('copyIcon');
+    function copyText(elemId, btnTextId, iconId) {
+      const el = document.getElementById(elemId);
+      if (!el) return;
+      const textToCopy = el.textContent.trim();
+      const btnText = document.getElementById(btnTextId);
+      const icon = document.getElementById(iconId);
+      const originalText = btnText ? btnText.textContent : 'Copy';
 
-      navigator.clipboard.writeText(cmdText).then(() => {
-        copyBtnText.textContent = 'Copied!';
-        copyIcon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (btnText) btnText.textContent = (currentLang === 'fa') ? 'کپی شد!' : 'Copied!';
+        if (icon) icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
         setTimeout(() => {
-          copyBtnText.textContent = 'Copy';
-          copyIcon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+          if (btnText) btnText.textContent = originalText;
+          if (icon) icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
         }, 2000);
       }).catch(() => {
-        // Fallback for older clipboard environments
         const textArea = document.createElement('textarea');
-        textArea.value = cmdText;
+        textArea.value = textToCopy;
         document.body.appendChild(textArea);
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        copyBtnText.textContent = 'Copied!';
-        setTimeout(() => { copyBtnText.textContent = 'Copy'; }, 2000);
+        if (btnText) btnText.textContent = (currentLang === 'fa') ? 'کپی شد!' : 'Copied!';
+        setTimeout(() => { if (btnText) btnText.textContent = originalText; }, 2000);
       });
     }
   
