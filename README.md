@@ -67,6 +67,14 @@ flowchart LR
 
 ---
 
+## 📐 Inviolable Fixed-Structure Content-Only RTL Architecture
+
+Vibe UI solves the notorious layout shift problem present in generic AI web generators:
+- ❌ **Standard AI Failure:** Inverting the entire layout grid, swapping column positions, reversing navbar menus, and shifting interactive buttons horizontally when switching to RTL / Persian.
+- ✅ **The Vibe UI Standard:** Global grid columns, module cards, slider tracks, and navigation bars remain **100% physically fixed in place**. RTL direction is applied strictly to textual content, mixed English brand names never scramble punctuation, and all code/metric blocks remain pure LTR monospace.
+
+---
+
 ## 🚀 Instant Installation
 
 ### 🤖 Method 0: 1-Prompt Agent Auto-Install (Zero CLI / Just Tell Your AI)

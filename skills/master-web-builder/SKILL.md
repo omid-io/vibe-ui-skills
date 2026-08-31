@@ -87,3 +87,19 @@ Regardless of the chosen visual style, the agent can equip pages with high-value
 2. **Magnetic Spring CTAs:** (Dynamic cursor-following or physics spring ease).
 3. **Bento Grid Architecture:** (Dynamic 3 or 4-column asymmetric cards with sparklines & AI badges).
 4. **Directional LTR/RTL Compatibility:** (Universal logical CSS properties `ms-*`, `me-*`, `start-*`, `end-*`).
+
+---
+
+## 📐 Inviolable Fixed-Structure Content-Only RTL Protocol
+
+When building Persian, Arabic, or Bilingual LTR/RTL interfaces:
+1. **Never Flip Page Architecture or Grids:**
+   - Navbars, grid column orders, theme switcher tabs, card coordinates, and interactive sliders must remain 100% physically fixed in place.
+   - Do NOT mirror the entire layout structure or reverse column orders.
+2. **Apply RTL Exclusively to Textual Content:**
+   - Paragraphs, article prose, headings, and descriptions receive `direction: rtl` and appropriate text alignment.
+3. **BiDi Resilience & Mixed English Brand Names:**
+   - When Persian sentences contain or start with English terms (e.g. `Claude Code`, `Cursor`, `API`), punctuation and layout must remain clean without scrambling (`unicode-bidi: plaintext` / `<bdi>`).
+4. **Code & Technical Metrics Remain Strictly LTR:**
+   - Code blocks, CLI commands, URLs, version pills, and telemetry data (`99.98%`, `+2.4%`) must always remain `direction: ltr !important; text-align: left !important` with monospace font.
+

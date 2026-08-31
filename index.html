@@ -36,19 +36,19 @@
        CSS Custom Properties & Design Tokens for 5 Master Visual Themes
        ========================================================================== */
     
-    /* RTL & Persian Typography (Pixel-Perfect Symmetry & 1-Line Title) */
-    html[dir="rtl"],
-    html[dir="rtl"] body,
-    html[dir="rtl"] *,
-    body[dir="rtl"],
-    body[dir="rtl"] *,
-    [dir="rtl"],
-    [dir="rtl"] * {
+    /* Universal Typography & Fixed Structure (Zero Layout Shift on Language Toggle) */
+    body.lang-fa,
+    body.lang-fa * {
       font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
-    
-    html[dir="rtl"] header,
-    body[dir="rtl"] header {
+    body.lang-fa .code-pill-text,
+    body.lang-fa .pill-tech,
+    body.lang-fa .telemetry-big-num {
+      font-family: 'Geist Mono', 'Vazirmatn', monospace !important;
+    }
+
+    /* Fixed Layout Header */
+    header {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -59,22 +59,22 @@
       margin-bottom: 48px !important;
     }
 
-    html[dir="rtl"] .lang-switcher,
-    body[dir="rtl"] .lang-switcher {
+    .lang-switcher {
       margin: 0 auto 24px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
       direction: ltr !important;
     }
 
-    html[dir="rtl"] .badge-pill,
-    body[dir="rtl"] .badge-pill {
+    .badge-pill {
       margin: 0 auto 20px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
     }
 
-    html[dir="rtl"] h1,
-    body[dir="rtl"] h1 {
+    h1 {
       font-size: clamp(20px, 2.55vw, 36px) !important;
       font-weight: 800 !important;
       line-height: 1.3 !important;
@@ -87,8 +87,7 @@
       word-break: keep-all !important;
     }
 
-    html[dir="rtl"] .subtitle,
-    body[dir="rtl"] .subtitle {
+    .subtitle {
       font-size: 15px !important;
       line-height: 1.7 !important;
       text-align: center !important;
@@ -98,8 +97,7 @@
       display: block !important;
     }
 
-    html[dir="rtl"] .style-switcher-container,
-    body[dir="rtl"] .style-switcher-container {
+    .style-switcher-container {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -108,37 +106,29 @@
       margin: 0 auto !important;
     }
 
-    html[dir="rtl"] .style-switcher-label,
-    body[dir="rtl"] .style-switcher-label {
+    .style-switcher-label {
       text-align: center !important;
       margin-bottom: 10px !important;
     }
 
-    html[dir="rtl"] .style-switcher,
-    body[dir="rtl"] .style-switcher {
+    .style-switcher {
       display: inline-flex !important;
       flex-wrap: wrap !important;
       justify-content: center !important;
       margin: 0 auto !important;
+      direction: ltr !important;
     }
 
-    html[dir="rtl"] .code-pill-text,
-    html[dir="rtl"] .pill-tech,
-    html[dir="rtl"] .telemetry-big-num,
-    body[dir="rtl"] .code-pill-text,
-    body[dir="rtl"] .pill-tech,
-    body[dir="rtl"] .telemetry-big-num {
-      font-family: 'Geist Mono', 'Vazirmatn', monospace !important;
+    /* Fixed Layout Bento Grid (Never flips columns horizontally) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      direction: ltr !important;
     }
 
-    html[dir="rtl"] .badge-pill svg,
-    html[dir="rtl"] .radar-pulse,
-    html[dir="rtl"] .card-title svg,
-    body[dir="rtl"] .badge-pill svg,
-    body[dir="rtl"] .radar-pulse,
-    body[dir="rtl"] .card-title svg {
-      margin-right: 0 !important;
-      margin-left: 8px !important;
+    body.lang-fa .card-desc {
+      line-height: 1.6;
     }
     .lang-switcher {
       display: inline-flex;
@@ -1857,7 +1847,7 @@
               </svg>
             </div>
             <div class="approval-title-area">
-              <div class="approval-title">
+              <div class="approval-title approval-heading">
                 <span>Deploy Database Migration v2.4</span>
                 <span class="risk-badge">High Impact</span>
               </div>
@@ -1877,8 +1867,8 @@
           </div>
 
           <div class="approval-actions" id="approvalActions">
-            <button class="btn btn-secondary" type="button" onclick="handleApproval(false)">Decline</button>
-            <button class="btn btn-primary" type="button" onclick="handleApproval(true)">Approve & Execute</button>
+            <button class="btn btn-secondary" type="button" onclick="handleApproval(false)" id="approvalDeclineBtn">Decline</button>
+            <button class="btn btn-primary" type="button" onclick="handleApproval(true)" id="approvalApproveBtn">Approve & Execute</button>
           </div>
 
           <div class="approval-status-banner" id="approvalBanner" role="status">
@@ -2277,14 +2267,15 @@
     function setLanguage(lang) {
       currentLang = lang;
       const dict = i18n[lang];
-      document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
-      document.body.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+      
+      // Keep root direction fixed so layout never jumps
       document.documentElement.lang = lang;
+      document.body.classList.toggle('lang-fa', lang === 'fa');
       
       document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-lang-fa').classList.toggle('active', lang === 'fa');
 
-      // Update text nodes
+      // Comprehensive In-Place Text Node Swaps
       const queryMap = {
         '.badge-pill span': dict.badge,
         'header h1': dict.h1,
@@ -2297,19 +2288,29 @@
         '#tab-stripe': dict.themeStripe,
         '#card1-title': dict.card1Title,
         '#card1-desc': dict.card1Desc,
+        '.slider-tag-before': dict.slopBadge,
+        '.slider-tag-after': dict.vibeBadge,
+        '.layer-before .demo-title': dict.slopHeading,
+        '.layer-before .demo-text': dict.slopDesc,
+        '.layer-after .demo-title': dict.vibeHeading,
+        '.layer-after .demo-text': dict.vibeDesc,
         '#card2-title': dict.card2Title,
         '#card2-desc': dict.card2Desc,
+        '#thinkingTitle': dict.thinkingTitle,
         '#card3-title': dict.card3Title,
         '#card3-desc': dict.card3Desc,
+        '.approval-heading': dict.approvalHeading,
+        '#approvalDeclineBtn': dict.approvalDecline,
+        '#approvalApproveBtn': dict.approvalApprove,
         '#card4-title': dict.card4Title,
         '#card4-desc': dict.card4Desc,
-        '.install-box h2': dict.installTitle,
-        '.install-box p': dict.installDesc
+        '#install-heading': dict.installTitle,
+        '#install-subtext': dict.installDesc
       };
 
       for (const [sel, txt] of Object.entries(queryMap)) {
         const el = document.querySelector(sel);
-        if (el) el.textContent = txt;
+        if (el && txt) el.textContent = txt;
       }
     }
 

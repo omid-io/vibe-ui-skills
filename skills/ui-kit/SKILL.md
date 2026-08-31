@@ -28,3 +28,18 @@ Whenever asked to build, design, or refactor any frontend component or view:
 1. **Identify the Component Domain:** AI Reasoning, Forms, Navigation, Data Visualization, or Layout.
 2. **Read the Target Reference:** Pull exact markup, Tailwind utility classes, and zero-JS transitions from `references/`.
 3. **Adapt Seamlessly:** Match the target framework (React, Vue, HTML/JS, Tailwind, Flutter), color theme, and language direction (LTR / RTL).
+
+---
+
+## 📐 Inviolable Fixed-Structure Content-Only RTL Protocol
+
+When implementing components in Persian, Arabic, or Bilingual LTR/RTL views:
+1. **Keep Global Component & Grid Structure Fixed:**
+   - Never mirror or flip column orders, navigation bars, sliders, or card coordinates. The visual layout remains physically identical across languages.
+2. **Target Only Textual Content:**
+   - Apply `direction: rtl` and text alignments exclusively to text nodes, titles, and paragraphs.
+3. **BiDi Resilience:**
+   - Ensure mixed English brand names or tech terms inside Persian sentences do not scramble punctuation (`unicode-bidi: plaintext` or `<bdi>`).
+4. **Code & Telemetry Remain LTR:**
+   - Code blocks, numbers, metric counters (`99.98%`), and URLs always stay strictly `direction: ltr !important; text-align: left !important`.
+
