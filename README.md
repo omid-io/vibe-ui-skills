@@ -25,6 +25,10 @@
 
 </div>
 
+<p align="center">
+  <img src="assets/comparison_banner.png" alt="Before vs After: Default AI Slop vs Vibe UI Suite" width="100%">
+</p>
+
 ## 🛑 The Problem: AI UI Slop
 
 By default, every major LLM (Claude, GPT-4o, Gemini) defaults to predictable, generic, low-effort designs:
@@ -36,6 +40,10 @@ By default, every major LLM (Claude, GPT-4o, Gemini) defaults to predictable, ge
 ## 💎 The Solution: Vibe UI Suite
 
 This repository gives your AI agent an opinionated visual constitution and an exhaustive 70+ component encyclopedia.
+
+<p align="center">
+  <img src="assets/showcase_glass.png" alt="Interactive Showcase Preview - Glassmorphism 2.0" width="100%">
+</p>
 
 ```mermaid
 flowchart LR
