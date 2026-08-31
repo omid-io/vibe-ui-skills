@@ -3,6 +3,11 @@
 # ✨ Vibe UI & AI Agent Design Skills Suite
 ### *Turn your AI Coding Assistant into an Awwwards-Winning Senior Frontend Architect*
 
+<p align="center">
+  <a href="README.md"><b>English</b></a> •
+  <a href="README.fa.md"><b>فارسی</b></a>
+</p>
+
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)

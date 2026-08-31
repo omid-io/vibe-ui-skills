@@ -7,12 +7,51 @@
   <meta name="description" content="Production-ready Awwwards-grade UI skills and 70+ AI primitives for Claude Code, Antigravity, Cursor, and Copilot.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
        CSS Custom Properties & Design Tokens for 5 Master Visual Themes
        ========================================================================== */
+    
+    /* RTL & Persian Typography */
+    html[dir="rtl"], body[dir="rtl"] {
+      font-family: 'Vazirmatn', var(--font-sans);
+    }
+    body[dir="rtl"] .badge-pill svg,
+    body[dir="rtl"] .radar-pulse,
+    body[dir="rtl"] .card-title svg {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-surface);
+      border-radius: 999px;
+      margin-bottom: 24px;
+      box-shadow: var(--card-shadow);
+    }
+    .lang-btn {
+      padding: 4px 14px;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--accent-contrast);
+    }
+
     :root {
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -1500,6 +1539,11 @@
   <div class="container">
     <!-- Header -->
     <header>
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Language Toggle">
+        <button class="lang-btn active" id="btn-lang-en" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" id="btn-lang-fa" onclick="setLanguage('fa')">فارسی (RTL)</button>
+      </div>
       <div class="badge-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -2011,6 +2055,135 @@
         setTimeout(() => { copyBtnText.textContent = 'Copy'; }, 2000);
       });
     }
+  
+    // --------------------------------------------------------------------------
+    // 7. Full Bilingual (English / Persian RTL) Localization Engine
+    // --------------------------------------------------------------------------
+    const i18n = {
+      en: {
+        badge: "Vibe UI & AI Agent Design Skills Suite",
+        h1: "Awwwards-Grade UI for AI Agents",
+        subtitle: "Turn Claude Code, Antigravity, Cursor, and Copilot into elite Senior Frontend Architects. Explore 5 adaptive visual chemistries and 70+ interactive primitives below.",
+        styleLabel: "Adaptive Visual Chemistry Engine",
+        themeGlass: "💎 Glassmorphism 2.0",
+        themeLinear: "⚡ Minimalist SaaS",
+        themeNeobrutal: "🎨 Neobrutalism",
+        themeSwiss: "📰 Swiss Editorial",
+        themeStripe: "☀️ Stripe Light",
+        card1Title: "120fps Mathematical Lerp Comparison Engine",
+        card1Desc: "Smooth linear interpolation between standard default AI generation vs bespoke Vibe UI output.",
+        slopBadge: "Standard AI Output",
+        slopHeading: "Generic 'AI Slop' Defaults",
+        slopDesc: "Flat gray borders, low-res unicode emojis, generic purple buttons, zero ambient depth.",
+        vibeBadge: "Vibe UI Engine",
+        vibeHeading: "Senior Frontend Architecture",
+        vibeDesc: "Fresnel specular reflections, SVG noise grain, OKLCH color science, 70+ AI primitives.",
+        sliderHint: "Drag handle horizontally • Arrow keys • 120fps Lerp Math",
+        card2Title: "AI-Native State Primitives",
+        card2Desc: "Production-ready zero-delay interactive states for AI agent reasoning.",
+        thinkingTitle: "Reasoning trace",
+        thinking1: "> Evaluating OKLCH contrast ratios...",
+        thinking2: "> Injecting Fresnel specular borders.",
+        thinking3: "> Asymmetric Bento grid generated.",
+        thinking4: "✓ 100% WCAG AA verified.",
+        card3Title: "Human-in-the-Loop Approval",
+        card3Desc: "Production-ready action confirmation cards with zero boilerplate.",
+        approvalHeading: "Deploy Database Schema v2.4",
+        approvalTarget: "Target:",
+        approvalDecline: "Decline",
+        approvalApprove: "Approve & Execute",
+        card4Title: "Real-Time Sparkline Telemetry",
+        card4Desc: "Asymmetric metric display with zero-dependency inline SVGs.",
+        metricLabel: "System Reliability (p99)",
+        metricDiff: "+2.4% vs last week",
+        installTitle: "Install in Your AI Agent Workspace",
+        installDesc: "One-click installation for Antigravity, Cursor, Claude Code, & Copilot.",
+        copied: "Copied!",
+        copy: "Copy"
+      },
+      fa: {
+        badge: "سوئیت مهارت‌های طراحی مدرن Vibe UI",
+        h1: "طراحی رابط کاربری در سطح Awwwards برای هوش مصنوعی",
+        subtitle: "دستیارهای هوش مصنوعی Claude Code، Antigravity، Cursor و Copilot را به معماران ارشد فرانت‌اند تبدیل کنید. ۵ زبان طراحی و بیش از ۷۰ کامپوننت را تست کنید.",
+        styleLabel: "موتور انطباق‌پذیر زبان‌های طراحی (Visual Chemistries)",
+        themeGlass: "💎 گلس‌مورفیسم ۲.۰",
+        themeLinear: "⚡ مینیمال مهندسی SaaS",
+        themeNeobrutal: "🎨 نئوبروتالیسم",
+        themeSwiss: "📰 ادیتوریال سوئیسی",
+        themeStripe: "☀️ استرایپ لایت",
+        card1Title: "موتور مقایسه ۱۲۰ فریم قبل و بعد با فیزیک Lerp",
+        card1Desc: "انیمیشن نرم و مقایسه زنده خروجی خسته‌کننده هوش مصنوعی معمولی در برابر طراحی لوکس Vibe UI.",
+        slopBadge: "خروجی معمولی AI",
+        slopHeading: "طراحی‌های کلیشه‌ای هوش مصنوعی",
+        slopDesc: "بوردرهای ساده، ایموجی‌های بی‌کیفیت، دکمه‌های بنفش تکراری و نبود هیچ‌گونه نورپردازی.",
+        vibeBadge: "موتور Vibe UI",
+        vibeHeading: "معماری حرفه‌ای فرانت‌اند",
+        vibeDesc: "نور انعکاسی فرنل، بافت نویز SVG، علم رنگ OKLCH و بیش از ۷۰ کامپوننت هوش مصنوعی.",
+        sliderHint: "اسلایدر را با موس بکشید یا با کلیدهای جهت‌نما جابجا کنید",
+        card2Title: "کامپوننت‌های نیتیو هوش مصنوعی (AI Primitives)",
+        card2Desc: "وضعیت‌های تعاملی بلادرنگ برای مراحل تفکر و استدلال عامل‌های خودکار.",
+        thinkingTitle: "فرآیند استدلال هوش مصنوعی",
+        thinking1: "> بررسی کنتراست رنگ‌ها در مدل ادراکی OKLCH...",
+        thinking2: "> اعمال بازتاب نور فرنل روی کارت‌های گلس‌مورفیسم.",
+        thinking3: "> ساخت ساختار چیدمان بنتو گرید نامتقارن.",
+        thinking4: "✓ دسترسی‌پذیری کامل WCAG AA تایید شد.",
+        card3Title: "تایید اکشن توسط کاربر (Human-in-the-Loop)",
+        card3Desc: "کارت‌های استاندارد تایید عملیات حساس با طراحی بدون نقص.",
+        approvalHeading: "استقرار و مایگریشن دیتابیس نسخه ۲.۴",
+        approvalTarget: "محیط هدف:",
+        approvalDecline: "رد درخواست",
+        approvalApprove: "تایید و اجرا",
+        card4Title: "تله‌متری بلادرنگ و نمودار خطی SVG",
+        card4Desc: "نمایش داده‌ها و متریک‌های کلیدی با نمودارهای وکتور بسیار سبک.",
+        metricLabel: "پایداری سیستم (p99)",
+        metricDiff: "+۲.۴٪ نسبت به هفته قبل",
+        installTitle: "نصب سریع در محیط‌های هوش مصنوعی",
+        installDesc: "نصب ۱-کلیک برای Google Antigravity، Cursor، Claude Code و GitHub Copilot.",
+        copied: "کپی شد!",
+        copy: "کپی دستور"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const dict = i18n[lang];
+      document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      
+      document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-lang-fa').classList.toggle('active', lang === 'fa');
+
+      // Update text nodes
+      const queryMap = {
+        '.badge-pill span': dict.badge,
+        'header h1': dict.h1,
+        'header p.subtitle': dict.subtitle,
+        '.style-switcher-label': dict.styleLabel,
+        '#tab-glass': dict.themeGlass,
+        '#tab-linear': dict.themeLinear,
+        '#tab-neobrutal': dict.themeNeobrutal,
+        '#tab-swiss': dict.themeSwiss,
+        '#tab-stripe': dict.themeStripe,
+        '#card1-title': dict.card1Title,
+        '#card1-desc': dict.card1Desc,
+        '#card2-title': dict.card2Title,
+        '#card2-desc': dict.card2Desc,
+        '#card3-title': dict.card3Title,
+        '#card3-desc': dict.card3Desc,
+        '#card4-title': dict.card4Title,
+        '#card4-desc': dict.card4Desc,
+        '.install-box h2': dict.installTitle,
+        '.install-box p': dict.installDesc
+      };
+
+      for (const [sel, txt] of Object.entries(queryMap)) {
+        const el = document.querySelector(sel);
+        if (el) el.textContent = txt;
+      }
+    }
+
   </script>
 </body>
 </html>
