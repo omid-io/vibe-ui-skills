@@ -88,11 +88,12 @@ Simply copy the `skills/` directory into your project's `.agents/skills/` or ref
 ## 🎨 Deep Dive into Core Skills
 
 ### 1. 👑 Master Web Builder (`master-web-builder`)
-Enforces the mandatory luxury visual skeleton on every page generated:
-- **SVG Fractal Noise Grain:** Ultra-subtle texture that eliminates flat digital banding.
-- **Ambient Mesh Glows:** Multi-stop radial gradients creating cinematic atmospheric depth.
-- **Glassmorphism 2.0:** Dual-layer inset specular reflections reproducing real optical refraction.
-- **120fps Lerp Comparison Sliders:** Mathematical linear interpolation for silky smooth interactive reveals.
+An adaptive visual architecture engine that prevents rigid, repetitive designs by supporting **5 Master Visual Chemistries**:
+- **⚡ Minimalist SaaS (Linear / Vercel):** Pitch charcoal canvas, crisp 1px borders, subtle directional light, JetBrains Mono metrics.
+- **💎 Luxury Obsidian & Glassmorphism 2.0:** Deep obsidian velvet canvas, SVG fractal noise, ambient mesh glow, Fresnel specular reflections.
+- **🎨 Neobrutalism (Gumroad / Figma):** Pastel chalk canvas, bold 2px black strokes, hard offset shadows, physical button press feedback.
+- **📰 Swiss Editorial & Paper Craft:** Warm natural paper canvas, high-contrast Serif typography, asymmetric grid layouts.
+- **☀️ Modern Crisp Light (Stripe / Apple):** Clean snow canvas, soft diffuse multi-stage elevation, accessible high-contrast accents.
 
 ### 2. 🎨 UI-Kit (`ui-kit`)
 Comprehensive component encyclopedia across 5 modern design ecosystems:
