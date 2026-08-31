@@ -1,0 +1,8 @@
+# Windsurf / Cascade Vibe UI Rules
+
+When assisting with web design, frontend components, or full-stack UI development:
+- Apply Vibe UI standards: choose between Minimalist SaaS, Luxury Glassmorphism 2.0, Neobrutalism, Swiss Editorial, or Stripe Light.
+- Use Fresnel specular highlights for glassmorphism (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.16)`).
+- Implement AI-native primitives (Thinking State, Tool Chips, Approval Cards) whenever building AI chat/agent workflows.
+- Strictly use crisp SVG icons (`stroke="currentColor"`) instead of unicode emojis.
+- Ensure 100% bi-directional RTL/LTR compatibility using logical CSS.

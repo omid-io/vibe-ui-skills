@@ -3,14 +3,17 @@
 # ✨ Vibe UI & AI Agent Design Skills Suite
 ### *Turn your AI Coding Assistant into an Awwwards-Winning Senior Frontend Architect*
 
+[![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-installation)
+[![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)
+[![Golden Prompts](https://img.shields.io/badge/Cheatsheet-30%20Golden%20Prompts-gold)](PROMPTS.md)
 [![UI Primitives](https://img.shields.io/badge/Primitives-70%2B%20AI%20%26%20Shadcn-success)](#-the-core-skill-arsenal)
-[![Visual Engine](https://img.shields.io/badge/Aesthetics-Glassmorphism%202.0%20%7C%20OKLCH%20%7C%20Bento-orange)](#1--master-web-builder)
+[![Visual Engine](https://img.shields.io/badge/Aesthetics-5%20Master%20Styles-orange)](#1--master-web-builder)
 
 <p align="center">
   <b>Stop settling for generic "AI slop" interfaces.</b><br>
-  A curated, zero-dependency suite of agent skills that injects high-end visual physics, 70+ battle-tested UI primitives, and conversion copywriting into every web generation.
+  A curated, zero-dependency suite of agent skills that injects high-end visual physics, 70+ battle-tested UI primitives, and conversion copywriting into every web generation.<br><br>
+  👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>Explore the Live Interactive Showcase & Theme Switcher</b></a>
 </p>
 
 ---
@@ -77,11 +80,26 @@ For **Google Antigravity**:
 ```bash
 # Windows
 git clone https://github.com/omid-io/vibe-ui-skills.git %USERPROFILE%\.gemini\config\skills\vibe-ui-skills-repo
-# Copy skills into your active skills path
 ```
 
-For **Cursor / Claude Code / Custom Agent Workspaces**:
-Simply copy the `skills/` directory into your project's `.agents/skills/` or reference them in your `.cursorrules` / `CLAUDE.md`.
+---
+
+## 🔌 Universal IDE Adapters
+
+Drop-in rule files are pre-configured for every major AI coding assistant in the [`adapters/`](adapters/) directory:
+
+| Editor / AI Tool | Configuration File | How to Use |
+| :--- | :--- | :--- |
+| **Cursor** | [`adapters/cursor/.cursorrules`](adapters/cursor/.cursorrules) | Copy to your project root as `.cursorrules` |
+| **Claude Code** | [`adapters/claude/CLAUDE.md`](adapters/claude/CLAUDE.md) | Copy to your project root as `CLAUDE.md` |
+| **GitHub Copilot** | [`adapters/copilot/copilot-instructions.md`](adapters/copilot/copilot-instructions.md) | Copy to `.github/copilot-instructions.md` |
+| **Windsurf / Cascade** | [`adapters/windsurf/.windsurfrules`](adapters/windsurf/.windsurfrules) | Copy to your project root as `.windsurfrules` |
+
+---
+
+## 🎯 30 Golden Prompts Cheatsheet
+
+Looking for inspiration or instant 1-line copy-paste prompts? Check out the **[`PROMPTS.md`](PROMPTS.md)** guide covering 30 battle-tested formulas across SaaS Dashboards, AI Agents, Neobrutalist stores, Swiss portfolios, and High-Converting landing pages.
 
 ---
 
