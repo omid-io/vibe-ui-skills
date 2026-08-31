@@ -36,7 +36,7 @@
        CSS Custom Properties & Design Tokens for 5 Master Visual Themes
        ========================================================================== */
     
-    /* RTL & Persian Typography (Universal Match & Center Alignment) */
+    /* RTL & Persian Typography (Pixel-Perfect Symmetry & 1-Line Title) */
     html[dir="rtl"],
     html[dir="rtl"] body,
     html[dir="rtl"] *,
@@ -46,38 +46,82 @@
     [dir="rtl"] * {
       font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
+    
     html[dir="rtl"] header,
     body[dir="rtl"] header {
-      text-align: center !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
-      justify-content: center !important;
-    }
-    html[dir="rtl"] h1,
-    body[dir="rtl"] h1 {
       text-align: center !important;
+      width: 100% !important;
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 920px !important;
-      letter-spacing: normal !important;
-      line-height: 1.35 !important;
-      font-weight: 800 !important;
+      margin-bottom: 48px !important;
     }
-    html[dir="rtl"] .subtitle,
-    body[dir="rtl"] .subtitle {
-      text-align: center !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      max-width: 780px !important;
-      line-height: 1.7 !important;
-      font-size: 16px !important;
+
+    html[dir="rtl"] .lang-switcher,
+    body[dir="rtl"] .lang-switcher {
+      margin: 0 auto 24px !important;
+      direction: ltr !important;
     }
+
     html[dir="rtl"] .badge-pill,
     body[dir="rtl"] .badge-pill {
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin: 0 auto 20px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
+
+    html[dir="rtl"] h1,
+    body[dir="rtl"] h1 {
+      font-size: clamp(20px, 2.55vw, 36px) !important;
+      font-weight: 800 !important;
+      line-height: 1.3 !important;
+      letter-spacing: normal !important;
+      text-align: center !important;
+      width: 100% !important;
+      max-width: 1100px !important;
+      margin: 0 auto 16px !important;
+      display: block !important;
+      word-break: keep-all !important;
+    }
+
+    html[dir="rtl"] .subtitle,
+    body[dir="rtl"] .subtitle {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+      text-align: center !important;
+      max-width: 760px !important;
+      margin: 0 auto 24px !important;
+      color: var(--text-muted) !important;
+      display: block !important;
+    }
+
+    html[dir="rtl"] .style-switcher-container,
+    body[dir="rtl"] .style-switcher-container {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    html[dir="rtl"] .style-switcher-label,
+    body[dir="rtl"] .style-switcher-label {
+      text-align: center !important;
+      margin-bottom: 10px !important;
+    }
+
+    html[dir="rtl"] .style-switcher,
+    body[dir="rtl"] .style-switcher {
+      display: inline-flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      margin: 0 auto !important;
+    }
+
     html[dir="rtl"] .code-pill-text,
     html[dir="rtl"] .pill-tech,
     html[dir="rtl"] .telemetry-big-num,
@@ -86,6 +130,7 @@
     body[dir="rtl"] .telemetry-big-num {
       font-family: 'Geist Mono', 'Vazirmatn', monospace !important;
     }
+
     html[dir="rtl"] .badge-pill svg,
     html[dir="rtl"] .radar-pulse,
     html[dir="rtl"] .card-title svg,
@@ -2187,7 +2232,7 @@
       fa: {
         badge: "سوئیت مهارت‌های طراحی مدرن Vibe UI",
         h1: "طراحی رابط کاربری در سطح Awwwards برای هوش مصنوعی",
-        subtitle: "دستیارهای هوش مصنوعی Claude Code، Antigravity، Cursor و Copilot را به معماران ارشد فرانت‌اند تبدیل کنید. ۵ زبان طراحی و بیش از ۷۰ کامپوننت را تست کنید.",
+        subtitle: "دستیارهای هوش مصنوعی (Claude Code، Cursor، Antigravity، Copilot) را به معماران ارشد فرانت‌اند تبدیل کنید. ۵ زبان طراحی و بیش از ۷۰ کامپوننت مدرن را تست کنید.",
         styleLabel: "موتور انطباق‌پذیر زبان‌های طراحی (Visual Chemistries)",
         themeGlass: "💎 گلس‌مورفیسم ۲.۰",
         themeLinear: "⚡ مینیمال مهندسی SaaS",
