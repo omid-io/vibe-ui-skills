@@ -26,7 +26,7 @@
 </div>
 
 <p align="center">
-  <img src="assets/comparison_banner.png" alt="مقایسه قبل و بعد: هوش مصنوعی معمولی در برابر Vibe UI" width="100%">
+  <img src="assets/comparison_banner.webp" alt="مقایسه قبل و بعد: هوش مصنوعی معمولی در برابر Vibe UI" width="100%">
 </p>
 
 ## 🛑 مسئله اصلی: خروجی‌های کلیشه‌ای هوش مصنوعی (AI UI Slop)
@@ -42,7 +42,7 @@
 این ریپازیتوری به هوش مصنوعی شما یک استخوان‌بندی بصری مستحکم و دایرةالمعارفی از ۷۰+ کامپوننت مدرن با پشتیبانی ۱۰۰٪ از راست‌چین (RTL) و فونت‌های فارسی اضافه می‌کند.
 
 <p align="center">
-  <img src="assets/showcase_persian_rtl.png" alt="پیش‌نمایش دموی زنده به زبان فارسی و راست‌چین" width="100%">
+  <img src="assets/showcase_persian.webp" alt="پیش‌نمایش دموی زنده با فونت وزیرمتن و چیدمان راست‌چین" width="100%">
 </p>
 
 ```mermaid
