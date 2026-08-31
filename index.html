@@ -41,13 +41,28 @@
     body.lang-fa * {
       font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
+    
+    /* Strict LTR Monospace for Code, Telemetry & Technical Metrics */
+    body.lang-fa .code-pill-wrapper,
     body.lang-fa .code-pill-text,
     body.lang-fa .pill-tech,
-    body.lang-fa .telemetry-big-num {
+    body.lang-fa .telemetry-header,
+    body.lang-fa .telemetry-value-group,
+    body.lang-fa .telemetry-big-num,
+    body.lang-fa .telemetry-delta,
+    body.lang-fa .telemetry-live-badge,
+    body.lang-fa .sparkline-interactive-area,
+    body.lang-fa .tool-chip-group,
+    body.lang-fa .tool-chip,
+    body.lang-fa .chip-meta,
+    body.lang-fa .slider-handle,
+    body.lang-fa .diff-val {
+      direction: ltr !important;
+      text-align: left !important;
       font-family: 'Geist Mono', 'Vazirmatn', monospace !important;
     }
 
-    /* Fixed Layout Header */
+    /* Fixed Layout Header (Centered) */
     header {
       display: flex !important;
       flex-direction: column !important;
@@ -127,8 +142,97 @@
       direction: ltr !important;
     }
 
+    /* Content-Only RTL: Paragraphs and Text Descriptions Align to the Right */
+    body.lang-fa .card-desc,
+    body.lang-fa .demo-text,
+    body.lang-fa .demo-title,
+    body.lang-fa .thought-step span:last-child,
+    body.lang-fa .approval-subtitle,
+    body.lang-fa .diff-label,
+    body.lang-fa .install-info h3,
+    body.lang-fa .install-info p,
+    body.lang-fa .tool-chips-label,
+    body.lang-fa .card-title {
+      direction: rtl !important;
+      text-align: right !important;
+    }
+
+    body.lang-fa .card-header {
+      text-align: right;
+    }
+
+    body.lang-fa .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    body.lang-fa .card-title svg {
+      margin-right: 0 !important;
+      margin-left: 8px !important;
+    }
+
+    body.lang-fa .thought-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      direction: rtl !important;
+      text-align: right !important;
+    }
+
+    body.lang-fa .thought-step .step-num {
+      margin-left: 4px;
+      margin-right: 0;
+    }
+
+    body.lang-fa .approval-header {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 14px;
+      direction: rtl !important;
+      text-align: right !important;
+    }
+
+    body.lang-fa .approval-title-area {
+      flex: 1;
+      text-align: right !important;
+      direction: rtl !important;
+    }
+
+    body.lang-fa .approval-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      direction: rtl !important;
+    }
+
+    body.lang-fa .approval-diff-box {
+      direction: rtl !important;
+    }
+
+    body.lang-fa .diff-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      direction: rtl !important;
+    }
+
+    body.lang-fa .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      direction: ltr !important;
+    }
+
     body.lang-fa .card-desc {
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    body.lang-fa .install-info {
+      text-align: right;
+      direction: rtl;
     }
     .lang-switcher {
       display: inline-flex;
@@ -1699,7 +1803,7 @@
             </svg>
             Interactive Comparison Engine
           </h2>
-          <p class="card-desc">Drag horizontally or use arrow keys to compare standard AI generation against Vibe UI architecture.</p>
+          <p class="card-desc" id="card1-desc">Drag horizontally or use arrow keys to compare standard AI generation against Vibe UI architecture.</p>
         </div>
 
         <div class="comparison-container">
@@ -1713,7 +1817,7 @@
               <div class="demo-box">
                 <div class="demo-title">❌ Generic AI Slop Component</div>
                 <div class="demo-text">Flat gray border, washed-out contrast, default purple button, zero depth, generic template feel.</div>
-                <button class="demo-btn" type="button" tabindex="-1">Submit Query</button>
+                <button class="demo-btn" type="button" tabindex="-1" id="slopDemoBtn">Submit Query</button>
               </div>
             </div>
 
@@ -1726,7 +1830,7 @@
                 <div class="demo-title">✨ Bespoke Vibe UI Masterpiece</div>
                 <div class="demo-text">Fresnel specular inset border, SVG fractal grain, OKLCH color science, 100% WCAG AA contrast.</div>
                 <button class="demo-btn" type="button" tabindex="-1">
-                  Deploy Autonomous Agent
+                  <span id="vibeDemoBtnText">Deploy Autonomous Agent</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
@@ -1758,7 +1862,7 @@
             </svg>
             AI State Primitives
           </h2>
-          <p class="card-desc">Zero-delay interactive components for background agent reasoning.</p>
+          <p class="card-desc" id="card2-desc">Zero-delay interactive components for background agent reasoning.</p>
         </div>
 
         <!-- Thinking State Accordion -->
@@ -1801,7 +1905,7 @@
         </div>
 
         <!-- Tool Call Execution Chips -->
-        <div class="tool-chips-label">Active Function Call Chips</div>
+        <div class="tool-chips-label" id="toolChipsLabel">Active Function Call Chips</div>
         <div class="tool-chip-group">
           <div class="tool-chip" onclick="simulateChipClick(this, 'query_rag')" title="Click to simulate tool status">
             <span class="chip-status-dot"></span>
@@ -1834,7 +1938,7 @@
             </svg>
             Human-in-the-Loop Approval
           </h2>
-          <p class="card-desc">Production-grade action confirmation cards with zero boilerplate and live state feedback.</p>
+          <p class="card-desc" id="card3-desc">Production-grade action confirmation cards with zero boilerplate and live state feedback.</p>
         </div>
 
         <div class="approval-card" id="approvalCard">
@@ -1849,20 +1953,20 @@
             <div class="approval-title-area">
               <div class="approval-title approval-heading">
                 <span>Deploy Database Migration v2.4</span>
-                <span class="risk-badge">High Impact</span>
+                <span class="risk-badge" id="riskBadge">High Impact</span>
               </div>
-              <div class="approval-subtitle">Action requires senior operator approval before execution.</div>
+              <div class="approval-subtitle" id="approvalSubtitle">Action requires senior operator approval before execution.</div>
             </div>
           </div>
 
           <div class="approval-diff-box">
             <div class="diff-row">
-              <span class="diff-label">Target Cluster:</span>
+              <span class="diff-label" id="diffLabel1">Target Cluster:</span>
               <span class="diff-val">production-us-east-1</span>
             </div>
             <div class="diff-row">
-              <span class="diff-label">Schema Changes:</span>
-              <span class="diff-val">3 Tables Added, 1 Index Rebuilt</span>
+              <span class="diff-label" id="diffLabel2">Schema Changes:</span>
+              <span class="diff-val" id="diffVal2">3 Tables Added, 1 Index Rebuilt</span>
             </div>
           </div>
 
@@ -1873,7 +1977,7 @@
 
           <div class="approval-status-banner" id="approvalBanner" role="status">
             <span id="approvalBannerText">✓ Action Approved and Executed (142ms)</span>
-            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" type="button" onclick="resetApproval()">Reset</button>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" type="button" onclick="resetApproval()" id="resetApprovalBtn">Reset</button>
           </div>
         </div>
       </section>
@@ -1891,7 +1995,7 @@
             </svg>
             Real-Time Telemetry Scrubber
           </h2>
-          <p class="card-desc">Zero-dependency inline SVG data visualization with interactive hover inspection.</p>
+          <p class="card-desc" id="card4-desc">Zero-dependency inline SVG data visualization with interactive hover inspection.</p>
         </div>
 
         <div class="telemetry-header">
@@ -1901,10 +2005,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <polyline points="18 15 12 9 6 15"></polyline>
               </svg>
-              <span>+2.4% vs baseline</span>
+              <span id="telemetryDeltaText">+2.4% vs baseline</span>
             </div>
           </div>
-          <div class="telemetry-live-badge">
+          <div class="telemetry-live-badge" id="telemetryLiveBadge">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
             LIVE 60HZ
           </div>
@@ -2188,36 +2292,44 @@
         themeNeobrutal: "🎨 Neobrutalism",
         themeSwiss: "📰 Swiss Editorial",
         themeStripe: "☀️ Stripe Light",
-        card1Title: "120fps Mathematical Lerp Comparison Engine",
-        card1Desc: "Smooth linear interpolation between standard default AI generation vs bespoke Vibe UI output.",
-        slopBadge: "Standard AI Output",
-        slopHeading: "Generic 'AI Slop' Defaults",
-        slopDesc: "Flat gray borders, low-res unicode emojis, generic purple buttons, zero ambient depth.",
-        vibeBadge: "Vibe UI Engine",
-        vibeHeading: "Senior Frontend Architecture",
-        vibeDesc: "Fresnel specular reflections, SVG noise grain, OKLCH color science, 70+ AI primitives.",
-        sliderHint: "Drag handle horizontally • Arrow keys • 120fps Lerp Math",
-        card2Title: "AI-Native State Primitives",
-        card2Desc: "Production-ready zero-delay interactive states for AI agent reasoning.",
-        thinkingTitle: "Reasoning trace",
-        thinking1: "> Evaluating OKLCH contrast ratios...",
-        thinking2: "> Injecting Fresnel specular borders.",
-        thinking3: "> Asymmetric Bento grid generated.",
-        thinking4: "✓ 100% WCAG AA verified.",
+        card1Title: "Interactive Comparison Engine",
+        card1Desc: "Drag horizontally or use arrow keys to compare standard AI generation against Vibe UI architecture.",
+        slopBadge: "Generic AI",
+        slopHeading: "❌ Generic AI Slop Component",
+        slopDesc: "Flat gray border, washed-out contrast, default purple button, zero depth, generic template feel.",
+        slopBtn: "Submit Query",
+        vibeBadge: "Vibe UI Suite",
+        vibeHeading: "✨ Bespoke Vibe UI Masterpiece",
+        vibeDesc: "Fresnel specular inset border, SVG fractal grain, OKLCH color science, 100% WCAG AA contrast.",
+        vibeBtn: "Deploy Autonomous Agent",
+        card2Title: "AI State Primitives",
+        card2Desc: "Zero-delay interactive components for background agent reasoning.",
+        thinkingTitle: "Reasoning trace (428ms)",
+        thought1: "Evaluating OKLCH perceptual contrast curves...",
+        thought2: "Injecting Fresnel specular dual inset reflection.",
+        thought3: "Generating responsive asymmetric Bento layout.",
+        thought4: "100% WCAG AA compliance verified (48ms).",
+        toolChipsLabel: "Active Function Call Chips",
         card3Title: "Human-in-the-Loop Approval",
-        card3Desc: "Production-ready action confirmation cards with zero boilerplate.",
-        approvalHeading: "Deploy Database Schema v2.4",
-        approvalTarget: "Target:",
+        card3Desc: "Production-grade action confirmation cards with zero boilerplate and live state feedback.",
+        approvalHeading: "Deploy Database Migration v2.4",
+        riskBadge: "High Impact",
+        approvalSubtitle: "Action requires senior operator approval before execution.",
+        diffLabel1: "Target Cluster:",
+        diffLabel2: "Schema Changes:",
+        diffVal2: "3 Tables Added, 1 Index Rebuilt",
         approvalDecline: "Decline",
         approvalApprove: "Approve & Execute",
-        card4Title: "Real-Time Sparkline Telemetry",
-        card4Desc: "Asymmetric metric display with zero-dependency inline SVGs.",
-        metricLabel: "System Reliability (p99)",
-        metricDiff: "+2.4% vs last week",
+        approvalBannerText: "✓ Action Approved and Executed (142ms)",
+        resetBtn: "Reset",
+        card4Title: "Real-Time Telemetry Scrubber",
+        card4Desc: "Zero-dependency inline SVG data visualization with interactive hover inspection.",
+        telemetryDelta: "+2.4% vs baseline",
         installTitle: "Install in Your AI Agent Workspace",
-        installDesc: "One-click installation for Antigravity, Cursor, Claude Code, & Copilot.",
-        copied: "Copied!",
-        copy: "Copy"
+        installDesc: "Copy this prompt directly into your AI Assistant (Cursor, Claude, Antigravity, Copilot):",
+        copyPromptText: "Copy Prompt",
+        copyPs1Text: "Copy PS1",
+        footer: "Crafted with mathematical precision &bull; Part of the <a href=\"https://github.com/omid-io/vibe-ui-skills\" target=\"_blank\" rel=\"noopener noreferrer\">vibe-ui-skills suite</a>"
       },
       fa: {
         badge: "سوئیت مهارت‌های طراحی مدرن Vibe UI",
@@ -2229,53 +2341,65 @@
         themeNeobrutal: "🎨 نئوبروتالیسم",
         themeSwiss: "📰 ادیتوریال سوئیسی",
         themeStripe: "☀️ استرایپ لایت",
-        card1Title: "موتور مقایسه ۱۲۰ فریم قبل و بعد با فیزیک Lerp",
-        card1Desc: "انیمیشن نرم و مقایسه زنده خروجی خسته‌کننده هوش مصنوعی معمولی در برابر طراحی لوکس Vibe UI.",
+        card1Title: "موتور مقایسه تعاملی قبل و بعد",
+        card1Desc: "اسلایدر را بکشید یا از کلیدهای جهت‌نما استفاده کنید تا خروجی معمولی هوش مصنوعی را با معماری Vibe UI مقایسه کنید.",
         slopBadge: "خروجی معمولی AI",
-        slopHeading: "طراحی‌های کلیشه‌ای هوش مصنوعی",
-        slopDesc: "بوردرهای ساده، ایموجی‌های بی‌کیفیت، دکمه‌های بنفش تکراری و نبود هیچ‌گونه نورپردازی.",
-        vibeBadge: "موتور Vibe UI",
-        vibeHeading: "معماری حرفه‌ای فرانت‌اند",
-        vibeDesc: "نور انعکاسی فرنل، بافت نویز SVG، علم رنگ OKLCH و بیش از ۷۰ کامپوننت هوش مصنوعی.",
-        sliderHint: "اسلایدر را با موس بکشید یا با کلیدهای جهت‌نما جابجا کنید",
-        card2Title: "کامپوننت‌های نیتیو هوش مصنوعی (AI Primitives)",
-        card2Desc: "وضعیت‌های تعاملی بلادرنگ برای مراحل تفکر و استدلال عامل‌های خودکار.",
-        thinkingTitle: "فرآیند استدلال هوش مصنوعی",
-        thinking1: "> بررسی کنتراست رنگ‌ها در مدل ادراکی OKLCH...",
-        thinking2: "> اعمال بازتاب نور فرنل روی کارت‌های گلس‌مورفیسم.",
-        thinking3: "> ساخت ساختار چیدمان بنتو گرید نامتقارن.",
-        thinking4: "✓ دسترسی‌پذیری کامل WCAG AA تایید شد.",
-        card3Title: "تایید اکشن توسط کاربر (Human-in-the-Loop)",
-        card3Desc: "کارت‌های استاندارد تایید عملیات حساس با طراحی بدون نقص.",
+        slopHeading: "❌ کامپوننت کلیشه‌ای هوش مصنوعی",
+        slopDesc: "بوردر خاکستری ساده، کنتراست ضعیف، دکمه بنفش تکراری، بدون عمق بصری و شبیه قالب‌های آماده.",
+        slopBtn: "ارسال فرم معمولی",
+        vibeBadge: "سوئیت Vibe UI",
+        vibeHeading: "✨ شاهکار اختصاصی با استانداردهای Vibe UI",
+        vibeDesc: "نور بازتابی لبه‌های فرنل، بافت نویز فراکتال SVG، علم رنگ OKLCH و کنتراست ۱۰۰٪ تاییدشده WCAG AA.",
+        vibeBtn: "استقرار ایجنت خودکار",
+        card2Title: "کامپوننت‌های وضعیت هوش مصنوعی",
+        card2Desc: "کامپوننت‌های تعاملی بلادرنگ برای مراحل تفکر و استدلال عامل‌های هوشمند بدون تاخیر.",
+        thinkingTitle: "فرآیند استدلال هوش مصنوعی (۴۲۸ میلی‌ثانیه)",
+        thought1: "بررسی منحنی‌های کنتراست ادراکی در مدل رنگی OKLCH...",
+        thought2: "تزریق بازتاب دو لایه نور فرنل به لبه‌های کارت شیشه‌ای.",
+        thought3: "تولید چیدمان بنتو گرید نامتقارن و واکنش‌گرا.",
+        thought4: "تاییدیه دسترسی‌پذیری کامل WCAG AA (زمان: ۴۸ میلی‌ثانیه).",
+        toolChipsLabel: "تراشه‌های اجرای توابع هوش مصنوعی (Active Function Calls)",
+        card3Title: "تایید عملیات حساس (Human-in-the-Loop)",
+        card3Desc: "کارت‌های تایید عملیات حساس پروداکشن با بازخورد زنده و بدون کد اضافه.",
         approvalHeading: "استقرار و مایگریشن دیتابیس نسخه ۲.۴",
-        approvalTarget: "محیط هدف:",
+        riskBadge: "اثرگذاری بالا",
+        approvalSubtitle: "این عملیات حساس نیازمند تایید مستقیم اپراتور ارشد قبل از اجرا است.",
+        diffLabel1: "کلاستر هدف:",
+        diffLabel2: "تغییرات ساختار دیتابیس:",
+        diffVal2: "۳ جدول جدید، ۱ ایندکس بازسازی‌شده",
         approvalDecline: "رد درخواست",
         approvalApprove: "تایید و اجرا",
-        card4Title: "تله‌متری بلادرنگ و نمودار خطی SVG",
-        card4Desc: "نمایش داده‌ها و متریک‌های کلیدی با نمودارهای وکتور بسیار سبک.",
-        metricLabel: "پایداری سیستم (p99)",
-        metricDiff: "+۲.۴٪ نسبت به هفته قبل",
+        approvalBannerText: "✓ عملیات با موفقیت تایید و اجرا شد (۱۴۲ میلی‌ثانیه)",
+        resetBtn: "بازنشانی",
+        card4Title: "تله‌متری بلادرنگ با نمودار برداری SVG",
+        card4Desc: "نمایش داده‌ها و متریک‌های کلیدی سیستم با نمودار SVG بسیار سبک و قابلیت اینسپکت ماوس.",
+        telemetryDelta: "+۲.۴٪ نسبت به خط پایه",
         installTitle: "نصب سریع در محیط‌های هوش مصنوعی",
-        installDesc: "نصب ۱-کلیک برای Google Antigravity، Cursor، Claude Code و GitHub Copilot.",
-        copied: "کپی شد!",
-        copy: "کپی دستور"
+        installDesc: "این پرامپت را مستقیماً در هوش مصنوعی خود (Cursor، Claude، Antigravity، Copilot) کپی کنید:",
+        copyPromptText: "کپی پرامپت",
+        copyPs1Text: "کپی دستور",
+        footer: "طراحی‌شده با دقت ریاضی و علم رنگ OKLCH • بخشی از <a href=\"https://github.com/omid-io/vibe-ui-skills\" target=\"_blank\" rel=\"noopener noreferrer\">سوئیت vibe-ui-skills</a>"
       }
     };
 
+    
     let currentLang = 'en';
 
     function setLanguage(lang) {
       currentLang = lang;
       const dict = i18n[lang];
+      if (!dict) return;
       
       // Keep root direction fixed so layout never jumps
       document.documentElement.lang = lang;
       document.body.classList.toggle('lang-fa', lang === 'fa');
       
-      document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-lang-fa').classList.toggle('active', lang === 'fa');
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnFa = document.getElementById('btn-lang-fa');
+      if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+      if (btnFa) btnFa.classList.toggle('active', lang === 'fa');
 
-      // Comprehensive In-Place Text Node Swaps
+      // Comprehensive In-Place Text Swaps
       const queryMap = {
         '.badge-pill span': dict.badge,
         'header h1': dict.h1,
@@ -2292,25 +2416,59 @@
         '.slider-tag-after': dict.vibeBadge,
         '.layer-before .demo-title': dict.slopHeading,
         '.layer-before .demo-text': dict.slopDesc,
+        '#slopDemoBtn': dict.slopBtn,
         '.layer-after .demo-title': dict.vibeHeading,
         '.layer-after .demo-text': dict.vibeDesc,
+        '#vibeDemoBtnText': dict.vibeBtn,
         '#card2-title': dict.card2Title,
         '#card2-desc': dict.card2Desc,
         '#thinkingTitle': dict.thinkingTitle,
+        '#toolChipsLabel': dict.toolChipsLabel,
         '#card3-title': dict.card3Title,
         '#card3-desc': dict.card3Desc,
-        '.approval-heading': dict.approvalHeading,
+        '.approval-heading span:first-child': dict.approvalHeading,
+        '#riskBadge': dict.riskBadge,
+        '#approvalSubtitle': dict.approvalSubtitle,
+        '#diffLabel1': dict.diffLabel1,
+        '#diffLabel2': dict.diffLabel2,
+        '#diffVal2': dict.diffVal2,
         '#approvalDeclineBtn': dict.approvalDecline,
         '#approvalApproveBtn': dict.approvalApprove,
+        '#approvalBannerText': dict.approvalBannerText,
+        '#resetApprovalBtn': dict.resetBtn,
         '#card4-title': dict.card4Title,
         '#card4-desc': dict.card4Desc,
+        '#telemetryDeltaText': dict.telemetryDelta,
         '#install-heading': dict.installTitle,
-        '#install-subtext': dict.installDesc
+        '#install-subtext': dict.installDesc,
+        '#copyPromptText': dict.copyPromptText,
+        '#copyBtnText': dict.copyPs1Text,
+        '#footerText p': dict.footer
       };
 
       for (const [sel, txt] of Object.entries(queryMap)) {
         const el = document.querySelector(sel);
-        if (el && txt) el.textContent = txt;
+        if (el && txt) {
+          if (sel === '#footerText p' || sel === '#card1-title' || sel === '#card2-title' || sel === '#card3-title' || sel === '#card4-title') {
+            const svg = el.querySelector('svg');
+            if (svg) {
+              el.innerHTML = svg.outerHTML + ' ' + txt;
+            } else {
+              el.innerHTML = txt;
+            }
+          } else {
+            el.textContent = txt;
+          }
+        }
+      }
+
+      // Update thought steps list
+      const thoughtSteps = document.querySelectorAll('.thought-step');
+      if (thoughtSteps.length >= 4) {
+        thoughtSteps[0].querySelector('span:last-child').textContent = dict.thought1;
+        thoughtSteps[1].querySelector('span:last-child').textContent = dict.thought2;
+        thoughtSteps[2].querySelector('span:last-child').textContent = dict.thought3;
+        thoughtSteps[3].querySelector('span:last-child').textContent = dict.thought4;
       }
     }
 
