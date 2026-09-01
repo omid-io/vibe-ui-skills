@@ -1,6 +1,6 @@
 # 📊 Project State — Vibe UI Skills Suite
 
-**Repository:** `E:\programming\vibe-ui-skills` (`https://github.com/omid-io/vibe-ui-skills.git`)  
+**Repository:** `https://github.com/omid-io/vibe-ui-skills.git`  
 **Branch:** `main`  
 **Last Updated:** 2026-09-01  
 
@@ -16,26 +16,27 @@
 
 ## 🎯 Active Milestone & Overview
 **Current Status:** V2.2 Enterprise Rigor, GitHub Actions CI & Multi-Style Examples 100% Complete  
-**All 3 Review Rounds Completed & Verified:**
+**All 4 Review Rounds Completed & Verified (Claude, ChatGPT, Gemini, Grok, DeepSeek):**
 1. Master Orchestrator Architecture (`mr-ui-designer` + 6 sub-skills with `visual-chemistry-engine`).
 2. GitHub Actions CI Automated Harness (`.github/workflows/evals.yml`) running `evals/run_evals.py` on every push.
 3. 4 Production-grade standalone examples (`saas_ai_hero.html`, `persian_rtl_bento.html`, `neobrutalist_creative_store.html`, `swiss_editorial_article.html`) achieving 100% PASS on all audit gates.
-4. WCAG 2.2 AA compliance, DeltaTime-based frame-rate independent physics, and formal `THIRD_PARTY_NOTICES.md`.
+4. WCAG 2.2 AA compliance, DeltaTime-based frame-rate independent physics, `THIRD_PARTY_NOTICES.md`, and `SECURITY.md`.
 
 | Component | Path | Status | Description |
 | :--- | :--- | :--- | :--- |
-| **👑 mr-ui-designer** | [`mr-ui-designer/AGENT.md`](file:///E:/programming/vibe-ui-skills/mr-ui-designer/AGENT.md) | 👑 Master Agent | Lead UI/UX & Frontend Architect subagent commanding all 6 skills |
-| **🎨 visual-chemistry-engine** | [`skills/visual-chemistry-engine/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/visual-chemistry-engine/SKILL.md) | ✅ Visual Engine | 5 Visual Chemistries + Anti-Repetition Protocol + Semantic RTL |
-| **🧩 ui-kit** | [`skills/ui-kit/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/ui-kit/SKILL.md) | ✅ Upgraded | 6 Clean Catalogs, 70+ AI Recipes, WCAG AA Accessibility Contract |
-| **⚡ vibe-physics-engine** | [`skills/vibe-physics-engine/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/vibe-physics-engine/SKILL.md) | ✅ Upgraded | Modern `lenis`, Native Pure CSS Fallback, Multi-Theme OKLCH |
-| **✍️ conversion-copy-engine** | [`skills/conversion-copy-engine/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/conversion-copy-engine/SKILL.md) | ✅ Upgraded | Multi-Domain Frameworks (B2B SaaS JTBD/ROI, Luxury, Health) |
-| **🧠 autonomous-intent-expander** | [`skills/autonomous-intent-expander/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/autonomous-intent-expander/SKILL.md) | ✅ Upgraded | Core vs Conditional Domain Parameters + Design Spec JSON |
-| **🔍 ui-verifier** | [`skills/ui-verifier/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/ui-verifier/SKILL.md) | ✅ Evidence Engine | 5-Pillar Quantitative Scorecard + WCAG 2.2 AA (24px target / 44px rec) |
-| **🧪 Automated Eval Runner** | [`evals/run_evals.py`](file:///E:/programming/vibe-ui-skills/evals/run_evals.py) | 🆕 Automated Harness | 1-Command verification runner auditing examples against 5 pillars |
-| **📜 Third-Party Notices** | [`THIRD_PARTY_NOTICES.md`](file:///E:/programming/vibe-ui-skills/THIRD_PARTY_NOTICES.md) | 🆕 Legal Compliance | MIT License attributions for Shadcn, Beautiful UI, Transitions.dev |
-| **🌐 Interactive Showcase** | [`showcase/index.html`](file:///E:/programming/vibe-ui-skills/showcase/index.html) | ✅ Synced | Live demo with copyable code recipes & deltaTime-based physics |
-| **🔌 Adapters** | [`adapters/`](file:///E:/programming/vibe-ui-skills/adapters/) | ✅ Synced | Claude, Copilot, Cursor, Windsurf |
-| **💻 Installers** | [`install.ps1`](file:///E:/programming/vibe-ui-skills/install.ps1), [`install.sh`](file:///E:/programming/vibe-ui-skills/install.sh) | ✅ Verified | Automatic discovery and deployment of all 6 skills |
+| **👑 mr-ui-designer** | [`mr-ui-designer/AGENT.md`](mr-ui-designer/AGENT.md) | 👑 Master Agent | Lead UI/UX & Frontend Architect subagent commanding all 6 skills |
+| **🎨 visual-chemistry-engine** | [`skills/visual-chemistry-engine/SKILL.md`](skills/visual-chemistry-engine/SKILL.md) | ✅ Visual Engine | 5 Visual Chemistries + Anti-Repetition Protocol + Semantic RTL |
+| **🧩 ui-kit** | [`skills/ui-kit/SKILL.md`](skills/ui-kit/SKILL.md) | ✅ Upgraded | 6 Clean Catalogs, 70+ AI Recipes, WCAG AA Accessibility Contract |
+| **⚡ vibe-physics-engine** | [`skills/vibe-physics-engine/SKILL.md`](skills/vibe-physics-engine/SKILL.md) | ✅ Upgraded | Modern `lenis`, Native Pure CSS Fallback, Multi-Theme OKLCH |
+| **✍️ conversion-copy-engine** | [`skills/conversion-copy-engine/SKILL.md`](skills/conversion-copy-engine/SKILL.md) | ✅ Upgraded | Multi-Domain Frameworks (B2B SaaS JTBD/ROI, Luxury, Health) |
+| **🧠 autonomous-intent-expander** | [`skills/autonomous-intent-expander/SKILL.md`](skills/autonomous-intent-expander/SKILL.md) | ✅ Upgraded | Core vs Conditional Domain Parameters + Design Spec JSON |
+| **🔍 ui-verifier** | [`skills/ui-verifier/SKILL.md`](skills/ui-verifier/SKILL.md) | ✅ Evidence Engine | 5-Pillar Quantitative Scorecard + WCAG 2.2 AA (24px target / 44px rec) |
+| **🧪 Automated Eval Runner** | [`evals/run_evals.py`](evals/run_evals.py) | 🆕 Automated Harness | 1-Command verification runner auditing examples against 5 pillars |
+| **📜 Third-Party Notices** | [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) | 🆕 Legal Compliance | MIT License attributions for Shadcn, Beautiful UI, Transitions.dev |
+| **🛡️ Security Policy** | [`SECURITY.md`](SECURITY.md) | 🆕 Security | Vulnerability reporting and safe installer guidelines |
+| **🌐 Interactive Showcase** | [`showcase/index.html`](showcase/index.html) | ✅ Synced | Live demo with copyable code recipes & deltaTime-based physics |
+| **🔌 Adapters** | [`adapters/`](adapters/) | ✅ Synced | Claude, Copilot, Cursor, Windsurf |
+| **💻 Installers** | [`install.ps1`](install.ps1), [`install.sh`](install.sh) | ✅ Verified | Automatic discovery and deployment of all 6 skills |
 
 ---
 
