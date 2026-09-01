@@ -6,9 +6,11 @@
 
 ---
 
-## 🎯 Active Milestone & Overview
-**Current Focus:** V2 Architecture & Audit Implementation Complete  
-**Description:** Full execution of technical audit recommendations from Claude & ChatGPT: deleted duplicate/orphan reference files, modernized Lenis + native zero-dep fallback, replaced marketing hype with engineering precision, introduced Anti-Repetition protocol & semantic RTL, upgraded ARIA accessibility, and launched the 6th core skill (`ui-verifier`).
+## 📝 Recent Commits & Milestones
+- `c030a7b`: docs: feature mr-ui-designer as master orchestrator agent in English and Persian READMEs
+- `0e0e250`: feat(agent): establish mr-ui-designer as master orchestrator agent
+- `3267408`: feat(v2): complete architecture & credibility refactor based on technical audits
+- `f6750cd`: fix(theme): preserve Vazirmatn font across all 5 themes & integrate smart BiDi rules from rtl-vazir-extension
 
 ---
 
