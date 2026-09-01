@@ -7,9 +7,10 @@
 ---
 
 ## 📝 Recent Commits & Milestones
+- `24ac710`: feat(vibe-physics): update deltaTime physics loop in showcase & skill, add neobrutalist and swiss eval benchmarks
+- `4f154c0`: feat(ci): add GitHub Actions CI workflow, neobrutalism & swiss examples with 100% pass rate
 - `416060d`: feat(v2.2): rename to visual-chemistry-engine, add evals runner, WCAG 2.2 AA fixes, delta-time physics & THIRD_PARTY_NOTICES
 - `d5c58fb`: feat(v2.1): complete part 2 - evidence-based verifier, design-spec schema, evals suite, examples & showcase copy-code
-- `94a5e18`: fix(v2.1): complete part 1 fixes - de-hype docs, safe installers, ambiguity budget & anti-dark-pattern
 
 ---
 
