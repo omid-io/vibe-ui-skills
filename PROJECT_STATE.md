@@ -16,7 +16,8 @@
 
 | Component | Path | Status | Description |
 | :--- | :--- | :--- | :--- |
-| **👑 master-web-builder** | [`skills/master-web-builder/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/master-web-builder/SKILL.md) | ✅ Upgraded | 5 Visual Chemistries + Anti-Repetition Protocol + Semantic RTL |
+| **👑 mr-ui-designer** | [`mr-ui-designer/AGENT.md`](file:///E:/programming/vibe-ui-skills/mr-ui-designer/AGENT.md) | 👑 Master Agent | Lead UI/UX & Frontend Architect subagent commanding all 6 skills |
+| **👑 master-web-builder** | [`skills/master-web-builder/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/master-web-builder/SKILL.md) | ✅ Visual Engine | 5 Visual Chemistries + Anti-Repetition Protocol + Semantic RTL |
 | **🎨 ui-kit** | [`skills/ui-kit/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/ui-kit/SKILL.md) | ✅ Upgraded | 6 Clean Catalogs, 70+ AI Recipes, WCAG AA Accessibility Contract |
 | **⚡ vibe-physics-engine** | [`skills/vibe-physics-engine/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/vibe-physics-engine/SKILL.md) | ✅ Upgraded | Modern `lenis`, Native Pure CSS Fallback, Multi-Theme OKLCH |
 | **✍️ conversion-copy-engine** | [`skills/conversion-copy-engine/SKILL.md`](file:///E:/programming/vibe-ui-skills/skills/conversion-copy-engine/SKILL.md) | ✅ Upgraded | Multi-Domain Frameworks (B2B SaaS JTBD/ROI, Luxury, Health) |
