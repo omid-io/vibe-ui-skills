@@ -58,7 +58,7 @@ When requested or when compiling specs for downstream build pipelines, `autonomo
 
 ```json
 {
-  "$schema": "https://vibe-ui.io/schemas/design-spec.v1.json",
+  "$schema": "./schemas/design-spec.v1.schema.json",
   "domain": "HIGH_PERFORMANCE_SAAS",
   "archetype": "minimalist_saas",
   "novelty_budget": {

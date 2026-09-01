@@ -11,6 +11,7 @@
 [![Master Agent: mr-ui-designer](https://img.shields.io/badge/ایجنت_ارشد-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
 [![تست‌های ارزیابی](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
+[![خط‌مشی امنیت](https://img.shields.io/badge/امنیت-SECURITY.md-brightgreen)](SECURITY.md)
 [![License: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/سازگار_با-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
 [![Golden Prompts](https://img.shields.io/badge/راهنمای_پرامپت-۳۰_فرمول_طلایی-gold)](PROMPTS.fa.md)
@@ -158,10 +159,11 @@ cd vibe-ui-skills
 
 ## 🧪 مجموعه بنچمارک‌های ارزیابی و نمونه‌های واقعی خروجی
 
-برخلاف کالکشن‌های متنی که فقط ادعای کیفی دارند، این مخزن شامل یک **مجموعه رسمی ارزیابی ([`evals/`](evals/))** و **نمونه‌های واقعی خروجی ایجنت ([`examples/`](examples/))** است:
+برخلاف کالکشن‌های متنی که فقط ادعای کیفی دارند، این مخزن شامل یک **مجموعه رسمی ارزیابی ([`evals/`](evals/))**، **اسکیمای رسمی داده‌ها ([`schemas/design-spec.v1.schema.json`](schemas/design-spec.v1.schema.json))** و **نمونه‌های واقعی خروجی ایجنت ([`examples/`](examples/))** است:
 
-- **[`evals/`](evals/)**: سناریوهای بنچمارک همراه با پرامپت، شروط قبولی (Pass Criteria) و الگوهای ممنوعه (مثل [`persian_rtl_landing_eval.md`](evals/persian_rtl_landing_eval.md) و [`saas_dashboard_eval.md`](evals/saas_dashboard_eval.md)).
-- **[`examples/`](examples/)**: فایل‌های HTML/CSS مستقل، تست‌شده و آماده اجرا:
+- **[`schemas/`](schemas/)**: ساختار داده‌ای استاندارد JSON Schema ([`schemas/design-spec.v1.schema.json`](schemas/design-spec.v1.schema.json)) برای اعتبارسنجی ماشینی مشخصات خروجی `autonomous-intent-expander`.
+- **[`evals/`](evals/)**: اسکریپت رانر خودکار ([`evals/run_evals.py`](evals/run_evals.py)) و سناریوهای بنچمارک همراه با شروط قبولی عینی.
+- **[`examples/`](examples/)**: فایل‌های HTML/CSS مستقل و آماده پیش‌نمایش در مرورگر *(از CDN تیل‌ویند برای باز شدن سریع در مرورگر استفاده شده؛ برای نسخه‌های تجاری پروداکشن، خروجی با Tailwind CLI کامپایل می‌شود)*:
   - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): هیرو بخش SaaS با وضعیت تفکر هوش مصنوعی و تراشه اجرای ابزار.
   - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): بنتو گرید فارسی با فونت وزیرمتن، چیدمان ثابت و ایزولاسیون علائم نگارشی انگلیسی.
   - [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html): لندینگ پیج نئوبروتالیسم با کنتراست بالا، سایه‌های سخت و بازخورد فیزیکی کلیک‌ها.

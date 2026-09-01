@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VibeUIDesignSpecification",
+  "description": "Canonical machine-readable design contract synthesized by autonomous-intent-expander for mr-ui-designer and sub-skills.",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "domain_archetype",
+    "visual_chemistry",
+    "core_parameters",
+    "accessibility_contract",
+    "semantic_rtl_contract",
+    "novelty_budget"
+  ],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "enum": ["1.0.0", "1.1.0", "2.0.0", "2.2.0"]
+    },
+    "domain_archetype": {
+      "type": "string",
+      "enum": [
+        "LUXURY_CLINICAL",
+        "HIGH_PERFORMANCE_SAAS",
+        "HIGH_TICKET_SERVICE",
+        "HEAVY_INDUSTRIAL_ECOMMERCE",
+        "CREATIVE_EDITORIAL",
+        "HOSPITALITY_EXPERIENCE",
+        "HYPER_LOCAL_TRADES",
+        "EDTECH_ACADEMY"
+      ]
+    },
+    "visual_chemistry": {
+      "type": "string",
+      "enum": [
+        "MINIMALIST_SAAS",
+        "LUXURY_GLASS_2",
+        "NEOBRUTALISM",
+        "SWISS_EDITORIAL",
+        "STRIPE_CRISP_LIGHT"
+      ]
+    },
+    "core_parameters": {
+      "type": "object",
+      "description": "Universal parameters P01 through P24 required across all interface generations.",
+      "required": [
+        "primary_palette",
+        "typography_pair",
+        "surface_treatment",
+        "grid_density",
+        "hero_composition"
+      ],
+      "properties": {
+        "primary_palette": {
+          "type": "object",
+          "properties": {
+            "canvas_oklch": { "type": "string" },
+            "surface_oklch": { "type": "string" },
+            "primary_accent_oklch": { "type": "string" },
+            "border_oklch": { "type": "string" }
+          },
+          "required": ["canvas_oklch", "surface_oklch", "primary_accent_oklch"]
+        },
+        "typography_pair": {
+          "type": "object",
+          "properties": {
+            "display_font": { "type": "string" },
+            "body_font": { "type": "string" },
+            "mono_font": { "type": "string" }
+          },
+          "required": ["display_font", "body_font"]
+        },
+        "surface_treatment": {
+          "type": "string"
+        },
+        "grid_density": {
+          "type": "string",
+          "enum": ["airy", "standard", "compact", "bento_asymmetric"]
+        },
+        "hero_composition": {
+          "type": "string",
+          "enum": ["split_terminal", "centered_badge", "asymmetric_editorial", "card_stack", "bento_hero"]
+        }
+      }
+    },
+    "conditional_domain_parameters": {
+      "type": "object",
+      "description": "Specialized parameters P25 through P30 activated only for specific domain requirements (e.g. healthcare, e-commerce, local trades)."
+    },
+    "accessibility_contract": {
+      "type": "object",
+      "required": ["wcag_level", "min_touch_target_px", "focus_visible_required"],
+      "properties": {
+        "wcag_level": { "type": "string", "enum": ["AA", "AAA"] },
+        "min_touch_target_px": { "type": "integer", "minimum": 24 },
+        "target_recommendation_px": { "type": "integer", "default": 44 },
+        "focus_visible_required": { "type": "boolean", "const": true },
+        "reduced_motion_strategy": { "type": "string", "enum": ["functional_only", "full_disable"] }
+      }
+    },
+    "semantic_rtl_contract": {
+      "type": "object",
+      "required": ["enabled", "physical_macro_stability", "bidi_isolation"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "physical_macro_stability": { "type": "boolean" },
+        "bidi_isolation": { "type": "boolean" },
+        "code_ltr_enforced": { "type": "boolean" }
+      }
+    },
+    "novelty_budget": {
+      "type": "object",
+      "required": ["dimensions_varied"],
+      "properties": {
+        "dimensions_varied": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 3
+        },
+        "entropy_heuristic": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      }
+    }
+  }
+}
