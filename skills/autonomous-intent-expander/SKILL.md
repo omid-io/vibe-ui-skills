@@ -42,3 +42,42 @@ The `autonomous-intent-expander` skill eliminates friction and interrogation fat
    - **P22-P25: Narrative & Neuro-Copywriting** (BLUF Value Hook, Problem Matrix, Clinical/Evidence Proof, Brand Voice Register).
    - **P26-P28: Semantic SEO & AEO Engine** (Schema.org Root Entity, Wikidata Entity Link, 5-Decimal Geo-Coordinates).
    - **P29-P30: Technical Performance & Boundary Gates** (Core Web Vitals Budget, Zero-Touch Boundary Isolation).
+
+---
+
+## 📄 4. Canonical Machine-Readable Output (`design-spec.json`)
+
+When requested or when compiling specs for downstream build pipelines, `autonomous-intent-expander` outputs this formal JSON Design Contract:
+
+```json
+{
+  "$schema": "https://vibe-ui.io/schemas/design-spec.v1.json",
+  "domain": "HIGH_PERFORMANCE_SAAS",
+  "archetype": "minimalist_saas",
+  "novelty_budget": {
+    "dimensions_varied": ["hero_composition", "grid_density", "accent_palette"],
+    "entropy_score": 0.85
+  },
+  "visual_contract": {
+    "canvas": "oklch(0.14 0.005 260)",
+    "surface": "oklch(0.18 0.008 260)",
+    "accent": "oklch(0.65 0.22 265)",
+    "border": "1px solid oklch(0.28 0.01 260)",
+    "radius": "8px"
+  },
+  "typography": {
+    "display": "Inter, system-ui, sans-serif",
+    "body": "Inter, system-ui, sans-serif",
+    "metrics_mono": "JetBrains Mono, monospace",
+    "persian_fallback": "Vazirmatn, sans-serif"
+  },
+  "components_manifest": [
+    "ai_thinking_state",
+    "tool_execution_chip",
+    "bento_grid_3col",
+    "sub_pixel_slider"
+  ],
+  "accessibility_target": "WCAG_2.2_AA",
+  "layout_direction": "bi_directional_semantic_rtl"
+}
+```

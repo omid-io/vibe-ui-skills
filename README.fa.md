@@ -155,6 +155,17 @@ cd vibe-ui-skills
 
 ---
 
+## 🧪 مجموعه بنچمارک‌های ارزیابی و نمونه‌های واقعی خروجی
+
+برخلاف کالکشن‌های متنی که فقط ادعای کیفی دارند، این مخزن شامل یک **مجموعه رسمی ارزیابی ([`evals/`](evals/))** و **نمونه‌های واقعی خروجی ایجنت ([`examples/`](examples/))** است:
+
+- **[`evals/`](evals/)**: سناریوهای بنچمارک همراه با پرامپت، شروط قبولی (Pass Criteria) و الگوهای ممنوعه (مثل [`persian_rtl_landing_eval.md`](evals/persian_rtl_landing_eval.md) و [`saas_dashboard_eval.md`](evals/saas_dashboard_eval.md)).
+- **[`examples/`](examples/)**: فایل‌های HTML/CSS مستقل، تست‌شده و آماده اجرا:
+  - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): هیرو بخش SaaS با وضعیت تفکر هوش مصنوعی و تراشه اجرای ابزار.
+  - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): بنتو گرید فارسی با فونت وزیرمتن، چیدمان ثابت و ایزولاسیون علائم نگارشی انگلیسی.
+
+---
+
 ## 👤 سازنده و توسعه‌دهنده
 
 **امید ظفری (Omid Zaferi)**

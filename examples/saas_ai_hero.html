@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist SaaS AI Hero — Vibe UI Example</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas: oklch(0.14 0.005 260);
+      --surface: oklch(0.18 0.008 260);
+      --border: oklch(0.28 0.01 260);
+      --accent: oklch(0.65 0.22 265);
+    }
+    body {
+      background-color: var(--canvas);
+      color: #fafafa;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 antialiased selection:bg-indigo-500 selection:text-white">
+
+  <main class="w-full max-w-4xl mx-auto space-y-8">
+    <!-- Header Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-indigo-400 bg-indigo-950/60 border border-indigo-800/40">
+      <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+      <span>VIBE UI SPEC // MINIMALIST SAAS</span>
+    </div>
+
+    <!-- Hero Title -->
+    <div class="space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white max-w-2xl leading-tight">
+        Autonomous Telemetry & Cloud Agent Execution
+      </h1>
+      <p class="text-neutral-400 text-lg max-w-xl">
+        High-concurrency infrastructure orchestration with deterministic latency bounds and real-time sub-pixel observability.
+      </p>
+    </div>
+
+    <!-- AI Thinking & Execution Card (ui-kit primitive) -->
+    <div class="rounded-xl border border-neutral-800 bg-neutral-900/80 backdrop-blur-md p-6 shadow-2xl space-y-6">
+      
+      <!-- Card Header with Tool Chip -->
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-800 pb-4">
+        <div class="flex items-center gap-3">
+          <button type="button" 
+                  aria-expanded="true" 
+                  aria-controls="thinking-drawer"
+                  id="thinking-btn"
+                  onclick="toggleDrawer()"
+                  class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-xs font-medium text-neutral-300 transition-colors focus-visible:ring-2 focus-visible:ring-indigo-500 focus:outline-none">
+            <svg class="w-3.5 h-3.5 text-indigo-400 transition-transform duration-200" id="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            <span>Reasoning Stream</span>
+            <span class="font-mono text-[10px] text-neutral-500">142ms</span>
+          </button>
+
+          <!-- Active Tool Status Chip -->
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/40">
+            <svg class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span>sys.cluster.health_check()</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
+          <span>LATENCY: <strong class="text-neutral-200">1.2ms</strong></span>
+          <span>•</span>
+          <span>UPTIME: <strong class="text-emerald-400">99.99%</strong></span>
+        </div>
+      </div>
+
+      <!-- Collapsible Thinking Drawer -->
+      <div id="thinking-drawer" class="grid transition-all duration-300 ease-in-out" style="grid-template-rows: 1fr;">
+        <div class="overflow-hidden space-y-3">
+          <div class="p-3.5 rounded-lg bg-neutral-950 border border-neutral-800/80 font-mono text-xs text-neutral-400 leading-relaxed">
+            <p class="text-neutral-500">// Executing telemetry synthesis on 3 cluster nodes...</p>
+            <p><span class="text-indigo-400">node-alpha-01:</span> healthy (p99 = 1.1ms)</p>
+            <p><span class="text-indigo-400">node-beta-02:</span> healthy (p99 = 1.4ms)</p>
+            <p class="text-emerald-400 font-medium">✓ Ready for production traffic allocation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="flex items-center justify-between pt-2">
+        <span class="text-xs text-neutral-500">WCAG AA Compliant • Keyboard Operable</span>
+        <button type="button" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold tracking-wide transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 focus:outline-none shadow-lg shadow-indigo-600/20">
+          Deploy Cluster
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function toggleDrawer() {
+      const drawer = document.getElementById('thinking-drawer');
+      const btn = document.getElementById('thinking-btn');
+      const chevron = document.getElementById('chevron');
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        drawer.style.gridTemplateRows = '0fr';
+        btn.setAttribute('aria-expanded', 'false');
+        chevron.style.transform = 'rotate(-90deg)';
+      } else {
+        drawer.style.gridTemplateRows = '1fr';
+        btn.setAttribute('aria-expanded', 'true');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    }
+  </script>
+</body>
+</html>

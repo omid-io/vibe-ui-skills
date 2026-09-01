@@ -1772,6 +1772,37 @@
       transform: translate(-1px, -1px);
     }
 
+    .recipe-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-surface);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-left: auto;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    .recipe-copy-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
+      background: var(--bg-surface-elevated);
+    }
+    .recipe-copy-btn.copied {
+      color: #10b981 !important;
+      border-color: #10b981 !important;
+    }
+    html.lang-fa .recipe-copy-btn,
+    body.lang-fa .recipe-copy-btn {
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+
     footer {
       text-align: center;
       margin-top: 48px;
@@ -1841,6 +1872,10 @@
           <div class="card-meta">
             <span class="card-num">MODULE 01</span>
             <span class="card-badge">Sub-Pixel Lerp</span>
+            <button type="button" class="recipe-copy-btn" onclick="copyRecipe('slider', this)" title="Copy HTML Recipe">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span class="btn-text">Copy Recipe</span>
+            </button>
           </div>
           <h2 class="card-title" id="card1-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1899,6 +1934,10 @@
           <div class="card-meta">
             <span class="card-num">MODULE 02</span>
             <span class="card-badge">Agentic UI</span>
+            <button type="button" class="recipe-copy-btn" onclick="copyRecipe('thinking-state', this)" title="Copy HTML Recipe">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span class="btn-text">Copy Recipe</span>
+            </button>
           </div>
           <h2 class="card-title" id="card2-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1976,6 +2015,10 @@
           <div class="card-meta">
             <span class="card-num">MODULE 03</span>
             <span class="card-badge">Safety Gate</span>
+            <button type="button" class="recipe-copy-btn" onclick="copyRecipe('approval-card', this)" title="Copy HTML Recipe">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span class="btn-text">Copy Recipe</span>
+            </button>
           </div>
           <h2 class="card-title" id="card3-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -2517,6 +2560,72 @@
         thoughtSteps[2].querySelector('span:last-child').textContent = dict.thought3;
         thoughtSteps[3].querySelector('span:last-child').textContent = dict.thought4;
       }
+    }
+
+    // 8. Recipe Copy to Clipboard Engine
+    const RECIPE_SNIPPETS = {
+      'slider': `<div class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 select-none">
+  <!-- Before/After Images and Lerp Slider -->
+  <img src="after.webp" class="w-full h-auto block" alt="After">
+  <div class="absolute inset-0 overflow-hidden w-1/2 border-r-2 border-indigo-400" id="sliderClip">
+    <img src="before.webp" class="w-full max-w-none h-full block object-cover" alt="Before">
+  </div>
+</div>`,
+      'thinking-state': `<!-- AI Thinking State Primitive (WCAG AA Compliant) -->
+<div class="rounded-xl border border-neutral-800 bg-neutral-900/80 p-4 space-y-3">
+  <button type="button" class="flex items-center gap-2 text-xs font-medium text-neutral-300" aria-expanded="true">
+    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+    <span>Reasoning trace (428ms)</span>
+  </button>
+  <div class="grid" style="grid-template-rows: 1fr;">
+    <div class="overflow-hidden font-mono text-xs text-neutral-400">
+      <p>01. Evaluating OKLCH perceptual contrast curves...</p>
+      <p>02. Verified 100% WCAG AA compliance.</p>
+    </div>
+  </div>
+</div>`,
+      'approval-card': `<!-- Human-in-the-Loop Approval Card -->
+<div class="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5 space-y-4">
+  <div class="flex items-center gap-2 text-amber-400 text-sm font-semibold">
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+    <span>Approval Required: Database Schema Migration</span>
+  </div>
+  <div class="flex gap-3">
+    <button type="button" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium">Approve</button>
+    <button type="button" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-medium">Reject</button>
+  </div>
+</div>`
+    };
+
+    function copyRecipe(id, btn) {
+      const code = RECIPE_SNIPPETS[id];
+      if (!code) return;
+      navigator.clipboard.writeText(code).then(() => {
+        const textSpan = btn.querySelector('.btn-text');
+        const origText = textSpan ? textSpan.textContent : '';
+        btn.classList.add('copied');
+        if (textSpan) textSpan.textContent = '✓ Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          if (textSpan) textSpan.textContent = origText;
+        }, 2000);
+      }).catch(() => {
+        // Fallback for non-https / clipboard permissions
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        const textSpan = btn.querySelector('.btn-text');
+        const origText = textSpan ? textSpan.textContent : '';
+        btn.classList.add('copied');
+        if (textSpan) textSpan.textContent = '✓ Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          if (textSpan) textSpan.textContent = origText;
+        }, 2000);
+      });
     }
 
   </script>

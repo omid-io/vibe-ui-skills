@@ -182,6 +182,17 @@ Comprehensive component encyclopedia across 6 modern design ecosystems:
 
 ---
 
+## 🧪 Evaluation Benchmarks & Concrete Examples
+
+Unlike prompt libraries that only offer unverified claims, this repository includes an empirical **Evaluation Suite ([`evals/`](evals/))** and **Production Examples ([`examples/`](examples/))**:
+
+- **[`evals/`](evals/)**: Formal benchmark test cases ([`saas_dashboard_eval.md`](evals/saas_dashboard_eval.md), [`persian_rtl_landing_eval.md`](evals/persian_rtl_landing_eval.md), [`ai_chat_interface_eval.md`](evals/ai_chat_interface_eval.md)) specifying pass criteria, expected properties, and forbidden anti-patterns.
+- **[`examples/`](examples/)**: Standalone, clean HTML/CSS output files:
+  - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): Minimalist SaaS hero with an accessible AI Thinking State and tool execution chip.
+  - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): Persian Bento Grid demonstrating semantic RTL, Vazirmatn font, and BiDi punctuation isolation.
+
+---
+
 ## 🛠️ Usage Examples & Triggers
 
 Once installed, your AI agent automatically activates these skills when you prompt:

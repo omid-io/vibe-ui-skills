@@ -29,34 +29,85 @@ Whenever asked to audit, verify, or review any web page, component, or frontend 
 
 ---
 
-### Pillar 1: Anti-Slop Visual & Hierarchy Audit
-- [ ] **No Generic Defaults:** Replaces boring `border-radius: 8px` flat gray cards with intentional visual chemistry (Minimalist SaaS, Glassmorphism 2.0, Neobrutalism, Swiss, or Crisp Light).
-- [ ] **Anti-Repetition Check:** Ensures the interface does not blindly copy the obsidian/gold palette unless specifically warranted by the luxury/clinical domain.
-- [ ] **Visual Weight & BLUF:** Primary CTA is unmistakably prominent; hero headline commands immediate focal attention.
+### Pillar 1: Anti-Slop Visual & Novelty Audit
+- **Measurement Method:** Audit visual chemistry against the 5 archetypes and verify the **Novelty Budget**.
+- **Evidence Required:**
+  - Specified visual chemistry (e.g., *Minimalist SaaS*, *Neobrutalism*, *Swiss Editorial*).
+  - Novelty check: At least 2 of 6 structural dimensions (hero composition, card geometry, background treatment, typography pairing, CTA style, lighting) differ from previous outputs to prevent template collapse.
 
 ### Pillar 2: Responsive Multi-Device Integrity
-- [ ] **Mobile (375px):** No horizontal layout blowouts (`overflow-x: hidden`). Minimum touch target is $44 \times 44\text{px}$.
-- [ ] **Tablet (768px):** Asymmetric Bento grids collapse gracefully into balanced 1-column or 2-column stacks.
-- [ ] **Desktop (1440px+):** Max-width containers (`max-w-7xl` or equivalent) prevent awkward ultra-wide stretching.
+- **Measurement Method:** Verify CSS rules across 3 critical viewport widths.
+- **Evidence Required:**
+  - **Mobile (375px):** Zero horizontal scroll blowouts (`overflow-x: hidden` / flex wrapping confirmed). Minimum touch targets $\ge 44 \times 44\text{px}$.
+  - **Tablet (768px):** Asymmetric Bento grids collapse gracefully into balanced 1-column or 2-column stacks.
+  - **Desktop (1440px+):** Max-width containers (`max-w-7xl` or equivalent) prevent awkward stretching.
 
 ### Pillar 3: Accessibility & WCAG 2.2 AA Compliance
-- [ ] **Semantic Elements:** No `<div onclick="...">`. Interactive controls use `<button type="button">` or `<a>`.
-- [ ] **Visible Focus Rings:** Every interactive element exhibits `focus-visible:ring-2 focus-visible:ring-offset-2`.
-- [ ] **State Semantics:** Expandable sections, accordions, and dialogs supply `aria-expanded` and `aria-controls`.
-- [ ] **Motion Accessibility:** Keyframes and animation loops are wrapped with `@media (prefers-reduced-motion: reduce)`.
-- [ ] **Color Contrast:** Body copy and metric text maintain at least $4.5:1$ contrast ratio against backgrounds.
+- **Measurement Method:** Count interactive elements, check contrast, verify ARIA states.
+- **Evidence Required:**
+  - **Semantic Controls:** $X/X$ clickables use `<button type="button">` or `<a href="...">` (zero `<div onclick>`).
+  - **Visible Focus Rings:** $X/X$ interactive elements feature `focus-visible:ring-2` with sufficient contrast.
+  - **State Semantics:** Dynamic disclosures, accordions, and sheets provide `aria-expanded` and `aria-controls`.
+  - **Color Contrast:** Sampled text nodes meet minimum $4.5:1$ contrast ratio against background tokens.
+  - **Reduced Motion:** All animation loops, springs, and lerp loops wrapped in `@media (prefers-reduced-motion: reduce)`.
 
-### Pillar 4: Performance & Rendering Budget
-- [ ] **Compositing Budget:** Limits stacked `backdrop-filter: blur(...)` to essential floating layers to avoid mobile GPU drop.
-- [ ] **Smooth Interpolation:** Sliders and animations utilize `requestAnimationFrame` with sub-pixel interpolation rather than unthrottled scroll event handlers.
-- [ ] **Zero Unicode Emojis:** Interface utilizes crisp, scalable inline or sprite SVG icons (`stroke="currentColor"`).
+### Pillar 4: Performance & Rendering Compositing Budget
+- **Measurement Method:** Count stacked blur layers, inspect SVG icons, verify animation drivers.
+- **Evidence Required:**
+  - **Backdrop Blur Layers:** Detected active `backdrop-filter: blur(...)` elements (Threshold: $\le 3$ active layers simultaneously).
+  - **Zero Emojis:** Zero raw unicode emojis used as interface icons; verified inline SVG vector paths.
+  - **Frame Driver:** Continuous interactive elements (sliders, spring tilts) driven via `requestAnimationFrame`.
 
 ### Pillar 5: Semantic RTL & BiDi Resilience
-- [ ] **Macro Layout Invariance:** Grid columns, card positions, and toolbars remain physically anchored without horizontal flipping.
-- [ ] **Textual Directionality:** Paragraphs, headings, and descriptions specify `direction: rtl; text-align: right;`.
-- [ ] **Semantic Affordance Mirroring:** Directional indicators (navigation previous/next arrows, multi-step wizards) mirror properly to follow reading order.
-- [ ] **BiDi Punctuation Stability:** Sentences mixing Persian with English terms (`Claude Code`, `API`, `Cursor`) use `<bdi>` or `unicode-bidi: plaintext` to avoid trailing punctuation jumps.
-- [ ] **Monospace LTR Telemetry:** Code snippets, terminal commands, metric digits (`99.98%`), and URLs always render strictly in LTR monospace.
+- **Measurement Method:** Inspect bidirectional CSS logical properties and mixed-text punctuation.
+- **Evidence Required:**
+  - **Macro Layout Stability:** Structural grid coordinates remain locked; no indiscriminate layout flipping.
+  - **Directional Mirroring:** Sequential arrows, breadcrumb chevrons, and step indicators mirror semantically.
+  - **BiDi Punctuation Isolation:** Mixed sentences with English terms (`Claude Code`, `Tailwind`, `API`) wrapped in `<bdi>` or styled with `unicode-bidi: plaintext`.
+  - **Pure Monospace LTR:** Code blocks, CLI commands, telemetry digits, and URLs explicitly styled with `direction: ltr !important; text-align: left !important`.
+
+---
+
+## 📋 Mandatory Output Scorecard Schema
+
+When evaluating or generating any frontend code, `ui-verifier` outputs a structured evidence scorecard:
+
+```text
+┌─────────────────────────────────────────────────────────────────┐
+│                 📊 UI-VERIFIER AUDIT SCORECARD                  │
+├─────────────────────────────────────────────────────────────────┤
+│ Overall Status: [ PASS | WARN | FAIL ]                          │
+├─────────────────────────────────────────────────────────────────┤
+│ 1. Accessibility (WCAG 2.2 AA)                                  │
+│    [PASS] Keyboard Traversal : 12/12 elements keyboard reachable│
+│    [PASS] Focus Rings        : 12/12 have focus-visible states  │
+│    [PASS] Color Contrast     : Min 5.4:1 (exceeds 4.5:1 minimum)│
+│    [PASS] Motion Sensitivity : prefers-reduced-motion enforced  │
+│                                                                 │
+│ 2. Responsive Breakpoints                                       │
+│    [PASS] Mobile 375px       : 0 horizontal overflow violations │
+│    [PASS] Touch Targets      : Min 44x44px verified on buttons  │
+│    [PASS] Desktop 1440px     : max-w-7xl container bounded      │
+│                                                                 │
+│ 3. Performance & Compositing Budget                             │
+│    [PASS] Backdrop Blur Layers: 2 active layers (budget max: 3) │
+│    [PASS] Vector Iconography : 0 raw emojis, 6 SVG paths used   │
+│    [PASS] Motion Driver      : rAF-based sub-pixel interpolation│
+│                                                                 │
+│ 4. Semantic RTL & BiDi Stability                                │
+│    [PASS] Macro Layout       : Coordinate grid physically locked│
+│    [PASS] BiDi Punctuation   : <bdi> wrappers on brand terms    │
+│    [PASS] Monospace LTR      : Code/metrics locked in LTR font  │
+│                                                                 │
+│ 5. Visual Novelty & Anti-Slop                                   │
+│    [PASS] Visual Chemistry   : Minimalist SaaS Archetype applied│
+│    [PASS] Novelty Budget     : 3/6 structural dimensions unique │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+- **PASS:** All critical checks pass. Code is production-ready.
+- **WARN:** Non-breaking advisory (e.g., 4 blur layers detected; advisory to reduce to 3 on mobile).
+- **FAIL:** Blocking defect detected (e.g., `<div onclick>`, missing focus ring, 375px layout blowout, unisolated BiDi punctuation). Execution must pause and fix before completion.
 
 ---
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نمونه بنتو گرید فارسی و راست‌چین معنادار — Vibe UI Example</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas: #0b0f17;
+      --surface: #111827;
+      --border: #1f2937;
+    }
+    body {
+      background-color: var(--canvas);
+      color: #f3f4f6;
+      font-family: 'Vazirmatn', system-ui, sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Strictly enforce LTR on code, numbers, and telemetry */
+    .ltr-code {
+      direction: ltr !important;
+      text-align: left !important;
+      unicode-bidi: isolate;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 antialiased selection:bg-amber-500 selection:text-black">
+
+  <main class="w-full max-w-5xl mx-auto space-y-8">
+
+    <!-- Header Section -->
+    <header class="text-right space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono ltr-code text-amber-400 bg-amber-950/40 border border-amber-800/40">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span>SEMANTIC RTL // BENTO GRID SPEC</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        معماری مدرن فرانت‌اند با پشتیبانی پایدار از <bdi class="text-amber-400">Tailwind CSS</bdi> و <bdi class="text-indigo-400">React</bdi>
+      </h1>
+      <p class="text-neutral-400 text-base max-w-2xl leading-relaxed">
+        چیدمان ثابت ساختار کلان بدون پرش افقی؛ معکوس‌سازی هوشمند صرفاً برای جریان متنی و المان‌های جهت‌دار.
+      </p>
+    </header>
+
+    <!-- Bento Grid (3 Columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card 1: Feature Card with BiDi Punctuation -->
+      <section class="md:col-span-2 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-7 space-y-4 hover:border-neutral-700 transition-colors">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+          <!-- Clean SVG Icon (Zero Unicode Emoji) -->
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-white">
+          همگام‌سازی لحظه‌ای با ابزارهای <bdi>Claude Code</bdi> و <bdi>Cursor IDE</bdi>
+        </h2>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          تمامی عبارات ترکیبی انگلیسی و فارسی بدون به‌هم‌ریختگی علائم نگارشی نظیر پرانتز و علامت سوال نمایش داده می‌شوند.
+        </p>
+        <div class="pt-4 border-t border-neutral-800/80 flex items-center justify-between text-xs text-neutral-400">
+          <span>وضعیت اتصال سرور:</span>
+          <span class="font-mono ltr-code text-emerald-400 font-medium">HTTP 200 OK (24ms)</span>
+        </div>
+      </section>
+
+      <!-- Card 2: LTR Telemetry & Metrics -->
+      <section class="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-7 space-y-4 hover:border-neutral-700 transition-colors flex flex-col justify-between">
+        <div class="space-y-2">
+          <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">نرخ بازگشت سرمایه</span>
+          <div class="text-4xl font-extrabold text-white font-mono ltr-code">
+            +38.4%
+          </div>
+        </div>
+        <p class="text-neutral-400 text-xs leading-relaxed">
+          افزایش مستقیم نرخ تبدیل با حذف اصطکاک‌های دسترسی‌پذیری و فرمول‌های کپی‌رایتینگ ارزش‌محور.
+        </p>
+        <button type="button" 
+                class="w-full py-2.5 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-amber-400 focus:outline-none">
+          <span>مشاهده جزئیات گزارش</span>
+          <!-- Mirrored arrow for RTL reading direction -->
+          <svg class="w-4 h-4 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </section>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
