@@ -7,23 +7,22 @@
 ---
 
 ## 📝 Recent Commits & Milestones
+- `d5c58fb`: feat(v2.1): complete part 2 - evidence-based verifier, design-spec schema, evals suite, examples & showcase copy-code
+- `202c5d5`: docs(state): update PROJECT_STATE with Part 1 completion
 - `94a5e18`: fix(v2.1): complete part 1 fixes - de-hype docs, safe installers, ambiguity budget & anti-dark-pattern
 - `9f4625f`: docs(state): clean recent commits list
 - `c030a7b`: docs: feature mr-ui-designer as master orchestrator agent in English and Persian READMEs
-- `0e0e250`: feat(agent): establish mr-ui-designer as master orchestrator agent
-- `3267408`: feat(v2): complete architecture & credibility refactor based on technical audits
 
 ---
 
 ## 🎯 Active Milestone & Overview
-**Current Status:** Part 1 (Bug Fixes & Technical Refinements) Complete | Ready for Part 2 (Strategic Expansions)  
-**Accomplished in Part 1:**
-1. De-hyped documentation: replaced buzzwords with grounded engineering terminology across English & Persian READMEs.
-2. Unified architecture: 1 Master Agent (`mr-ui-designer`) + 6 specialized Sub-Skills across all documentation.
-3. Safe Non-Destructive Installers: `install.ps1` and `install.sh` now support automatic `.bak` backups, `--force`, `--backup`, and agent destination flags (`--agent claude|cursor|windsurf|antigravity`).
-4. 3-Tier Ambiguity Budget formalized in `autonomous-intent-expander`.
-5. Anti-Dark-Pattern Policy encoded into `conversion-copy-engine`.
-6. Clean-room provenance & MIT licensing notes codified in `ui-kit`.
+**Current Status:** All Phases (Part 1 Bug Fixes & Part 2 Strategic Expansions) 100% Complete  
+**Accomplished in Part 2:**
+1. Evidence-based `ui-verifier`: transformed into a quantitative measurement engine outputting a structured PASS/WARN/FAIL scorecard across 5 pillars.
+2. Canonical `design-spec.json`: added formal machine-readable JSON design contract to `autonomous-intent-expander`.
+3. Formal Evaluation Suite: created [`evals/`](file:///E:/programming/vibe-ui-skills/evals/) with benchmark specifications for SaaS, Persian RTL, and AI Chat interfaces.
+4. Production-ready Examples: created [`examples/`](file:///E:/programming/vibe-ui-skills/examples/) containing standalone [`saas_ai_hero.html`](file:///E:/programming/vibe-ui-skills/examples/saas_ai_hero.html) and [`persian_rtl_bento.html`](file:///E:/programming/vibe-ui-skills/examples/persian_rtl_bento.html).
+5. Interactive Showcase Upgrade: added instant "Copy Recipe" buttons to showcase cards with clipboard feedback.
 
 | Component | Path | Status | Description |
 | :--- | :--- | :--- | :--- |
