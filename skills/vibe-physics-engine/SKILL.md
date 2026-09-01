@@ -75,17 +75,23 @@ if (!prefersReducedMotion) {
 
 ---
 
-## 🏎️ 3. Refresh-Rate-Aware Lerp (Sub-Pixel Precision)
-For interactive elements (e.g. before/after comparison sliders, magnetic cursors):
+## 🏎️ 3. Frame-Rate-Independent DeltaTime Physics (Sub-Pixel Precision)
+For interactive elements (e.g. before/after comparison sliders, magnetic cursors, spring cards):
 ```javascript
-// Linear interpolation bounded to browser refresh rate via rAF
+// DeltaTime-based exponential decay ensuring identical motion across 60Hz, 120Hz, and 144Hz displays
 let currentX = 0;
 let targetX = 0;
-const ease = 0.08; // Damped spring factor
+let lastTime = performance.now();
+const lambda = 14; // Decay rate constant
 
-function updatePosition() {
-  currentX += (targetX - currentX) * ease;
+function updatePosition(currentTime) {
+  const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
+  lastTime = currentTime;
+  
+  const alpha = 1 - Math.exp(-lambda * dt);
+  currentX += (targetX - currentX) * alpha;
   sliderElement.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+  
   if (Math.abs(targetX - currentX) > 0.05) {
     requestAnimationFrame(updatePosition);
   }

@@ -14,13 +14,15 @@ Prompt libraries often fail silently because LLMs drift into generic templates (
 
 ---
 
-## 📂 Test Cases in this Suite
+## 📂 Test Cases & Examples in this Suite
 
-| Test Case File | Domain Archetype | Key Verification Focus |
-| :--- | :--- | :--- |
-| [`saas_dashboard_eval.md`](saas_dashboard_eval.md) | `HIGH_PERFORMANCE_SAAS` | Minimalist SaaS chemistry, JetBrains Mono metrics, tool call chips, max 3 blur layers. |
-| [`persian_rtl_landing_eval.md`](persian_rtl_landing_eval.md) | `HIGH_TICKET_SERVICE` | Vazirmatn font stack, fixed macro coordinates, `<bdi>` punctuation isolation, no flipped grids. |
-| [`ai_chat_interface_eval.md`](ai_chat_interface_eval.md) | `AI_NATIVE_ASSISTANT` | Accessible thinking state button, streaming response bubbles, human approval card. |
+| Test Case File | Domain Archetype | Production Example | Key Verification Focus |
+| :--- | :--- | :--- | :--- |
+| [`saas_dashboard_eval.md`](saas_dashboard_eval.md) | `HIGH_PERFORMANCE_SAAS` | [`examples/saas_ai_hero.html`](../examples/saas_ai_hero.html) | Minimalist SaaS chemistry, JetBrains Mono metrics, tool call chips, max 3 blur layers. |
+| [`persian_rtl_landing_eval.md`](persian_rtl_landing_eval.md) | `HIGH_TICKET_SERVICE` | [`examples/persian_rtl_bento.html`](../examples/persian_rtl_bento.html) | Vazirmatn font stack, fixed macro coordinates, `<bdi>` punctuation isolation, no flipped grids. |
+| [`ai_chat_interface_eval.md`](ai_chat_interface_eval.md) | `AI_NATIVE_ASSISTANT` | [`examples/saas_ai_hero.html`](../examples/saas_ai_hero.html) | Accessible thinking state button, streaming response bubbles, human approval card. |
+| `neobrutalist_store_eval.md` | `CREATIVE_EDITORIAL` | [`examples/neobrutalist_creative_store.html`](../examples/neobrutalist_creative_store.html) | 2.5px solid strokes, hard 4px offset drop shadows, tactile button press, 0 blur layers. |
+| `swiss_editorial_eval.md` | `EDITORIAL_READING` | [`examples/swiss_editorial_article.html`](../examples/swiss_editorial_article.html) | Warm paper canvas, Instrument Serif typography, 14.2:1 contrast ratio, zero ambient mesh glow. |
 
 ---
 

@@ -2242,10 +2242,16 @@
       }
     });
 
-    // 120fps Lerp Render Loop
-    function lerpAnimationLoop() {
-      // Damping factor for responsive physical feel
-      currentPercent += (targetPercent - currentPercent) * 0.18;
+    // Frame-Rate-Independent DeltaTime Physics Loop
+    let lastSliderTime = performance.now();
+    const SLIDER_LAMBDA = 16; // Decay rate constant
+
+    function lerpAnimationLoop(currentTime) {
+      const dt = Math.min((currentTime - lastSliderTime) / 1000, 0.1);
+      lastSliderTime = currentTime;
+
+      const alpha = 1 - Math.exp(-SLIDER_LAMBDA * dt);
+      currentPercent += (targetPercent - currentPercent) * alpha;
       const formattedPercent = currentPercent.toFixed(3);
 
       sliderHandle.style.left = `${formattedPercent}%`;
