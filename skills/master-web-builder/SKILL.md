@@ -1,12 +1,12 @@
 ---
 name: master-web-builder
-description: The Master Web Builder & Adaptive Visual Architecture Engine (v2026). Transforms minimal prompts into Awwwards-grade masterpieces across 5 distinct visual chemistries (Minimalist SaaS, Glassmorphism 2.0, Neobrutalism, Swiss Editorial, and Stripe Light). Automatically selects or adapts the right visual skeleton, micro-physics, and PAS copywriting.
-triggers: ["master web builder", "master_web_builder", "مستر وب بیلدر", "طراحی سایت", "وبسایت بساز", "build website", "landing page", "ui style"]
+description: The Master Web Builder & Visual Architecture Engine for mr-ui-designer (v2026). Transforms minimal prompts into Awwwards-grade masterpieces across 5 distinct visual chemistries (Minimalist SaaS, Glassmorphism 2.0, Neobrutalism, Swiss Editorial, and Stripe Light) while enforcing the Anti-Repetition Protocol and Semantic RTL.
+triggers: ["mr-ui-designer", "mr_ui_designer", "master web builder", "master_web_builder", "مستر وب بیلدر", "طراحی سایت", "وبسایت بساز", "build website", "landing page", "ui style"]
 ---
 
-# 👑 Master Web Builder & Adaptive Visual Architecture Engine (v2026)
+# 👑 Master Web Builder (mr-ui-designer Visual Engine)
 
-The `master-web-builder` engine eliminates generic "AI slop" by strictly enforcing **bespoke, intentional visual chemistry**. Instead of forcing one rigid style, it provides **5 Production-Grade Design Archetypes**.
+The `master-web-builder` engine serves as the primary visual architecture core commanded by **`mr-ui-designer`**. It eliminates generic "AI slop" by strictly enforcing **bespoke, intentional visual chemistry**. Instead of forcing one rigid style, it provides **5 Production-Grade Design Archetypes**.
 
 ---
 
