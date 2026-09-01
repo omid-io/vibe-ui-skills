@@ -6,13 +6,24 @@
 
 ---
 
-## 🎯 Active Milestone & Overview
-**Current Focus:** V2.1 Engineering Maturity & Phased Refactoring (Review Round 2)  
-**Description:** Synthesized second round of technical reviews from Claude & ChatGPT into a structured 2-Part Team Plan: Part 1 focuses on immediate bug fixes, de-hyping docs, non-destructive installers, and ambiguity budgeting; Part 2 focuses on evidence-based verifier, design-spec pipeline, and evals suite (pending user approval).
+## 📝 Recent Commits & Milestones
+- `94a5e18`: fix(v2.1): complete part 1 fixes - de-hype docs, safe installers, ambiguity budget & anti-dark-pattern
+- `9f4625f`: docs(state): clean recent commits list
+- `c030a7b`: docs: feature mr-ui-designer as master orchestrator agent in English and Persian READMEs
+- `0e0e250`: feat(agent): establish mr-ui-designer as master orchestrator agent
+- `3267408`: feat(v2): complete architecture & credibility refactor based on technical audits
 
 ---
 
-## 📦 Core Architecture & Components (V2)
+## 🎯 Active Milestone & Overview
+**Current Status:** Part 1 (Bug Fixes & Technical Refinements) Complete | Ready for Part 2 (Strategic Expansions)  
+**Accomplished in Part 1:**
+1. De-hyped documentation: replaced buzzwords with grounded engineering terminology across English & Persian READMEs.
+2. Unified architecture: 1 Master Agent (`mr-ui-designer`) + 6 specialized Sub-Skills across all documentation.
+3. Safe Non-Destructive Installers: `install.ps1` and `install.sh` now support automatic `.bak` backups, `--force`, `--backup`, and agent destination flags (`--agent claude|cursor|windsurf|antigravity`).
+4. 3-Tier Ambiguity Budget formalized in `autonomous-intent-expander`.
+5. Anti-Dark-Pattern Policy encoded into `conversion-copy-engine`.
+6. Clean-room provenance & MIT licensing notes codified in `ui-kit`.
 
 | Component | Path | Status | Description |
 | :--- | :--- | :--- | :--- |
