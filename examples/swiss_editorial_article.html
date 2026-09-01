@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architecture of Restraint — Swiss Editorial (Vibe UI Example)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-paper: #faf8f5;
+      --text-ink: #1c1917;
+      --text-muted: #78716c;
+      --border-hairline: #e7e5e4;
+      --accent-vermillion: #b91c1c;
+    }
+    body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .font-serif-display {
+      font-family: 'Instrument Serif', Georgia, serif;
+    }
+    .font-mono-metric {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .drop-cap::first-letter {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 4.5rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.75rem;
+      color: var(--accent-vermillion);
+    }
+    .editorial-border-top {
+      border-top: 1px solid var(--border-hairline);
+    }
+    .editorial-border-bottom {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen py-10 px-6 sm:px-12 flex flex-col justify-between max-w-4xl mx-auto">
+
+  <!-- Header / Publication Masthead -->
+  <header class="w-full pb-6 editorial-border-bottom flex items-end justify-between">
+    <div>
+      <span class="font-mono-metric text-xs tracking-widest uppercase text-stone-500">VOL. 26 // ISSUE 04</span>
+      <div class="font-serif-display text-3xl sm:text-4xl tracking-tight text-stone-950 mt-1">THE SWISS DISCOURSE</div>
+    </div>
+    <div class="text-right">
+      <span class="font-mono-metric text-xs text-stone-500">SEPTEMBER 2026</span>
+    </div>
+  </header>
+
+  <!-- Article Title and Subheading -->
+  <main class="py-12 space-y-10">
+    <div class="space-y-4">
+      <div class="inline-block font-mono-metric text-xs tracking-wider text-red-700 uppercase font-semibold bg-red-50 border border-red-200 px-2 py-0.5 rounded">
+        ESSAY ON RESTRAINT
+      </div>
+      <h1 class="font-serif-display text-4xl sm:text-6xl text-stone-950 leading-tight">
+        Why True Elegance Rejects the Default Gradient.
+      </h1>
+      <p class="text-lg sm:text-xl text-stone-600 font-normal leading-relaxed max-w-2xl">
+        A study on typographic grid cadence, deliberate whitespace, and why stripping away artificial blur yields enduring interfaces.
+      </p>
+    </div>
+
+    <!-- Article Content Two-Column Cadence -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 editorial-border-top pt-8">
+      
+      <!-- Meta Column (Col 4) -->
+      <aside class="md:col-span-4 space-y-6">
+        <div class="space-y-1">
+          <div class="font-mono-metric text-xs uppercase text-stone-400">Author</div>
+          <div class="font-medium text-sm text-stone-900">Architecture & Systems Studio</div>
+        </div>
+        <div class="space-y-1">
+          <div class="font-mono-metric text-xs uppercase text-stone-400">Typography</div>
+          <div class="font-medium text-sm text-stone-900">Instrument Serif & Inter</div>
+        </div>
+        <div class="space-y-1">
+          <div class="font-mono-metric text-xs uppercase text-stone-400">Contrast Ratio</div>
+          <div class="font-mono-metric text-sm text-red-700 font-semibold">14.2:1 (Exceeds WCAG AAA)</div>
+        </div>
+        
+        <div class="pt-4">
+          <button type="button" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-900 border border-stone-800 rounded hover:bg-stone-900 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:outline-none">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <polyline points="16 6 12 2 8 6"></polyline>
+              <line x1="12" y1="2" x2="12" y2="15"></line>
+            </svg>
+            <span>Share Essay</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Prose Body (Col 8) -->
+      <article class="md:col-span-8 text-stone-800 text-base sm:text-lg leading-relaxed space-y-6">
+        <p class="drop-cap">
+          When artificial intelligence defaults to generating generic user interfaces, it routinely relies on loud visual compensation: exaggerated radial glow gradients, heavy frosted blur layers, and decorative noise. But genuine digital craftsmanship begins where decoration ends.
+        </p>
+        <p>
+          By anchoring our interfaces to strict mathematical typographic scales and paper-like warmth, readability reaches its highest expression without demanding cognitive taxation from the reader.
+        </p>
+        <blockquote class="pl-4 border-l-2 border-red-700 italic font-serif-display text-2xl text-stone-900 my-6">
+          "Simplicity is not the lack of clutter, that's a consequence of simplicity. Simplicity somehow essentially describes the purpose and place of an object and what it is."
+        </blockquote>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pt-8 editorial-border-top flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 font-mono-metric gap-4">
+    <div>VIBE_UI // SWISS_EDITORIAL_V2.2</div>
+    <div>WCAG AAA TYPOGRAPHY COMPLIANT</div>
+  </footer>
+
+</body>
+</html>

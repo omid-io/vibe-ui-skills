@@ -9,6 +9,7 @@
 </p>
 
 [![Master Agent: mr-ui-designer](https://img.shields.io/badge/ایجنت_ارشد-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
+[![تست‌های ارزیابی](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/سازگار_با-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
@@ -163,6 +164,8 @@ cd vibe-ui-skills
 - **[`examples/`](examples/)**: فایل‌های HTML/CSS مستقل، تست‌شده و آماده اجرا:
   - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): هیرو بخش SaaS با وضعیت تفکر هوش مصنوعی و تراشه اجرای ابزار.
   - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): بنتو گرید فارسی با فونت وزیرمتن، چیدمان ثابت و ایزولاسیون علائم نگارشی انگلیسی.
+  - [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html): لندینگ پیج نئوبروتالیسم با کنتراست بالا، سایه‌های سخت و بازخورد فیزیکی کلیک‌ها.
+  - [`examples/swiss_editorial_article.html`](examples/swiss_editorial_article.html): چیدمان ادیتوریال سوئیسی با فونت سریف روی بوم کاغذ طبیعی و بدون هیچ‌گونه بلور تزئینی.
 
 ---
 

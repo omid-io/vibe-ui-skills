@@ -9,6 +9,7 @@
 </p>
 
 [![Master Agent: mr-ui-designer](https://img.shields.io/badge/Master_Agent-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
+[![CI Audit](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)
@@ -190,6 +191,8 @@ Unlike prompt libraries that only offer unverified claims, this repository inclu
 - **[`examples/`](examples/)**: Standalone, clean HTML/CSS output files:
   - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): Minimalist SaaS hero with an accessible AI Thinking State and tool execution chip.
   - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): Persian Bento Grid demonstrating semantic RTL, Vazirmatn font, and BiDi punctuation isolation.
+  - [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html): Neobrutalist high-contrast creative layout with tactile physical button press feedback.
+  - [`examples/swiss_editorial_article.html`](examples/swiss_editorial_article.html): Swiss Editorial typographic layout on paper ivory canvas with zero blur layers.
 
 ---
 

@@ -7,17 +7,19 @@
 ---
 
 ## 📝 Recent Commits & Milestones
+- `416060d`: feat(v2.2): rename to visual-chemistry-engine, add evals runner, WCAG 2.2 AA fixes, delta-time physics & THIRD_PARTY_NOTICES
 - `d5c58fb`: feat(v2.1): complete part 2 - evidence-based verifier, design-spec schema, evals suite, examples & showcase copy-code
-- `202c5d5`: docs(state): update PROJECT_STATE with Part 1 completion
 - `94a5e18`: fix(v2.1): complete part 1 fixes - de-hype docs, safe installers, ambiguity budget & anti-dark-pattern
-- `9f4625f`: docs(state): clean recent commits list
-- `c030a7b`: docs: feature mr-ui-designer as master orchestrator agent in English and Persian READMEs
 
 ---
 
 ## 🎯 Active Milestone & Overview
-**Current Focus:** V2.2 Technical Rigor, Physics Modernization & Eval Automation (Review Round 3)  
-**Description:** Synthesized third round of reviews from Claude & ChatGPT. Phased into two distinct parts: Part 1 focuses on technical corrections (WCAG 2.2 AA target size 24px vs 44px recommendation, deltaTime-based frame-independent physics, functional reduced-motion rules, and THIRD_PARTY_NOTICES.md); Part 2 focuses on automated eval runner (`evals/run_evals.py`), conditional intent parameters schema, and thin IDE adapters (pending user approval).
+**Current Status:** V2.2 Enterprise Rigor, GitHub Actions CI & Multi-Style Examples 100% Complete  
+**All 3 Review Rounds Completed & Verified:**
+1. Master Orchestrator Architecture (`mr-ui-designer` + 6 sub-skills with `visual-chemistry-engine`).
+2. GitHub Actions CI Automated Harness (`.github/workflows/evals.yml`) running `evals/run_evals.py` on every push.
+3. 4 Production-grade standalone examples (`saas_ai_hero.html`, `persian_rtl_bento.html`, `neobrutalist_creative_store.html`, `swiss_editorial_article.html`) achieving 100% PASS on all audit gates.
+4. WCAG 2.2 AA compliance, DeltaTime-based frame-rate independent physics, and formal `THIRD_PARTY_NOTICES.md`.
 
 | Component | Path | Status | Description |
 | :--- | :--- | :--- | :--- |
