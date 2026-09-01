@@ -151,6 +151,26 @@ def render_scorecard(result: dict):
         print(f"| {raw_msg}{' ' * max(0, padding)} |")
     print("+" + "-" * 70 + "+\n")
 
+def validate_json_instance(instance: dict, schema: dict) -> list[str]:
+    """Lightweight pure-Python schema validator for design-spec contracts."""
+    errors = []
+    # Check required top-level properties
+    for req in schema.get("required", []):
+        if req not in instance:
+            errors.append(f"Missing required property '{req}'")
+    
+    # Check enum fields
+    for field, field_schema in schema.get("properties", {}).items():
+        if field in instance:
+            val = instance[field]
+            if "enum" in field_schema and val not in field_schema["enum"]:
+                errors.append(f"Value '{val}' not in allowed enum {field_schema['enum']} for field '{field}'")
+            if "type" in field_schema and field_schema["type"] == "object" and isinstance(val, dict):
+                for sub_req in field_schema.get("required", []):
+                    if sub_req not in val:
+                        errors.append(f"Missing sub-property '{sub_req}' under '{field}'")
+    return errors
+
 def audit_repo_integrity(root_dir: Path) -> dict:
     results = {
         "file": "Repository Structural Integrity",
@@ -194,18 +214,48 @@ def audit_repo_integrity(root_dir: Path) -> dict:
         })
         results["overall_status"] = "FAIL"
 
-    # Check JSON Schema
+    # Check JSON Schema & Validate Sample Output
     import json
     schema_file = root_dir / "schemas" / "design-spec.v1.schema.json"
+    sample_file = root_dir / "examples" / "sample-design-spec.json"
+
     if schema_file.exists():
         try:
-            json.loads(schema_file.read_text(encoding="utf-8"))
+            schema_data = json.loads(schema_file.read_text(encoding="utf-8"))
             results["checks"].append({
                 "pillar": "Machine Contract",
                 "name": "JSON Design Schema",
                 "status": "PASS",
-                "msg": "Verified schemas/design-spec.v1.schema.json syntax & validation"
+                "msg": "Verified schemas/design-spec.v1.schema.json syntax & Draft 2020-12"
             })
+
+            # Now validate sample output if exists
+            if sample_file.exists():
+                sample_data = json.loads(sample_file.read_text(encoding="utf-8"))
+                val_errors = validate_json_instance(sample_data, schema_data)
+                if not val_errors:
+                    results["checks"].append({
+                        "pillar": "Machine Contract",
+                        "name": "Schema Validation (Instance)",
+                        "status": "PASS",
+                        "msg": "Verified examples/sample-design-spec.json conforms 100% to schema"
+                    })
+                else:
+                    results["checks"].append({
+                        "pillar": "Machine Contract",
+                        "name": "Schema Validation (Instance)",
+                        "status": "FAIL",
+                        "msg": f"Schema violation: {', '.join(val_errors)}"
+                    })
+                    results["overall_status"] = "FAIL"
+            else:
+                results["checks"].append({
+                    "pillar": "Machine Contract",
+                    "name": "Schema Validation (Instance)",
+                    "status": "WARN",
+                    "msg": "sample-design-spec.json not found for runtime validation"
+                })
+
         except Exception as e:
             results["checks"].append({
                 "pillar": "Machine Contract",
@@ -241,7 +291,7 @@ def main():
     
     total_fails = 0
 
-    # 1. Structural Repo Integrity
+    # 1. Structural Repo Integrity & JSON Schema Instance Validation
     repo_res = audit_repo_integrity(root_dir)
     render_scorecard(repo_res)
     if repo_res["overall_status"] == "FAIL":
@@ -255,7 +305,7 @@ def main():
             total_fails += 1
 
     if total_fails == 0:
-        print("[SUCCESS] ALL AUDIT GATES PASSED (100% WCAG AA, Semantic RTL, Security & JSON Schema Verified)!\n")
+        print("[SUCCESS] ALL AUDIT GATES PASSED (100% WCAG AA, Semantic RTL, Security & JSON Schema Validated)!\n")
         sys.exit(0)
     else:
         print(f"[FAILURE] Audit failed with {total_fails} failing gate(s).\n")

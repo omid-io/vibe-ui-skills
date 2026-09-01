@@ -27,6 +27,6 @@ Instead, please report vulnerabilities via:
 
 ## 🛡️ Supply Chain & Safe Installer Guidelines
 
-- **Safe Backup by Default:** The official installers (`install.sh` and `install.ps1`) create timestamped `.bak` backups before modifying any existing agent configurations.
+- **Safe Backup by Default:** The official installers (`install.sh` and `install.ps1`) preserve existing skill directories by creating `.bak` backups before applying updates (unless explicitly overridden with `--force` / `-Force`).
 - **Verification:** When running automated installations, always verify the source repository: `https://github.com/omid-io/vibe-ui-skills`.
 - **Zero Remote Execution:** Skills contain pure Markdown instructions and zero remote JavaScript execution or telemetry tracking.
