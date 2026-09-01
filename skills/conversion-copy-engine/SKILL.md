@@ -4,20 +4,37 @@ description: Psychological conversion copywriting, neuro-trigger value propositi
 triggers: ["write copy", "conversion", "sales page", "persuasive", "CTA", "landing page copy", "a/b test copy", "cro copy"]
 ---
 
-# ✍️ Conversion Copy Engine & Neuro-Marketing Architecture
+# ✍️ Conversion Copy Engine & Strategic Value Architecture
 
 ## 🎯 Purpose
-The `conversion-copy-engine` transforms standard marketing filler into high-converting, clinical-grade narrative architecture. It applies behavioral economics, loss aversion, status signaling, and objection neutralization to maximize customer conversion rate (CRO).
+The `conversion-copy-engine` transforms standard marketing filler into high-converting, domain-calibrated narrative architecture. It applies behavioral economics, loss aversion, status signaling, and objection neutralization to maximize customer conversion rate (CRO).
 
-## 🧩 1. The 4 Mandatory Neuro-Copy Frameworks
+---
 
-### A. The Hero Headline Scientific Formula
-$$\mathbf{\text{Hero Headline}} = [\text{Dream Outcome}] + [\text{Without Main Fear}] + [\text{In Timeframe / Unique Mechanism}]$$
+## 🧩 1. Domain-Calibrated Copy Frameworks
+
+Choose the narrative formula that matches the product category (avoid forcing acute pain/embarrassment onto professional tools):
+
+| Product Domain | Primary Framework | Core Hook & Narrative Focus |
+| :--- | :--- | :--- |
+| **B2B SaaS / DevTools** | **JTBD + ROI + Friction Reduction** | Quantifiable efficiency gain, hours saved per sprint, zero workflow disruption. |
+| **Luxury / High-Ticket** | **Status + Exclusivity + Craftsmanship** | Heritage, discerning taste, white-glove concierge, scarcity. |
+| **Healthcare / Clinical** | **Trust + Clinical Evidence + Clarity** | Board certification, verified outcomes, transparent methodology, peace of mind. |
+| **Consumer / Creator** | **Identity + Convenience + Desire** | Frictionless self-expression, lifestyle alignment, immediate gratification. |
+| **Local Services / Trades** | **Proximity + Reliability + Fast Availability** | 24/7 dispatched response, upfront transparent pricing, licensed & insured guarantee. |
+
+---
+
+## ⚡ 2. Universal Conversion Mechanics
+
+### A. The Hero Headline Formula
+$$\mathbf{\text{Hero Headline}} = [\text{Dream Outcome}] + [\text{Without Main Fear / Friction}] + [\text{Unique Mechanism / Timeframe}]$$
 
 ### B. PAS Framework (Problem - Agitation - Solution)
-1. **Problem (Acute Pain Point):** Identify the deep embarrassment, fear, or physical damage.
-2. **Agitation (Cost of Inaction):** Highlight the compounding risk and frustration of inaction or bad alternatives.
-3. **Solution (Proprietary Mechanism):** Present the unique, credible vehicle that solves the problem.
+*Best for: Consumer, Health, High-Pain problem spaces.*
+1. **Problem (Acute Friction):** State the persistent obstacle or wasted cost.
+2. **Agitation (Cost of Inaction):** Highlight the compounding risk, missed opportunity, or frustration.
+3. **Solution (Proprietary Mechanism):** Present the unique, credible vehicle that reliably resolves it.
 
 ### C. Objection Inversion Microcopy
 Place risk-reversal microcopy directly below primary CTAs to dissolve hesitation at the point of action:

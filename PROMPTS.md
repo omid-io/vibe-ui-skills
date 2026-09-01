@@ -30,7 +30,7 @@ Here are 30 high-converting prompt formulas across 6 core domains:
 8. **Knowledge Graph & RAG Explorer:**
    `"Design a vector search explorer with interactive node canvas, similarity score sparklines, and document chunk inspector."`
 9. **AI Creative Studio & Image Generator:**
-   `"Build an AI image studio interface with aspect ratio pills, negative prompt accordion, and 120fps Lerp Before/After image comparison slider."`
+   `"Build an AI image studio interface with aspect ratio pills, negative prompt accordion, and sub-pixel precision Lerp Before/After image comparison slider."`
 10. **Voice Agent & Audio Transcriber HUD:**
     `"Create an AI voice assistant HUD with audio waveform visualizer, speaker diarization pills, and live sentiment radar."`
 

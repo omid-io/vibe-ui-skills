@@ -4,39 +4,96 @@ description: Physics-based UI motion, anti-template visual architecture, Lenis m
 triggers: ["vibe coding", "add physics", "animate", "smooth UI", "framer motion", "gsap", "fluid motion", "lenis", "oklch"]
 ---
 
-# ⚡ Vibe Physics & Luxury Frontend Engine
+# ⚡ Vibe Motion & Compositing Engine
 
 ## 🎯 Purpose
-The `vibe-physics-engine` powers bespoke, high-framerate visual and interactive experiences. It mandates pure mathematical motion curves, GPU-accelerated layer compositing, OKLCH color science, and strict anti-template aesthetics.
+The `vibe-physics-engine` powers bespoke, high-framerate visual and interactive experiences. It mandates mathematical motion curves, GPU-accelerated layer compositing, refresh-rate-aware interpolation, OKLCH perceptual color science, and strict anti-template aesthetics.
 
-## 🎨 1. OKLCH Obsidian & Champagne Design System
-- **Canvas Base:** `oklch(0.12 0.012 260)` (Deep Obsidian Velvet Canvas)
+---
+
+## 🎨 1. Perceptual OKLCH Token Systems (Multi-Chemistry)
+
+Avoid hardcoding a single dark theme. Adapt OKLCH tokens to the target visual chemistry:
+
+### A. Luxury Obsidian (Dark Velvet)
+- **Canvas Base:** `oklch(0.12 0.012 260)`
 - **Glass Surface:** `oklch(0.16 0.015 260 / 0.65)` with `backdrop-filter: blur(24px) saturate(180%)`
 - **Fresnel Inset Border:** `inset 0 1px 1px 0 rgba(255, 255, 255, 0.16)`
-- **Metallic Gold Accent:** `oklch(0.72 0.145 85)` (Champagne Gold)
+- **Primary Accent:** `oklch(0.72 0.145 85)` (Champagne Gold)
 
-## 🕹️ 2. Lenis Momentum Smooth Scrolling Engine
-```javascript
-import Lenis from '@studio-freight/lenis';
+### B. Minimalist Technical SaaS (Pitch Linear)
+- **Canvas Base:** `oklch(0.14 0.005 260)`
+- **Surface:** `oklch(0.18 0.008 260)` with crisp 1px borders `oklch(0.24 0.01 260)`
+- **Primary Accent:** `oklch(0.92 0.01 260)` (High-contrast pure white) or `oklch(0.65 0.22 265)` (Electric Indigo)
 
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
-  gestureOrientation: 'vertical',
-  smoothWheel: true,
-  wheelMultiplier: 1.0,
-  touchMultiplier: 1.5,
-  infinite: false
-});
+### C. Clean Architectural Light (Stripe / Apple)
+- **Canvas Base:** `oklch(0.985 0.002 90)`
+- **Surface:** `oklch(1.0 0 0)` with diffuse multi-layer drop shadow
+- **Primary Accent:** `oklch(0.55 0.22 260)` (Deep Sapphire)
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
+---
+
+## 🕹️ 2. Smooth Scrolling: Native Zero-Dep & Progressive Lenis
+
+### Option A: 100% Zero-Dependency Native Smooth Scroll (Default)
+No external npm dependencies required:
+```css
+html {
+  scroll-behavior: smooth;
 }
-requestAnimationFrame(raf);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 ```
 
-## 🚫 3. Strict Zero-Emoji Rule & SVG Vector Standard
+### Option B: Progressive Enhancement with Modern Lenis
+When momentum-based inertial scrolling is explicitly desired, use the official modern `lenis` package (never deprecated `@studio-freight/lenis`):
+```javascript
+import Lenis from 'lenis';
+
+// Check user reduced-motion preference first
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.5,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+}
+```
+
+---
+
+## 🏎️ 3. Refresh-Rate-Aware Lerp (Sub-Pixel Precision)
+For interactive elements (e.g. before/after comparison sliders, magnetic cursors):
+```javascript
+// Linear interpolation bounded to browser refresh rate via rAF
+let currentX = 0;
+let targetX = 0;
+const ease = 0.08; // Damped spring factor
+
+function updatePosition() {
+  currentX += (targetX - currentX) * ease;
+  sliderElement.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+  if (Math.abs(targetX - currentX) > 0.05) {
+    requestAnimationFrame(updatePosition);
+  }
+}
+```
+
+---
+
+## 🚫 4. Strict Zero-Emoji Rule & SVG Vector Standard
 - **Forbidden:** Any Unicode emoji character (e.g., 💉, 👑, ✨, 📍, ⭐).
 - **Mandatory:** Bespoke inline or sprite SVG vectors with `stroke="currentColor"`, `fill="none"`, and precision stroke widths (1.5px - 2.0px).

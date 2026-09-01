@@ -1,6 +1,6 @@
 # ⚡ Physics Transitions & Motion Catalog (transitions.dev)
 
-Zero-dependency, high-performance CSS and lightweight JS motion primitives for 60/120fps interfaces.
+Zero-dependency, high-performance CSS and lightweight JS motion primitives for high-framerate, refresh-rate-aware interfaces.
 
 ---
 

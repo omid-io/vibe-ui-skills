@@ -4,21 +4,32 @@ description: Exhaustive, domain-agnostic UI/UX Component Engine & Design Intelli
 triggers: ["ui-kit", "uikit", "beautifului", "beui", "rareui", "transitions.dev", "shadcn", "component library", "ui components", "ai ui", "کامپوننت", "طراحی رابط کاربری", "دیزاین فرانت"]
 ---
 
-# 🎨 UI-Kit: Exhaustive AI-Native & Modern Component Engine
+# 🎨 UI-Kit: Exhaustive AI-Native & Modern Component Recipes
 
-`ui-kit` is a 100% domain-agnostic, production-grade component encyclopedia. It contains the complete catalog of primitives across the 5 premier modern design ecosystems.
+`ui-kit` is a 100% domain-agnostic component encyclopedia and design intelligence engine. It contains 70+ battle-tested component recipes and reference implementations across premier modern design ecosystems.
 
 ---
 
-## 🌐 The 5 Pillar Resource Catalogs
+## 🌐 The 6 Pillar Resource Catalogs
 
-| Catalog Reference | Source | Component Scope |
+| Catalog Reference | Source / Provenance | Component Scope |
 | :--- | :--- | :--- |
-| [`references/ai_native_full_catalog.md`](references/ai_native_full_catalog.md) | **[Beautiful UI](https://beautifului.dev)** | **Complete 20 AI Primitives:** Loading State, Thinking State, Streaming Text, Approval Card, Tool Chips, Task Rows, Chat, Prompt Bar, Recommendation Card, Context Cards, Diff Table, Records Table, Filter Table, Sidebar Nav, Search HUD, Flowchart Canvas, Insight Cards / Sparklines, Code Block with Copy, Fine-tune Card, Selection Actions. |
-| [`references/shadcn_full_catalog.md`](references/shadcn_full_catalog.md) | **[Shadcn UI](https://ui.shadcn.com)** | **Complete 50+ UI Primitives:** Forms & Inputs (Input, Textarea, Select, Checkbox, Switch, InputOTP, Slider), Overlays & Modals (Dialog, Sheet/Drawer, Popover, Tooltip, Dropdown), Navigation (Command Palette `Cmd+K`, Tabs, Breadcrumb), Feedback (Sonner Toast, Skeleton Shimmer, Progress), Data Display (Accordion, Avatar, Table). |
-| [`references/bento_grids_and_cards.md`](references/bento_grids_and_cards.md) | **[BeUI](https://beui.dev) & [Rare UI](https://rareui.com)** | **Bento & Interactive Cards:** 3-Col & 4-Col Asymmetric Bento Grids, Glassmorphism 2.0 Inset Specular Cards, Animated Gradient Shimmer Buttons, Metric HUD Tiles. |
-| [`references/physics_transitions_catalog.md`](references/physics_transitions_catalog.md) | **[Transitions.dev](https://transitions.dev)** | **Zero-Dependency Motion:** Pure CSS Grid Dynamic Height Accordions (`0fr` -> `1fr`), Spring Easing Bezier Curves, Staggered List Reveals, JS Number Flip Counters, 3D Tilt Cards. |
+| [`references/ai_native_full_catalog.md`](references/ai_native_full_catalog.md) | **[Beautiful UI](https://beautifului.dev)** (Adapted) | **20 AI Primitives:** Loading State, Thinking State, Streaming Text, Approval Card, Tool Chips, Task Rows, Chat, Prompt Bar, Recommendation Card, Context Cards, Diff Table, Records Table, Filter Table, Sidebar Nav, Search HUD, Insight Cards / Sparklines, Code Block with Copy, Fine-tune Card, Selection Actions. |
+| [`references/shadcn_full_catalog.md`](references/shadcn_full_catalog.md) | **[Shadcn UI](https://ui.shadcn.com)** (MIT) | **50+ UI Primitives:** Forms & Inputs (Input, Textarea, Select, Checkbox, Switch, InputOTP, Slider), Overlays & Modals (Dialog, Sheet/Drawer, Popover, Tooltip, Dropdown), Navigation (Command Palette `Cmd+K`, Tabs, Breadcrumb), Feedback (Sonner Toast, Skeleton Shimmer, Progress), Data Display (Accordion, Avatar, Table). |
+| [`references/bento_grids_and_cards.md`](references/bento_grids_and_cards.md) | **[BeUI](https://beui.dev) & [Rare UI](https://rareui.com)** (MIT) | **Bento & Interactive Cards:** 3-Col & 4-Col Asymmetric Bento Grids, Glassmorphism 2.0 Inset Specular Cards, Animated Gradient Shimmer Buttons, Metric HUD Tiles. |
+| [`references/data_and_flow.md`](references/data_and_flow.md) | **Flow & Metric Visualization** | **Workflow & Canvas Nodes:** Modular Trigger Nodes, If/Else Conditional Splitters, Action Execution Cards, Micro Sparkline Meters, Dotted Grid Canvas. |
+| [`references/physics_transitions_catalog.md`](references/physics_transitions_catalog.md) | **[Transitions.dev](https://transitions.dev)** (Zero-Dep) | **Zero-Dependency Motion:** Pure CSS Grid Dynamic Height Accordions (`0fr` -> `1fr`), Spring Easing Bezier Curves, Staggered List Reveals, JS Number Flip Counters, 3D Tilt Cards. |
 | [`references/tokens_and_theme_engine.md`](references/tokens_and_theme_engine.md) | **Universal Design System** | **Tokens & Layouts:** Theme Variables (Light, Dark, Custom), Directional Logical CSS (`ms-*`, `me-*`, `start-*`, `end-*`) for universal LTR & RTL support. |
+
+---
+
+## ♿ Mandatory Accessibility & Quality Contract (WCAG AA)
+
+When generating or adapting any component from this kit, the AI Agent must strictly uphold:
+1. **Semantic HTML Elements:** Use `<button>` for clickables (never `<div onclick>`), `<nav>`, `<aside>`, `<dialog>`, etc.
+2. **Keyboard Operability & Visible Focus:** All interactive controls must respond to `Enter`/`Space` and feature high-contrast `focus-visible:ring-2` states.
+3. **Screen Reader Semantics:** Provide `aria-expanded`, `aria-controls`, `aria-label`, and `role="region"` for collapsing or stateful elements.
+4. **Motion Sensitivity:** All CSS keyframes, spring transitions, and lerp loops must be wrapped with `@media (prefers-reduced-motion: reduce) { animation: none !important; transition: none !important; }`.
 
 ---
 
@@ -27,19 +38,20 @@ triggers: ["ui-kit", "uikit", "beautifului", "beui", "rareui", "transitions.dev"
 Whenever asked to build, design, or refactor any frontend component or view:
 1. **Identify the Component Domain:** AI Reasoning, Forms, Navigation, Data Visualization, or Layout.
 2. **Read the Target Reference:** Pull exact markup, Tailwind utility classes, and zero-JS transitions from `references/`.
-3. **Adapt Seamlessly:** Match the target framework (React, Vue, HTML/JS, Tailwind, Flutter), color theme, and language direction (LTR / RTL).
+3. **Adapt Seamlessly:** Match the target framework (React, Vue, HTML/JS, Tailwind), color theme, and language direction (LTR / RTL).
 
 ---
 
-## 📐 Inviolable Fixed-Structure Content-Only RTL Protocol
+## 📐 Semantic & Fixed-Structure RTL Architecture
 
 When implementing components in Persian, Arabic, or Bilingual LTR/RTL views:
-1. **Keep Global Component & Grid Structure Fixed:**
-   - Never mirror or flip column orders, navigation bars, sliders, or card coordinates. The visual layout remains physically identical across languages.
-2. **Target Only Textual Content:**
-   - Apply `direction: rtl` and text alignments exclusively to text nodes, titles, and paragraphs.
-3. **BiDi Resilience:**
-   - Ensure mixed English brand names or tech terms inside Persian sentences do not scramble punctuation (`unicode-bidi: plaintext` or `<bdi>`).
-4. **Code & Telemetry Remain LTR:**
+1. **Preserve Macro Layout & Coordinates:**
+   - Global grid columns, module cards, slider tracks, and navigation bars remain physically stable. Do not indiscriminately flip entire layout grids.
+2. **Target Textual & Paragraph Direction:**
+   - Apply `direction: rtl` and text alignments to text nodes, headings, and descriptions.
+3. **Mirror Semantic Directional Affordances:**
+   - Navigation arrows (previous/next), sequential timelines, step wizards, and back-buttons must mirror semantically to follow reading flow.
+4. **BiDi Resilience & Strict Monospace LTR:**
+   - Mixed English brand names or tech terms inside Persian sentences must not scramble punctuation (`unicode-bidi: plaintext` or `<bdi>`).
    - Code blocks, numbers, metric counters (`99.98%`), and URLs always stay strictly `direction: ltr !important; text-align: left !important`.
 

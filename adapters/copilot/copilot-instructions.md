@@ -9,5 +9,5 @@ When generating UI components, CSS styles, or web applications:
    - Swiss Editorial (Natural paper canvas, serif typography, asymmetric grid)
    - Stripe Light (Clean snow canvas, soft diffuse elevation, high accessibility)
 3. **Include complete AI primitives**: Thinking states with radar pulse, Tool execution chips, Streaming markdown diff bubbles, and Action approval dialogs.
-4. **Use mathematical motion**: Pure CSS grid height transitions (`0fr` -> `1fr`) and 120fps Lerp sliders.
+4. **Use mathematical motion**: Pure CSS grid height transitions (`0fr` -> `1fr`) and sub-pixel rAF Lerp sliders.
 5. **Strictly avoid unicode emojis in UI**: Use clean inline SVG vector paths with `currentColor`.

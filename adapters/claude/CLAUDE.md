@@ -19,4 +19,4 @@ Support the project's selected aesthetic or adapt to context:
 Implement complete component primitives:
 - **AI Primitives:** Thinking state accordions, Tool call status chips, Streaming chat bubbles, Approval cards.
 - **Layouts:** 3-column & 4-column Bento grid architectures with integrated sparklines and metric badges.
-- **Motion:** Pure CSS Grid `0fr` to `1fr` transitions for dynamic height, 120fps Lerp before/after sliders.
+- **Motion:** Pure CSS Grid `0fr` to `1fr` transitions for dynamic height, sub-pixel rAF Lerp before/after sliders.

@@ -20,14 +20,18 @@ This catalog contains the complete, production-ready implementation of all 20 AI
 ## 2. Thinking State (Collapsible Reasoning Box)
 ```html
 <div class="rounded-xl border border-border bg-card/70 p-3.5 backdrop-blur-md">
-  <div class="flex items-center justify-between cursor-pointer select-none" onclick="this.parentElement.querySelector('.thought-body').classList.toggle('hidden')">
+  <button type="button" 
+          aria-expanded="true" 
+          aria-controls="thought-content-1" 
+          class="w-full flex items-center justify-between cursor-pointer select-none text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-0.5" 
+          onclick="const b = document.getElementById('thought-content-1'); const exp = this.getAttribute('aria-expanded') === 'true'; this.setAttribute('aria-expanded', !exp); b.classList.toggle('hidden');">
     <div class="flex items-center gap-2.5">
       <svg class="w-4 h-4 text-primary animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
       <span class="text-xs font-semibold font-mono text-foreground">Thought Process</span>
     </div>
     <span class="text-[11px] text-muted-foreground font-mono">4 steps</span>
-  </div>
-  <div class="thought-body mt-3 pt-2.5 border-t border-border/50 text-xs font-mono text-muted-foreground space-y-1">
+  </button>
+  <div id="thought-content-1" class="thought-body mt-3 pt-2.5 border-t border-border/50 text-xs font-mono text-muted-foreground space-y-1">
     <div>1. Scanning AST nodes for dependency cycle</div>
     <div>2. Optimizing memoization hooks</div>
     <div class="text-emerald-500 font-semibold">✓ Ready to output refactored component</div>

@@ -3,7 +3,7 @@
   One-Click Installer for Vibe UI & Component Engine Skills
 .DESCRIPTION
   Installs master-web-builder, ui-kit, vibe-physics-engine, conversion-copy-engine,
-  and autonomous-intent-expander into your local AI Agent skills directory.
+  autonomous-intent-expander, and ui-verifier into your local AI Agent skills directory.
 #>
 
 [CmdletBinding()]

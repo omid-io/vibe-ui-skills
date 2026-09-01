@@ -50,7 +50,7 @@ flowchart LR
     UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> Expander["🧠 autonomous-intent-expander\n(30-Parameter Zero-Interrogation)"]
     Expander --> VisualEngine["👑 master-web-builder & vibe-physics\n(Mesh Glow, Glass 2.0, Noise, Lenis)"]
     Expander --> ComponentCatalog["🎨 ui-kit Encyclopedia\n(AI Native Primitives + Shadcn + Bento Grids)"]
-    VisualEngine & ComponentCatalog --> Masterpiece["✨ Production-Ready Luxury Interface\n(Awwwards Quality • 120fps Physics • Responsive • LTR/RTL)"]
+    VisualEngine & ComponentCatalog --> Masterpiece["✨ Production-Ready Luxury Interface\n(Awwwards Quality • Refresh-Rate-Aware Physics • Responsive • LTR/RTL)"]
 ```
 
 ---
@@ -59,19 +59,20 @@ flowchart LR
 
 | Skill | Category | Description | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **👑 [`master-web-builder`](skills/master-web-builder/)** | Visual Architecture | The Awwwards-grade aesthetic engine. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), 120fps Lerp Sliders, Magnetic Spring Buttons. |
-| **🎨 [`ui-kit`](skills/ui-kit/)** | Component System | 70+ production-ready UI primitives. | **20 AI-Native Primitives** (Thinking state, Tool chips, Approval cards, Streaming diffs), **50+ Shadcn Primitives**, **Bento Grids**, and **Transitions.dev** zero-dep motion. |
-| **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | Physics & Color | Smooth momentum and mathematical color. | OKLCH Obsidian & Champagne color science, Lenis smooth scrolling, GPU layer compositing, Strict Zero-Emoji vector standard. |
-| **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | Neuro-Marketing | High-converting narrative architecture. | PAS Framework (Problem-Agitation-Solution), Hero Headline formula, Objection inversion microcopy, Direct concierge conversion funnels. |
-| **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | Spec Expansion | Zero-interrogation intent compiler. | Deterministically expands 1-sentence lazy prompts into a 30-parameter complete architectural, psychological, and visual blueprint. |
+| **👑 [`master-web-builder`](skills/master-web-builder/)** | Visual Architecture | The Awwwards-grade aesthetic engine. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), Anti-Repetition Protocol, Refresh-rate-aware Lerp Sliders, Magnetic Spring Buttons. |
+| **🎨 [`ui-kit`](skills/ui-kit/)** | Component System | 70+ AI-ready UI component recipes. | **20 AI-Native Primitives** (Thinking state, Tool chips, Approval cards, Streaming diffs), **50+ Shadcn Primitives**, **Bento Grids**, and **Transitions.dev** zero-dep motion. |
+| **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | Physics & Color | Smooth momentum and mathematical color. | OKLCH Multi-Chemistry color tokens, Zero-dep native smooth scroll + progressive modern Lenis, GPU layer compositing, Strict Zero-Emoji vector standard. |
+| **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | Neuro-Marketing | High-converting narrative architecture. | Multi-domain frameworks (B2B JTBD/ROI, Luxury Status, Healthcare Trust), Hero Headline formula, Objection inversion microcopy, Direct concierge conversion funnels. |
+| **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | Spec Expansion | Opinionated specification synthesizer. | Converts 1-sentence lazy prompts into a 30-parameter complete architectural, psychological, and visual specification with calibrated interrogation. |
+| **🔍 [`ui-verifier`](skills/ui-verifier/)** | Quality & Audit | 5-Pillar automated frontend auditor. | Full inspection of WCAG 2.2 AA Accessibility, Responsive Breakpoints (375/768/1440), Anti-Slop Visual Quality, Compositing Performance, and Semantic RTL/BiDi. |
 
 ---
 
-## 📐 Inviolable Fixed-Structure Content-Only RTL Architecture
+## 📐 Semantic & Fixed-Structure RTL Architecture
 
 Vibe UI solves the notorious layout shift problem present in generic AI web generators:
 - ❌ **Standard AI Failure:** Inverting the entire layout grid, swapping column positions, reversing navbar menus, and shifting interactive buttons horizontally when switching to RTL / Persian.
-- ✅ **The Vibe UI Standard:** Global grid columns, module cards, slider tracks, and navigation bars remain **100% physically fixed in place**. RTL direction is applied strictly to textual content, mixed English brand names never scramble punctuation, and all code/metric blocks remain pure LTR monospace.
+- ✅ **The Vibe UI Standard:** Global grid columns, module cards, slider tracks, and navigation bars remain **physically stable in place**. RTL direction is applied to textual content, mixed English brand names never scramble punctuation, directional affordances mirror semantically, and all code/metric blocks remain pure LTR monospace.
 
 ---
 
@@ -83,7 +84,7 @@ The easiest way to install! Simply copy and paste this single prompt directly in
 
 > **Copy & paste this prompt into your AI assistant:**
 > ```text
-> Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment (or skills directory). Clone/download the skills from the repository, place them in the appropriate agent skills path, and verify that master-web-builder and ui-kit are ready to use.
+> Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment (or skills directory). Clone/download the skills from the repository, place them in the appropriate agent skills path, and verify that master-web-builder, ui-kit, and ui-verifier are ready to use.
 > ```
 
 ---
@@ -106,12 +107,15 @@ cd vibe-ui-skills
 curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
 ```
 
-### Method 3: Direct Git Clone into Your Agent Skills Directory
+### Method 3: Local Clone & Setup
 
-For **Google Antigravity**:
 ```bash
-# Windows
-git clone https://github.com/omid-io/vibe-ui-skills.git %USERPROFILE%\.gemini\config\skills\vibe-ui-skills-repo
+git clone https://github.com/omid-io/vibe-ui-skills.git
+cd vibe-ui-skills
+# On Windows PowerShell:
+.\install.ps1
+# On macOS / Linux:
+./install.sh
 ```
 
 ---
@@ -146,7 +150,7 @@ An adaptive visual architecture engine that prevents rigid, repetitive designs b
 - **☀️ Modern Crisp Light (Stripe / Apple):** Clean snow canvas, soft diffuse multi-stage elevation, accessible high-contrast accents.
 
 ### 2. 🎨 UI-Kit (`ui-kit`)
-Comprehensive component encyclopedia across 5 modern design ecosystems:
+Comprehensive component encyclopedia across 6 modern design ecosystems:
 - **AI-Native Primitives:** Loading skeletons, streaming text bubbles, tool call execution chips, human-in-the-loop approval cards, context pills, and flowchart node canvases.
 - **Shadcn UI Form & Overlay Suite:** Command palette (`Cmd+K`), Dialogs, Sheets, Sonner toasts, and accessible data tables.
 - **Asymmetric Bento Grids:** 3-column and 4-column responsive grid layouts with specular highlights.
@@ -156,7 +160,11 @@ Comprehensive component encyclopedia across 5 modern design ecosystems:
 ### 3. ⚡ Vibe Physics Engine (`vibe-physics-engine`)
 - Replaces harsh linear CSS animations with physical spring kinetics.
 - Employs **OKLCH** perceptual color models for flawless dark/light contrast without mudding.
+- Zero-dep native smooth scroll fallback + progressive modern Lenis momentum.
 - Mandates crisp SVG vector sprites over low-res unicode emojis.
+
+### 4. 🔍 UI-Verifier (`ui-verifier`)
+- 5-pillar inspection pipeline validating Accessibility (WCAG 2.2 AA), Responsive breakpoints, Anti-Slop aesthetics, Performance, and Semantic RTL.
 
 ---
 
@@ -168,16 +176,17 @@ Once installed, your AI agent automatically activates these skills when you prom
 | :--- | :--- | :--- |
 | *"Build a SaaS analytics dashboard"* | `ui-kit` + `master-web-builder` | Bento grid layout, Sparkline cards, AI insight rows, Glassmorphism 2.0 surfaces. |
 | *"Create an AI chat interface"* | `ui-kit` (AI Native Catalog) | Prompt bar with tool attachment chips, Streaming markdown bubble, Thinking state accordion, Code block with copy action. |
-| *"Design a high-converting landing page"* | `master-web-builder` + `conversion-copy-engine` | Ambient mesh hero, PAS copywriting, Hero formula, 120fps Before/After slider, Objection inversion microcopy. |
+| *"Design a high-converting landing page"* | `master-web-builder` + `conversion-copy-engine` | Ambient mesh hero, PAS / JTBD copywriting, Hero formula, Sub-pixel Before/After slider, Objection inversion microcopy. |
+| *"بررسی ظاهر و استانداردهای طراحی"* | `ui-verifier` | Comprehensive 5-pillar scorecard evaluating accessibility, responsiveness, and visual quality. |
 | *"طراحی رابط کاربری مدرن با تم تاریک"* | `master-web-builder` + `vibe-physics-engine` | Fully RTL-adapted luxury dark layout with OKLCH obsidian velvet and champagne accents. |
 
 ---
 
 ## 📜 Philosophy & Architecture
 
-1. **Zero External Dependencies:** Built using standard web standards (CSS Grid, OKLCH, Modern JS, Tailwind CSS classes) — no heavy unneeded runtime bloat.
+1. **Zero Runtime Dependencies in Core:** Built using standard web standards (CSS Grid, OKLCH, Modern JS, Tailwind CSS classes) — no heavy unneeded runtime bloat.
 2. **Framework Agnostic:** Primitives work out of the box with React, Next.js, Vue, Svelte, Tailwind CSS, or vanilla HTML/CSS.
-3. **Strict Quality Gates:** Prohibits common AI hallucinations and enforces domain-aware responsive typography.
+3. **Strict Quality & Accessibility Gates:** Prohibits common AI hallucinations, enforces WCAG AA accessibility, and supports `@media (prefers-reduced-motion: reduce)`.
 
 ---
 
