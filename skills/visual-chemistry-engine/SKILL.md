@@ -1,12 +1,12 @@
 ---
-name: master-web-builder
-description: The Master Web Builder & Visual Architecture Engine for mr-ui-designer (v2026). Transforms minimal prompts into Awwwards-grade masterpieces across 5 distinct visual chemistries (Minimalist SaaS, Glassmorphism 2.0, Neobrutalism, Swiss Editorial, and Stripe Light) while enforcing the Anti-Repetition Protocol and Semantic RTL.
-triggers: ["mr-ui-designer", "mr_ui_designer", "master web builder", "master_web_builder", "مستر وب بیلدر", "طراحی سایت", "وبسایت بساز", "build website", "landing page", "ui style"]
+name: visual-chemistry-engine
+description: The Visual Architecture & Design Chemistry Engine for mr-ui-designer (v2026). Transforms design specs into production-grade interfaces across 5 distinct visual chemistries (Minimalist SaaS, Luxury Glassmorphism 2.0, Neobrutalism, Swiss Editorial, and Stripe Crisp Light) while enforcing the Anti-Repetition Protocol and Semantic RTL.
+triggers: ["mr-ui-designer", "mr_ui_designer", "visual chemistry engine", "visual_chemistry_engine", "visual-chemistry", "موتور استایل", "طراحی سایت", "وبسایت بساز", "build website", "landing page", "ui style", "design chemistry"]
 ---
 
-# 👑 Master Web Builder (mr-ui-designer Visual Engine)
+# 🎨 Visual Chemistry Engine (mr-ui-designer Style Core)
 
-The `master-web-builder` engine serves as the primary visual architecture core commanded by **`mr-ui-designer`**. It eliminates generic "AI slop" by strictly enforcing **bespoke, intentional visual chemistry**. Instead of forcing one rigid style, it provides **5 Production-Grade Design Archetypes**.
+The `visual-chemistry-engine` serves as the primary aesthetic and visual architecture core commanded by **`mr-ui-designer`**. It eliminates generic "AI slop" by strictly enforcing **bespoke, intentional visual chemistry**. Instead of forcing one rigid style, it provides **5 Production-Grade Design Archetypes**.
 
 ---
 
@@ -38,45 +38,35 @@ PROMPT / DOMAIN ──┼─► 3. Neobrutalism & Playful High-Contrast (Creativ
 *Best for: AI Flagship products, Luxury brands, High-ticket services, Cutting-edge showcases.*
 - **Canvas:** Deep Obsidian Velvet (`#0a0812` / `oklch(0.12 0.012 260)`)
 - **Atmosphere:** SVG Fractal Noise overlay + Ambient Mesh Glow (`radial-gradient` multi-stop blur).
-- **Glassmorphism 2.0:** Dual-layer surface with **Fresnel Specular Inset Reflection**:
-```css
-.glass-luxury {
-  background: linear-gradient(135deg, rgba(25, 20, 32, 0.70) 0%, rgba(14, 16, 20, 0.60) 100%);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.16),
-    0 16px 32px -8px rgba(0, 0, 0, 0.45);
-}
-```
+- **Glass Specular:** Multi-layer frosted cards with Fresnel specular highlights (`box-shadow: inset 0 1px 1px rgba(255,255,255,0.15)`).
+- **Typography:** High-contrast Serif titles (Playfair / Newsreader) + Sans body (Inter).
 
 ---
 
-### 3. 🎨 Neobrutalism & Bold High-Contrast (Gumroad / Figma Style)
-*Best for: Creative apps, creator economy, youth brands, bold portfolios.*
-- **Canvas:** Vibrant Pastels or Clean Chalk (`#f4f0ea`, `#ffea79`, `#d8b4fe`)
-- **Borders:** Heavy, solid black strokes (`border: 2px solid #000000`)
-- **Shadows:** Hard offset non-blurred drop shadows (`box-shadow: 4px 4px 0px 0px #000000`)
-- **Interactive:** Button active state physical press (`transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000`).
+### 3. 🎨 Neobrutalism & Playful High-Contrast (Gumroad / Figma Style)
+*Best for: Creative agencies, Creator economy, Youth/EdTech, Bold Web Apps.*
+- **Canvas:** Vibrant Pastels (Yellow `#fef08a`, Cyan `#a5f3fc`, Lavender `#e9d5ff`) or stark white with `#000` structure.
+- **Borders & Strokes:** Thick, deliberate 2px-3px solid black outlines (`border: 2.5px solid #000000`).
+- **Shadows:** Hard, unblurred offset drop shadows (`box-shadow: 4px 4px 0px #000000`).
+- **Tactile Feedback:** Physical button-press active states (`transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000000`).
 
 ---
 
 ### 4. 📰 Swiss Editorial & Paper Craft
-*Best for: Long-form reading, agencies, architectural firms, high-end portfolios.*
-- **Canvas:** Warm Natural Paper (`#fbfaf8` or `#f5f4ef`)
-- **Typography:** High-contrast Serif titles (Playfair, Newsreader) + clean Sans body (Inter/Switzer).
-- **Grid:** Asymmetric multi-column editorial layout with generous breathing whitespace.
-- **Accents:** Vermillion / Deep Forest Ink (`#e11d48`, `#1c1917`).
+*Best for: Thought leadership, Publications, High-end Portfolios, Minimalist Commerce.*
+- **Canvas:** Warm Paper Ivory (`#faf8f5` / `oklch(0.98 0.005 80)`)
+- **Grid Architecture:** Strict asymmetrical typographic grids, oversized drop caps, structured hairline rules (`#e5e0d8`).
+- **Typography:** Refined editorial Serif headers (Instrument Serif, Bodoni) with generous tracking and strict leading.
+- **Restraint:** Zero blur or floating glowing orbs; 100% typographic hierarchy and spatial rhythm.
 
 ---
 
-### 5. ☀️ Modern Crisp Light (Stripe / Apple / Fintech)
-*Best for: Fintech, e-commerce, banking, consumer apps, health tech.*
-- **Canvas:** Pure Snow & Slate (`#ffffff` with `#f8fafc` surface cards)
-- **Elevation:** Diffuse multi-stage soft ambient shadows (`box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 10px 25px -5px rgba(0,0,0,0.04)`)
-- **Accents:** Electric Indigo (`#6366f1`) or Emerald (`#10b981`).
-- **Cards:** Clean pill badges, micro-icon indicators, crystal-clear accessible contrast.
+### 5. ☀️ Modern Crisp Light (Stripe / Apple Style)
+*Best for: Fintech, Enterprise SaaS, Trust-heavy platforms, Global consumer products.*
+- **Canvas:** Crisp Porcelain Snow (`#ffffff` / `#f8fafc`)
+- **Surfaces:** Pure white floating cards with multi-stage ambient diffuse shadows (`box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.03)`).
+- **Accents:** Electric Sapphire Blue (`#2563eb`), Emerald Mint, or Violet with strict 4.5:1 text contrast compliance.
+- **Crispness:** High-contrast data tables, subtle badge chips, and refined micro-borders (`#e2e8f0`).
 
 ---
 
@@ -94,7 +84,7 @@ To prevent every generated interface from collapsing into a predictable "dark ob
 ## 🕹️ Universal Interactive Modules
 
 Regardless of the chosen visual style, the agent can equip pages with high-value interactive primitives:
-1. **Refresh-Rate-Aware Lerp Slider:** (Sub-pixel rAF interpolation for before/after visual showcases).
+1. **Time-Based Damped Lerp Slider:** (DeltaTime-based exponential decay $\alpha = 1 - e^{-\lambda \cdot \Delta t}$ with $\lambda \approx 12$, ensuring frame-rate-independent fluid motion across 60Hz, 120Hz, and 144Hz displays).
 2. **Magnetic Spring CTAs:** (Dynamic cursor-following or damped spring ease).
 3. **Bento Grid Architecture:** (Dynamic 3 or 4-column asymmetric cards with sparklines & AI badges).
 4. **Directional LTR/RTL Compatibility:** (Universal logical CSS properties `ms-*`, `me-*`, `start-*`, `end-*`).

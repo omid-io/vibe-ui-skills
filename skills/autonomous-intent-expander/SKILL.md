@@ -32,16 +32,23 @@ The `autonomous-intent-expander` skill eliminates friction and interrogation fat
    - `HYPER_LOCAL_TRADES` (Plumbing, HVAC, Auto Repair, Local Services)
    - `EDTECH_ACADEMY` (Courses, Certifications, Training Academies)
 
-3. **30-Parameter Structured Specification Pipeline:**
-   Synthesize an explicit specification covering all 30 parameters:
-   - **P01-P05: Psychological & Intent Foundations** (Archetype, Target Persona, Core Pain-Point, Primary CTA, Secondary Micro-Conversion).
-   - **P06-P08: Trust & Conversion Mechanics** (Objection Neutralization, Social Proof Density, Urgency/Exclusivity Driver).
-   - **P09-P13: Visual Chemistry & Design Tokens** (Canvas Base, Surface Layers, Metallic/Vibe Accent, Functional Colors, Radius/Border Token).
+3. **Structured Specification Pipeline (Core vs. Conditional Parameters):**
+   Synthesizes an explicit architectural contract without inflating irrelevant metadata:
+   
+   **A. Core Parameters (Universal for all interfaces):**
+   - **P01-P05: Intent & Product Foundations** (Archetype, Target Persona, Core Job-To-Be-Done, Primary CTA, Secondary Micro-Action).
+   - **P06-P08: Trust & Value Mechanics** (Objection Neutralization, Evidence Density, Transparent Risk Reversal).
+   - **P09-P13: Visual Chemistry & Tokens** (Canvas Base, Surface Layers, Accent Palette, Functional Colors, Border Radius).
    - **P14-P17: Typography & Spatial Rhythm** (Display Font, Body Font, Tabular Metric Font, 8pt Spacing Cadence).
-   - **P18-P21: Motion & Micro-Interactions** (Scroll Mechanics, Interactive Hero Component, SVG Vector Iconography, Transition Curves).
-   - **P22-P25: Narrative & Neuro-Copywriting** (BLUF Value Hook, Problem Matrix, Clinical/Evidence Proof, Brand Voice Register).
-   - **P26-P28: Semantic SEO & AEO Engine** (Schema.org Root Entity, Wikidata Entity Link, 5-Decimal Geo-Coordinates).
-   - **P29-P30: Technical Performance & Boundary Gates** (Core Web Vitals Budget, Zero-Touch Boundary Isolation).
+   - **P18-P21: Motion & Interaction Model** (Scroll Mechanics, Interactive Hero Module, SVG Vector Iconography, Transition Curves).
+   - **P22-P24: Narrative & Copy Architecture** (BLUF Value Hook, Problem/Solution Matrix, Brand Voice Register).
+   
+   **B. Conditional Domain Parameters (Synthesized only when contextually relevant):**
+   - **P25: Local Geo-Coordinates & Address** *(Conditional: Local Trades, Hospitality, Brick-and-Mortar only; skipped for SaaS).*
+   - **P26: Clinical / Board Certification Proof** *(Conditional: Healthcare, Medical, Legal only).*
+   - **P27: Public Web Schema & Wikidata Entity Graph** *(Conditional: Public discoverable SEO sites only; skipped for internal dashboards).*
+   - **P28: Financial Math & Transaction Guardrails** *(Conditional: FinTech, Trading, Payment flows only).*
+   - **P29-P30: Performance & Isolation Budgets** (Core Web Vitals Budget, Boundary Isolation).
 
 ---
 

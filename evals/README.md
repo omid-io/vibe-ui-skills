@@ -24,8 +24,15 @@ Prompt libraries often fail silently because LLMs drift into generic templates (
 
 ---
 
-## ⚡ How to Run an Evaluation
+## ⚡ How to Run Evaluations
 
+### Option A: Automated Runner (1-Command Verification)
+Execute the Python test harness to audit all example files in the repository:
+```bash
+python evals/run_evals.py
+```
+
+### Option B: Interactive AI Agent Evaluation
 1. Send the `Prompt` defined in any eval file to your AI agent (Claude Code, Cursor, Antigravity, Copilot).
 2. Feed the agent's output through the **`ui-verifier`** skill.
 3. Verify that the generated code satisfies all **Expected Properties** and triggers zero **Forbidden Patterns**.

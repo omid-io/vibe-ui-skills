@@ -49,8 +49,8 @@ Instead of relying on disconnected prompts, **`mr-ui-designer`** operates as a s
 flowchart TD
     UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> MasterAgent["👑 mr-ui-designer\n(Master Frontend & UI Architect Agent)"]
     MasterAgent --> Expander["🧠 1. autonomous-intent-expander\n(30-Parameter Opinionated Spec)"]
-    MasterAgent --> VisualEngine["👑 2. master-web-builder\n(5 Visual Chemistries + Anti-Repetition)"]
-    MasterAgent --> UIComponents["🎨 3. ui-kit\n(70+ AI Native, Shadcn & Bento Recipes)"]
+    MasterAgent --> VisualEngine["🎨 2. visual-chemistry-engine\n(5 Visual Chemistries + Anti-Repetition)"]
+    MasterAgent --> UIComponents["🧩 3. ui-kit\n(70+ AI Native, Shadcn & Bento Recipes)"]
     MasterAgent --> Physics["⚡ 4. vibe-physics-engine\n(OKLCH, Smooth Scroll & Sub-Pixel rAF)"]
     MasterAgent --> Copy["✍️ 5. conversion-copy-engine\n(PAS, JTBD & Strategic Value Copy)"]
     Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 6. ui-verifier\n(5-Pillar Quality & Accessibility Gate)"]
@@ -63,8 +63,8 @@ flowchart TD
 
 | Skill | Category | Description | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **👑 [`master-web-builder`](skills/master-web-builder/)** | Visual Architecture | Adaptive visual design engine across 5 distinct chemistries. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), Anti-Repetition Protocol, Refresh-rate-aware Lerp Sliders, Magnetic Spring Buttons. |
-| **🎨 [`ui-kit`](skills/ui-kit/)** | Component System | 70+ AI-ready UI component recipes. | **20 AI-Native Primitives** (Thinking state, Tool chips, Approval cards, Streaming diffs), **50+ Shadcn Primitives**, **Bento Grids**, and **Transitions.dev** zero-dep motion. |
+| **🎨 [`visual-chemistry-engine`](skills/visual-chemistry-engine/)** | Visual Architecture | Adaptive visual design engine across 5 distinct chemistries. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), Anti-Repetition Protocol, Frame-rate-independent Lerp Sliders, Magnetic Spring Buttons. |
+| **🧩 [`ui-kit`](skills/ui-kit/)** | Component System | 70+ AI-ready UI component recipes. | **20 AI-Native Primitives** (Thinking state, Tool chips, Approval cards, Streaming diffs), **50+ Shadcn Primitives**, **Bento Grids**, and **Transitions.dev** zero-dep motion. |
 | **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | Physics & Motion | Smooth momentum and mathematical color. | OKLCH Multi-Chemistry color tokens, Zero-dep native smooth scroll + progressive modern Lenis, GPU layer compositing, Strict Zero-Emoji vector standard. |
 | **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | Value Copywriting | Domain-calibrated value propositions. | Multi-domain frameworks (B2B JTBD/ROI, Luxury Status, Healthcare Trust), Hero Headline formula, Objection inversion microcopy, Anti-Dark-Pattern policy. |
 | **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | Spec Expansion | Opinionated specification synthesizer. | Converts 1-sentence lazy prompts into a 30-parameter complete architectural, psychological, and visual specification with calibrated Ambiguity Budget. |
@@ -88,7 +88,7 @@ The easiest way to install! Simply copy and paste this single prompt directly in
 
 > **Copy & paste this prompt into your AI assistant:**
 > ```text
-> Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment (or skills directory). Clone/download the skills from the repository, place them in the appropriate agent skills path, and verify that master-web-builder, ui-kit, and ui-verifier are ready to use.
+> Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment (or skills directory). Clone/download the skills from the repository, place them in the appropriate agent skills path, and verify that visual-chemistry-engine, ui-kit, and ui-verifier are ready to use.
 > ```
 
 ---
@@ -149,7 +149,7 @@ Looking for inspiration or instant 1-line copy-paste prompts? Check out the **[`
 - Transforms sparse 1-sentence prompts into a comprehensive 30-parameter technical, visual, and UX specification.
 - Enforces an **Ambiguity Budget**: automatically assumes standard UI layout decisions while surfacing explicit assumptions for high-risk business, security, or compliance constraints.
 
-### 2. 👑 Visual Architecture (`master-web-builder`)
+### 2. 🎨 Visual Chemistry Engine (`visual-chemistry-engine`)
 An adaptive visual architecture engine that prevents rigid, repetitive designs by supporting **5 Master Visual Chemistries**:
 - **⚡ Minimalist SaaS (Linear / Vercel):** Pitch charcoal canvas, crisp 1px borders, subtle directional light, JetBrains Mono metrics.
 - **💎 Luxury Obsidian & Glassmorphism 2.0:** Deep obsidian velvet canvas, SVG fractal noise, ambient mesh glow, Fresnel specular reflections.
@@ -158,7 +158,7 @@ An adaptive visual architecture engine that prevents rigid, repetitive designs b
 - **☀️ Modern Crisp Light (Stripe / Apple):** Clean snow canvas, soft diffuse multi-stage elevation, accessible high-contrast accents.
 - **🛡️ Anti-Repetition Protocol:** Guarantees novelty across projects by altering at least 3 structural dimensions.
 
-### 3. 🎨 Component Recipes (`ui-kit`)
+### 3. 🧩 Component Recipes (`ui-kit`)
 Comprehensive component encyclopedia across 6 modern design ecosystems:
 - **AI-Native Primitives:** Loading skeletons, streaming text bubbles, tool call execution chips, human-in-the-loop approval cards, context pills, and flowchart node canvases.
 - **Shadcn UI Form & Overlay Suite:** Command palette (`Cmd+K`), Dialogs, Sheets, Sonner toasts, and accessible data tables.
@@ -199,11 +199,11 @@ Once installed, your AI agent automatically activates these skills when you prom
 
 | Prompt | Auto-Activated Skills | What the Agent Delivers |
 | :--- | :--- | :--- |
-| *"Build a SaaS analytics dashboard"* | `ui-kit` + `master-web-builder` | Bento grid layout, Sparkline cards, AI insight rows, Glassmorphism 2.0 surfaces. |
+| *"Build a SaaS analytics dashboard"* | `ui-kit` + `visual-chemistry-engine` | Bento grid layout, Sparkline cards, AI insight rows, Glassmorphism 2.0 surfaces. |
 | *"Create an AI chat interface"* | `ui-kit` (AI Native Catalog) | Prompt bar with tool attachment chips, Streaming markdown bubble, Thinking state accordion, Code block with copy action. |
-| *"Design a high-converting landing page"* | `master-web-builder` + `conversion-copy-engine` | Ambient mesh hero, PAS / JTBD copywriting, Hero formula, Sub-pixel Before/After slider, Objection inversion microcopy. |
+| *"Design a high-converting landing page"* | `visual-chemistry-engine` + `conversion-copy-engine` | Ambient mesh hero, PAS / JTBD copywriting, Hero formula, Sub-pixel Before/After slider, Objection inversion microcopy. |
 | *"بررسی ظاهر و استانداردهای طراحی"* | `ui-verifier` | Comprehensive 5-pillar scorecard evaluating accessibility, responsiveness, and visual quality. |
-| *"طراحی رابط کاربری مدرن با تم تاریک"* | `master-web-builder` + `vibe-physics-engine` | Fully RTL-adapted luxury dark layout with OKLCH obsidian velvet and champagne accents. |
+| *"طراحی رابط کاربری مدرن با تم تاریک"* | `visual-chemistry-engine` + `vibe-physics-engine` | Fully RTL-adapted luxury dark layout with OKLCH obsidian velvet and champagne accents. |
 
 ---
 

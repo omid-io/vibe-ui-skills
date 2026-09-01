@@ -4,7 +4,7 @@
 .DESCRIPTION
   Installs or updates the 6 Vibe UI skills:
   - autonomous-intent-expander
-  - master-web-builder
+  - visual-chemistry-engine
   - ui-kit
   - vibe-physics-engine
   - conversion-copy-engine

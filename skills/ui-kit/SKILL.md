@@ -29,7 +29,7 @@ When generating or adapting any component from this kit, the AI Agent must stric
 1. **Semantic HTML Elements:** Use `<button>` for clickables (never `<div onclick>`), `<nav>`, `<aside>`, `<dialog>`, etc.
 2. **Keyboard Operability & Visible Focus:** All interactive controls must respond to `Enter`/`Space` and feature high-contrast `focus-visible:ring-2` states.
 3. **Screen Reader Semantics:** Provide `aria-expanded`, `aria-controls`, `aria-label`, and `role="region"` for collapsing or stateful elements.
-4. **Motion Sensitivity:** All CSS keyframes, spring transitions, and lerp loops must be wrapped with `@media (prefers-reduced-motion: reduce) { animation: none !important; transition: none !important; }`.
+4. **Functional Motion Sensitivity:** Disable non-essential decorative loops, parallax, and continuous spring animations under `@media (prefers-reduced-motion: reduce)`; preserve essential functional state transitions (e.g. accordion disclosure, button states) with short, non-disorienting durations ($\le 150\text{ms}$).
 
 ---
 
