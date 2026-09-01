@@ -1,7 +1,7 @@
 <div align="center">
 
 # 👑 mr-ui-designer & Vibe UI Suite
-### *Turn your AI Assistant into an Awwwards-Winning Senior Frontend Architect*
+### *Production-Grade UI Architecture, Component Recipes & Design Intelligence for AI Agents*
 
 <p align="center">
   <a href="README.md"><b>English</b></a> •
@@ -16,8 +16,8 @@
 [![UI Primitives](https://img.shields.io/badge/Recipes-70%2B%20AI%20%26%20Shadcn-success)](#-the-sub-skills-arsenal)
 
 <p align="center">
-  <b>Stop settling for generic "AI slop" interfaces.</b><br>
-  <b><code>mr-ui-designer</code></b> is an autonomous master frontend architect agent that commands an arsenal of 6 specialized design and physics skills, injecting high-end visual chemistry, 70+ battle-tested UI primitives, and conversion copywriting into every web generation.<br><br>
+  <b>Eliminate generic, low-effort AI interface outputs.</b><br>
+  <b><code>mr-ui-designer</code></b> is an autonomous frontend architect agent that commands a modular arsenal of 6 specialized design, physics, and verification skills—injecting deliberate visual chemistries, 70+ battle-tested UI primitives, WCAG AA accessibility, and conversion copy into AI coding workflows.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>Explore the Live Interactive Showcase & Theme Switcher</b></a>
 </p>
 
@@ -52,22 +52,22 @@ flowchart TD
     MasterAgent --> VisualEngine["👑 2. master-web-builder\n(5 Visual Chemistries + Anti-Repetition)"]
     MasterAgent --> UIComponents["🎨 3. ui-kit\n(70+ AI Native, Shadcn & Bento Recipes)"]
     MasterAgent --> Physics["⚡ 4. vibe-physics-engine\n(OKLCH, Smooth Scroll & Sub-Pixel rAF)"]
-    MasterAgent --> Copy["✍️ 5. conversion-copy-engine\n(PAS, JTBD & Strategic Copy)"]
+    MasterAgent --> Copy["✍️ 5. conversion-copy-engine\n(PAS, JTBD & Strategic Value Copy)"]
     Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 6. ui-verifier\n(5-Pillar Quality & Accessibility Gate)"]
-    Verifier --> Masterpiece["✨ Production Masterpiece\n(Awwwards Quality • Zero AI Slop • Semantic RTL)"]
+    Verifier --> Masterpiece["✨ Production-Ready Interface\n(Design System Tokens • WCAG AA • Semantic RTL)"]
 ```
 
 ---
 
-## 📦 The Sub-Skills Arsenal (Commanded by mr-ui-designer)
+## 📦 The 6 Sub-Skills Arsenal (Commanded by mr-ui-designer)
 
 | Skill | Category | Description | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **👑 [`master-web-builder`](skills/master-web-builder/)** | Visual Architecture | The Awwwards-grade aesthetic engine. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), Anti-Repetition Protocol, Refresh-rate-aware Lerp Sliders, Magnetic Spring Buttons. |
+| **👑 [`master-web-builder`](skills/master-web-builder/)** | Visual Architecture | Adaptive visual design engine across 5 distinct chemistries. | SVG Noise Overlay, Mesh Ambient Glow, Glassmorphism 2.0 (Fresnel Specular Highlights), Anti-Repetition Protocol, Refresh-rate-aware Lerp Sliders, Magnetic Spring Buttons. |
 | **🎨 [`ui-kit`](skills/ui-kit/)** | Component System | 70+ AI-ready UI component recipes. | **20 AI-Native Primitives** (Thinking state, Tool chips, Approval cards, Streaming diffs), **50+ Shadcn Primitives**, **Bento Grids**, and **Transitions.dev** zero-dep motion. |
-| **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | Physics & Color | Smooth momentum and mathematical color. | OKLCH Multi-Chemistry color tokens, Zero-dep native smooth scroll + progressive modern Lenis, GPU layer compositing, Strict Zero-Emoji vector standard. |
-| **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | Neuro-Marketing | High-converting narrative architecture. | Multi-domain frameworks (B2B JTBD/ROI, Luxury Status, Healthcare Trust), Hero Headline formula, Objection inversion microcopy, Direct concierge conversion funnels. |
-| **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | Spec Expansion | Opinionated specification synthesizer. | Converts 1-sentence lazy prompts into a 30-parameter complete architectural, psychological, and visual specification with calibrated interrogation. |
+| **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | Physics & Motion | Smooth momentum and mathematical color. | OKLCH Multi-Chemistry color tokens, Zero-dep native smooth scroll + progressive modern Lenis, GPU layer compositing, Strict Zero-Emoji vector standard. |
+| **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | Value Copywriting | Domain-calibrated value propositions. | Multi-domain frameworks (B2B JTBD/ROI, Luxury Status, Healthcare Trust), Hero Headline formula, Objection inversion microcopy, Anti-Dark-Pattern policy. |
+| **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | Spec Expansion | Opinionated specification synthesizer. | Converts 1-sentence lazy prompts into a 30-parameter complete architectural, psychological, and visual specification with calibrated Ambiguity Budget. |
 | **🔍 [`ui-verifier`](skills/ui-verifier/)** | Quality & Audit | 5-Pillar automated frontend auditor. | Full inspection of WCAG 2.2 AA Accessibility, Responsive Breakpoints (375/768/1440), Anti-Slop Visual Quality, Compositing Performance, and Semantic RTL/BiDi. |
 
 ---
@@ -143,17 +143,22 @@ Looking for inspiration or instant 1-line copy-paste prompts? Check out the **[`
 
 ---
 
-## 🎨 Deep Dive into Core Skills
+## 🎨 Deep Dive into the 6 Sub-Skills
 
-### 1. 👑 Master Web Builder (`master-web-builder`)
+### 1. 🧠 Intent Expansion (`autonomous-intent-expander`)
+- Transforms sparse 1-sentence prompts into a comprehensive 30-parameter technical, visual, and UX specification.
+- Enforces an **Ambiguity Budget**: automatically assumes standard UI layout decisions while surfacing explicit assumptions for high-risk business, security, or compliance constraints.
+
+### 2. 👑 Visual Architecture (`master-web-builder`)
 An adaptive visual architecture engine that prevents rigid, repetitive designs by supporting **5 Master Visual Chemistries**:
 - **⚡ Minimalist SaaS (Linear / Vercel):** Pitch charcoal canvas, crisp 1px borders, subtle directional light, JetBrains Mono metrics.
 - **💎 Luxury Obsidian & Glassmorphism 2.0:** Deep obsidian velvet canvas, SVG fractal noise, ambient mesh glow, Fresnel specular reflections.
 - **🎨 Neobrutalism (Gumroad / Figma):** Pastel chalk canvas, bold 2px black strokes, hard offset shadows, physical button press feedback.
 - **📰 Swiss Editorial & Paper Craft:** Warm natural paper canvas, high-contrast Serif typography, asymmetric grid layouts.
 - **☀️ Modern Crisp Light (Stripe / Apple):** Clean snow canvas, soft diffuse multi-stage elevation, accessible high-contrast accents.
+- **🛡️ Anti-Repetition Protocol:** Guarantees novelty across projects by altering at least 3 structural dimensions.
 
-### 2. 🎨 UI-Kit (`ui-kit`)
+### 3. 🎨 Component Recipes (`ui-kit`)
 Comprehensive component encyclopedia across 6 modern design ecosystems:
 - **AI-Native Primitives:** Loading skeletons, streaming text bubbles, tool call execution chips, human-in-the-loop approval cards, context pills, and flowchart node canvases.
 - **Shadcn UI Form & Overlay Suite:** Command palette (`Cmd+K`), Dialogs, Sheets, Sonner toasts, and accessible data tables.
@@ -161,14 +166,19 @@ Comprehensive component encyclopedia across 6 modern design ecosystems:
 - **Zero-Dependency Motion:** Pure CSS Grid dynamic height accordions (`0fr` $\to$ `1fr`), Spring bezier easings, and 3D tilt cards.
 - **Universal RTL/LTR Support:** Logical CSS properties (`ms-*`, `me-*`, `start-*`, `end-*`) for seamless bi-directional rendering.
 
-### 3. ⚡ Vibe Physics Engine (`vibe-physics-engine`)
+### 4. ⚡ Motion & Physics (`vibe-physics-engine`)
 - Replaces harsh linear CSS animations with physical spring kinetics.
 - Employs **OKLCH** perceptual color models for flawless dark/light contrast without mudding.
 - Zero-dep native smooth scroll fallback + progressive modern Lenis momentum.
 - Mandates crisp SVG vector sprites over low-res unicode emojis.
 
-### 4. 🔍 UI-Verifier (`ui-verifier`)
-- 5-pillar inspection pipeline validating Accessibility (WCAG 2.2 AA), Responsive breakpoints, Anti-Slop aesthetics, Performance, and Semantic RTL.
+### 5. ✍️ Strategic Value Copy (`conversion-copy-engine`)
+- Domain-calibrated narrative frameworks (B2B SaaS JTBD/ROI, Luxury status, Healthcare trust).
+- PAS (Problem-Agitation-Solution) narrative sequencing and Hero Headline formulas.
+- **Anti-Dark-Pattern Policy:** Prohibits fabricating fake user testimonials, synthetic reviews, or false urgency timers.
+
+### 6. 🔍 Quality Gate & Audit (`ui-verifier`)
+- 5-pillar inspection pipeline validating Accessibility (WCAG 2.2 AA), Responsive breakpoints (375px/768px/1440px), Anti-Slop aesthetics, Performance, and Semantic RTL.
 
 ---
 

@@ -1,20 +1,60 @@
 <#
 .SYNOPSIS
-  One-Click Installer for Vibe UI & Component Engine Skills
+  Safe, Non-Destructive Installer for Vibe UI & mr-ui-designer Skills Suite
 .DESCRIPTION
-  Installs master-web-builder, ui-kit, vibe-physics-engine, conversion-copy-engine,
-  autonomous-intent-expander, and ui-verifier into your local AI Agent skills directory.
+  Installs or updates the 6 Vibe UI skills:
+  - autonomous-intent-expander
+  - master-web-builder
+  - ui-kit
+  - vibe-physics-engine
+  - conversion-copy-engine
+  - ui-verifier
+.PARAMETER TargetDir
+  Explicit target directory. Defaults to ~/.gemini/config/skills (Antigravity).
+.PARAMETER Agent
+  Target AI coding tool: "antigravity" (default), "claude", "cursor", "windsurf", or "custom".
+.PARAMETER Backup
+  Automatically backs up existing skill directories before updating (default: $true).
+.PARAMETER Force
+  Overwrites existing skills without creating backups.
 #>
 
 [CmdletBinding()]
 param (
-    [string]$TargetDir = "$env:USERPROFILE\.gemini\config\skills"
+    [string]$TargetDir = "",
+    [ValidateSet("antigravity", "gemini", "claude", "cursor", "windsurf", "custom")]
+    [string]$Agent = "antigravity",
+    [switch]$Backup = $true,
+    [switch]$Force = $false
 )
 
 $ErrorActionPreference = "Stop"
 
+# Determine target directory based on selected Agent or explicit TargetDir
+if ([string]::IsNullOrWhiteSpace($TargetDir)) {
+    switch ($Agent) {
+        { $_ -in @("antigravity", "gemini") } {
+            $TargetDir = Join-Path $env:USERPROFILE ".gemini\config\skills"
+        }
+        "claude" {
+            $TargetDir = Join-Path (Get-Location) ".claude\skills"
+        }
+        "cursor" {
+            $TargetDir = Join-Path (Get-Location) ".cursor\skills"
+        }
+        "windsurf" {
+            $TargetDir = Join-Path (Get-Location) ".windsurf\skills"
+        }
+        Default {
+            $TargetDir = Join-Path $env:USERPROFILE ".gemini\config\skills"
+        }
+    }
+}
+
 Write-Host "Installing Vibe UI & AI Agent Skills Suite..." -ForegroundColor Cyan
-Write-Host "Target Directory: $TargetDir" -ForegroundColor DarkGray
+Write-Host "Target Agent     : $Agent" -ForegroundColor DarkGray
+Write-Host "Target Directory : $TargetDir" -ForegroundColor DarkGray
+Write-Host "Safe Backup Mode : $(if ($Force) { 'Disabled (--Force)' } else { 'Enabled' })" -ForegroundColor DarkGray
 
 if (-not (Test-Path $TargetDir)) {
     New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
@@ -58,10 +98,20 @@ $skills = Get-ChildItem -Path $SourceSkillsDir -Directory
 
 foreach ($skill in $skills) {
     $dest = Join-Path $TargetDir $skill.Name
-    Write-Host "[+] Installing skill: $($skill.Name) -> $dest" -ForegroundColor Green
-    if (Test-Path $dest) {
+    
+    # Safe non-destructive backup
+    if ((Test-Path $dest) -and (-not $Force) -and $Backup) {
+        $backupDest = "$dest.bak"
+        if (Test-Path $backupDest) {
+            Remove-Item -Path $backupDest -Recurse -Force
+        }
+        Move-Item -Path $dest -Destination $backupDest -Force
+        Write-Host "  [i] Backed up existing $($skill.Name) -> $backupDest" -ForegroundColor DarkGray
+    } elseif ((Test-Path $dest) -and $Force) {
         Remove-Item -Path $dest -Recurse -Force
     }
+
+    Write-Host "[+] Installing skill: $($skill.Name) -> $dest" -ForegroundColor Green
     Copy-Item -Path $skill.FullName -Destination $dest -Recurse -Force
 }
 
@@ -71,5 +121,5 @@ if ($TempDir -and (Test-Path $TempDir)) {
 }
 
 Write-Host ""
-Write-Host "Successfully installed all $($skills.Count) Vibe UI skills!" -ForegroundColor Yellow
-Write-Host "Your AI Agent is now equipped with Awwwards-grade visual architecture and 70+ modern components." -ForegroundColor Cyan
+Write-Host "Successfully installed all $($skills.Count) Vibe UI skills into $TargetDir!" -ForegroundColor Yellow
+Write-Host "Commanded by mr-ui-designer with 70+ components, WCAG AA accessibility, and semantic RTL support." -ForegroundColor Cyan

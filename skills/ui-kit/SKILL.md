@@ -55,3 +55,14 @@ When implementing components in Persian, Arabic, or Bilingual LTR/RTL views:
    - Mixed English brand names or tech terms inside Persian sentences must not scramble punctuation (`unicode-bidi: plaintext` or `<bdi>`).
    - Code blocks, numbers, metric counters (`99.98%`), and URLs always stay strictly `direction: ltr !important; text-align: left !important`.
 
+---
+
+## 📜 Provenance, Adaptation & Legal Licensing
+
+- **Clean-Room Implementation:** All 70+ components in this encyclopedia are clean-room adaptations, re-written from scratch as portable semantic Tailwind CSS / HTML / React recipes.
+- **No Proprietary Runtime Bundles:** This library does not import or re-distribute proprietary binaries or runtime npm packages.
+- **MIT & Open Source Attribution:**
+  - **Shadcn UI:** Re-implemented following the open-source patterns under the MIT License.
+  - **Transitions.dev:** Pure CSS motion patterns adapted from open CSS specifications.
+  - **Beautiful UI, BeUI & Rare UI:** Conceptual layout patterns synthesized into production-ready accessible code recipes.
+

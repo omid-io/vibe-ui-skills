@@ -1,21 +1,25 @@
 ---
 name: autonomous-intent-expander
-description: Zero-interrogation intent expansion engine that synthesizes opinionated, production-grade 30-parameter specifications from sparse user prompts (1-5 words) without friction or endless back-and-forth questioning.
+description: Opinionated 30-parameter intent expansion engine that synthesizes complete technical, aesthetic, and architectural specifications from sparse prompts using a calibrated Ambiguity Budget.
 triggers: ["expand intent", "auto-spec", "read my mind", "full architecture", "scale this", "deepen constraints", "lazy prompt", "طراحی سایت کامل", "سند نیازمندی"]
 ---
 
 # 🧠 Autonomous Intent Expander (30-Parameter Specification Engine)
 
 ## 🎯 Purpose & Philosophy
-The `autonomous-intent-expander` skill eliminates friction and interrogation fatigue. When a user provides a minimal or ambiguous prompt (e.g., *"Build gym website"*, *"طراحی سایت کلینیک زیبایی"*), this engine applies **opinionated default inference** to synthesize a complete architectural, aesthetic, psychological, conversion, and technical specification.
+The `autonomous-intent-expander` skill eliminates friction and interrogation fatigue while preventing blind hallucinations. When a user provides a minimal or ambiguous prompt (e.g., *"Build gym website"*, *"طراحی سایت کلینیک زیبایی"*), this engine applies **opinionated default inference** governed by a strict **Ambiguity Budget**.
 
 ---
 
-## ⚙️ Operating Rules & Contracts
+## ⚙️ Operating Rules & Ambiguity Budget
 
-1. **Calibrated Interrogation (Zero Friction for UI):**
-   - **Do NOT interrogate** the user for presentation, layout, visual chemistry, or standard UX choices. Select the industry-leading opinionated default and state it clearly.
-   - **Surface critical ambiguities only** when missing requirements directly alter irreversible business logic, financial math, security policies, or legal/compliance requirements.
+1. **The 3-Tier Ambiguity Budget:**
+   - **Tier 1: Visual, Aesthetic & Component Selection (100% Autonomous):**
+     Do NOT interrogate the user for layout, color palettes, visual chemistries, or component choices. Select the most cohesive, modern default and implement it directly.
+   - **Tier 2: Product Architecture & Standard Workflows (Autonomous with Stated Assumptions):**
+     Infer standard industry user flows and data shapes. Always report these under a clear `⚠️ Assumptions Made:` section so the user can steer if needed, without halting execution.
+   - **Tier 3: High-Risk Logic, Financials, Auth & Legal/Compliance (Zero Guesswork):**
+     Never blindly guess transaction logic, payment split math, HIPAA/GDPR constraints, or authentication models. If critical information is missing that changes liability or data integrity, surface the exact decision fork.
 
 2. **Domain Archetype Classification:**
    Map the input prompt to the most fitting of 8 Master Archetypes:

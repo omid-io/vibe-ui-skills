@@ -1,11 +1,48 @@
 #!/usr/bin/env bash
 set -e
 
-# Target directory (default: ~/.gemini/config/skills)
-TARGET_DIR="${1:-$HOME/.gemini/config/skills}"
+# ==============================================================================
+# Safe Non-Destructive Installer for Vibe UI & mr-ui-designer Skills Suite
+# ==============================================================================
+# Usage:
+#   ./install.sh                     # Installs to default ~/.gemini/config/skills
+#   ./install.sh --agent claude      # Installs to .claude/skills
+#   ./install.sh --agent cursor      # Installs to .cursor/skills
+#   ./install.sh --target /my/path   # Installs to custom path
+#   ./install.sh --force             # Overwrite without backup
+# ==============================================================================
 
-echo "✨ Installing Vibe UI & AI Agent Skills Suite..."
-echo "🎯 Target Directory: $TARGET_DIR"
+AGENT="antigravity"
+TARGET_DIR=""
+BACKUP=true
+FORCE=false
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --agent) AGENT="$2"; shift ;;
+        --target) TARGET_DIR="$2"; shift ;;
+        --force) FORCE=true; BACKUP=false ;;
+        --no-backup) BACKUP=false ;;
+        *) TARGET_DIR="$1" ;;
+    esac
+    shift
+done
+
+# Resolve default target if not explicitly provided
+if [ -z "$TARGET_DIR" ]; then
+    case "$AGENT" in
+        antigravity|gemini) TARGET_DIR="$HOME/.gemini/config/skills" ;;
+        claude)             TARGET_DIR="$(pwd)/.claude/skills" ;;
+        cursor)             TARGET_DIR="$(pwd)/.cursor/skills" ;;
+        windsurf)           TARGET_DIR="$(pwd)/.windsurf/skills" ;;
+        *)                  TARGET_DIR="$HOME/.gemini/config/skills" ;;
+    esac
+fi
+
+echo "✨ Installing Vibe UI & mr-ui-designer Skills Suite..."
+echo "🤖 Target Agent     : $AGENT"
+echo "🎯 Target Directory : $TARGET_DIR"
+echo "🛡️  Safe Backup Mode : $([ "$FORCE" = true ] && echo 'Disabled (--force)' || echo 'Enabled')"
 
 mkdir -p "$TARGET_DIR"
 
@@ -53,19 +90,29 @@ count=0
 for skill in "$SOURCE_SKILLS"/*; do
     if [ -d "$skill" ]; then
         skill_name=$(basename "$skill")
-        echo "  [+] Installing skill: $skill_name -> $TARGET_DIR/$skill_name"
-        rm -rf "$TARGET_DIR/$skill_name"
+        dest="$TARGET_DIR/$skill_name"
+        
+        # Safe non-destructive backup
+        if [ -d "$dest" ] && [ "$FORCE" = false ] && [ "$BACKUP" = true ]; then
+            backup_dest="${dest}.bak"
+            rm -rf "$backup_dest"
+            mv "$dest" "$backup_dest"
+            echo "  [i] Backed up existing $skill_name -> $backup_dest"
+        elif [ -d "$dest" ] && [ "$FORCE" = true ]; then
+            rm -rf "$dest"
+        fi
+
+        echo "  [+] Installing skill: $skill_name -> $dest"
         cp -r "$skill" "$TARGET_DIR/"
         count=$((count + 1))
     fi
 done
 
-# Cleanup temporary files
+# Clean up temp files if created
 if [ -n "$TEMP_DIR" ] && [ -d "$TEMP_DIR" ]; then
     rm -rf "$TEMP_DIR"
 fi
 
 echo ""
-echo "🎉 Successfully installed all $count Vibe UI skills!"
-echo "🚀 Your AI Agent is now equipped with Awwwards-grade visual architecture."
-
+echo "🎉 Successfully installed all $count Vibe UI skills into $TARGET_DIR!"
+echo "✨ Commanded by mr-ui-designer with 70+ components, WCAG AA accessibility, and semantic RTL support."

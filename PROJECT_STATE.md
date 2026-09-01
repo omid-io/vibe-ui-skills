@@ -6,11 +6,9 @@
 
 ---
 
-## 📝 Recent Commits & Milestones
-- `c030a7b`: docs: feature mr-ui-designer as master orchestrator agent in English and Persian READMEs
-- `0e0e250`: feat(agent): establish mr-ui-designer as master orchestrator agent
-- `3267408`: feat(v2): complete architecture & credibility refactor based on technical audits
-- `f6750cd`: fix(theme): preserve Vazirmatn font across all 5 themes & integrate smart BiDi rules from rtl-vazir-extension
+## 🎯 Active Milestone & Overview
+**Current Focus:** V2.1 Engineering Maturity & Phased Refactoring (Review Round 2)  
+**Description:** Synthesized second round of technical reviews from Claude & ChatGPT into a structured 2-Part Team Plan: Part 1 focuses on immediate bug fixes, de-hyping docs, non-destructive installers, and ambiguity budgeting; Part 2 focuses on evidence-based verifier, design-spec pipeline, and evals suite (pending user approval).
 
 ---
 
