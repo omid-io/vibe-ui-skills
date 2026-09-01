@@ -1,23 +1,23 @@
 <div align="center">
 
-# ✨ Vibe UI & AI Agent Design Skills Suite
-### *Turn your AI Coding Assistant into an Awwwards-Winning Senior Frontend Architect*
+# 👑 mr-ui-designer & Vibe UI Suite
+### *Turn your AI Assistant into an Awwwards-Winning Senior Frontend Architect*
 
 <p align="center">
   <a href="README.md"><b>English</b></a> •
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
+[![Master Agent: mr-ui-designer](https://img.shields.io/badge/Master_Agent-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)
 [![Golden Prompts](https://img.shields.io/badge/Cheatsheet-30%20Golden%20Prompts-gold)](PROMPTS.md)
-[![UI Primitives](https://img.shields.io/badge/Primitives-70%2B%20AI%20%26%20Shadcn-success)](#-the-core-skill-arsenal)
-[![Visual Engine](https://img.shields.io/badge/Aesthetics-5%20Master%20Styles-orange)](#1--master-web-builder)
+[![UI Primitives](https://img.shields.io/badge/Recipes-70%2B%20AI%20%26%20Shadcn-success)](#-the-sub-skills-arsenal)
 
 <p align="center">
   <b>Stop settling for generic "AI slop" interfaces.</b><br>
-  A curated, zero-dependency suite of agent skills that injects high-end visual physics, 70+ battle-tested UI primitives, and conversion copywriting into every web generation.<br><br>
+  <b><code>mr-ui-designer</code></b> is an autonomous master frontend architect agent that commands an arsenal of 6 specialized design and physics skills, injecting high-end visual chemistry, 70+ battle-tested UI primitives, and conversion copywriting into every web generation.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>Explore the Live Interactive Showcase & Theme Switcher</b></a>
 </p>
 
@@ -37,25 +37,29 @@ By default, every major LLM (Claude, GPT-4o, Gemini) defaults to predictable, ge
 - ❌ Missing AI states (no thinking skeletons, tool chips, diff viewers, or streaming bubbles).
 - ❌ Rigid, unnatural layout grids without depth, lighting, or physics.
 
-## 💎 The Solution: Vibe UI Suite
+## 👑 The Solution: mr-ui-designer (Master Orchestrator Agent)
 
-This repository gives your AI agent an opinionated visual constitution and an exhaustive 70+ component encyclopedia.
+Instead of relying on disconnected prompts, **`mr-ui-designer`** operates as a specialized **Lead Frontend Architect**. When you ask it to design or build an interface, it autonomously orchestrates an arsenal of **6 specialized sub-skills**:
 
 <p align="center">
   <img src="assets/showcase_hero.webp" alt="Interactive Showcase Preview - Glassmorphism 2.0" width="100%">
 </p>
 
 ```mermaid
-flowchart LR
-    UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> Expander["🧠 autonomous-intent-expander\n(30-Parameter Zero-Interrogation)"]
-    Expander --> VisualEngine["👑 master-web-builder & vibe-physics\n(Mesh Glow, Glass 2.0, Noise, Lenis)"]
-    Expander --> ComponentCatalog["🎨 ui-kit Encyclopedia\n(AI Native Primitives + Shadcn + Bento Grids)"]
-    VisualEngine & ComponentCatalog --> Masterpiece["✨ Production-Ready Luxury Interface\n(Awwwards Quality • Refresh-Rate-Aware Physics • Responsive • LTR/RTL)"]
+flowchart TD
+    UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> MasterAgent["👑 mr-ui-designer\n(Master Frontend & UI Architect Agent)"]
+    MasterAgent --> Expander["🧠 1. autonomous-intent-expander\n(30-Parameter Opinionated Spec)"]
+    MasterAgent --> VisualEngine["👑 2. master-web-builder\n(5 Visual Chemistries + Anti-Repetition)"]
+    MasterAgent --> UIComponents["🎨 3. ui-kit\n(70+ AI Native, Shadcn & Bento Recipes)"]
+    MasterAgent --> Physics["⚡ 4. vibe-physics-engine\n(OKLCH, Smooth Scroll & Sub-Pixel rAF)"]
+    MasterAgent --> Copy["✍️ 5. conversion-copy-engine\n(PAS, JTBD & Strategic Copy)"]
+    Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 6. ui-verifier\n(5-Pillar Quality & Accessibility Gate)"]
+    Verifier --> Masterpiece["✨ Production Masterpiece\n(Awwwards Quality • Zero AI Slop • Semantic RTL)"]
 ```
 
 ---
 
-## 📦 The Core Skill Arsenal
+## 📦 The Sub-Skills Arsenal (Commanded by mr-ui-designer)
 
 | Skill | Category | Description | Key Capabilities |
 | :--- | :--- | :--- | :--- |

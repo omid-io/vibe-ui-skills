@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✨ سوئیت مهارت‌های طراحی مدرن و Vibe UI برای ایجنت‌های هوش مصنوعی
+# 👑 mr-ui-designer و سوئیت مهارت‌های Vibe UI
 ### *تبدیل دستیار هوش مصنوعی شما به یک معمار ارشد و خلاق فرانت‌اند (سطح Awwwards)*
 
 <p align="center">
@@ -8,16 +8,16 @@
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
+[![Master Agent: mr-ui-designer](https://img.shields.io/badge/ایجنت_ارشد-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
 [![Live Showcase](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![License: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/سازگار_با-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
 [![Golden Prompts](https://img.shields.io/badge/راهنمای_پرامپت-۳۰_فرمول_طلایی-gold)](PROMPTS.fa.md)
-[![UI Primitives](https://img.shields.io/badge/کامپوننت‌ها-۷۰%2B_پریمیتیو_مدرن-success)](#-جعبه‌ابزار-مهارت‌های-اصلی)
-[![Visual Engine](https://img.shields.io/badge/استایل‌های_طراحی-۵_شیمی_بصری_مستر-orange)](#1--master-web-builder)
+[![UI Primitives](https://img.shields.io/badge/رسپی‌ها-۷۰%2B_کامپوننت_مدرن-success)](#-جعبه‌ابزار-مهارت‌های-زیردست)
 
 <p align="center">
   <b>به خروجی‌های تکراری و کلیشه‌ای هوش مصنوعی پایان دهید.</b><br>
-  مجموعه‌ای از مهارت‌های بدون وابستگی خارجی که فیزیک حرکتی پیشرفته، بیش از ۷۰ کامپوننت نیتیو مدرن و هوش مصنوعی، پشتیبانی کامل از زبان فارسی و راست‌چین (RTL)، و کپی‌رایتینگ متقاعدکننده را به تمام خروجی‌های وب تزریق می‌کند.<br><br>
+  <b><code>mr-ui-designer</code></b> یک ایجنت کارگزار و معمار ارشد فرانت‌اند است که یک جعبه‌ابزار ۶‌گانه از مهارت‌های طراحی، فیزیک، و اعتبارسنجی را رهبری می‌کند تا فیزیک حرکتی پیشرفته، بیش از ۷۰ کامپوننت هوش مصنوعی، پشتیبانی کامل از زبان فارسی و راست‌چین معنادار (Semantic RTL)، و کپی‌رایتینگ متقاعدکننده را به تمام خروجی‌های وب تزریق کند.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>مشاهده دموی زنده و تغییر آنی تم‌ها</b></a>
 </p>
 
@@ -37,25 +37,29 @@
 - ❌ عدم پشتیبانی از وضعیت‌های زنده هوش مصنوعی (حالت تفکر، تراشه‌های ابزار، دیف استریم).
 - ❌ چیدمان‌های بدون عمق بصری، نورپردازی و فیزیک حرکتی.
 
-## 💎 راهکار: سوئیت Vibe UI
+## 👑 راهکار: mr-ui-designer (ایجنت ارشد و معمار فرانت‌اند)
 
-این ریپازیتوری به هوش مصنوعی شما یک استخوان‌بندی بصری مستحکم و دایرةالمعارفی از ۷۰+ کامپوننت مدرن با پشتیبانی ۱۰۰٪ از راست‌چین (RTL) و فونت‌های فارسی اضافه می‌کند.
+به جای تکیه بر پرامپت‌های پراکنده، **`mr-ui-designer`** به عنوان یک **معمار ارشد فرانت‌اند** عمل می‌کند. هر زمان که از او طراحی یا بازسازی یک رابط کاربری را بخواهید، به صورت خودکار یک زرادخانه از **۶ مهارت تخصصی زیردست** را به کار می‌گیرد:
 
 <p align="center">
   <img src="assets/showcase_persian.webp" alt="پیش‌نمایش دموی زنده با فونت وزیرمتن و چیدمان راست‌چین" width="100%">
 </p>
 
 ```mermaid
-flowchart LR
-    UserPrompt["پرامپت کاربر: 'یک داشبورد یا لندینگ پیج بساز'"] --> Expander["🧠 autonomous-intent-expander\n(بسط خودکار ۳۰ پارامتر بدون سوال پیچ کردن)"]
-    Expander --> VisualEngine["👑 master-web-builder & vibe-physics\n(نور فرنل، بافت نویز، گرادینت مِش، اسکرول لنیس)"]
-    Expander --> ComponentCatalog["🎨 ui-kit Encyclopedia\n(کامپوننت‌های AI + شدسن + بنتو گرید)"]
-    VisualEngine & ComponentCatalog --> Masterpiece["✨ شاهکار فرانت‌اند آماده پروداکشن\n(سطح Awwwards • فیزیک ۱۲۰ فریم • پشتیبانی کامل فارسی و RTL)"]
+flowchart TD
+    UserPrompt["پرامپت کاربر: 'یک داشبورد یا لندینگ پیج بساز'"] --> MasterAgent["👑 mr-ui-designer\n(ایجنت ارشد و معمار فرانت‌اند)"]
+    MasterAgent --> Expander["🧠 ۱. autonomous-intent-expander\n(سند ۳۰ پارامتری بدون سوال‌پیچ کردن کاربر)"]
+    MasterAgent --> VisualEngine["👑 ۲. master-web-builder\n(موتور ۵ استایل بصری + پروتکل ضدتکرار)"]
+    MasterAgent --> UIComponents["🎨 ۳. ui-kit\n(۷۰+ رسپی هوش مصنوعی، شدسن و بنتو)"]
+    MasterAgent --> Physics["⚡ ۴. vibe-physics-engine\n(رنگ‌های OKLCH، اسکرول نرم و درون‌یابی rAF)"]
+    MasterAgent --> Copy["✍️ ۵. conversion-copy-engine\n(فرمول‌های PAS و کپی‌رایتینگ تخصصی صنایع)"]
+    Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 ۶. ui-verifier\n(آدیت ۵‌پایه کنترل کیفیت و دسترسی‌پذیری)"]
+    Verifier --> Masterpiece["✨ شاهکار فرانت‌اند نهایی\n(سطح Awwwards • بدون باگ AI Slop • راست‌چین معنادار)"]
 ```
 
 ---
 
-## 📦 جعبه‌ابزار مهارت‌های اصلی
+## 📦 جعبه‌ابزار مهارت‌های زیردست (تحت فرماندهی mr-ui-designer)
 
 | مهارت | دسته‌بندی | توضیح عملکرد | قابلیت‌های کلیدی |
 | :--- | :--- | :--- | :--- |
