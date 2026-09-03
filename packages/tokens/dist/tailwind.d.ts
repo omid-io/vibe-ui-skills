@@ -1,6 +1,11 @@
 /**
  * @vibe-ui/tokens/tailwind
- * Zero-config Tailwind CSS preset plugin for Vibe UI.
+ * Configurable OKLCH Tailwind CSS preset plugin for Vibe UI supporting all Visual Chemistries.
  */
-export declare function vibeUiTailwindPlugin({ addBase, addUtilities, theme }: any): void;
+import { VisualChemistryId } from './index';
+export interface VibeUiPluginOptions {
+    chemistry?: VisualChemistryId;
+}
+export declare function createVibeUiPlugin(options?: VibeUiPluginOptions): ({ addBase, addUtilities }: any) => void;
+export declare function vibeUiTailwindPlugin(arg: any): void | (({ addBase, addUtilities }: any) => void);
 export default vibeUiTailwindPlugin;

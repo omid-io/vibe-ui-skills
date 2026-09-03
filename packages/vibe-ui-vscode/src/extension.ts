@@ -117,14 +117,14 @@ class ChemistrySidebarProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
 
-    webviewView.webview.onDidReceiveMessage(async (message) => {
+    webviewView.webview.onDidReceiveMessage(async (message: any) => {
       if (message.command === 'copy') {
         await vscode.env.clipboard.writeText(message.text);
         vscode.window.showInformationMessage(`Vibe UI: Copied ${message.name || 'content'} to clipboard!`);
       } else if (message.command === 'insert') {
-        const editor = vscode.window.activeTextEditor;
+        const editor = vscode.window.activeTextEditor as any;
         if (editor) {
-          await editor.edit(editBuilder => {
+          await editor.edit((editBuilder: any) => {
             editBuilder.insert(editor.selection.active, message.text);
           });
           vscode.window.showInformationMessage(`Vibe UI: Inserted ${message.name} at cursor position!`);

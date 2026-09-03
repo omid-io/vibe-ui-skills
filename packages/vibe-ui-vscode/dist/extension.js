@@ -141,7 +141,7 @@ class ChemistrySidebarProvider {
             else if (message.command === 'insert') {
                 const editor = vscode.window.activeTextEditor;
                 if (editor) {
-                    await editor.edit(editBuilder => {
+                    await editor.edit((editBuilder) => {
                         editBuilder.insert(editor.selection.active, message.text);
                     });
                     vscode.window.showInformationMessage(`Vibe UI: Inserted ${message.name} at cursor position!`);

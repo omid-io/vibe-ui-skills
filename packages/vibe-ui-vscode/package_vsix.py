@@ -47,12 +47,15 @@ files_to_pack = [
     ("dist/extension.js", "extension/dist/extension.js"),
 ]
 
+missing_files = [src_rel for src_rel, _ in files_to_pack if not (pkg_dir / src_rel).exists()]
+if missing_files:
+    raise FileNotFoundError(f"VSIX Packaging Error: Missing required build artifacts: {', '.join(missing_files)}. Run 'node build.js' first.")
+
 with zipfile.ZipFile(out_vsix, "w", zipfile.ZIP_DEFLATED) as z:
     z.writestr("extension.vsixmanifest", vsix_manifest)
     z.writestr("[Content_Types].xml", content_types)
     for src_rel, dest_rel in files_to_pack:
         src_path = pkg_dir / src_rel
-        if src_path.exists():
-            z.write(src_path, dest_rel)
+        z.write(src_path, dest_rel)
 
 print(f"[+] Packaged VS Code / Cursor Extension binary: {out_vsix} ({out_vsix.stat().st_size} bytes)")

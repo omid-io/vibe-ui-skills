@@ -124,6 +124,8 @@ def main():
     v3_avg_tokens = round(v3_tokens / len(scenarios), 0)
     v3_avg_ms = round(v3_total_ms / len(scenarios), 2)
     v3_diversity_score = round((len(v3_styles) / 12.0) * 100.0, 1)
+    passed_verifications = sum(1 for d in v3_details if d.get("verification_status") == "PASS")
+    v3_gate_compliance = round((passed_verifications / len(v3_details)) * 100.0, 1) if v3_details else 0.0
 
     # Compile Benchmark Results Object
     benchmark_results = {
@@ -157,7 +159,7 @@ def main():
                 "unique_styles_rendered": len(v3_styles)
             },
             "hard_gates_compliance": {
-                "candidate": 100.0
+                "candidate": v3_gate_compliance
             }
         },
         "scenario_breakdown": v3_details

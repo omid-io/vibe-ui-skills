@@ -1,43 +1,54 @@
 "use strict";
 /**
  * @vibe-ui/tokens/tailwind
- * Zero-config Tailwind CSS preset plugin for Vibe UI.
+ * Configurable OKLCH Tailwind CSS preset plugin for Vibe UI supporting all Visual Chemistries.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createVibeUiPlugin = createVibeUiPlugin;
 exports.vibeUiTailwindPlugin = vibeUiTailwindPlugin;
 const index_1 = require("./index");
-function vibeUiTailwindPlugin({ addBase, addUtilities, theme }) {
-    // Inject OKLCH CSS Custom Properties
-    const rootVariables = {
-        '--vibe-canvas': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.canvas,
-        '--vibe-surface': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.surface,
-        '--vibe-border': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.border,
-        '--vibe-primary': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.primaryAccent,
-        '--vibe-text-primary': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.textPrimary,
-        '--vibe-text-muted': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.textMuted,
-        '--vibe-ring': index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors.ring,
+function createVibeUiPlugin(options = {}) {
+    const chemId = options.chemistry || 'MINIMALIST_SAAS';
+    const chem = index_1.VISUAL_CHEMISTRIES[chemId] || index_1.VISUAL_CHEMISTRIES.MINIMALIST_SAAS;
+    return function ({ addBase, addUtilities }) {
+        const rootVariables = {
+            '--vibe-canvas': chem.colors.canvas,
+            '--vibe-surface': chem.colors.surface,
+            '--vibe-border': chem.colors.border,
+            '--vibe-primary': chem.colors.primaryAccent,
+            '--vibe-text-primary': chem.colors.textPrimary,
+            '--vibe-text-muted': chem.colors.textMuted,
+            '--vibe-ring': chem.colors.ring,
+        };
+        if (addBase) {
+            addBase({
+                ':root': rootVariables,
+                '[dir="rtl"]': {
+                    'letter-spacing': 'normal !important',
+                },
+            });
+        }
+        if (addUtilities) {
+            addUtilities({
+                '.vibe-spring': {
+                    'transition-timing-function': index_1.MOTION_CURVES.naturalSpring,
+                },
+                '.vibe-snap': {
+                    'transition-timing-function': index_1.MOTION_CURVES.responsiveSnap,
+                },
+                '.vibe-glass': {
+                    'backdrop-filter': 'blur(12px)',
+                    '-webkit-backdrop-filter': 'blur(12px)',
+                },
+            });
+        }
     };
-    if (addBase) {
-        addBase({
-            ':root': rootVariables,
-            '[dir="rtl"]': {
-                'letter-spacing': 'normal !important',
-            },
-        });
+}
+// Dual-mode handler: functions as direct plugin or configurable plugin factory
+function vibeUiTailwindPlugin(arg) {
+    if (arg && (arg.addBase || arg.addUtilities)) {
+        return createVibeUiPlugin({})(arg);
     }
-    if (addUtilities) {
-        addUtilities({
-            '.vibe-spring': {
-                'transition-timing-function': index_1.MOTION_CURVES.naturalSpring,
-            },
-            '.vibe-snap': {
-                'transition-timing-function': index_1.MOTION_CURVES.responsiveSnap,
-            },
-            '.vibe-glass': {
-                'backdrop-filter': 'blur(12px)',
-                '-webkit-backdrop-filter': 'blur(12px)',
-            },
-        });
-    }
+    return createVibeUiPlugin(arg || {});
 }
 exports.default = vibeUiTailwindPlugin;
