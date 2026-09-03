@@ -3,4 +3,25 @@ vibe_core — Vibe UI V3 Core Architecture Engine
 Autonomous Design Decision Engine, Director, Recommendation & Genome
 """
 
-__version__ = "3.0.0-alpha.1"
+from vibe_core.constants import (
+    MAX_BLUR_SURFACES,
+    HARD_MIN_TOUCH_PX,
+    RECOMMENDED_TOUCH_PX,
+    MIN_WCAG_AA_CONTRAST_NORMAL,
+    MIN_WCAG_AA_CONTRAST_LARGE,
+    MAX_REFINEMENT_ITERATIONS,
+    MAX_DEFECTS_IN_CORRECTION_PROMPT,
+)
+
+__version__ = "3.0.1"
+
+__all__ = [
+    "MAX_BLUR_SURFACES",
+    "HARD_MIN_TOUCH_PX",
+    "RECOMMENDED_TOUCH_PX",
+    "MIN_WCAG_AA_CONTRAST_NORMAL",
+    "MIN_WCAG_AA_CONTRAST_LARGE",
+    "MAX_REFINEMENT_ITERATIONS",
+    "MAX_DEFECTS_IN_CORRECTION_PROMPT",
+    "__version__",
+]

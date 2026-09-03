@@ -6,8 +6,15 @@ AST-based HTML parsing via BeautifulSoup4 (falls back to regex if unavailable).
 
 import re
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
+
+from vibe_core.constants import (
+    MAX_BLUR_SURFACES,
+    HARD_MIN_TOUCH_PX,
+    RECOMMENDED_TOUCH_PX,
+)
 
 try:
     from bs4 import BeautifulSoup as _BS4
@@ -120,9 +127,8 @@ class DesignCritic:
             })
 
         # 6. Performance Budget: Backdrop Filter Blur Budget
-        # Canonical policy: MAX_BLUR_SURFACES = 3 (aligned across critic, verifier, run_evals.py)
+        # Canonical policy imported from vibe_core.constants.MAX_BLUR_SURFACES
         # BS4: search inside <style> blocks + inline style attributes only, not class names.
-        MAX_BLUR_SURFACES = 3
         if _BS4_AVAILABLE:
             _soup_blur = _BS4(html_content, "html.parser") if not _BS4_AVAILABLE or "soup" not in dir() else soup
             _style_texts = " ".join(t.get_text() for t in _soup_blur.find_all("style"))
@@ -209,10 +215,7 @@ class DesignCritic:
             })
 
         # Scorecard computation — all values derived from measurable HTML signals, no hardcoded constants.
-        # Touch target policy: HARD_MIN_TOUCH = 24px (WCAG 2.2 AA), RECOMMENDED_TOUCH = 44px (mobile HIG)
-        HARD_MIN_TOUCH = 24   # px — minimum WCAG 2.2 AA compliance threshold
-        RECOMMENDED_TOUCH = 44  # px — Apple/Google mobile HIG recommendation
-
+        # Touch target policy: HARD_MIN_TOUCH_PX = 24px (WCAG 2.2 AA), RECOMMENDED_TOUCH_PX = 44px (mobile HIG)
         # Visual Hierarchy: evidence — heading tags and display-font tokens present
         heading_tags = len(re.findall(r"<h[1-3][^>]*>", html_content, re.IGNORECASE))
         visual_hierarchy = min(14, 6 + (heading_tags * 2) + (4 if "display-font" in html_content else 0))
@@ -266,7 +269,7 @@ class DesignCritic:
             acceptance_status = "NEEDS_REFINEMENT"
 
         return {
-            "timestamp": "2026-09-03T12:00:00Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "iteration": iteration,
             "evaluated_style": style_family,
             "hard_gates_pass": hard_gates_pass,

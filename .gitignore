@@ -1,12 +1,45 @@
-.DS_Store
-Thumbs.db
-*.log
-.cache/
-.temp/
+# Dependencies
 node_modules/
-.next/
+.venv/
+venv/
 __pycache__/
 *.pyc
-.agents/
-*.vsix
+.mypy_cache/
+.pytest_cache/
 dist/
+build/
+target/
+.gradle/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+.temp/
+.cache/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors & IDEs
+.idea/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Test Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Packages, builds & agent artifacts
+*.vsix
+.next/
+.agents/
+*.zip
+*.gz
+*.tar
+*.tgz

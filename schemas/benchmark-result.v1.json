@@ -15,7 +15,10 @@
     "timestamp": { "type": "string" },
     "suite_version": { "type": "string" },
     "scenario_count": { "type": "integer", "minimum": 1 },
+    "benchmark_type": { "type": "string" },
     "baseline_system": { "type": "string" },
+    "baseline_type": { "type": "string" },
+    "baseline_methodology": { "type": "string" },
     "candidate_system": { "type": "string" },
     "kpi_comparison": {
       "type": "object",

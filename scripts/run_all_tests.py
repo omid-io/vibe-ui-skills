@@ -24,6 +24,7 @@ TEST_SUITES = [
     ("Knowledge Base Validation (13 Datasets)", ["python", "scripts/validate_data.py"]),
     ("Search & Recommendation Unit Tests", ["python", "scripts/test_search.py"]),
     ("Design Critic & AutoRefiner Unit Tests", ["python", "scripts/test_critic_refiner.py"]),
+    ("Full Pipeline Integration Tests (E2E)", ["python", "scripts/test_pipeline_e2e.py"]),
     ("Stratified 100-Scenario Benchmark", ["python", "evals/benchmark/run_benchmark.py"]),
     ("Physical Runtime Evals (WCAG AA & DOM)", ["python", "evals/run_evals.py", "--json"])
 ]
@@ -58,8 +59,8 @@ def main():
         return 1
     else:
         print(f"✅ ALL QUALITY GATES PASSED (Total time: {total_time_ms:.1f}ms)")
-        print(f"   - 100% of 7 test suites clean")
-        print(f"   - Zero regression blockers detected")
+        print(f"   - 100% of {len(TEST_SUITES)} test suites clean")
+        print("   - Zero regression blockers detected")
         print("=" * 70)
         return 0
 

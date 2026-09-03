@@ -11,8 +11,11 @@ AST-based HTML parsing via BeautifulSoup4 (falls back to regex if unavailable).
 
 import re
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List, Optional
+
+from vibe_core.constants import MAX_BLUR_SURFACES
 
 try:
     from bs4 import BeautifulSoup as _BS4
@@ -143,10 +146,9 @@ class VerificationEngine:
                 "threshold": "0 emojis"
             })
 
-        # 4. Performance: Backdrop Blur Budget Check
-        # Canonical policy: MAX_BLUR_SURFACES = 3 (aligned with critic.py and run_evals.py)
+        # 4. Performance: Backdrop Filter Blur Budget
+        # Canonical policy imported from vibe_core.constants.MAX_BLUR_SURFACES
         # BS4: search CSS text inside <style> blocks + inline style attributes only.
-        MAX_BLUR_SURFACES = 3
         if soup:
             # Re-parse from original (soup was mutated above by decompose)
             _soup2 = _BS4(html_content, "html.parser")
@@ -246,7 +248,7 @@ class VerificationEngine:
         overall_status = "PASS" if failed == 0 else "FAIL"
 
         return {
-            "timestamp": "2026-09-03T12:00:00Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "target_artifact": filename,
             "overall_status": overall_status,
             "runtime_mode": "static_dom_eval",
