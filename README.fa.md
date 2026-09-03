@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="assets/icon.png" width="100" height="100" alt="Vibe UI Suite Icon" style="border-radius: 22px; margin-bottom: 12px;" />
 
 # سوئیت مهارت‌های Vibe UI (`mr-ui-designer`)
 ### *قراردادهای قطعی رابط کاربری و هوش طراحی برای دستیارهای برنامه‌نویسی هوش مصنوعی*
@@ -8,6 +9,8 @@
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
+[![Open VSX](https://img.shields.io/badge/Open--VSX-v2.3.0-purple)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/manage/publishers/omid-io)
 [![معماری سیستم](https://img.shields.io/badge/سند_معماری-ARCHITECTURE.md-informational)](ARCHITECTURE.md)
 [![پایپ‌لاین ارزیابی CI](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![دموی زنده](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
@@ -15,7 +18,7 @@
 [![لایسنس: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
 [![سازگار با](https://img.shields.io/badge/سازگار_با-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Antigravity-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
 [![سوئیت ارزیابی](https://img.shields.io/badge/آزمون_خودکار-WCAG%20AA%20%26%20Schema-success)](evals/README.md)
-[![تاریخچه تغییرات](https://img.shields.io/badge/نسخه-SemVer%202.2.1-orange)](CHANGELOG.md)
+[![تاریخچه تغییرات](https://img.shields.io/badge/نسخه-SemVer%202.3.0-orange)](CHANGELOG.md)
 
 <p align="center">
   <b>قراردادهای قطعی و گیت‌های کنترل کیفی فرانت‌اند برای ایجنت‌های هوش مصنوعی.</b><br>

@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="assets/icon.png" width="100" height="100" alt="Vibe UI Suite Icon" style="border-radius: 22px; margin-bottom: 12px;" />
 
 # Vibe UI Suite (`mr-ui-designer`)
 ### *Deterministic UI Contracts & Component Intelligence for AI Coding Assistants*
@@ -8,6 +9,8 @@
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
+[![Open VSX](https://img.shields.io/badge/Open--VSX-v2.3.0-purple)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/manage/publishers/omid-io)
 [![Architecture: Specification](https://img.shields.io/badge/Architecture-Specification-informational)](ARCHITECTURE.md)
 [![CI Audit & Quality Gates](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
@@ -15,7 +18,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/Compatible%20with-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Antigravity-8A2BE2)](#-universal-ide-adapters)
 [![UI Evaluation Suite](https://img.shields.io/badge/Evaluator-WCAG%20AA%20%26%20Schema%20Audit-success)](evals/README.md)
-[![Changelog: Keep a Changelog](https://img.shields.io/badge/Changelog-SemVer%202.2.1-orange)](CHANGELOG.md)
+[![Changelog: Keep a Changelog](https://img.shields.io/badge/Changelog-SemVer%202.3.0-orange)](CHANGELOG.md)
 
 <p align="center">
   <b>Deterministic design contracts and evaluation gates for AI coding agents.</b><br>
