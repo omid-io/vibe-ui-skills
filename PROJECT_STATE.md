@@ -38,13 +38,16 @@
   - **Headless Playwright Browser Verification (`--browser`)**: Added runtime Chromium DOM inspection to [`evals/run_evals.py`](evals/run_evals.py), caught and fixed 25px horizontal overflow on mobile 375px viewport in [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html), and added `browser-runtime-evals` job to [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
   - **GitHub Roadmap Board Updated**: All issues #1 through #5 moved to `Done` on [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3).
 
+- [x] **R7: Multi-Registry Publishing & Release Infrastructure (v2.3.0 Live Worldwide)**:
+  - **VS Code Marketplace**: [`omid-io.vibe-ui-vscode`](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode) verified and 100% live worldwide.
+  - **Open-VSX Registry**: [`omid-io.vibe-ui-vscode`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) live with official 128x128 icon and claimed namespace `omid-io`.
+  - **NPM Registry**: [`@omid-io/tokens`](https://www.npmjs.com/package/@omid-io/tokens) published and installable globally.
+  - **GitHub Secrets & CI/CD Workflow**: Stored `NPM_TOKEN` and `OPENVSX_TOKEN` in repo secrets via `gh secret set`; created [`.github/workflows/publish.yml`](.github/workflows/publish.yml) for automated publishing on git release.
+  - **Release Runbook**: Authored [`docs/RELEASE_RUNBOOK.md`](docs/RELEASE_RUNBOOK.md) documenting 10-second manual update protocol for Marketplace and automated CI for NPM/Open-VSX.
+
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
-1. **Publish to Registries (User Login Action)**:
-   - Visual Studio Marketplace: Upload `packages/vibe-ui-vscode/vibe-ui-vscode-2.3.0.vsix` via [Marketplace Manage](https://marketplace.visualstudio.com/manage).
-   - Open-VSX Registry: Publish `vibe-ui-vscode-2.3.0.vsix` via [Open-VSX](https://open-vsx.org/).
-   - NPM: Publish `@vibe-ui/tokens` via `npm publish --access public`.
-2. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
+1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)

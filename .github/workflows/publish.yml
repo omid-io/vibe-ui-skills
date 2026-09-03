@@ -1,0 +1,64 @@
+name: Automated Multi-Registry Publishing
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies & build tokens
+        working-directory: packages/tokens
+        run: |
+          npm ci || npm install
+          node build.js
+
+      - name: Publish to NPM (@omid-io/tokens)
+        working-directory: packages/tokens
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --access public
+
+      - name: Build VS Code & Cursor Extension
+        working-directory: packages/vibe-ui-vscode
+        run: |
+          npm ci || npm install
+          node build.js
+          python package_vsix.py
+
+      - name: Publish to Open-VSX Registry
+        working-directory: packages/vibe-ui-vscode
+        env:
+          OPENVSX_TOKEN: ${{ secrets.OPENVSX_TOKEN }}
+        run: |
+          VSIX_FILE=$(ls *.vsix | head -n 1)
+          npx --yes ovsx publish "$VSIX_FILE" -p "$OPENVSX_TOKEN"
+
+      - name: Upload VSIX to GitHub Release
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VSIX_FILE=$(ls packages/vibe-ui-vscode/*.vsix | head -n 1)
+          gh release upload ${{ github.event.release.tag_name }} "$VSIX_FILE" --clobber
