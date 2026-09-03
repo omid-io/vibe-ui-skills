@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Production Complete — Worldwide Multi-Registry Release Live (NPM + Open-VSX + GitHub Releases).
-- **Status**: **Multi-Registry Publication 100% Live**. Package [`@omid-io/tokens@3.0.1`](https://www.npmjs.com/package/@omid-io/tokens) is live worldwide on NPM. VS Code extension is live on Open-VSX and GitHub Releases ([`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) & [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1)). All 8 quality gate suites pass 100% in 3007ms. Zero regressions. Zero open bugs.
+- **Active Phase**: Production Complete — Worldwide Multi-Registry Release Live (NPM + Open-VSX + GitHub Releases v3.1.0).
+- **Status**: **Multi-Registry Publication v3.1.0 100% Live**. Package [`@omid-io/tokens@3.1.0`](https://www.npmjs.com/package/@omid-io/tokens) is published live on NPM. VS Code extension [`vibe-ui-vscode@3.1.0`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) is live on Open-VSX and attached to GitHub Release [`v3.1.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.1.0). All 8 quality gate suites pass 100% in 2929ms. Dual beginner-to-pro AI agent workflows established. Zero regressions. Zero open bugs.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
@@ -158,6 +158,16 @@
   - **CSS-First Theme Architecture**: Transferred theme tokens into [`examples/nextjs-starter/app/globals.css`](file:///E:/programming/vibe-ui-skills/examples/nextjs-starter/app/globals.css) via `@import "tailwindcss";` and `@theme`.
   - **Production Build Certified**: `next build` generates clean static output in 19.9s with zero errors or warnings.
   - **All 8 Quality Gate Suites Pass**: 100% passing in 3217ms.
+
+- [x] **R24: Vibe UI Suite v3.1.0 Worldwide Release & Security Hardening [2026-09-03]**:
+  - **Frictionless Dual AI Agent Workflows**: Authored 30-second AI assistant quickstart guides in [`README.md`](file:///E:/programming/vibe-ui-skills/README.md) and [`README.fa.md`](file:///E:/programming/vibe-ui-skills/README.fa.md) empowering beginners (prompt-only) and pros (`npx @omid-io/tokens init` & `add`).
+  - **Mathematical WCAG Contrast Gate**: Integrated relative luminance ($L = 0.2126 R' + 0.7152 G' + 0.0722 B'$) and contrast ratio math into [`vibe_core/critic.py`](file:///E:/programming/vibe-ui-skills/vibe_core/critic.py).
+  - **Security Sanitation**: Moved raw root scripts (`install.sh`, `install.ps1`) into `scripts/` directory.
+  - **Multi-Registry Publishing Verified**:
+    - GitHub Release [`v3.1.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.1.0) published with `vibe-ui-vscode-3.1.0.vsix` binary attached.
+    - NPM package [`@omid-io/tokens@3.1.0`](https://www.npmjs.com/package/@omid-io/tokens) published live.
+    - Open-VSX extension [`omid-io.vibe-ui-vscode@3.1.0`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) published live via GitHub Actions.
+  - **100% Passing Quality Gates**: All 8 test suites pass cleanly in 2929ms.
 
 ## Immediate Next Steps & Execution Plan
 1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
