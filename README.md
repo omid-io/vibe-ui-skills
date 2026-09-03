@@ -67,7 +67,23 @@ flowchart TD
 
 ---
 
-## ⚡ 30-Second Setup: Multi-IDE Quick Start
+## ⚡ 1-Command CLI Quick Start
+
+Scaffold AI editor contracts, OKLCH design tokens, and AI-native component primitives in seconds with zero manual copy-paste:
+
+```bash
+# Initialize AI editor rules (.cursorrules, CLAUDE.md, .windsurfrules) & CSS tokens
+npx @omid-io/tokens init
+
+# Add verified, accessible React 19 component templates directly to components/vibe-ui/
+npx @omid-io/tokens add thinking-drawer
+npx @omid-io/tokens add telemetry-hud
+npx @omid-io/tokens add contrast-badge
+```
+
+---
+
+## 🛠️ Multi-IDE Quick Start
 
 Get deterministic UI contracts running in your AI coding assistant in 30 seconds with zero runtime dependencies:
 

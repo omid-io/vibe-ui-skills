@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.0] - 2026-09-03
+
+### Added
+- **Zero-Dependency CLI Tool (`@omid-io/tokens`)**:
+  - `npx @omid-io/tokens init`: Interactive CLI scaffold configuring AI editor contracts (`.cursorrules`, `CLAUDE.md`, `.windsurfrules`) and OKLCH CSS variables in 3 seconds.
+  - `npx @omid-io/tokens add <component>`: Instant injection of verified AI-native React 19 / Next.js 15 component primitives (`thinking-drawer`, `telemetry-hud`, `contrast-badge`) into `components/vibe-ui/`.
+  - `npx @omid-io/tokens list`: Visual list of all available component primitives.
+- **Interactive VS Code Extension Studio (`vibe-ui-vscode` v2.4.0)**:
+  - Real-time mathematical WCAG 2.2 AA / AAA contrast calculator with color pickers and instant pass/fail ratios.
+  - Interactive component catalog with 1-click **Insert into Active Editor** and TSX copy buttons.
+- **Multi-Registry Publication**:
+  - Live on NPM as `@omid-io/tokens` v2.4.0.
+  - Live on Open-VSX Registry as `omid-io.vibe-ui-vscode` v2.4.0.
+  - Standalone binary `vibe-ui-vscode-2.4.0.vsix` packaged for VS Code Marketplace.
+
+---
+
+## [2.3.0] - 2026-09-03
+
+### Added
+- **VS Code & Cursor Extension (`packages/vibe-ui-vscode`)**: Standalone binary `vibe-ui-vscode-2.3.0.vsix` with Webview visual chemistry explorer and in-editor WCAG contrast diagnostics.
+- **Scoped NPM Package (`@omid-io/tokens`)**: Dual ESM/CJS bundles with typed OKLCH colors, physics curves, and zero-config Tailwind CSS preset.
+- **Enterprise Architecture Specification (`docs/ENTERPRISE_ADAPTATION.md`)**: Complete integration guide for Figma design tokens and proprietary component libraries.
+- **Headless Playwright Evaluation Runner (`--browser`)**: Real DOM 375px mobile overflow detection and computed properties verification in Chromium.
+- **Multi-Registry Publishing Pipeline**: `.github/workflows/publish.yml` with automated release assets and encrypted GitHub Secrets.
+
+---
+
 ## [2.2.1] - 2026-09-03
 
 ### Added

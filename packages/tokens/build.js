@@ -9,7 +9,9 @@ if (!fs.existsSync(distDir)) {
 
 const files = [
   path.join(__dirname, 'src', 'index.ts'),
-  path.join(__dirname, 'src', 'tailwind.ts')
+  path.join(__dirname, 'src', 'tailwind.ts'),
+  path.join(__dirname, 'src', 'registry', 'components.ts'),
+  path.join(__dirname, 'src', 'cli.ts')
 ];
 
 // Compile CommonJS and .d.ts
@@ -45,4 +47,17 @@ const emitResult = esmProgram.emit(undefined, (fileName, data) => {
   }
 });
 
-console.log('✅ @vibe-ui/tokens build complete: ESM, CJS, and .d.ts generated in dist/');
+// Prepend shebang to dist/cli.js if not present
+const cliPath = path.join(distDir, 'cli.js');
+if (fs.existsSync(cliPath)) {
+  let cliContent = fs.readFileSync(cliPath, 'utf-8');
+  if (!cliContent.startsWith('#!/usr/bin/env node')) {
+    cliContent = '#!/usr/bin/env node\n' + cliContent;
+    fs.writeFileSync(cliPath, cliContent, 'utf-8');
+  }
+  try {
+    fs.chmodSync(cliPath, 0o755);
+  } catch (e) {}
+}
+
+console.log('✅ @omid-io/tokens build complete: CLI, ESM, CJS, and .d.ts generated in dist/');

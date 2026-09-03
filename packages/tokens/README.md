@@ -8,7 +8,33 @@
 npm install @omid-io/tokens
 ```
 
-## Usage
+## Quick Start with CLI
+
+### 1. Initialize Workspace Contracts (`init`)
+
+Scaffold AI editor contracts (`.cursorrules`, `CLAUDE.md`, `.windsurfrules`) and OKLCH CSS variables in 3 seconds:
+
+```bash
+npx @omid-io/tokens init
+```
+
+### 2. Add AI-Native Components (`add`)
+
+Add accessible, zero-emoji, verified React 19 component templates directly into your project (`components/vibe-ui/`):
+
+```bash
+npx @omid-io/tokens add thinking-drawer
+npx @omid-io/tokens add telemetry-hud
+npx @omid-io/tokens add contrast-badge
+```
+
+### 3. List Registry Components (`list`)
+
+```bash
+npx @omid-io/tokens list
+```
+
+## Programmatic Usage
 
 ### 1. Direct Token Imports
 

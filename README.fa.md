@@ -67,7 +67,23 @@ flowchart TD
 
 ---
 
-## ⚡ راه‌اندازی ۳۰ ثانیه‌ای در محیط‌های مختلف (Multi-IDE Setup)
+## ⚡ راه‌اندازی سریع با ابزار خط فرمان CLI (پیشنهادی)
+
+بدون نیاز به کپی دستی فایل‌ها، قوانین ادیتور هوش مصنوعی و کامپوننت‌های آماده را با یک دستور در ترمینال ایجاد کنید:
+
+```bash
+# راه‌اندازی قوانین ادیتور (.cursorrules، CLAUDE.md، .windsurfrules) و متغیرهای توکن
+npx @omid-io/tokens init
+
+# افزودن مستقیم کامپوننت‌های تست‌شده React 19 به پروژه (components/vibe-ui/)
+npx @omid-io/tokens add thinking-drawer
+npx @omid-io/tokens add telemetry-hud
+npx @omid-io/tokens add contrast-badge
+```
+
+---
+
+## 🛠️ راه‌اندازی دستی در محیط‌های مختلف (Multi-IDE Setup)
 
 قراردادهای قطعی رابط کاربری را بدون وابستگی خارجی در ۳۰ ثانیه به محیط هوش مصنوعی خود متصل کنید:
 
