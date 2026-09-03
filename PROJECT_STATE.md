@@ -1,8 +1,8 @@
 # Project State: vibe-ui-skills
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 6 — Public Launch & Ecosystem Release (v2.4.0 Live Worldwide)
-- **Status**: **100% COMPLETED & VERIFIED**. Zero-dependency CLI and interactive VS Code extension live globally; 30-parameter closed-world schema hardened; real Chromium DOM assertions verified; documentation de-hyped with zero superlatives.
+- **Active Phase**: Phase 6 — Public Launch & Ecosystem Release (v2.4.1 Live Worldwide)
+- **Status**: **100% COMPLETED & VERIFIED**. Official release `v2.4.1` published to GitHub; multi-LLM consensus score 9.1/10; zero-dependency CLI (`@omid-io/tokens`) and interactive VS Code extension live globally; 30-parameter closed-world schema hardened; real Chromium DOM assertions verified; documentation de-hyped with zero superlatives.
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
