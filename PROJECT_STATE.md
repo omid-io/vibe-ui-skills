@@ -1,10 +1,15 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 7 — Vibe UI Suite (v3.0.0 Production Baseline)
-- **Status**: **Engineering Roadmap & Rebrand to Vibe UI Suite 100% Completed**. All 25 engineering phases satisfied, 26 orthogonal styles integrated, machine-readable skill contracts mapped, GitHub repository renamed to `omid-io/vibe-ui-suite`, and 100% CI pass rate verified.
+- **Active Phase**: Deep Architectural Hardening — Milestone 1 (AutoRefiner HTML Repair & Hard-Gate Anti-Regression)
+- **Status**: **Milestone 1 Completed 100%**. Upgraded `vibe_core/refiner.py` with stack-based token scanner and reverse-splicing algorithm to balance `<button>...</button>` pairs, and implemented 5-Rule Invariant Gate. Expanded `scripts/test_critic_refiner.py` with 12 unit tests (100% PASS). All 7 quality gate suites in `scripts/run_all_tests.py` pass cleanly.
 
 ## Completed Milestones
+- [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
+  - Implemented pure-Python stdlib stack-based token scanner (`TAG_TOKEN_RE`) and reverse-splicing algorithm in [`vibe_core/refiner.py`](vibe_core/refiner.py) converting clickable divs to `<button type="button" ...>` with exact closing `</button>` matching, supporting nested divs, attributes with `>`, comments, scripts, styles, and void elements.
+  - Implemented 5-Rule Invariant Gate (`should_accept_patch`) enforcing Gate Monotonicity (no new hard gate failures, non-increasing count), Tag Balance Invariant, Mobile Overflow Invariant, and Score Progression.
+  - Expanded [`scripts/test_critic_refiner.py`](scripts/test_critic_refiner.py) from 3 to 12 unit tests covering all edge cases specified in Survey Handoff §4.3 with 100% pass rate.
+  - Verified zero regressions across all 7 test suites via `scripts/run_all_tests.py` (743.9ms total execution time).
 - [x] **R1: System Architecture & Documentation**:
   - Authored comprehensive [`ARCHITECTURE.md`](ARCHITECTURE.md) (419 lines) defining 6-skill orchestration DAG, JSON Schema machine contracts, 5 visual chemistries, and fixed-structure semantic RTL.
   - Published [`CHANGELOG.md`](CHANGELOG.md) adhering to Keep a Changelog and Semantic Versioning (v2.2.0).

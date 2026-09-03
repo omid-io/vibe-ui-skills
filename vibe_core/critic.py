@@ -106,12 +106,14 @@ class DesignCritic:
             })
 
         # 6. Performance Budget: Backdrop Filter Blur Budget
+        # Canonical policy: MAX_BLUR_SURFACES = 3 (aligned across critic, verifier, run_evals.py)
+        MAX_BLUR_SURFACES = 3
         blur_matches = re.findall(r"backdrop-blur|blur\(", html_content)
-        if len(blur_matches) > 2:
+        if len(blur_matches) > MAX_BLUR_SURFACES:
             defects_ranked.append({
                 "severity": "high",
                 "type": "excessive_backdrop_blur",
-                "message": f"Found {len(blur_matches)} blur layers, exceeding GPU budget (<= 2).",
+                "message": f"Found {len(blur_matches)} blur layers, exceeding GPU budget (<= {MAX_BLUR_SURFACES}).",
                 "suggested_patch": "Reduce backdrop-filter layers to prevent mobile frame drops."
             })
 
@@ -161,15 +163,40 @@ class DesignCritic:
                 "suggested_patch": "Add error container with retry button."
             })
 
-        # Scorecard computation
-        visual_hierarchy = 14 if "display-font" in html_content or "h1" in html_content else 10
+        # Scorecard computation — all values derived from measurable HTML signals, no hardcoded constants.
+        # Touch target policy: HARD_MIN_TOUCH = 24px (WCAG 2.2 AA), RECOMMENDED_TOUCH = 44px (mobile HIG)
+        HARD_MIN_TOUCH = 24   # px — minimum WCAG 2.2 AA compliance threshold
+        RECOMMENDED_TOUCH = 44  # px — Apple/Google mobile HIG recommendation
+
+        # Visual Hierarchy: evidence — heading tags and display-font tokens present
+        heading_tags = len(re.findall(r"<h[1-3][^>]*>", html_content, re.IGNORECASE))
+        visual_hierarchy = min(14, 6 + (heading_tags * 2) + (4 if "display-font" in html_content else 0))
+
+        # Anti-Slop Distinctiveness: evidence — absence of generic purple/indigo AI gradient trope
         anti_slop_distinctiveness = 14 if "from-purple-600" not in html_content else 8
-        domain_fit = 14
+
+        # Domain Fit: evidence — CSS custom properties and domain-calibrated tokens signal intentional design
+        css_var_count = len(re.findall(r"var\(--", html_content))
+        domain_fit = min(14, 4 + min(10, css_var_count))
+
+        # Usability: evidence — presence of interactive semantic elements and absence of div-onclick violations
         usability = 10 if not div_onclick else 6
-        typography = 10 if "font-family" in html_content or "display-font" in html_content else 7
+
+        # Typography: evidence — font-family declarations and display-font token usage
+        has_font_family = bool(re.search(r"font-family\s*:", html_content) or "display-font" in html_content)
+        font_stack_count = len(re.findall(r"font-family\s*:", html_content))
+        typography = min(10, 4 + (4 if has_font_family else 0) + min(2, font_stack_count))
+
+        # Responsive: evidence — mobile viewport meta tag presence
         responsive = 10 if 'name="viewport"' in html_content else 4
-        brand_coherence = 9
-        perf_budget = 5 if len(blur_matches) <= 2 else 2
+
+        # Brand Coherence: evidence — presence of CSS variable design tokens (--surface, --accent, --text)
+        brand_token_signals = ["--accent", "--surface", "--text-primary", "--border", "--canvas"]
+        brand_matches = sum(1 for t in brand_token_signals if t in html_content)
+        brand_coherence = min(9, brand_matches * 2)
+
+        # Performance Budget: evidence — blur surface count measured above
+        perf_budget = 5 if len(blur_matches) <= MAX_BLUR_SURFACES else 2
 
         scorecard = {
             "visual_hierarchy": visual_hierarchy,

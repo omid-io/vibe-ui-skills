@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/design-genome.v1.json",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "Canonical Style DNA Registry defining 26 orthogonal style families with geometry, spatial grids, material textures, typography pairings, motion physics, and anti-pattern avoid lists.",
   "styles": [
     {
