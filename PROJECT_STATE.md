@@ -77,15 +77,16 @@
   - **WebView Security Hardening**: Injected strict Content-Security-Policy (CSP) meta tag into VS Code webview and decoupled implicit global `event` in `switchTab`.
   - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
 - [x] **R13: Architecture & V3 Strategic Specification (Design Intelligence)**:
-  - Formulated unified master architectural specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
-  - Consolidated complete decision engine formulas (confidence thresholds, recommendation scoring, conflict resolver, decision trace), two-tier quality gates, priority auto-refinement, user-effort KPIs, and 7-unknown resolution into one single authoritative master document.
+  - Formulated and adopted the comprehensive 41-section Final Product & Architecture Specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
+  - Codified 3 User Experience Modes (Assisted, Expert, Reference/Brand Principle Extraction), Tripartite Contract Architecture (Intent, Decision, Verification Contracts), Definition of Done (DoD), and strict Style Acceptance Rules.
+  - Formally resolved and sealed all 7 core unknowns with zero regression risk and full backward compatibility.
   - Aligned project roadmap to elevate First-Pass Quality (>70%) and eliminate repetitive manual user prompt iterations.
 
 ## Immediate Next Steps & Execution Plan
-1. **Phase 1 Execution (Design Director Core)**: Upgrade `autonomous-intent-expander` to extract business context and implement the 3-Candidate direction protocol.
-2. **Phase 2 Execution (Knowledge Base Ingestion)**: Create structured JSON databases in `data/` (`taxonomy.json`, `styles.json`, `palettes.json`, `typography.json`, `priors.json`).
-3. **Phase 3 Execution (Recommendation & Genome)**: Implement `scripts/search.py` scoring and upgrade `schemas/design-spec.v1.schema.json`.
-4. **Phase 4 Execution (Design Critic & Gates)**: Implement `evals/design_critic.py` style-aware heuristic audit and two-tier gates.
+1. **Phase 1 Execution (Design Intelligence Core & search.py)**: Create zero-token local retrieval engine and structured JSON datasets in `data/` (`taxonomy.json`, `styles.json`, `palettes.json`, `typography.json`, `priors.json`).
+2. **Phase 2 Execution (Design Director & Inference)**: Upgrade `autonomous-intent-expander` with Confidence Estimation ($C \ge 0.8, 0.5-0.8, <0.5$) and 3-Candidate direction protocol.
+3. **Phase 3 Execution (Recommendation & Genome)**: Implement multi-factor candidate scoring and composable 14-parameter Genome.
+4. **Phase 4 Execution (Design Critic & Two-Tier Gates)**: Implement style-aware heuristic audit and priority-based auto-refinement loop.
 
 ## Modified / Created Files Index
 - [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
