@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Deep Architectural Hardening — Milestone 1 (AutoRefiner HTML Repair & Hard-Gate Anti-Regression)
-- **Status**: **Milestone 1 Completed 100%**. Upgraded `vibe_core/refiner.py` with stack-based token scanner and reverse-splicing algorithm to balance `<button>...</button>` pairs, and implemented 5-Rule Invariant Gate. Expanded `scripts/test_critic_refiner.py` with 12 unit tests (100% PASS). All 7 quality gate suites in `scripts/run_all_tests.py` pass cleanly.
+- **Active Phase**: Idle — R20 Complete. Next: v3.0.1 patch release or R21 (Node.js ESLint Plugin).
+- **Status**: **R20 Completed 100%** (`993511b`). Shipped BeautifulSoup4 AST parser replacing fragile Regex in `critic.py`/`verifier.py`, new `SelfHealingLoop` module (`healer.py`) bridging Critic output to LLM Correction Prompts, and Tiered Verification (`fast`/`--strict`) in `verifier.py` and `vibe_cli.py`. All 7 test suites PASS 100% in 2808ms. Zero regressions.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
@@ -130,9 +130,15 @@
   - **Test Fixtures Upgraded:** Test 1 and Test 11 in `test_critic_refiner.py` enriched with realistic CSS custom properties so measurement-based critic correctly evaluates above 80-point threshold.
   - **Zero Regressions:** All 7 test suites pass 100% in 791ms.
 
+- [x] **R20: Qwen Audit Hardening — AST Parser, Self-Healing Loop & Tiered Verification (v3.0.1) [2026-09-03]** (`993511b`):
+  - **AST-Based HTML Parsing (P0)**: Replaced `re.findall` for `<div onclick>` detection in [`vibe_core/critic.py`](file:///E:/programming/vibe-ui-skills/vibe_core/critic.py) with `BeautifulSoup4` AST parser. Blur budget detection now scoped to `<style>` blocks + inline style attrs only (not class name strings). Graceful regex fallback for zero-dep environments. Same upgrade applied to [`vibe_core/verifier.py`](file:///E:/programming/vibe-ui-skills/vibe_core/verifier.py) for SVG count and CSS extraction.
+  - **Self-Healing Agent Loop (P0)**: Created [`vibe_core/healer.py`](file:///E:/programming/vibe-ui-skills/vibe_core/healer.py) — `SelfHealingLoop` class with `build_correction_prompt()` converting `defects_ranked` into structured `[VIBE-UI CORRECTION REQUEST]` blocks for LLM consumption, and `heal()` running AutoRefiner then generating a correction prompt for residual issues. Integrated into `cmd_generate` pipeline replacing bare `AutoRefiner`.
+  - **Tiered Verification (P1)**: `VerificationEngine.verify_html()` gains `mode` param (`"fast"` default / `"strict"` Playwright). Added `_fast_path()` (<50ms static) and `_strict_path()` (Playwright headless multi-viewport) separation. `vibe verify --strict` and `vibe generate --strict` flags added. New `vibe heal <file>` CLI command with `-p`/`-o` args.
+  - **All 7 test suites**: 100% PASS in 2808ms. Zero regressions.
+
 ## Immediate Next Steps & Execution Plan
-1. **Package Release**: Publish `@omid-io/tokens` v3.0.0 to NPM and `vibe-ui-vscode` to Visual Studio Marketplace.
-2. **Community & Content Expansion**: Launch video demonstration of the Design Compiler Studio on social channels.
+1. **v3.0.1 Patch Release**: Tag and publish `@omid-io/tokens` v3.0.1 to NPM + VS Code Marketplace with R20 changelog.
+2. **R21 (Optional)**: Port `critic.py`/`verifier.py` fast-path to a Node.js Custom ESLint Plugin for native `npm run vibe-check` integration in Next.js projects.
 
 ## Modified / Created Files Index
 - [`vibe_cli.py`](vibe_cli.py)
