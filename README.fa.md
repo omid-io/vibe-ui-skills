@@ -76,8 +76,10 @@ flowchart TD
   ```
 * **محیط Claude Code (`CLAUDE.md`):**
   ```bash
+  # برای پروژه‌های جدید:
   cp adapters/claude/CLAUDE.md CLAUDE.md
-  # افزودن مستقیم قواعد ضد اسلوپ و استانداردهای کامپوننت به کانتکست کلود
+  # یا الصاق بدون تخریب به دستورالعمل‌های موجود:
+  cat adapters/claude/CLAUDE.md >> CLAUDE.md
   ```
 * **محیط Windsurf IDE:**
   ```bash

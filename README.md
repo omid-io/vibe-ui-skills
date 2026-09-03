@@ -78,8 +78,10 @@ Choose your environment and load the pre-configured adapter:
   ```
 * **Claude Code (`CLAUDE.md`):**
   ```bash
-  # Append Vibe UI contracts to your Claude Code workspace instructions
+  # For new workspaces:
   cp adapters/claude/CLAUDE.md CLAUDE.md
+  # Or safely append to existing workspace instructions:
+  cat adapters/claude/CLAUDE.md >> CLAUDE.md
   ```
 * **Windsurf IDE:**
   ```bash

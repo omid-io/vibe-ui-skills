@@ -52,7 +52,7 @@ export default function HomePage() {
                 VIBE UI
               </span>
               <span className="ltr-code text-[11px] font-mono text-textMuted">
-                nextjs-starter v2.2.0
+                nextjs-starter v2.2.1
               </span>
             </div>
           </div>
