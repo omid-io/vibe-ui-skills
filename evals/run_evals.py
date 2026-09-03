@@ -658,6 +658,48 @@ def audit_repo_integrity(root_dir: Path) -> dict:
                         })
                         results["overall_status"] = "FAIL"
 
+                # Negative fixture: illegal_additional_property.json (Closed-World Enforcement)
+                inv_prop = fixtures_dir / "illegal_additional_property.json"
+                if inv_prop.exists():
+                    data = json.loads(inv_prop.read_text(encoding="utf-8"))
+                    errs = validate_json_instance(data, schema_data)
+                    if errs:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Closed-World Unknown Key",
+                            "status": "PASS",
+                            "msg": f"Correctly rejected illegal additional property: {errs[0]}"
+                        })
+                    else:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Closed-World Unknown Key",
+                            "status": "FAIL",
+                            "msg": "Negative fixture 'illegal_additional_property.json' was unexpectedly accepted"
+                        })
+                        results["overall_status"] = "FAIL"
+
+                # Negative fixture: out_of_range_latitude.json (Domain Numerical Bounds)
+                inv_lat = fixtures_dir / "out_of_range_latitude.json"
+                if inv_lat.exists():
+                    data = json.loads(inv_lat.read_text(encoding="utf-8"))
+                    errs = validate_json_instance(data, schema_data)
+                    if errs:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Domain Coordinate Bounds",
+                            "status": "PASS",
+                            "msg": f"Correctly rejected out-of-range latitude: {errs[0]}"
+                        })
+                    else:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Domain Coordinate Bounds",
+                            "status": "FAIL",
+                            "msg": "Negative fixture 'out_of_range_latitude.json' was unexpectedly accepted"
+                        })
+                        results["overall_status"] = "FAIL"
+
         except Exception as e:
             results["checks"].append({
                 "pillar": "Machine Contract",
@@ -902,19 +944,32 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
             context = browser.new_context(viewport={"width": 375, "height": 667})
             page = context.new_page()
 
-            overflow_violations = []
+            overflow_violations_375 = []
+            overflow_violations_320 = []
             touch_violations = []
+            unnamed_violations = []
             rtl_violations = []
 
             for html_path in html_files:
                 uri = html_path.resolve().as_uri()
+                
+                # Viewport 1: 375x667 (Standard Mobile)
+                page.set_viewport_size({"width": 375, "height": 667})
                 page.goto(uri)
                 page.wait_for_load_state("domcontentloaded")
 
-                # Check 1: Real Mobile 375px Viewport Overflow
-                is_overflow = page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
-                if is_overflow:
-                    overflow_violations.append(html_path.name)
+                is_overflow_375 = page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
+                if is_overflow_375:
+                    overflow_violations_375.append(html_path.name)
+
+                # Viewport 2: 320x568 (Narrow Mobile Boundary)
+                page.set_viewport_size({"width": 320, "height": 568})
+                is_overflow_320 = page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
+                if is_overflow_320:
+                    overflow_violations_320.append(html_path.name)
+
+                # Reset to 375 for component & accessibility audits
+                page.set_viewport_size({"width": 375, "height": 667})
 
                 # Check 2: Rendered Computed Styles & Touch Target Geometry Assertions
                 violations = page.evaluate("""() => {
@@ -933,7 +988,24 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 if violations:
                     touch_violations.append(f"{html_path.name}: {', '.join(violations[:3])}")
 
-                # Check 3: Semantic RTL Macro Bounding Geometry Assertions
+                # Check 3: Accessible Name & Label Contract on Interactive Elements
+                unnamed = page.evaluate("""() => {
+                    const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]'));
+                    const bad = [];
+                    for (const el of buttons) {
+                        const style = window.getComputedStyle(el);
+                        if (style.display === 'none' || style.visibility === 'hidden') continue;
+                        const name = (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim();
+                        if (!name && el.getBoundingClientRect().width > 0) {
+                            bad.push(el.tagName.toLowerCase());
+                        }
+                    }
+                    return bad;
+                }""")
+                if unnamed:
+                    unnamed_violations.append(f"{html_path.name}: {len(unnamed)} unnamed element(s)")
+
+                # Check 4: Semantic RTL Macro Bounding Geometry Assertions
                 if "rtl" in html_path.name.lower() or "persian" in html_path.name.lower():
                     is_rtl_stable = page.evaluate("""() => {
                         const macroAnchors = Array.from(document.querySelectorAll('header, main, nav, section'));
@@ -951,27 +1023,28 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
 
             browser.close()
 
-            if not overflow_violations:
+            if not overflow_violations_375 and not overflow_violations_320:
                 results["checks"].append({
                     "pillar": "Layout Geometry",
-                    "name": "375px Mobile Viewport Overflow",
+                    "name": "Multi-Viewport Mobile Overflow (320px & 375px)",
                     "status": "PASS",
-                    "msg": f"0px horizontal overflow across all {len(html_files)} interfaces on mobile viewport (375x667)"
+                    "msg": f"0px horizontal overflow across all {len(html_files)} interfaces at 320px & 375px viewports"
                 })
             else:
                 results["overall_status"] = "FAIL"
                 results["pillars"]["Layout Geometry"] = "FAIL"
+                all_overflows = list(set(overflow_violations_375 + overflow_violations_320))
                 results["checks"].append({
                     "pillar": "Layout Geometry",
-                    "name": "375px Mobile Viewport Overflow",
+                    "name": "Multi-Viewport Mobile Overflow (320px & 375px)",
                     "status": "FAIL",
-                    "msg": f"Horizontal scrollbar detected on: {', '.join(overflow_violations)}"
+                    "msg": f"Horizontal scrollbar detected on: {', '.join(all_overflows)}"
                 })
 
             if not touch_violations:
                 results["checks"].append({
                     "pillar": "Computed Styles",
-                    "name": "Rendered DOM Computed Properties",
+                    "name": "Interactive Target Geometry & Bounding Boxes",
                     "status": "PASS",
                     "msg": f"Verified computed styles & touch target bounding boxes (>= 24px) across {len(html_files)} interfaces"
                 })
@@ -980,9 +1053,25 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 results["pillars"]["Computed Styles"] = "FAIL"
                 results["checks"].append({
                     "pillar": "Computed Styles",
-                    "name": "Rendered DOM Computed Properties",
+                    "name": "Interactive Target Geometry & Bounding Boxes",
                     "status": "FAIL",
                     "msg": f"Touch targets < 24px detected: {', '.join(touch_violations)}"
+                })
+
+            if not unnamed_violations:
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Interactive Accessible Names & Labels",
+                    "status": "PASS",
+                    "msg": f"Verified non-empty accessible name/label/aria-label on interactive controls across all {len(html_files)} interfaces"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Interactive Accessible Names & Labels",
+                    "status": "FAIL",
+                    "msg": f"Missing accessible name on controls: {', '.join(unnamed_violations)}"
                 })
 
             if not rtl_violations:
