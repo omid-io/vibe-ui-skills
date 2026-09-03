@@ -78,6 +78,7 @@
   - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
 - [x] **R13: Architecture & V3 Strategic Specification (Design Intelligence)**:
   - Formulated and adopted the comprehensive 41-section Final Product & Architecture Specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
+  - Authored the authoritative, anti-ambiguity technical blueprint in [`docs/V3_IMPLEMENTATION_CONTRACT.md`](docs/V3_IMPLEMENTATION_CONTRACT.md) defining component interfaces, data schemas, invariants, and acceptance gates.
   - Codified 3 User Experience Modes (Assisted, Expert, Reference/Brand Principle Extraction), Tripartite Contract Architecture (Intent, Decision, Verification Contracts), Definition of Done (DoD), and strict Style Acceptance Rules.
   - Formally resolved and sealed all 7 core unknowns with zero regression risk and full backward compatibility.
   - Aligned project roadmap to elevate First-Pass Quality (>70%) and eliminate repetitive manual user prompt iterations.
@@ -89,6 +90,7 @@
 4. **Phase 4 Execution (Design Critic & Two-Tier Gates)**: Implement style-aware heuristic audit and priority-based auto-refinement loop.
 
 ## Modified / Created Files Index
+- [`docs/V3_IMPLEMENTATION_CONTRACT.md`](docs/V3_IMPLEMENTATION_CONTRACT.md)
 - [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - [`CHANGELOG.md`](CHANGELOG.md)
