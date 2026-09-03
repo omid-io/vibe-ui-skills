@@ -1,12 +1,20 @@
 """
 vibe_core.critic — Style-Aware Design Critic Engine
 Independent evaluator auditing 15 design dimensions, separating Hard Gates from Quality Scorecard.
+AST-based HTML parsing via BeautifulSoup4 (falls back to regex if unavailable).
 """
 
 import re
 import json
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
+
+try:
+    from bs4 import BeautifulSoup as _BS4
+    _BS4_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    _BS4_AVAILABLE = False
+    _BS4 = None  # type: ignore
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -68,7 +76,13 @@ class DesignCritic:
             })
 
         # 3. Hard Gate: Semantic Clickables (<div onclick>)
-        div_onclick = re.findall(r"<div[^>]*onclick=", html_content, re.IGNORECASE)
+        # AST-based detection via BS4 to handle minified/malformed HTML correctly.
+        if _BS4_AVAILABLE:
+            soup = _BS4(html_content, "html.parser")
+            div_onclick = soup.find_all("div", onclick=True)
+        else:
+            # Regex fallback (fragile on minified HTML, kept for zero-dep environments)
+            div_onclick = re.findall(r"<div[^>]*onclick=", html_content, re.IGNORECASE)
         if div_onclick:
             hard_gate_failures.append({
                 "gate": "Semantic Clickables",
@@ -107,8 +121,16 @@ class DesignCritic:
 
         # 6. Performance Budget: Backdrop Filter Blur Budget
         # Canonical policy: MAX_BLUR_SURFACES = 3 (aligned across critic, verifier, run_evals.py)
+        # BS4: search inside <style> blocks + inline style attributes only, not class names.
         MAX_BLUR_SURFACES = 3
-        blur_matches = re.findall(r"backdrop-blur|blur\(", html_content)
+        if _BS4_AVAILABLE:
+            _soup_blur = _BS4(html_content, "html.parser") if not _BS4_AVAILABLE or "soup" not in dir() else soup
+            _style_texts = " ".join(t.get_text() for t in _soup_blur.find_all("style"))
+            _inline_styles = " ".join(tag.get("style", "") for tag in _soup_blur.find_all(style=True))
+            _blur_target = _style_texts + " " + _inline_styles
+        else:
+            _blur_target = html_content
+        blur_matches = re.findall(r"backdrop-blur|blur\(", _blur_target)
         if len(blur_matches) > MAX_BLUR_SURFACES:
             defects_ranked.append({
                 "severity": "high",

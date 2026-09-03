@@ -25,6 +25,7 @@ from vibe_core.generator import InterfaceGenerator
 from vibe_core.critic import DesignCritic
 from vibe_core.refiner import AutoRefiner
 from vibe_core.verifier import VerificationEngine
+from vibe_core.healer import SelfHealingLoop
 
 def cmd_search(args):
     director = DesignDirector()
@@ -54,7 +55,7 @@ def cmd_generate(args):
     engine = RecommendationEngine()
     generator = InterfaceGenerator()
     critic = DesignCritic()
-    refiner = AutoRefiner()
+    healer = SelfHealingLoop()
     verifier = VerificationEngine()
 
     print(f"[1/5] Extracting Intent & Directing: '{args.query}'...")
@@ -73,12 +74,19 @@ def cmd_generate(args):
     print(f"      Critic Score: {critique['quality_score']}/100 (Status: {critique['acceptance_status']})")
 
     if critique["acceptance_status"] != "ACCEPTED":
-        print("[4.5] Applying Priority Auto-Refinement...")
-        html, critique = refiner.refine(html, decision, max_iterations=2)
-        print(f"      Refined Score: {critique['quality_score']}/100 (Status: {critique['acceptance_status']})")
+        print("[4.5] Running Self-Healing Loop (static patch + correction prompt)...")
+        html, critique, correction_prompt = healer.heal(html, decision, original_prompt=args.query)
+        print(healer.format_heal_summary(critique, correction_prompt))
+        if correction_prompt:
+            print("\n[CORRECTION PROMPT — feed back to AI agent if needed]")
+            print("─" * 60)
+            print(correction_prompt)
+            print("─" * 60 + "\n")
 
-    print("[5/5] Executing Physical Verification Proof (Verification 2.0)...")
-    verification = verifier.verify_html(html, args.output or "output.html")
+    verify_mode = "strict" if getattr(args, "strict", False) else "fast"
+    mode_label = "Runtime Playwright" if verify_mode == "strict" else "Static Fast-Path"
+    print(f"[5/5] Executing Verification 2.0 ({mode_label})...")
+    verification = verifier.verify_html(html, args.output or "output.html", mode=verify_mode)
     print(f"      Verification: {verification['overall_status']} ({verification['checks_summary']['passed']}/{verification['checks_summary']['total']} checks passed)")
 
     out_path = Path(args.output).resolve() if args.output else (ROOT_DIR / "examples" / "generated_output.html").resolve()
@@ -106,9 +114,41 @@ def cmd_verify(args):
         sys.exit(1)
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
+    mode = "strict" if getattr(args, "strict", False) else "fast"
     verifier = VerificationEngine()
-    report = verifier.verify_html(content, path.name)
+    report = verifier.verify_html(content, path.name, mode=mode)
     print(json.dumps(report, indent=2, ensure_ascii=False))
+    if report["overall_status"] == "FAIL":
+        sys.exit(1)
+
+
+def cmd_heal(args):
+    """Runs Self-Healing Loop on an existing HTML file and prints the correction prompt."""
+    path = Path(args.file)
+    if not path.exists():
+        print(f"[FAIL] File not found: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    with open(path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    healer = SelfHealingLoop()
+    final_html, final_report, correction_prompt = healer.heal(
+        content, original_prompt=args.prompt or path.stem
+    )
+    print(healer.format_heal_summary(final_report, correction_prompt))
+
+    if correction_prompt:
+        print("\n[CORRECTION PROMPT]")
+        print("─" * 60)
+        print(correction_prompt)
+        print("─" * 60)
+        sys.exit(2)  # Exit code 2 = correction needed (not fatal error)
+    else:
+        print("[ACCEPTED] No correction prompt needed.")
+        if args.output:
+            out = Path(args.output)
+            out.write_text(final_html, encoding="utf-8")
+            print(f"[SAVED] Healed artifact: {args.output}")
 
 def main():
     parser = argparse.ArgumentParser(description="Vibe UI Master CLI")
@@ -129,6 +169,7 @@ def main():
     p_gen.add_argument("query", help="Prompt or query")
     p_gen.add_argument("-o", "--output", help="Output HTML file path")
     p_gen.add_argument("-s", "--style", help="Style override")
+    p_gen.add_argument("--strict", action="store_true", help="Run Playwright runtime verification after generation")
 
     # critique
     p_crit = subparsers.add_parser("critique", help="Run independent Design Critic on HTML file")
@@ -137,6 +178,13 @@ def main():
     # verify
     p_ver = subparsers.add_parser("verify", help="Run Verification 2.0 evidence checks on HTML file")
     p_ver.add_argument("file", help="Path to HTML file")
+    p_ver.add_argument("--strict", action="store_true", help="Add Playwright headless DOM runtime assertions")
+
+    # heal
+    p_heal = subparsers.add_parser("heal", help="Run Self-Healing Loop on an existing HTML artifact")
+    p_heal.add_argument("file", help="Path to HTML file to heal")
+    p_heal.add_argument("-p", "--prompt", help="Original design prompt for context in correction output")
+    p_heal.add_argument("-o", "--output", help="Save healed HTML to this path (if ACCEPTED)")
 
     args = parser.parse_args()
     if not args.command:
@@ -153,6 +201,8 @@ def main():
         cmd_critique(args)
     elif args.command == "verify":
         cmd_verify(args)
+    elif args.command == "heal":
+        cmd_heal(args)
 
 if __name__ == "__main__":
     main()
