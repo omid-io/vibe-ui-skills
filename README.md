@@ -1,27 +1,25 @@
 <div align="center">
 
-# 👑 mr-ui-designer & Vibe UI Suite
-### *Production-Grade UI Architecture, Component Recipes & Design Intelligence for AI Agents*
+# Vibe UI Suite (`mr-ui-designer`)
+### *Deterministic UI Contracts & Component Intelligence for AI Coding Assistants*
 
 <p align="center">
   <a href="README.md"><b>English</b></a> •
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
-[![Master Agent: mr-ui-designer](https://img.shields.io/badge/Master_Agent-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
 [![Architecture: Specification](https://img.shields.io/badge/Architecture-Specification-informational)](ARCHITECTURE.md)
-[![CI Audit](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
+[![CI Audit & Quality Gates](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![Security Policy](https://img.shields.io/badge/Security-Policy-brightgreen)](SECURITY.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)
-[![Golden Prompts](https://img.shields.io/badge/Cheatsheet-30%20Golden%20Prompts-gold)](PROMPTS.md)
-[![UI Primitives](https://img.shields.io/badge/Recipes-70%2B%20AI%20%26%20Shadcn-success)](#-the-6-sub-skills-arsenal-commanded-by-mr-ui-designer)
-[![Changelog: Keep a Changelog](https://img.shields.io/badge/Changelog-SemVer%202.0.0-orange)](CHANGELOG.md)
+[![Compatible with](https://img.shields.io/badge/Compatible%20with-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Antigravity-8A2BE2)](#-universal-ide-adapters)
+[![UI Evaluation Suite](https://img.shields.io/badge/Evaluator-WCAG%20AA%20%26%20Schema%20Audit-success)](evals/README.md)
+[![Changelog: Keep a Changelog](https://img.shields.io/badge/Changelog-SemVer%202.2.1-orange)](CHANGELOG.md)
 
 <p align="center">
-  <b>Production-grade frontend engineering for autonomous AI coding agents.</b><br>
-  <b><code>mr-ui-designer</code></b> is a specialized frontend architect agent that commands a modular pipeline of 6 specialized design, physics, and verification skills—injecting deliberate visual chemistries, 70+ curated UI component recipes, WCAG 2.2 AA accessibility (&ge; 4.5:1 contrast), and conversion copy into AI coding workflows.<br><br>
+  <b>Deterministic design contracts and evaluation gates for AI coding agents.</b><br>
+  <b><code>mr-ui-designer</code></b> coordinates a modular pipeline of 6 specialized design, physics, and verification skills—enforcing machine-readable JSON design specs, typed OKLCH tokens, mathematical WCAG AA contrast validation, and fixed-structure semantic RTL into Cursor, Claude Code, Windsurf, and Antigravity workflows.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>Explore the Live Interactive Showcase & Theme Switcher</b></a>
 </p>
 
@@ -43,9 +41,9 @@ By default, frontier LLMs generate repetitive, uncalibrated interface code that 
 - ❌ **Fragile RTL Layout Inversions:** Naive horizontal flipping of entire macro column grids and navigation structures instead of scoping directionality strictly to readable text nodes.
 - ❌ **Uncapped Compositing Cost:** Excessive, unconstrained stacking of `backdrop-filter` blur layers that exhausts GPU fill-rate.
 
-## 👑 The Solution: mr-ui-designer (Master Orchestrator Agent)
+## 🤖 The Solution: mr-ui-designer (Lead Frontend Architect Agent)
 
-Instead of relying on fragile prompt engineering, **`mr-ui-designer`** operates as a specialized **Lead Frontend Architect**. When tasked with designing or implementing an interface, it autonomously coordinates a pipeline of **6 specialized sub-skills**:
+Instead of relying on fragile, unstructured prompt engineering, **`mr-ui-designer`** operates as a specialized **Lead Frontend Architect**. When tasked with designing or implementing an interface, it autonomously coordinates a pipeline of **6 specialized sub-skills**:
 
 <p align="center">
   <img src="assets/showcase_hero.webp" alt="Interactive Showcase Preview - Glassmorphism 2.0" width="100%">
@@ -53,41 +51,54 @@ Instead of relying on fragile prompt engineering, **`mr-ui-designer`** operates 
 
 ```mermaid
 flowchart TD
-    UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> MasterAgent["👑 mr-ui-designer\n(Master Frontend & UI Architect Agent)"]
+    UserPrompt["User Prompt: 'Build a dashboard / landing page'"] --> MasterAgent["🤖 mr-ui-designer\n(Lead Frontend Architect Agent)"]
     MasterAgent --> Expander["🧠 1. autonomous-intent-expander\n(30-Parameter Opinionated Spec)"]
     MasterAgent --> VisualEngine["🎨 2. visual-chemistry-engine\n(5 Visual Chemistries + Anti-Repetition)"]
     MasterAgent --> UIComponents["🧩 3. ui-kit\n(70+ AI Native, Shadcn & Bento Recipes)"]
     MasterAgent --> Physics["⚡ 4. vibe-physics-engine\n(OKLCH, Smooth Scroll & Sub-Pixel rAF)"]
     MasterAgent --> Copy["✍️ 5. conversion-copy-engine\n(PAS, JTBD & Strategic Value Copy)"]
     Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 6. ui-verifier\n(5-Pillar Quality & Accessibility Gate)"]
-    Verifier --> Masterpiece["✨ Production-Ready Interface\n(Design System Tokens • WCAG AA • Semantic RTL)"]
+    Verifier --> Output["✨ Production-Ready Interface\n(Design System Tokens • WCAG AA • Semantic RTL)"]
 ```
 
 ---
 
-## ⚡ 2-Minute Quick Start
+## ⚡ 30-Second Setup: Multi-IDE Quick Start
 
-Get production-grade UI running in your AI agent workflow in 3 actionable steps:
+Get deterministic UI contracts running in your AI coding assistant in 30 seconds with zero runtime dependencies:
 
-### Step 1: Install Skills
-Prompt your AI coding assistant directly (**Antigravity, Cursor Composer, Claude Code, GitHub Copilot, or Windsurf**):
-> *"Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active workspace and activate `mr-ui-designer`."*
+### 1. Configure Your IDE / Agent
 
-*Or run the 1-command installer via terminal:*
-- **Windows (PowerShell):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
-  ```
-- **macOS / Linux (Bash):**
+Choose your environment and load the pre-configured adapter:
+
+* **Cursor IDE:**
   ```bash
+  # Copy into your repository root or .cursor/rules/ directory
+  cp adapters/cursor/.cursorrules .cursorrules
+  ```
+* **Claude Code (`CLAUDE.md`):**
+  ```bash
+  # Append Vibe UI contracts to your Claude Code workspace instructions
+  cp adapters/claude/CLAUDE.md CLAUDE.md
+  ```
+* **Windsurf IDE:**
+  ```bash
+  # Copy into your Windsurf workspace root
+  cp adapters/windsurf/.windsurfrules .windsurfrules
+  ```
+* **Antigravity / Gemini CLI (`~/.gemini/config/skills/`):**
+  ```bash
+  # Windows (PowerShell):
+  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
+  # Linux / macOS (Bash):
   curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
   ```
 
-### Step 2: Prompt `mr-ui-designer`
-Direct your AI assistant to generate or refactor any interface component:
+### 2. Prompt `mr-ui-designer`
+Prompt your assistant to generate or refactor any interface component:
 > *"Build a high-performance SaaS telemetry dashboard with an AI thinking drawer, metric cards with JetBrains Mono numbers, and a Minimalist SaaS theme with OKLCH tokens."*
 
-### Step 3: Verify Output Quality
+### 3. Run Automated Verification
 Audit the generated code against Vibe UI's deterministic engineering gates:
 ```bash
 python evals/run_evals.py
@@ -98,6 +109,7 @@ This empirically verifies:
 - **Compositing Budget:** $\le 3$ active `backdrop-filter` blur surfaces.
 - **Physics Fidelity:** Frame-rate-independent deltaTime motion loop ($\alpha = 1 - e^{-\lambda \cdot \Delta t}, \lambda = 14$).
 - **Semantic RTL Stability:** Physically fixed macro coordinates, `<bdi>` BiDi punctuation isolation, and pure LTR telemetry.
+- **Production Starter:** Next.js 15 App Router architecture, typed OKLCH tokens, and React 19 AI primitives.
 
 ---
 

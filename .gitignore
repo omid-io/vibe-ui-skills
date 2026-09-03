@@ -4,6 +4,7 @@ Thumbs.db
 .cache/
 .temp/
 node_modules/
+.next/
 __pycache__/
 *.pyc
 .agents/

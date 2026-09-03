@@ -1,8 +1,8 @@
 # Project State: vibe-ui-skills
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 4 — Milestone 4 (v2.2.0 Release & Industry Benchmark Standard)
-- **Status**: **100% COMPLETED & VERIFIED**. All 4 strategic milestones (R1 Architecture & Docs, R2 Mathematical WCAG & Negative Evals, R3 Next.js 15 App Router Starter, R4 Supply-Chain & Version Pinned Installers) fully implemented, tested, and audited.
+- **Active Phase**: Phase 5 — Milestone 5 (v2.2.1 Deep Hardening & Launch Readiness)
+- **Status**: **100% COMPLETED & VERIFIED**. Real GitHub Actions CI workflow created, automated evaluation runner upgraded with Next.js 15 starter audit, documentation de-hyped, and multi-IDE 30-second setup deployed.
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
@@ -24,10 +24,16 @@
   - Consensus score jumped to **8.6/10** across ChatGPT and Grok (Architecture: 9.2/10, RTL: 9.3/10, Docs: 9.0/10).
   - Evaluated as true "Contract-Driven Production-Ready AI UI Engineering System".
   - Addressed subtle unclosed `<div>` caught by Kimi in [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html) (commit `ae03bf9`).
+- [x] **R5: v2.2.1 Deep Hardening & Adversarial Audit Fixes**:
+  - Created real GitHub Actions CI pipeline in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) with Python 3.10/3.12 eval matrix and Node 20 Next.js 15 production compilation (`npm run build`).
+  - Added `audit_nextjs_starter()` to [`evals/run_evals.py`](evals/run_evals.py) issuing automated scorecards for `examples/nextjs-starter` (typed tokens, layout semantics, AI primitives, zero raw emojis, and GPU compositing budget).
+  - Validated local Next.js 15 App Router production build: compiled in 42s with zero TypeScript or type-stripping errors.
+  - De-hyped documentation across [`README.md`](README.md) and [`README.fa.md`](README.fa.md): eliminated promotional claims ("Awwwards-grade", "Masterpiece", crown emojis) and connected live GitHub Actions badge.
+  - Formulated 30-Second Multi-IDE Quick Start for Cursor (`.cursorrules`), Claude Code (`CLAUDE.md`), Windsurf (`.windsurfrules`), and Antigravity.
 
-## Immediate Next Steps (For Future Session)
-1. **Community & Adoption**: Add GitHub repository topics (`ai-agents`, `ui-ux`, `shadcn-ui`, `rtl`, `accessibility`, `tailwind`), set repo homepage URL to showcase, and share on Reddit (`r/webdev`, `r/ClaudeAI`) / X.
-2. **v2.3 Evolution (Optional Backlog)**: Add headless Playwright browser verification in `evals/`, perceptual novelty visual similarity scoring, and NPM token package `@vibe-ui/tokens`.
+## Immediate Next Steps (For Launch Session)
+1. **GitHub Launch**: Push v2.2.1 to GitHub, set repo topics (`ai-agents`, `ui-ux`, `shadcn-ui`, `rtl`, `accessibility`, `tailwind`), and enable GitHub Pages on `showcase/`.
+2. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)

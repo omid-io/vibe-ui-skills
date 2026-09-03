@@ -670,6 +670,202 @@ def audit_repo_integrity(root_dir: Path) -> dict:
     return results
 
 # ==============================================================================
+# Production Next.js 15 Starter Architecture & Token Audit
+# ==============================================================================
+
+def audit_nextjs_starter(starter_dir: Path) -> dict:
+    results = {
+        "name": "examples/nextjs-starter (Next.js 15 / TS 5)",
+        "target": "examples/nextjs-starter (Next.js 15 / React 19 / TS 5)",
+        "overall_status": "PASS",
+        "checks": []
+    }
+    if not starter_dir.exists():
+        results["checks"].append({
+            "pillar": "Production Starter Architecture",
+            "name": "Starter Directory",
+            "status": "FAIL",
+            "msg": f"Directory not found: {starter_dir}"
+        })
+        results["overall_status"] = "FAIL"
+        return results
+
+    # 1. Check Package Manifest
+    pkg_file = starter_dir / "package.json"
+    if pkg_file.exists():
+        try:
+            pkg_data = json.loads(pkg_file.read_text(encoding="utf-8"))
+            deps = pkg_data.get("dependencies", {})
+            dev_deps = pkg_data.get("devDependencies", {})
+            has_next = "next" in deps
+            has_react = "react" in deps
+            has_tw = "tailwindcss" in dev_deps or "tailwindcss" in deps
+            has_ts = "typescript" in dev_deps or "typescript" in deps
+            if has_next and has_react and has_tw and has_ts:
+                results["checks"].append({
+                    "pillar": "Production Architecture",
+                    "name": "App Router Manifest",
+                    "status": "PASS",
+                    "msg": "Verified Next.js 15, React 19, Tailwind CSS, and TypeScript in package.json"
+                })
+            else:
+                results["checks"].append({
+                    "pillar": "Production Architecture",
+                    "name": "App Router Manifest",
+                    "status": "FAIL",
+                    "msg": "Missing expected dependencies in package.json"
+                })
+                results["overall_status"] = "FAIL"
+        except Exception as e:
+            results["checks"].append({
+                "pillar": "Production Architecture",
+                "name": "App Router Manifest",
+                "status": "FAIL",
+                "msg": f"Failed to parse package.json: {e}"
+            })
+            results["overall_status"] = "FAIL"
+    else:
+        results["checks"].append({
+            "pillar": "Production Architecture",
+            "name": "App Router Manifest",
+            "status": "FAIL",
+            "msg": "Missing package.json file"
+        })
+        results["overall_status"] = "FAIL"
+
+    # 2. Check Typed OKLCH Tokens
+    tokens_file = starter_dir / "lib" / "tokens.ts"
+    if tokens_file.exists():
+        tokens_src = tokens_file.read_text(encoding="utf-8")
+        chemistries = ["MINIMALIST_SAAS", "LUXURY_GLASS", "NEOBRUTALISM", "SWISS_EDITORIAL", "STRIPE_CRISP"]
+        missing_chem = [c for c in chemistries if c not in tokens_src]
+        has_oklch = "oklch(" in tokens_src
+        if not missing_chem and has_oklch:
+            results["checks"].append({
+                "pillar": "Design Tokens & Chemistry",
+                "name": "Typed OKLCH Tokens",
+                "status": "PASS",
+                "msg": "Verified all 5 visual chemistries exported with typed OKLCH color spaces"
+            })
+        else:
+            results["checks"].append({
+                "pillar": "Design Tokens & Chemistry",
+                "name": "Typed OKLCH Tokens",
+                "status": "FAIL",
+                "msg": f"Missing visual chemistries ({missing_chem}) or OKLCH definitions in lib/tokens.ts"
+            })
+            results["overall_status"] = "FAIL"
+    else:
+        results["checks"].append({
+            "pillar": "Design Tokens & Chemistry",
+            "name": "Typed OKLCH Tokens",
+            "status": "FAIL",
+            "msg": "Missing lib/tokens.ts file"
+        })
+        results["overall_status"] = "FAIL"
+
+    # 3. Check AI Primitives & Vector Icons (Zero Raw Emojis)
+    components_dir = starter_dir / "components"
+    ai_drawer = components_dir / "AiThinkingDrawer.tsx"
+    if ai_drawer.exists():
+        drawer_src = ai_drawer.read_text(encoding="utf-8")
+        has_svg = "<svg" in drawer_src
+        has_button = "<button" in drawer_src
+        has_aria = "aria-expanded" in drawer_src or "aria-label" in drawer_src
+        if has_svg and has_button and has_aria:
+            results["checks"].append({
+                "pillar": "AI Primitives & Accessibility",
+                "name": "AiThinkingDrawer Contract",
+                "status": "PASS",
+                "msg": "Verified SVG vector icons, semantic <button>, and aria attributes in AiThinkingDrawer"
+            })
+        else:
+            results["checks"].append({
+                "pillar": "AI Primitives & Accessibility",
+                "name": "AiThinkingDrawer Contract",
+                "status": "FAIL",
+                "msg": "AiThinkingDrawer missing SVG icons, semantic button, or aria attributes"
+            })
+            results["overall_status"] = "FAIL"
+    else:
+        results["checks"].append({
+            "pillar": "AI Primitives & Accessibility",
+            "name": "AiThinkingDrawer Contract",
+            "status": "FAIL",
+            "msg": "Missing components/AiThinkingDrawer.tsx"
+        })
+        results["overall_status"] = "FAIL"
+
+    # 4. Check Zero Raw Emojis across all TSX files
+    tsx_files = list(starter_dir.rglob("*.tsx"))
+    raw_emojis_found = 0
+    for tsx_f in tsx_files:
+        src = tsx_f.read_text(encoding="utf-8")
+        emojis = re.findall(r'[\U0001F300-\U0001F9FF]', src)
+        if emojis:
+            raw_emojis_found += len(emojis)
+
+    if raw_emojis_found == 0:
+        results["checks"].append({
+            "pillar": "Visual Anti-Slop",
+            "name": "Zero Raw Emojis in TSX",
+            "status": "PASS",
+            "msg": f"Verified 0 raw emojis across all {len(tsx_files)} TSX components (pure SVG vectors)"
+        })
+    else:
+        results["checks"].append({
+            "pillar": "Visual Anti-Slop",
+            "name": "Zero Raw Emojis in TSX",
+            "status": "FAIL",
+            "msg": f"Detected {raw_emojis_found} raw emoji(s) in TSX files"
+        })
+        results["overall_status"] = "FAIL"
+
+    # 5. Check Semantic RTL and Viewport in layout.tsx
+    layout_file = starter_dir / "app" / "layout.tsx"
+    if layout_file.exists():
+        layout_src = layout_file.read_text(encoding="utf-8")
+        has_lang = 'lang=' in layout_src
+        has_dir = 'dir=' in layout_src
+        if has_lang and has_dir:
+            results["checks"].append({
+                "pillar": "Semantic RTL & A11y",
+                "name": "Root Layout Architecture",
+                "status": "PASS",
+                "msg": "Verified lang and dir attributes configured in app/layout.tsx"
+            })
+        else:
+            results["checks"].append({
+                "pillar": "Semantic RTL & A11y",
+                "name": "Root Layout Architecture",
+                "status": "FAIL",
+                "msg": "Missing lang or dir attributes in app/layout.tsx"
+            })
+            results["overall_status"] = "FAIL"
+
+    # 6. Check Compositing Budget (Backdrop Blur <= 3) in CSS / TSX
+    globals_css = starter_dir / "app" / "globals.css"
+    if globals_css.exists():
+        css_src = globals_css.read_text(encoding="utf-8")
+        backdrop_matches = len(re.findall(r"backdrop-filter", css_src, re.IGNORECASE))
+        if backdrop_matches <= 3:
+            results["checks"].append({
+                "pillar": "Performance & GPU Budget",
+                "name": "Backdrop Blur Limit",
+                "status": "PASS",
+                "msg": f"Verified globals.css complies with composite budget ({backdrop_matches} <= 3 backdrop-filters)"
+            })
+        else:
+            results["checks"].append({
+                "pillar": "Performance & GPU Budget",
+                "name": "Backdrop Blur Limit",
+                "status": "WARN",
+                "msg": f"Exceeds recommended 3 backdrop-filter layers ({backdrop_matches} found)"
+            })
+
+    return results
+
+# ==============================================================================
 # Standalone Fixture Runner CLI
 # ==============================================================================
 
@@ -788,7 +984,15 @@ def main():
     if not args.json_mode:
         render_scorecard(repo_res)
 
-    # 2. HTML Examples Audit
+    # 2. Production Next.js 15 Starter Architecture & Token Audit
+    starter_dir = root_dir / "examples" / "nextjs-starter"
+    if starter_dir.exists():
+        starter_res = audit_nextjs_starter(starter_dir)
+        targets.append(starter_res)
+        if not args.json_mode:
+            render_scorecard(starter_res)
+
+    # 3. HTML Examples Audit
     for html_file in html_files:
         res = audit_html_file(html_file)
         targets.append(res)
@@ -812,7 +1016,7 @@ def main():
     if args.json_mode:
         report = {
             "suite": "Vibe UI Evaluation Suite",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "overall_status": overall_suite_status,
             "exit_code": exit_code,

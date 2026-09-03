@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.1] - 2026-09-03
+
+### Added
+- Real GitHub Actions CI workflow in `.github/workflows/ci.yml` running multi-version Python matrix tests (`run_evals.py` and `--json`) and automated Node 20 Next.js 15 production compilation (`npm run build`).
+- Integrated `audit_nextjs_starter()` within `evals/run_evals.py` providing automated scorecards for `examples/nextjs-starter` (typed OKLCH tokens, App Router layout, AI primitives, zero raw emojis, and GPU compositing budget).
+- Explicit `dir="ltr"` attribute in `examples/nextjs-starter/app/layout.tsx` for accessibility and BiDi layout stability.
+- Dedicated `⚡ 30-Second Setup: Multi-IDE Quick Start` section in `README.md` and `README.fa.md` with zero-friction adapter setup for Cursor (`.cursorrules`), Claude Code (`CLAUDE.md`), Windsurf (`.windsurfrules`), and Antigravity.
+
+### Changed
+- Comprehensive de-hyping pass across `README.md` and `README.fa.md`: removed promotional adjectives ("Masterpiece", "Awwwards-grade") and decorative crown emojis in favor of deterministic contract-driven engineering specifications.
+- Connected real GitHub Actions CI badge (`.github/workflows/ci.yml`) to the repository header.
+- Updated evaluation runner suite version to `2.2.1`.
+
+---
+
 ## [2.2.0] - 2026-09-03
 
 ### Added

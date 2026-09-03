@@ -1,27 +1,25 @@
 <div align="center">
 
-# 👑 mr-ui-designer و سوئیت مهارت‌های Vibe UI
-### *سیستم مهندسی فرانت‌اند، کاتالوگ رسپی‌های کامپوننت و معماری UI برای ایجنت‌های هوش مصنوعی*
+# سوئیت مهارت‌های Vibe UI (`mr-ui-designer`)
+### *قراردادهای قطعی رابط کاربری و هوش طراحی برای دستیارهای برنامه‌نویسی هوش مصنوعی*
 
 <p align="center">
   <a href="README.md"><b>English</b></a> •
   <a href="README.fa.md"><b>فارسی</b></a>
 </p>
 
-[![Master Agent: mr-ui-designer](https://img.shields.io/badge/ایجنت_ارشد-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
 [![معماری سیستم](https://img.shields.io/badge/سند_معماری-ARCHITECTURE.md-informational)](ARCHITECTURE.md)
-[![تست‌های ارزیابی](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
-[![Live Showcase](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
+[![پایپ‌لاین ارزیابی CI](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
+[![دموی زنده](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![خط‌مشی امنیت](https://img.shields.io/badge/امنیت-SECURITY.md-brightgreen)](SECURITY.md)
-[![License: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
-[![Compatible with](https://img.shields.io/badge/سازگار_با-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
-[![Golden Prompts](https://img.shields.io/badge/راهنمای_پرامپت-۳۰_فرمول_طلایی-gold)](PROMPTS.fa.md)
-[![UI Primitives](https://img.shields.io/badge/رسپی‌ها-۷۰%2B_کامپوننت_مدرن-success)](#-جعبه‌ابزار-مهارت‌های-زیردست-تحت-فرماندهی-mr-ui-designer)
-[![تاریخچه تغییرات](https://img.shields.io/badge/تغییرات-CHANGELOG.md-orange)](CHANGELOG.md)
+[![لایسنس: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
+[![سازگار با](https://img.shields.io/badge/سازگار_با-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Antigravity-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
+[![سوئیت ارزیابی](https://img.shields.io/badge/آزمون_خودکار-WCAG%20AA%20%26%20Schema-success)](evals/README.md)
+[![تاریخچه تغییرات](https://img.shields.io/badge/نسخه-SemVer%202.2.1-orange)](CHANGELOG.md)
 
 <p align="center">
-  <b>مهندسی استاندارد و پروداکشن رابط کاربری برای ایجنت‌های هوش مصنوعی.</b><br>
-  <b><code>mr-ui-designer</code></b> یک ایجنت تخصصی و معمار فرانت‌اند است که خط لوله‌ای از ۶ مهارت تخصصی طراحی، فیزیک و اعتبارسنجی را هدایت می‌کند تا دیزاین سیستم‌های استاندارد، بیش از ۷۰ رسپی کامپوننت هوش مصنوعی، دسترسی‌پذیری WCAG 2.2 AA (کنتراست &ge; ۴.۵:۱)، و پشتیبانی پایدار از راست‌چین ساختار-ثابت (Semantic RTL) را پیاده‌سازی کند.<br><br>
+  <b>قراردادهای قطعی و گیت‌های کنترل کیفی فرانت‌اند برای ایجنت‌های هوش مصنوعی.</b><br>
+  <b><code>mr-ui-designer</code></b> یک ایجنت معمار فرانت‌اند است که خط لوله‌ای از ۶ مهارت تخصصی طراحی، فیزیک و اعتبارسنجی را هدایت می‌کند تا اسکیماهای ماشین‌خوان دیزاین، توکن‌های تایپ‌شده OKLCH، اعتبارسنجی ریاضی کنتراست WCAG 2.2 AA، و راست‌چین پایدار ساختار-ثابت (Semantic RTL) را در محیط‌های Cursor، Claude Code، Windsurf و Antigravity مستقر سازد.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>مشاهده دموی زنده و تغییر آنی تم‌ها</b></a>
 </p>
 
@@ -43,9 +41,9 @@
 - ❌ **تخریب ساختار در زبان‌های راست‌چین:** وارونه‌سازی ناآگاهانه کل اسکلت صفحه و ستون‌های گرید به جای اعمال جهت صرفاً بر متون خواندنی.
 - ❌ **سربار پردازش رندر گرافیکی:** استفاده نامحدود از فیلترهای بلور (`backdrop-filter`) که باعث افت شدید نرخ فریم در دستگاه‌های موبایل می‌شود.
 
-## 👑 راهکار: mr-ui-designer (ایجنت ارشد و معمار فرانت‌اند)
+## 🤖 راهکار: mr-ui-designer (ایجنت معمار فرانت‌اند)
 
-به جای تکیه بر پرامپت‌های ناپایدار، **`mr-ui-designer`** به عنوان یک **معمار ارشد فرانت‌اند** عمل می‌کند. هر زمان که طراحی یا پیاده‌سازی رابط کاربری را درخواست کنید، خط لوله‌ای شامل **۶ مهارت تخصصی** را هدایت می‌کند:
+به جای تکیه بر پرامپت‌های ناپایدار و سلیقه‌ای، **`mr-ui-designer`** به عنوان یک **معمار ارشد فرانت‌اند** عمل می‌کند. هر زمان که طراحی یا پیاده‌سازی رابط کاربری را درخواست کنید، خط لوله‌ای شامل **۶ مهارت تخصصی** را هدایت می‌کند:
 
 <p align="center">
   <img src="assets/showcase_persian.webp" alt="پیش‌نمایش دموی زنده با فونت وزیرمتن و چیدمان راست‌چین" width="100%">
@@ -53,51 +51,62 @@
 
 ```mermaid
 flowchart TD
-    UserPrompt["پرامپت کاربر: 'یک داشبورد یا لندینگ پیج بساز'"] --> MasterAgent["👑 mr-ui-designer\n(ایجنت ارشد و معمار فرانت‌اند)"]
+    UserPrompt["پرامپت کاربر: 'یک داشبورد یا لندینگ پیج بساز'"] --> MasterAgent["🤖 mr-ui-designer\n(ایجنت معمار فرانت‌اند)"]
     MasterAgent --> Expander["🧠 ۱. autonomous-intent-expander\n(سند ۳۰ پارامتری با بودجه ابهام سنجیده)"]
     MasterAgent --> VisualEngine["🎨 ۲. visual-chemistry-engine\n(موتور ۵ استایل بصری + پروتکل ضدتکرار)"]
     MasterAgent --> UIComponents["🧩 ۳. ui-kit\n(۷۰+ رسپی هوش مصنوعی، شدسن و بنتو)"]
     MasterAgent --> Physics["⚡ ۴. vibe-physics-engine\n(رنگ‌های OKLCH، اسکرول نرم و درون‌یابی rAF)"]
     MasterAgent --> Copy["✍️ ۵. conversion-copy-engine\n(کپی‌رایتینگ ارزش‌محور صنایع + پالیسی ضد دارک‌پترن)"]
     Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 ۶. ui-verifier\n(آدیت ۵‌پایه کنترل کیفیت و دسترسی‌پذیری)"]
-    Verifier --> Masterpiece["✨ رابط کاربری آماده پروداکشن\n(دیزاین سیستم استاندارد • دسترسی‌پذیری WCAG AA • راست‌چین معنادار)"]
+    Verifier --> Output["✨ خروجی آماده پروداکشن\n(دیزاین سیستم استاندارد • دسترسی‌پذیری WCAG AA • راست‌چین معنادار)"]
 ```
 
 ---
 
-## ⚡ شروع سریع در ۲ دقیقه
+## ⚡ راه‌اندازی ۳۰ ثانیه‌ای در محیط‌های مختلف (Multi-IDE Setup)
 
-پیاده‌سازی فرانت‌اند استاندارد با هوش مصنوعی در ۳ مرحله عملی:
+قراردادهای قطعی رابط کاربری را بدون وابستگی خارجی در ۳۰ ثانیه به محیط هوش مصنوعی خود متصل کنید:
 
-### گام ۱: استقرار مهارت‌ها در محیط کاربری
-پرامپت زیر را مستقیماً به هوش مصنوعی خود بدهید (**Cursor Composer، Claude Code، Google Antigravity، Copilot یا Windsurf**):
-> *"لطفاً سوئیت مهارت‌های Vibe UI را از ریپازیتوری https://github.com/omid-io/vibe-ui-skills در محیط فعال من نصب و مستقر کن و مطمئن شو `mr-ui-designer` آماده استفاده است."*
+### ۱. بارگذاری آداپتور متناسب با ادیتور شما
 
-*یا اسکریپت نصب تک‌دستوری را در ترمینال اجرا کنید:*
-- **ویندوز (PowerShell):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
-  ```
-- **مک و لینوکس (Bash):**
+* **محیط Cursor IDE:**
   ```bash
+  cp adapters/cursor/.cursorrules .cursorrules
+  # یا کپی در دایرکتوری .cursor/rules/
+  ```
+* **محیط Claude Code (`CLAUDE.md`):**
+  ```bash
+  cp adapters/claude/CLAUDE.md CLAUDE.md
+  # افزودن مستقیم قواعد ضد اسلوپ و استانداردهای کامپوننت به کانتکست کلود
+  ```
+* **محیط Windsurf IDE:**
+  ```bash
+  cp adapters/windsurf/.windsurfrules .windsurfrules
+  ```
+* **محیط Google Antigravity / Gemini CLI (`~/.gemini/config/skills/`):**
+  ```powershell
+  # ویندوز (PowerShell):
+  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
+  # مک / لینوکس (Bash):
   curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
   ```
 
-### گام ۲: درخواست طراحی به `mr-ui-designer`
-نیازمندی‌های رابط کاربری خود را مستقیماً از ایجنت بخواهید:
+### ۲. درخواست طراحی از `mr-ui-designer`
+نیازمندی رابط کاربری خود را مستقیماً از دستیار هوش مصنوعی بخواهید:
 > *"یک داشبورد تله‌متری و تحلیل داده با سبک مینیمال SaaS، دراور آکاردئونی وضعیت تفکر هوش مصنوعی، اعداد مونو و تم رنگی پایدار OKLCH طراحی کن."*
 
-### گام ۳: اعتبارسنجی کیفیت خروجی
-کیفیت کد تولید شده را با ابزار ارزیابی خودکار ریپازیتوری بسنجید:
+### ۳. اعتبارسنجی کیفیت با آزمون‌های خودکار
+کد تولیدشده را با ابزار ارزیابی خودکار پروژه بسنجید:
 ```bash
 python evals/run_evals.py
 ```
-این دستور موارد زیر را به طور عینی و ریاضی ارزیابی می‌کند:
+موارد مورد سنجش در این آزمون:
 - **کنتراست ریاضی WCAG 2.2 AA:** نسبت کنتراست $\ge 4.5:1$ در متون بدنه و $\ge 3.0:1$ در تیترها.
 - **ریسپانسیو موبایل:** عدم سرریز افقی (0px overflow) در صفحات ۳۷۵ پیکسلی.
 - **سقف پردازش گرافیکی:** حداکثر ۳ لایه فیلتر بلور در صفحه.
 - **پایداری فیزیک حرکتی:** محاسبات مستقل از رفرش‌ریت ($\alpha = 1 - e^{-\lambda \cdot \Delta t}, \lambda = 14$).
 - **راست‌چین‌سازی ساختار-ثابت:** ثبات ساختار کلان گرید، ایزولاسیون اصطلاحات انگلیسی با `<bdi>` و حفظ کدها به صورت LTR مونو.
+- **استارتر پروداکشن:** اعتبارسنجی معماری Next.js 15، توکن‌های تایپ‌شده OKLCH و کامپوننت‌های React 19.
 
 ---
 
