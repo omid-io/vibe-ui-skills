@@ -1,0 +1,43 @@
+{
+  "version": "3.0.0-alpha.1",
+  "layouts": [
+    {
+      "id": "asymmetric_bento",
+      "name": "Asymmetric Bento Grid",
+      "best_for_modes": ["persuade", "experience"],
+      "grid_classes": "grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6",
+      "hero_span": "md:col-span-2 md:row-span-2",
+      "whitespace": "generous",
+      "anti_slop_rule": "At least one card must have distinct dimensions and background treatment."
+    },
+    {
+      "id": "standard_columns",
+      "name": "Standard Responsive Columns",
+      "best_for_modes": ["persuade", "operate"],
+      "grid_classes": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+      "hero_span": "col-span-1",
+      "whitespace": "balanced",
+      "anti_slop_rule": "Limit to maximum 3 homogeneous cards before introducing an asymmetric feature."
+    },
+    {
+      "id": "editorial_single_col",
+      "name": "Editorial Single Column with Media Breakouts",
+      "best_for_modes": ["read", "experience"],
+      "container_max_w": "max-w-3xl mx-auto",
+      "media_breakout": "max-w-5xl -mx-4 md:-mx-12 lg:-mx-24",
+      "whitespace": "generous",
+      "anti_slop_rule": "Strict typographic scale and drop cap or pull-quote element required."
+    },
+    {
+      "id": "dense_hud_grid",
+      "name": "Dense HUD Multi-Pane Dashboard",
+      "best_for_modes": ["operate"],
+      "grid_classes": "grid grid-cols-12 gap-2 h-screen overflow-hidden",
+      "sidebar_span": "col-span-2",
+      "main_span": "col-span-7",
+      "telemetry_span": "col-span-3",
+      "whitespace": "compact",
+      "anti_slop_rule": "Monospace numerical values must use tabular-nums font feature."
+    }
+  ]
+}

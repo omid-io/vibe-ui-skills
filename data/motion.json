@@ -1,0 +1,36 @@
+{
+  "version": "3.0.0-alpha.1",
+  "motion_profiles": {
+    "snappy": {
+      "name": "Snappy Developer Spring",
+      "lambda": 16.0,
+      "duration_ms": 150,
+      "css_bezier": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "best_for": ["linear_dark", "data_dense_terminal", "minimal_swiss"]
+    },
+    "smooth_saas": {
+      "name": "Smooth SaaS Float",
+      "lambda": 14.0,
+      "duration_ms": 220,
+      "css_bezier": "cubic-bezier(0.25, 1, 0.5, 1)",
+      "best_for": ["clean_stripe", "soft_humanist", "modern_glass_2"]
+    },
+    "gentle_luxury": {
+      "name": "Gentle Luxury Glide",
+      "lambda": 10.0,
+      "duration_ms": 320,
+      "css_bezier": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "best_for": ["quiet_luxury", "organic_nordic", "editorial_magazine"]
+    },
+    "punchy_brutal": {
+      "name": "Punchy Neo-Brutal Pop",
+      "lambda": 18.0,
+      "duration_ms": 120,
+      "css_bezier": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "best_for": ["neobrutalism", "bauhaus_geometric"]
+    }
+  },
+  "invariants": {
+    "respect_reduced_motion": "At media (prefers-reduced-motion: reduce), duration must be set to 0.01ms or transition: none."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": "3.0.0-alpha.1",
+  "density_profiles": {
+    "airy": {
+      "name": "Airy & Breathing",
+      "padding_container": "p-6 md:p-12 lg:p-16",
+      "padding_card": "p-6 md:p-8",
+      "gap": "gap-6 md:gap-8",
+      "font_leading": "leading-relaxed",
+      "target_modes": ["persuade", "experience"]
+    },
+    "balanced": {
+      "name": "Balanced & Structured",
+      "padding_container": "p-4 md:p-8 lg:p-10",
+      "padding_card": "p-5 md:p-6",
+      "gap": "gap-4 md:gap-6",
+      "font_leading": "leading-normal",
+      "target_modes": ["persuade", "operate", "read"]
+    },
+    "dense": {
+      "name": "Dense & Compact",
+      "padding_container": "p-2 md:p-4",
+      "padding_card": "p-3 md:p-4",
+      "gap": "gap-2 md:gap-3",
+      "font_leading": "leading-tight",
+      "target_modes": ["operate"]
+    }
+  }
+}

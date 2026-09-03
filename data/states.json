@@ -1,0 +1,27 @@
+{
+  "version": "3.0.0-alpha.1",
+  "states": {
+    "interactive": ["default", "hover", "focus_visible", "active", "disabled"],
+    "lifecycle": ["skeleton_loading", "empty", "error_retry", "success"],
+    "specifications": {
+      "focus_visible": {
+        "required": true,
+        "style": "ring-2 ring-offset-2 ring-blue-500 outline-none",
+        "description": "Must be visible on keyboard tab focus and absent on mouse click."
+      },
+      "skeleton_loading": {
+        "required": true,
+        "classes": "animate-pulse bg-zinc-200 dark:bg-zinc-800 rounded",
+        "aria": "aria-busy=true"
+      },
+      "empty": {
+        "required": true,
+        "elements": ["illustrated_vector_icon", "friendly_title", "action_cta"]
+      },
+      "error_retry": {
+        "required": true,
+        "elements": ["error_badge", "human_friendly_message", "retry_button"]
+      }
+    }
+  }
+}

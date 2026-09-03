@@ -1,0 +1,29 @@
+{
+  "version": "3.0.0-alpha.1",
+  "patterns": [
+    {
+      "id": "ai_thinking_drawer",
+      "name": "AI Thinking & Reasoning Drawer",
+      "role": "complementary",
+      "aria_attributes": ["aria-expanded", "aria-controls", "aria-live=polite"],
+      "focus_trap": true,
+      "mobile_placement": "bottom_sheet",
+      "desktop_placement": "right_sidebar"
+    },
+    {
+      "id": "accessible_modal_dialog",
+      "name": "Accessible Modal Dialog",
+      "role": "dialog",
+      "aria_attributes": ["aria-modal=true", "aria-labelledby", "aria-describedby"],
+      "close_on_escape": true,
+      "backdrop_click_close": true
+    },
+    {
+      "id": "keyboard_tablist",
+      "name": "RTL-Aware Keyboard Tablist",
+      "role": "tablist",
+      "keyboard_navigation": ["ArrowLeft", "ArrowRight", "Home", "End"],
+      "bidi_aware": true
+    }
+  ]
+}

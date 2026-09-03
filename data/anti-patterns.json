@@ -1,0 +1,41 @@
+{
+  "version": "3.0.0-alpha.1",
+  "anti_patterns": [
+    {
+      "id": "raw_emojis",
+      "severity": "critical",
+      "rule": "Never use raw Unicode emojis in place of UI icons or decorative indicators.",
+      "remedy": "Replace with semantic, scalable SVG vector icons."
+    },
+    {
+      "id": "generic_ai_purple_gradient",
+      "severity": "high",
+      "rule": "Avoid generic gradient tropes like bg-gradient-to-r from-purple-600 to-indigo-600 without brand rationale.",
+      "remedy": "Use purposeful OKLCH surface colors, edge lighting, or subtle monochromatic gradients."
+    },
+    {
+      "id": "homogeneous_card_fatigue",
+      "severity": "high",
+      "rule": "Do not render 4+ identical grid cards with uniform height and iconography without visual cadence.",
+      "remedy": "Employ asymmetric bento layout, feature highlighting, or varying card densities."
+    },
+    {
+      "id": "excessive_gpu_blur",
+      "severity": "high",
+      "rule": "Do not stack more than 2 backdrop-filter: blur() layers in the DOM.",
+      "remedy": "Limit to maximum 1-2 calibrated blur layers to prevent mobile GPU frame drops."
+    },
+    {
+      "id": "tiny_touch_targets",
+      "severity": "critical",
+      "rule": "Interactive elements must not have dimensions below 44x44px on touch devices.",
+      "remedy": "Add padding or min-h-[44px] min-w-[44px] hit areas."
+    },
+    {
+      "id": "missing_focus_rings",
+      "severity": "critical",
+      "rule": "Never remove focus outlines (outline: none) without providing an accessible focus-visible alternative.",
+      "remedy": "Style :focus-visible with prominent high-contrast offset rings."
+    }
+  ]
+}

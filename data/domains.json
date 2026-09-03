@@ -1,0 +1,30 @@
+{
+  "version": "3.0.0-alpha.1",
+  "note": "Canonical domain registry linking taxonomy and priors",
+  "domains": [
+    "beauty_clinical_wellness",
+    "fintech_banking",
+    "crypto_trading_web3",
+    "devops_cloud_terminal",
+    "saas_b2b_enterprise",
+    "ai_developer_platform",
+    "ecommerce_luxury_fashion",
+    "ecommerce_mass_market",
+    "real_estate_architecture",
+    "healthcare_hospital_medical",
+    "education_edtech_lms",
+    "creative_portfolio_agency",
+    "media_editorial_magazine",
+    "food_restaurant_cafe",
+    "travel_hospitality_tourism",
+    "legal_compliance_law",
+    "gaming_entertainment_streaming",
+    "automotive_ev_mobility",
+    "logistics_supply_chain",
+    "energy_greentech_sustainability",
+    "nonprofit_charity_social",
+    "personal_branding_creator",
+    "cybersecurity_identity_auth",
+    "general_modern_saas"
+  ]
+}

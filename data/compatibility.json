@@ -1,0 +1,30 @@
+{
+  "version": "3.0.0-alpha.1",
+  "compatibility_rules": [
+    {
+      "styles": ["minimal_swiss", "quiet_luxury"],
+      "status": "highly_compatible",
+      "synthesis_result": "Swiss Quiet Luxury (clean grid + warm stone serif)"
+    },
+    {
+      "styles": ["linear_dark", "data_dense_terminal"],
+      "status": "highly_compatible",
+      "synthesis_result": "Obsidian Terminal (1px borders + dense monospace data)"
+    },
+    {
+      "styles": ["clean_stripe", "soft_humanist"],
+      "status": "highly_compatible",
+      "synthesis_result": "Friendly Enterprise SaaS (clean metrics + approachable rounded corners)"
+    },
+    {
+      "styles": ["neobrutalism", "fintech_banking"],
+      "status": "conflicting_requires_control",
+      "synthesis_result": "Controlled Swiss Brutalism (sharp dark borders but zero decorative noise, strict tabular numbers)"
+    },
+    {
+      "styles": ["neobrutalism", "healthcare_hospital_medical"],
+      "status": "conflicting_requires_control",
+      "synthesis_result": "Structured Clean Humanist (retaining bold borders while softening color to clinical teal/white)"
+    }
+  ]
+}

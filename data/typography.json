@@ -1,0 +1,71 @@
+{
+  "version": "3.0.0-alpha.1",
+  "pairings": [
+    {
+      "id": "clinical_luxury_serif",
+      "display_en": "Playfair Display",
+      "body_en": "Inter",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.333,
+      "line_height_body": 1.7,
+      "best_for_styles": ["quiet_luxury", "editorial_magazine"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+    },
+    {
+      "id": "clean_saas_sans",
+      "display_en": "Plus Jakarta Sans",
+      "body_en": "Inter",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.25,
+      "line_height_body": 1.6,
+      "best_for_styles": ["clean_stripe", "minimal_swiss", "soft_humanist"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    },
+    {
+      "id": "linear_technical_grotesk",
+      "display_en": "Space Grotesk",
+      "body_en": "Inter",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.25,
+      "line_height_body": 1.5,
+      "best_for_styles": ["linear_dark", "modern_glass_2"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    },
+    {
+      "id": "terminal_monospace_hud",
+      "display_en": "JetBrains Mono",
+      "body_en": "JetBrains Mono",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.2,
+      "line_height_body": 1.45,
+      "best_for_styles": ["data_dense_terminal", "retro_futurism"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Vazirmatn:wght@400;500;700&display=swap"
+    },
+    {
+      "id": "neobrutalist_punchy_bold",
+      "display_en": "Space Grotesk",
+      "body_en": "Inter",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.414,
+      "line_height_body": 1.55,
+      "best_for_styles": ["neobrutalism", "bauhaus_geometric"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Space+Grotesk:wght@700;900&family=Vazirmatn:wght@600;800&display=swap"
+    },
+    {
+      "id": "nordic_organic_editorial",
+      "display_en": "Newsreader",
+      "body_en": "Inter",
+      "display_fa": "Vazirmatn",
+      "body_fa": "Vazirmatn",
+      "scale_ratio": 1.333,
+      "line_height_body": 1.65,
+      "best_for_styles": ["organic_nordic", "editorial_magazine"],
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Vazirmatn:wght@400;500;600&display=swap"
+    }
+  ]
+}

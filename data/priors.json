@@ -1,0 +1,61 @@
+{
+  "version": "3.0.0-alpha.1",
+  "priors": {
+    "beauty_clinical_wellness": {
+      "trust": 0.95,
+      "serenity": 0.90,
+      "novelty": 0.30,
+      "density": 0.35,
+      "decoration_allowance": 0.40,
+      "mobile_priority": 0.95
+    },
+    "fintech_banking": {
+      "trust": 1.00,
+      "clarity": 0.95,
+      "novelty": 0.15,
+      "density": 0.65,
+      "decoration_allowance": 0.10,
+      "mobile_priority": 0.85
+    },
+    "crypto_trading_web3": {
+      "trust": 0.85,
+      "efficiency": 0.95,
+      "density": 0.95,
+      "novelty": 0.50,
+      "decoration_allowance": 0.15,
+      "mobile_priority": 0.80
+    },
+    "devops_cloud_terminal": {
+      "trust": 0.90,
+      "efficiency": 1.00,
+      "density": 1.00,
+      "novelty": 0.20,
+      "decoration_allowance": 0.05,
+      "mobile_priority": 0.60
+    },
+    "saas_b2b_enterprise": {
+      "trust": 0.90,
+      "clarity": 0.90,
+      "efficiency": 0.85,
+      "density": 0.60,
+      "decoration_allowance": 0.20,
+      "mobile_priority": 0.75
+    },
+    "creative_portfolio_agency": {
+      "trust": 0.50,
+      "brand_distinction": 1.00,
+      "novelty": 0.95,
+      "density": 0.40,
+      "decoration_allowance": 0.85,
+      "mobile_priority": 0.90
+    },
+    "general_modern_saas": {
+      "trust": 0.80,
+      "clarity": 0.85,
+      "efficiency": 0.75,
+      "density": 0.55,
+      "decoration_allowance": 0.30,
+      "mobile_priority": 0.85
+    }
+  }
+}
