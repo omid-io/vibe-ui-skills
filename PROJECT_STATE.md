@@ -152,6 +152,13 @@
   - **CLI External Output Path Safety**: Fixed potential `ValueError` crash in [`vibe_cli.py`](file:///E:/programming/vibe-ui-skills/vibe_cli.py) and [`scripts/generate.py`](file:///E:/programming/vibe-ui-skills/scripts/generate.py) when saving artifacts to paths outside the project root directory.
   - **Quality Gates Certified**: All 8 test suites PASS 100% in 3007ms.
 
+- [x] **R23: Native Tailwind CSS v4 Modernization & Zero-Config Architecture [2026-09-03]**:
+  - **Native `@theme` Tokens (`packages/tokens/v4.css`)**: Authored zero-config Tailwind v4 theme bundle mapping OKLCH perceptual colors, physics curves (`--ease-vibe-spring`, `--ease-vibe-snap`), and brutal/glass shadows. Added `"./v4"` export to [`packages/tokens/package.json`](file:///E:/programming/vibe-ui-skills/packages/tokens/package.json).
+  - **Clean Next.js 15 Starter Migration**: Upgraded [`examples/nextjs-starter`](file:///E:/programming/vibe-ui-skills/examples/nextjs-starter) to `tailwindcss@^4.0.0` and `@tailwindcss/postcss@^4.0.0`. Deleted obsolete `tailwind.config.ts` and deprecated `autoprefixer` dependency.
+  - **CSS-First Theme Architecture**: Transferred theme tokens into [`examples/nextjs-starter/app/globals.css`](file:///E:/programming/vibe-ui-skills/examples/nextjs-starter/app/globals.css) via `@import "tailwindcss";` and `@theme`.
+  - **Production Build Certified**: `next build` generates clean static output in 19.9s with zero errors or warnings.
+  - **All 8 Quality Gate Suites Pass**: 100% passing in 3217ms.
+
 ## Immediate Next Steps & Execution Plan
 1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
 
