@@ -19,6 +19,8 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
+SUITE_VERSION = "2.4.0"
+
 # ==============================================================================
 # Mathematical WCAG Relative Luminance & Contrast Engine
 # ==============================================================================
@@ -895,6 +897,8 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
             page = context.new_page()
 
             overflow_violations = []
+            touch_violations = []
+            rtl_violations = []
 
             for html_path in html_files:
                 uri = html_path.resolve().as_uri()
@@ -905,6 +909,39 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 is_overflow = page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
                 if is_overflow:
                     overflow_violations.append(html_path.name)
+
+                # Check 2: Rendered Computed Styles & Touch Target Geometry Assertions
+                violations = page.evaluate("""() => {
+                    const targets = Array.from(document.querySelectorAll('button, a, [role="button"], input'));
+                    const badTargets = [];
+                    for (const el of targets) {
+                        const style = window.getComputedStyle(el);
+                        if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') continue;
+                        const rect = el.getBoundingClientRect();
+                        if (rect.width > 0 && rect.height > 0 && (rect.width < 24 || rect.height < 24)) {
+                            badTargets.push(`${el.tagName.toLowerCase()}(${Math.round(rect.width)}x${Math.round(rect.height)})`);
+                        }
+                    }
+                    return badTargets;
+                }""")
+                if violations:
+                    touch_violations.append(f"{html_path.name}: {', '.join(violations[:3])}")
+
+                # Check 3: Semantic RTL Macro Bounding Geometry Assertions
+                if "rtl" in html_path.name.lower() or "persian" in html_path.name.lower():
+                    is_rtl_stable = page.evaluate("""() => {
+                        const macroAnchors = Array.from(document.querySelectorAll('header, main, nav, section'));
+                        const clientWidth = document.documentElement.clientWidth;
+                        for (const anchor of macroAnchors) {
+                            const rect = anchor.getBoundingClientRect();
+                            if (rect.width > 0 && (rect.left < -2 || rect.right > clientWidth + 4)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }""")
+                    if not is_rtl_stable:
+                        rtl_violations.append(html_path.name)
 
             browser.close()
 
@@ -925,19 +962,39 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     "msg": f"Horizontal scrollbar detected on: {', '.join(overflow_violations)}"
                 })
 
-            results["checks"].append({
-                "pillar": "Computed Styles",
-                "name": "Rendered DOM Computed Properties",
-                "status": "PASS",
-                "msg": f"Verified computed styles and interactive target elements across {len(html_files)} interfaces"
-            })
+            if not touch_violations:
+                results["checks"].append({
+                    "pillar": "Computed Styles",
+                    "name": "Rendered DOM Computed Properties",
+                    "status": "PASS",
+                    "msg": f"Verified computed styles & touch target bounding boxes (>= 24px) across {len(html_files)} interfaces"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["pillars"]["Computed Styles"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "Computed Styles",
+                    "name": "Rendered DOM Computed Properties",
+                    "status": "FAIL",
+                    "msg": f"Touch targets < 24px detected: {', '.join(touch_violations)}"
+                })
 
-            results["checks"].append({
-                "pillar": "Semantic RTL",
-                "name": "RTL Macro Bounding Geometry",
-                "status": "PASS",
-                "msg": "Verified RTL macro navigation boundaries remain physically stable in Chromium engine"
-            })
+            if not rtl_violations:
+                results["checks"].append({
+                    "pillar": "Semantic RTL",
+                    "name": "RTL Macro Bounding Geometry",
+                    "status": "PASS",
+                    "msg": "Verified RTL macro navigation boundaries remain physically stable in Chromium engine without lateral clipping"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["pillars"]["Semantic RTL"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "Semantic RTL",
+                    "name": "RTL Macro Bounding Geometry",
+                    "status": "FAIL",
+                    "msg": f"RTL macro lateral clipping detected on: {', '.join(rtl_violations)}"
+                })
 
     except Exception as e:
         results["overall_status"] = "WARN"
@@ -994,7 +1051,7 @@ def run_standalone_fixture(fixture_path_str: str, root_dir: Path, json_mode: boo
     if json_mode:
         report = {
             "suite": "Vibe UI Evaluation Suite",
-            "version": "2.2.0",
+            "version": SUITE_VERSION,
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "mode": "standalone_fixture",
             "fixture": str(fixture_path),

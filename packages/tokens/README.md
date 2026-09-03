@@ -51,7 +51,7 @@ console.log(saasColors.primaryAccent); // 'oklch(0.65 0.22 260)'
 In your `tailwind.config.js` or `tailwind.config.ts`:
 
 ```javascript
-import vibeUiPlugin from '@vibe-ui/tokens/tailwind';
+import vibeUiPlugin from '@omid-io/tokens/tailwind';
 
 export default {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],

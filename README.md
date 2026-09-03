@@ -139,11 +139,11 @@ The system is coordinated by a lead architect agent (**`mr-ui-designer`**) that 
                       │
                       ▼
        ┌──────────────────────────────┐
-       │    Verified Frontend Code    │
+       │ Evaluated Frontend Code + Log│
        └──────────────────────────────┘
 ```
 
-| Sub-Skill | Role & Boundary | Key Guarantee |
+| Sub-Skill | Role & Boundary | Primary Constraint |
 | :--- | :--- | :--- |
 | **`autonomous-intent-expander`** | Intent synthesis via 30-parameter contract | Calibrated Ambiguity Budget; rejects unstated business assumptions |
 | **`visual-chemistry-engine`** | Cohesive aesthetic system selection | 5 distinct chemistries; anti-repetition constraint across projects |
@@ -156,7 +156,7 @@ The system is coordinated by a lead architect agent (**`mr-ui-designer`**) that 
 
 ## 🎨 Five Visual Chemistries
 
-Vibe UI enforces complete visual cohesion through 5 distinct design systems:
+Vibe UI defines five visual systems for consistent design decisions:
 
 1. **Minimalist SaaS**: Monochrome restraint, precision borders, high information density, functional typography (`oklch(0.12 0.01 260)`).
 2. **Luxury Obsidian / Glass 2.0**: Dark substrates, specular Fresnel highlights, subtle gold accents, controlled GPU backdrop blur budget (`oklch(0.08 0.02 270)`).

@@ -44,6 +44,7 @@
     "core_parameters": {
       "type": "object",
       "description": "Universal parameters P01 through P24 required across all interface generations.",
+      "additionalProperties": false,
       "required": [
         "primary_palette",
         "typography_pair",
@@ -52,8 +53,18 @@
         "hero_composition"
       ],
       "properties": {
+        "target_persona": { "type": "string", "description": "P01: Target user role and context" },
+        "core_job_to_be_done": { "type": "string", "description": "P02: Primary functional problem solved" },
+        "primary_cta": { "type": "string", "description": "P03: Dominant conversion interaction" },
+        "secondary_micro_action": { "type": "string", "description": "P04: Secondary micro-commitment action" },
+        "page_hierarchy": { "type": "array", "items": { "type": "string" }, "description": "P05: Ordered section flow" },
+        "objection_neutralization": { "type": "array", "items": { "type": "string" }, "description": "P06: Explicit objection handling" },
+        "evidence_density": { "type": "string", "enum": ["minimal", "moderate", "high", "dense"], "description": "P07: Density of proof elements" },
+        "risk_reversal": { "type": "string", "description": "P08: Transparent guarantee or risk mitigation" },
         "primary_palette": {
           "type": "object",
+          "description": "P09-P12: OKLCH color token architecture",
+          "additionalProperties": false,
           "properties": {
             "canvas_oklch": { "type": "string" },
             "surface_oklch": { "type": "string" },
@@ -62,8 +73,19 @@
           },
           "required": ["canvas_oklch", "surface_oklch", "primary_accent_oklch"]
         },
+        "surface_treatment": {
+          "type": "string",
+          "description": "P10: Surface depth, mesh glow, or SVG noise texture"
+        },
+        "border_radius_scale": {
+          "type": "string",
+          "enum": ["none", "sm", "md", "lg", "full"],
+          "description": "P13: Geometric corner radius cadence"
+        },
         "typography_pair": {
           "type": "object",
+          "description": "P14-P15: Typographic hierarchy pairing",
+          "additionalProperties": false,
           "properties": {
             "display_font": { "type": "string" },
             "body_font": { "type": "string" },
@@ -71,25 +93,105 @@
           },
           "required": ["display_font", "body_font"]
         },
-        "surface_treatment": {
-          "type": "string"
+        "tabular_metric_font": {
+          "type": "string",
+          "description": "P16: Monospace font for telemetry HUDs and data tables"
         },
         "grid_density": {
           "type": "string",
-          "enum": ["airy", "standard", "compact", "bento_asymmetric"]
+          "enum": ["airy", "standard", "compact", "bento_asymmetric"],
+          "description": "P17: Spatial layout and container cadence"
+        },
+        "scroll_mechanics": {
+          "type": "string",
+          "enum": ["native", "lenis_smooth", "snap"],
+          "description": "P18: Viewport scroll interpolation model"
         },
         "hero_composition": {
           "type": "string",
-          "enum": ["split_terminal", "centered_badge", "asymmetric_editorial", "card_stack", "bento_hero"]
+          "enum": ["split_terminal", "centered_badge", "asymmetric_editorial", "card_stack", "bento_hero"],
+          "description": "P19: Hero section composition geometry"
+        },
+        "iconography_system": {
+          "type": "string",
+          "enum": ["lucide_svg", "heroicons_svg", "radix_svg", "custom_svg"],
+          "description": "P20: Strict SVG vector iconography (zero raw emojis)"
+        },
+        "transition_physics": {
+          "type": "string",
+          "enum": ["spring_subtle", "linear_snappy", "cubic_standard"],
+          "description": "P21: Mathematical spring easing curves"
+        },
+        "bluf_value_hook": {
+          "type": "string",
+          "description": "P22: Bottom Line Up Front narrative hook"
+        },
+        "problem_solution_matrix": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "P23: Explicit contrast between old way vs. new way"
+        },
+        "brand_voice_register": {
+          "type": "string",
+          "enum": ["authoritative_technical", "editorial_refined", "bold_rebellious", "friendly_accessible"],
+          "description": "P24: Domain-calibrated voice tone"
         }
       }
     },
     "conditional_domain_parameters": {
       "type": "object",
-      "description": "Specialized parameters P25 through P30 activated only for specific domain requirements (e.g. healthcare, e-commerce, local trades)."
+      "description": "Specialized parameters P25 through P30 activated only for specific domain requirements.",
+      "additionalProperties": false,
+      "properties": {
+        "geo_coordinates": {
+          "type": "object",
+          "description": "P25: Physical local business coordinates and address",
+          "additionalProperties": false,
+          "properties": {
+            "latitude": { "type": "number" },
+            "longitude": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "clinical_legal_credentials": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "P26: Verified board certifications or bar admission references"
+        },
+        "schema_org_entities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "P27: Wikidata entity URIs and JSON-LD graph nodes"
+        },
+        "financial_math_guardrails": {
+          "type": "object",
+          "description": "P28: Currency precision, roundoff rules, and financial lock types",
+          "additionalProperties": false,
+          "properties": {
+            "currency_iso": { "type": "string" },
+            "precision_decimals": { "type": "integer" }
+          }
+        },
+        "core_web_vitals_budget": {
+          "type": "object",
+          "description": "P29: Performance thresholds (LCP, CLS, INP)",
+          "additionalProperties": false,
+          "properties": {
+            "lcp_max_ms": { "type": "integer" },
+            "cls_max": { "type": "number" },
+            "inp_max_ms": { "type": "integer" }
+          }
+        },
+        "boundary_isolation": {
+          "type": "boolean",
+          "description": "P30: Cryptographic or sandbox boundary isolation flag"
+        }
+      }
     },
     "accessibility_contract": {
       "type": "object",
+      "description": "WCAG 2.2 accessibility and touch target constraints",
+      "additionalProperties": false,
       "required": ["wcag_level", "min_touch_target_px", "focus_visible_required"],
       "properties": {
         "wcag_level": { "type": "string", "enum": ["AA", "AAA"] },
@@ -101,6 +203,8 @@
     },
     "semantic_rtl_contract": {
       "type": "object",
+      "description": "Fixed-structure semantic RTL layout constraints",
+      "additionalProperties": false,
       "required": ["enabled", "physical_macro_stability", "bidi_isolation"],
       "properties": {
         "enabled": { "type": "boolean" },
@@ -111,6 +215,8 @@
     },
     "novelty_budget": {
       "type": "object",
+      "description": "Anti-repetition entropy and variation budgets",
+      "additionalProperties": false,
       "required": ["dimensions_varied"],
       "properties": {
         "dimensions_varied": {
