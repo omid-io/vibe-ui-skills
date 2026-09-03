@@ -277,8 +277,14 @@ def validate_json_instance(instance: any, schema: dict, path: str = "$") -> list
             for idx, item in enumerate(instance):
                 errors.extend(validate_json_instance(item, schema["items"], f"{path}[{idx}]"))
 
-    # 6. Object required properties and nested properties
+    # 6. Object required properties, additionalProperties, and nested properties
     if isinstance(instance, dict):
+        if schema.get("additionalProperties") is False:
+            allowed_props = set(schema.get("properties", {}).keys())
+            for key in instance:
+                if key not in allowed_props and not key.startswith("$"):
+                    errors.append(f"{path}: Additional property '{key}' not permitted by closed-world contract")
+
         for req in schema.get("required", []):
             if req not in instance:
                 errors.append(f"{path}: Missing required property '{req}'")
@@ -997,11 +1003,12 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 })
 
     except Exception as e:
-        results["overall_status"] = "WARN"
+        results["overall_status"] = "FAIL"
+        results["pillars"]["Browser Runtime"] = "FAIL"
         results["checks"].append({
             "pillar": "Browser Runtime",
             "name": "Headless Execution",
-            "status": "WARN",
+            "status": "FAIL",
             "msg": f"Browser test encountered environment restriction: {e}"
         })
 
@@ -1171,7 +1178,7 @@ def main():
     if args.json_mode:
         report = {
             "suite": "Vibe UI Evaluation Suite",
-            "version": "2.2.1",
+            "version": SUITE_VERSION,
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "overall_status": overall_suite_status,
             "exit_code": exit_code,

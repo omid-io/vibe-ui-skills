@@ -148,8 +148,8 @@
           "description": "P25: Physical local business coordinates and address",
           "additionalProperties": false,
           "properties": {
-            "latitude": { "type": "number" },
-            "longitude": { "type": "number" },
+            "latitude": { "type": "number", "minimum": -90.0, "maximum": 90.0 },
+            "longitude": { "type": "number", "minimum": -180.0, "maximum": 180.0 },
             "address": { "type": "string" }
           }
         },
@@ -169,7 +169,7 @@
           "additionalProperties": false,
           "properties": {
             "currency_iso": { "type": "string" },
-            "precision_decimals": { "type": "integer" }
+            "precision_decimals": { "type": "integer", "minimum": 0, "maximum": 8 }
           }
         },
         "core_web_vitals_budget": {
@@ -177,9 +177,9 @@
           "description": "P29: Performance thresholds (LCP, CLS, INP)",
           "additionalProperties": false,
           "properties": {
-            "lcp_max_ms": { "type": "integer" },
-            "cls_max": { "type": "number" },
-            "inp_max_ms": { "type": "integer" }
+            "lcp_max_ms": { "type": "integer", "minimum": 100, "maximum": 10000 },
+            "cls_max": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+            "inp_max_ms": { "type": "integer", "minimum": 10, "maximum": 1000 }
           }
         },
         "boundary_isolation": {
