@@ -147,9 +147,10 @@ class DesignDirector:
                 reasons = matched_aliases
 
         if not best_domain or best_score < 0.30:
-            # Fallback to general_modern_saas with lower confidence
+            # Fallback to general_modern_saas with honest zero/actual match score
             fallback = next((d for d in self.taxonomy if d["id"] == "general_modern_saas"), self.taxonomy[0] if self.taxonomy else {})
-            return fallback, max(0.40, best_score), ["fallback_general_modern_saas"]
+            actual_score = round(best_score, 2) if best_domain else 0.0
+            return fallback, actual_score, ["fallback_general_modern_saas", "no_matching_taxonomy"]
 
         return best_domain, best_score, reasons
 

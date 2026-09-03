@@ -144,12 +144,12 @@ class InterfaceGenerator:
           </h2>
           <div class="space-y-4">
             <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
-              <div class="text-xs text-[var(--text-muted)] mb-1">{"کنتراست ریاضی رنگ" if is_rtl else "WCAG Contrast"}</div>
-              <div class="text-2xl font-bold text-[var(--accent)]">15.2 : 1</div>
+              <div class="text-xs text-[var(--text-muted)] mb-1">{"معیار انطباق کنتراست" if is_rtl else "Contrast Invariant Target"}</div>
+              <div class="text-2xl font-bold text-[var(--accent)]">&ge; 4.5 : 1 (AA)</div>
             </div>
             <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
-              <div class="text-xs text-[var(--text-muted)] mb-1">{"انحراف چیدمان (CLS)" if is_rtl else "Cumulative Shift (CLS)"}</div>
-              <div class="text-2xl font-bold">&lt; 0.05</div>
+              <div class="text-xs text-[var(--text-muted)] mb-1">{"سقف انحراف چیدمان" if is_rtl else "Layout Shift Target"}</div>
+              <div class="text-2xl font-bold">&lt; 0.1 (CLS)</div>
             </div>
             <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
               <div class="text-xs text-[var(--text-muted)] mb-1">{"سبک معماری" if is_rtl else "Style Family"}</div>
@@ -157,9 +157,9 @@ class InterfaceGenerator:
             </div>
           </div>
         </div>
-        <div class="mt-6 text-xs text-[var(--text-muted)] flex items-center space-x-1.5 rtl:space-x-reverse">
-          <svg class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          <span>{"تأییدیه کامل بدون خطای دسترسی‌پذیری" if is_rtl else "100% Quality Invariants Passed"}</span>
+        <div class="mt-6 text-xs text-[var(--text-muted)] flex items-center space-x-1.5 rtl:space-x-reverse" data-verification-status="declared">
+          <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>{"وضعیت: منطبق بر قرارداد (در انتظار راستی‌آزمایی ران‌تایم)" if is_rtl else "Status: Contract Declared (Awaiting Runtime Audit)"}</span>
         </div>
       </aside>
     </div>

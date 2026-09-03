@@ -2,7 +2,7 @@
   "name": "vibe-ui-vscode",
   "displayName": "Vibe UI — Design Systems & Contrast Linter",
   "description": "Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor & Windsurf",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "publisher": "omid-io",
   "icon": "media/icon.png",
   "engines": {

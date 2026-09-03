@@ -131,7 +131,7 @@ def main():
     benchmark_results = {
         "$schema": "../../schemas/benchmark-result.v1.json",
         "timestamp": "2026-09-03T12:30:00Z",
-        "suite_version": "3.0.0-alpha.1",
+        "suite_version": "3.0.0",
         "scenario_count": len(scenarios),
         "baseline_system": "Vanilla LLM / V2 Baseline",
         "candidate_system": "Vibe UI V3 Autonomous Design Intelligence",

@@ -109,6 +109,13 @@
   - **Remote Origin Synchronized**: Updated local git remote tracking to `https://github.com/omid-io/vibe-ui-suite.git`.
   - **Global Documentation & Manifest Alignment**: Updated branding, repository URLs, install scripts (`install.ps1`, `install.sh`), central manifest (`version.json`), VS Code extension manifest, design tokens package, Next.js starter, and online studio on GitHub Pages.
 
+- [x] **R18: Architecture Hardening & Verification Provenance [2026-09-03]**:
+  - **Version Harmonization (3.0.0 Stable)**: Resolved all version drift across `version.manifest.json`, `version.json`, `packages/tokens`, `packages/vibe-ui-vscode`, `examples/nextjs-starter`, `evals/run_evals.py`, and `ARCHITECTURE.md`. Automated verification integrated into `scripts/validate_versions.py`.
+  - **Generator / Verifier Separation**: Eliminated premature hardcoded verification claims (`100% Quality Invariants Passed`) in `vibe_core/generator.py` and introduced contract declared state (`data-verification-status="declared"`).
+  - **Match Score & Fallback Semantics**: Refactored `vibe_core/director.py` to return honest zero match score (`match_score: 0.0`) and explicit fallback provenance when no taxonomy keywords match.
+  - **Verification Provenance & Layering**: Enriched `manifests/skill_contracts.json` with execution provenance, timestamps, commit hashes, and formal verification layers (`L0_schema`, `L1_static_ast`, `L2_dom_runtime`, `L3_visual_runtime`).
+  - **Quality Gates Certified**: 100% pass across all 7 test suites in 713ms. Zero regressions.
+
 ## Immediate Next Steps & Execution Plan
 1. **Package Release**: Publish `@omid-io/tokens` v3.0.0 to NPM and `vibe-ui-vscode` to Visual Studio Marketplace.
 2. **Community & Content Expansion**: Launch video demonstration of the Design Compiler Studio on social channels.

@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "Stratified 100-prompt evaluation dataset covering all 24 domains, 3 product modes, bilingual queries, and edge cases.",
   "prompts": [
     {"id": "sc-001", "domain": "beauty_clinical_wellness", "lang": "fa", "prompt": "کلینیک تخصصی پوست و مو و لیزر گلوریا"},
