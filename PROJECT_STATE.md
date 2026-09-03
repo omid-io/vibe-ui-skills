@@ -77,9 +77,8 @@
   - **WebView Security Hardening**: Injected strict Content-Security-Policy (CSP) meta tag into VS Code webview and decoupled implicit global `event` in `switchTab`.
   - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
 - [x] **R13: Architecture & V3 Strategic Specification (Design Intelligence)**:
-  - Formulated comprehensive architectural specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
-  - Authored deep algorithmic specification in [`docs/V3_DECISION_ENGINE_SPEC.md`](docs/V3_DECISION_ENGINE_SPEC.md) (confidence thresholds, recommendation scoring, hard/soft conflict resolution, and decision trace).
-  - Authored empirical benchmark specification in [`docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md`](docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md) (Two-Tier quality gates, priority auto-refinement, user-effort KPIs, and A/B baseline).
+  - Formulated unified master architectural specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
+  - Consolidated complete decision engine formulas (confidence thresholds, recommendation scoring, conflict resolver, decision trace), two-tier quality gates, priority auto-refinement, user-effort KPIs, and 7-unknown resolution into one single authoritative master document.
   - Aligned project roadmap to elevate First-Pass Quality (>70%) and eliminate repetitive manual user prompt iterations.
 
 ## Immediate Next Steps & Execution Plan
@@ -90,8 +89,6 @@
 
 ## Modified / Created Files Index
 - [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
-- [`docs/V3_DECISION_ENGINE_SPEC.md`](docs/V3_DECISION_ENGINE_SPEC.md)
-- [`docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md`](docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md)
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - [`CHANGELOG.md`](CHANGELOG.md)
 - [`README.md`](README.md)
