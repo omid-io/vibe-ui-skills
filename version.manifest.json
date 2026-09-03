@@ -1,12 +1,12 @@
 {
   "$schema": "./schemas/version-manifest.schema.json",
-  "version": "3.0.0",
-  "codename": "Design Intelligence",
+  "version": "3.0.1",
+  "codename": "Design Intelligence Hardened",
   "release_channel": "stable",
   "packages": {
-    "@omid-io/tokens": "3.0.0",
-    "vibe-ui-vscode": "3.0.0",
-    "vibe-ui-nextjs-starter": "3.0.0"
+    "@omid-io/tokens": "3.0.1",
+    "vibe-ui-vscode": "3.0.1",
+    "vibe-ui-nextjs-starter": "3.0.1"
   },
   "schemas": {
     "intent_contract": "v1",

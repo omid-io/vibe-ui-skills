@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "vibe-ui-suite",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "schemaVersion": "1.0.0",
-  "tokensPackageVersion": "3.0.0",
-  "vscodeExtensionVersion": "3.0.0",
-  "cliVersion": "3.0.0",
-  "starterVersion": "3.0.0",
+  "tokensPackageVersion": "3.0.1",
+  "vscodeExtensionVersion": "3.0.1",
+  "cliVersion": "3.0.1",
+  "starterVersion": "3.0.1",
   "supportedVersions": ["3.0.x", "2.4.x", "2.3.x"]
 }

@@ -118,7 +118,7 @@ Follow strict anti-slop guidelines:
     }));
     // 4. Register Open Showcase Command
     context.subscriptions.push(vscode.commands.registerCommand('vibe-ui.openShowcase', () => {
-        vscode.env.openExternal(vscode.Uri.parse('https://omid-io.github.io/vibe-ui-skills/showcase/'));
+        vscode.env.openExternal(vscode.Uri.parse('https://omid-io.github.io/vibe-ui-suite/showcase/'));
     }));
 }
 function deactivate() { }

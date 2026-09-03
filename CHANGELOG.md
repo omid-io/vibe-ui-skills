@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.1] - 2026-09-03
+
+### Hardened & Added — Qwen Senior Audit Remediation
+- **AST-Based HTML Parsing Engine**: Replaced fragile regular expressions with `BeautifulSoup4` AST parsing in `vibe_core/critic.py` and `vibe_core/verifier.py` for semantic clickable (`div[onclick]`) detection, SVG count verification, and `<style>` block CSS extraction (with graceful regex fallback for zero-dep environments).
+- **Self-Healing Agent Loop (`vibe_core/healer.py`)**: Built `SelfHealingLoop` converting Critic defect reports into structured, LLM-consumable `[VIBE-UI CORRECTION REQUEST]` prompt blocks. Integrated into CLI pipeline via `vibe generate` and the new `vibe heal <file>` command.
+- **Tiered Verification Architecture**: Separated fast-path static DOM evaluation (<50ms, default) from slow-path Playwright headless browser runtime verification (3-8s, opt-in via `--strict`). Added `--strict` flag to `vibe verify` and `vibe generate`.
+- **Centralized Policy Constants (`vibe_core/constants.py`)**: Unified `MAX_BLUR_SURFACES = 3`, `HARD_MIN_TOUCH_PX = 24`, `RECOMMENDED_TOUCH_PX = 44`, and loop bounds into a single source of truth, eliminating policy drift.
+- **Dynamic UTC Timestamps**: Completely eliminated hardcoded static timestamps across all report generators (`critic.py`, `verifier.py`, `run_benchmark.py`) in favor of dynamic ISO 8601 UTC timestamps (`datetime.now(timezone.utc).isoformat()`).
+- **Transparent Benchmark Methodology**: Added `benchmark_type: "internal_deterministic_heuristic"` and explicit methodology notes to `schemas/benchmark-result.v1.json` and `evals/benchmark/benchmark_results.json` clarifying rule-engine compliance vs. subjective human testing.
+- **Full Pipeline End-to-End Integration Suite (`scripts/test_pipeline_e2e.py`)**: Added 4-scenario E2E test validating complete lifecycle across Persian RTL, English SaaS, defect recovery, and constant integrity. Integrated into `scripts/run_all_tests.py` (8 test suites, 100% PASS in <3000ms).
+- **Comprehensive `.gitignore` Hardening**: Full protection against virtualenvs (`.venv/`, `venv/`), test caches, coverage data, environment secrets (`.env*`), and IDE files.
+
+---
+
+## [3.0.0] - 2026-09-03
+
+### Added — Major Release: Autonomous Design Intelligence
+- **Design Director & Fast Retrieval (`vibe_core.director`)**: Ultra-fast (<10ms) zero-token natural language intent extractor with Confidence Scoring and Value-of-Information (VoI) candidate direction generation across 24 bilingual taxonomy domains.
+- **Recommendation Engine & Conflict Resolver (`vibe_core.recommendation`)**: Multi-factor candidate scoring and automatic synthesis of "Controlled Hybrids" when explicit user requests diverge from domain priors.
+- **26 Orthogonal Style Families (`data/styles.json`)**: Expanded canonical catalog from 12 to 26 orthogonal style families including `industrial_utility`, `biophilic_wellness`, `futuristic_tech`, `retro_computing_80s`, `y2k_aesthetic`, `enterprise_dense`, `financial_terminal`, `civic_institutional`, `playful_consumer`, `art_gallery`, `high_end_hospitality`, `cultural_heritage`, and `scientific_dashboard`.
+- **19-Parameter Design Genome Engine (`vibe_core.genome`)**: Deterministic compiler synthesizing typed CSS variables, Tailwind theme configurations, and typography scales from mathematical design contracts.
+- **Autonomous Component Generator (`vibe_core.generator`)**: End-to-end generation of accessible, production-ready HTML interfaces with full lifecycle states (default, skeleton loader, empty state, error/recovery).
+- **Independent Design Critic (`vibe_core.critic`)**: Multi-pillar evaluator auditing 15 design dimensions, cleanly separating Hard Gates (accessibility, zero raw emojis, viewport, focus rings, reduced motion) from the Quality Scorecard.
+- **Priority-Based Auto-Refiner (`vibe_core.refiner`)**: Pure-Python stack-based token scanner and reverse-splicing engine applying bounded surgical patches with a 5-Rule Anti-Regression Invariant Gate.
+- **Verification 2.0 Physical Proofs (`vibe_core.verifier`)**: Evidence-backed verification engine producing formal physical proof reports conforming to `schemas/verification-report.v1.json`.
+- **Stratified 100-Scenario Benchmark Suite (`evals/benchmark/`)**: Automated comparative evaluation suite testing 100 stratified scenarios across 24 industry domains.
+- **Unified Master CLI (`vibe_cli.py`)**: Production-grade CLI orchestrator providing `search`, `plan`, `generate`, `critique`, and `verify` commands.
+- **Official Rebranding**: Renamed project and repository to **Vibe UI Suite** (`omid-io/vibe-ui-suite`).
+
+---
+
 ## [2.4.2] - 2026-09-03
 
 ### Hardened & Added
