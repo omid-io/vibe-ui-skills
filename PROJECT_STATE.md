@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Idle — R21 Complete. Ready for v3.0.1 Multi-Registry Release.
-- **Status**: **R21 Completed 100%** (`3d196a4`). Fully resolved Qwen Senior Audit findings: comprehensive `.gitignore` protection, centralized policy constants in [`vibe_core/constants.py`](vibe_core/constants.py), eliminated static timestamps in favor of dynamic UTC `datetime.now(timezone.utc).isoformat()` in [`vibe_core/critic.py`](vibe_core/critic.py) and [`vibe_core/verifier.py`](vibe_core/verifier.py), added transparent methodology disclaimers in [`evals/benchmark/run_benchmark.py`](evals/benchmark/run_benchmark.py) & [`schemas/benchmark-result.v1.json`](schemas/benchmark-result.v1.json), and authored Full Pipeline E2E Integration Suite in [`scripts/test_pipeline_e2e.py`](scripts/test_pipeline_e2e.py). All 8 quality gate suites pass 100% in 2977ms. Zero regressions.
+- **Active Phase**: Idle — v3.0.0 & v3.0.1 GitHub Releases Published Worldwide.
+- **Status**: **v3.0.0 & v3.0.1 Live on GitHub Releases**. Successfully published [`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) (Autonomous Design Intelligence, 26 Orthogonal Styles, DAG Compiler) and [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1) (AST Parser, Self-Healing Loop, Tiered Verification, Centralized Constants, E2E Integration Suite). Formatted release notes and attached binaries ([`vibe-ui-vscode-3.0.0.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.0/vibe-ui-vscode-3.0.0.vsix), [`vibe-ui-vscode-3.0.1.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.1/vibe-ui-vscode-3.0.1.vsix)) verified live. All 8 quality gates passing 100% in 3233ms. Zero regressions.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
@@ -143,9 +143,15 @@
   - **Benchmark Transparency & Schema Harmonization**: Added `benchmark_type: "internal_deterministic_heuristic"` and explicit methodology notes to [`schemas/benchmark-result.v1.json`](file:///E:/programming/vibe-ui-skills/schemas/benchmark-result.v1.json) and regenerated [`evals/benchmark/benchmark_results.json`](file:///E:/programming/vibe-ui-skills/evals/benchmark/benchmark_results.json) stating that metrics evaluate rule-engine compliance rather than subjective human A/B testing.
   - **End-to-End Pipeline Integration Test Suite**: Authored [`scripts/test_pipeline_e2e.py`](file:///E:/programming/vibe-ui-skills/scripts/test_pipeline_e2e.py) exercising the entire multi-agent lifecycle across Persian RTL, English SaaS, defect recovery via SelfHealingLoop, and constant integrity. Integrated as 8th gate in [`scripts/run_all_tests.py`](file:///E:/programming/vibe-ui-skills/scripts/run_all_tests.py) (100% PASS in 2977ms).
 
+- [x] **R22: Production Multi-Release Publication (`v3.0.0` & `v3.0.1`) [2026-09-03]**:
+  - **Release v3.0.0 Live**: Published [`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) documenting the full V3 Design Intelligence architecture, 26 orthogonal style families, 19-parameter Genome Engine, Independent Design Critic, Priority AutoRefiner, and attached binary [`vibe-ui-vscode-3.0.0.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.0/vibe-ui-vscode-3.0.0.vsix).
+  - **Release v3.0.1 Live (Latest)**: Published [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1) addressing Qwen Senior Review findings with BeautifulSoup4 AST parsing, SelfHealingLoop (`vibe_core.healer`), tiered verification (`--strict`), centralized constants (`vibe_core/constants.py`), dynamic UTC timestamps, and attached binary [`vibe-ui-vscode-3.0.1.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.1/vibe-ui-vscode-3.0.1.vsix).
+  - **Repository & Changelog Harmonization**: Fully synchronized [`CHANGELOG.md`](file:///E:/programming/vibe-ui-skills/CHANGELOG.md), [`version.manifest.json`](file:///E:/programming/vibe-ui-skills/version.manifest.json), [`version.json`](file:///E:/programming/vibe-ui-skills/version.json), and package files to `3.0.1`.
+  - **Quality Gates Certified**: All 8 test suites PASS 100% in 3233ms.
+
 ## Immediate Next Steps & Execution Plan
-1. **v3.0.1 Patch Release**: Tag and publish `@omid-io/tokens` v3.0.1 to NPM + VS Code Marketplace with R20/R21 changelog.
-2. **Community & Content Expansion**: Launch video demonstration of the Design Compiler Studio on social channels.
+1. **NPM & Marketplace Deployment**: Run automated publish action or push `@omid-io/tokens@3.0.1` to NPM and upload VSIX to Visual Studio Marketplace.
+2. **Community Launch**: Publish launch demo and documentation highlights.
 
 ## Modified / Created Files Index
 - [`vibe_cli.py`](vibe_cli.py)
