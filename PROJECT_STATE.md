@@ -169,6 +169,13 @@
     - Open-VSX extension [`omid-io.vibe-ui-vscode@3.1.0`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) published live via GitHub Actions.
   - **100% Passing Quality Gates**: All 8 test suites pass cleanly in 2929ms.
 
+- [x] **R25: 26 Orthogonal Style Families Live Studio & Dynamic Theming [2026-09-03]**:
+  - **Full 26 Canonical Style Families in Interactive Studio**: Expanded `STUDIO_SCENARIOS` in [`index.html`](file:///E:/programming/vibe-ui-skills/index.html) and [`showcase/index.html`](file:///E:/programming/vibe-ui-skills/showcase/index.html) from 5 hardcoded scenarios to all 26 orthogonal style families defined in `data/styles.json`.
+  - **Dynamic Real-Time Visual Theming**: Augmented `renderStudioUI` with custom `card_style`, `btn_style`, `sec_btn_style`, `val_color`, `subval_color`, and `font_family`, ensuring each style transforms the live canvas into its authentic geometry, typography, colors, and shadows.
+  - **Categorized Style Selector Bar & Quick Chips**: Added `<select id="studioStyleSelect">` grouped into 7 domains (Tech, SaaS, Luxury, Wellness, Creative, Retro, Consumer) alongside 12 featured interactive chips.
+  - **Enhanced Natural Language Compiler**: Updated `compileStudioPrompt()` keyword resolver covering all 26 domains and styles in both English and Persian.
+  - **100% Quality Gates**: All 8 test suites pass cleanly in 3020ms. Pushed to `origin main` for instant GitHub Pages deployment.
+
 ## Immediate Next Steps & Execution Plan
 1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
 
