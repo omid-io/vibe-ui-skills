@@ -4,3 +4,6 @@ Thumbs.db
 .cache/
 .temp/
 node_modules/
+__pycache__/
+*.pyc
+.agents/

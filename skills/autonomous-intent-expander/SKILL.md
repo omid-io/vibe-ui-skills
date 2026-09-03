@@ -58,33 +58,46 @@ When requested or when compiling specs for downstream build pipelines, `autonomo
 
 ```json
 {
-  "$schema": "./schemas/design-spec.v1.schema.json",
-  "domain": "HIGH_PERFORMANCE_SAAS",
-  "archetype": "minimalist_saas",
+  "$schema": "../../schemas/design-spec.v1.schema.json",
+  "spec_version": "2.2.0",
+  "domain_archetype": "HIGH_PERFORMANCE_SAAS",
+  "visual_chemistry": "MINIMALIST_SAAS",
+  "core_parameters": {
+    "primary_palette": {
+      "canvas_oklch": "oklch(0.14 0.005 260)",
+      "surface_oklch": "oklch(0.18 0.008 260)",
+      "primary_accent_oklch": "oklch(0.65 0.22 265)",
+      "border_oklch": "oklch(0.28 0.01 260)"
+    },
+    "typography_pair": {
+      "display_font": "Inter, system-ui, sans-serif",
+      "body_font": "Inter, system-ui, sans-serif",
+      "mono_font": "JetBrains Mono, monospace"
+    },
+    "surface_treatment": "subtle_mesh_glow_with_svg_noise",
+    "grid_density": "bento_asymmetric",
+    "hero_composition": "split_terminal"
+  },
+  "accessibility_contract": {
+    "wcag_level": "AA",
+    "min_touch_target_px": 24,
+    "target_recommendation_px": 44,
+    "focus_visible_required": true,
+    "reduced_motion_strategy": "functional_only"
+  },
+  "semantic_rtl_contract": {
+    "enabled": true,
+    "physical_macro_stability": true,
+    "bidi_isolation": true,
+    "code_ltr_enforced": true
+  },
   "novelty_budget": {
-    "dimensions_varied": ["hero_composition", "grid_density", "accent_palette"],
-    "entropy_score": 0.85
-  },
-  "visual_contract": {
-    "canvas": "oklch(0.14 0.005 260)",
-    "surface": "oklch(0.18 0.008 260)",
-    "accent": "oklch(0.65 0.22 265)",
-    "border": "1px solid oklch(0.28 0.01 260)",
-    "radius": "8px"
-  },
-  "typography": {
-    "display": "Inter, system-ui, sans-serif",
-    "body": "Inter, system-ui, sans-serif",
-    "metrics_mono": "JetBrains Mono, monospace",
-    "persian_fallback": "Vazirmatn, sans-serif"
-  },
-  "components_manifest": [
-    "ai_thinking_state",
-    "tool_execution_chip",
-    "bento_grid_3col",
-    "sub_pixel_slider"
-  ],
-  "accessibility_target": "WCAG_2.2_AA",
-  "layout_direction": "bi_directional_semantic_rtl"
+    "dimensions_varied": [
+      "hero_composition",
+      "grid_density",
+      "accent_palette"
+    ],
+    "entropy_heuristic": 0.85
+  }
 }
 ```

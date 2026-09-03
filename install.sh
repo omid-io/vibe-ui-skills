@@ -14,6 +14,7 @@ set -e
 
 AGENT="antigravity"
 TARGET_DIR=""
+VERSION="v2.2.0"
 BACKUP=true
 FORCE=false
 
@@ -21,6 +22,7 @@ while [[ "$#" -gt 0 ]]; do
     case $1 in
         --agent) AGENT="$2"; shift ;;
         --target) TARGET_DIR="$2"; shift ;;
+        --version) VERSION="$2"; shift ;;
         --force) FORCE=true; BACKUP=false ;;
         --no-backup) BACKUP=false ;;
         *) TARGET_DIR="$1" ;;
@@ -63,9 +65,13 @@ fi
 
 # If skills folder not found locally, download from GitHub
 if [ -z "$SOURCE_SKILLS" ] || [ ! -d "$SOURCE_SKILLS" ]; then
-    echo "📦 Fetching latest skills suite from GitHub repository..."
+    echo "📦 Fetching skills suite (version: $VERSION) from GitHub repository..."
     TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'vibe_ui')
-    ARCHIVE_URL="https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.tar.gz"
+    if [ -n "$VERSION" ] && [ "$VERSION" != "main" ]; then
+        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-skills/archive/refs/tags/${VERSION}.tar.gz"
+    else
+        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.tar.gz"
+    fi
     
     if command -v curl >/dev/null 2>&1; then
         curl -fsSL "$ARCHIVE_URL" | tar -xz -C "$TEMP_DIR"
@@ -77,7 +83,8 @@ if [ -z "$SOURCE_SKILLS" ] || [ ! -d "$SOURCE_SKILLS" ]; then
         exit 1
     fi
     
-    SOURCE_SKILLS="$TEMP_DIR/vibe-ui-skills-main/skills"
+    # Locate skills directory dynamically inside extracted tarball
+    SOURCE_SKILLS=$(find "$TEMP_DIR" -type d -name "skills" | head -n 1)
 fi
 
 if [ ! -d "$SOURCE_SKILLS" ]; then

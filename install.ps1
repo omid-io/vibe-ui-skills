@@ -24,6 +24,7 @@ param (
     [string]$TargetDir = "",
     [ValidateSet("antigravity", "gemini", "claude", "cursor", "windsurf", "custom")]
     [string]$Agent = "antigravity",
+    [string]$Version = "v2.2.0",
     [switch]$Backup = $true,
     [switch]$Force = $false
 )
@@ -70,8 +71,14 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "skills"))) {
     $SourceSkillsDir = Join-Path (Get-Location) "skills"
 } else {
     # Running remotely via 'irm ... | iex' - download archive from GitHub
-    Write-Host "Fetching latest skills suite from GitHub repository..." -ForegroundColor Cyan
-    $ZipUrl = "https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.zip"
+    Write-Host "Fetching skills suite (version: $Version) from GitHub repository..." -ForegroundColor Cyan
+    if ($Version -and $Version -ne "main") {
+        $ZipUrl = "https://github.com/omid-io/vibe-ui-skills/archive/refs/tags/$Version.zip"
+        $FolderPrefix = "vibe-ui-skills-$($Version.TrimStart('v'))"
+    } else {
+        $ZipUrl = "https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.zip"
+        $FolderPrefix = "vibe-ui-skills-main"
+    }
     $TempDir = Join-Path ([System.IO.Path]::GetTempPath()) ("vibe_ui_skills_" + [System.Guid]::NewGuid().ToString("N"))
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
     $ZipFile = Join-Path $TempDir "bundle.zip"
@@ -80,7 +87,14 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "skills"))) {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         Invoke-WebRequest -Uri $ZipUrl -OutFile $ZipFile -UseBasicParsing
         Expand-Archive -Path $ZipFile -DestinationPath $TempDir -Force
-        $SourceSkillsDir = Join-Path $TempDir "vibe-ui-skills-main\skills"
+        
+        # Look for skills directory inside extracted archive
+        $extractedSkills = Get-ChildItem -Path $TempDir -Directory -Filter "skills" -Recurse | Select-Object -First 1
+        if ($extractedSkills) {
+            $SourceSkillsDir = $extractedSkills.FullName
+        } else {
+            $SourceSkillsDir = Join-Path $TempDir "$FolderPrefix\skills"
+        }
     } catch {
         Write-Error "Failed to download skills archive from GitHub: $_"
         if ($TempDir -and (Test-Path $TempDir)) { Remove-Item -Path $TempDir -Recurse -Force -ErrorAction SilentlyContinue }

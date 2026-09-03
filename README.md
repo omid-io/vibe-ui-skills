@@ -9,17 +9,19 @@
 </p>
 
 [![Master Agent: mr-ui-designer](https://img.shields.io/badge/Master_Agent-mr--ui--designer-gold)](mr-ui-designer/AGENT.md)
+[![Architecture: Specification](https://img.shields.io/badge/Architecture-Specification-informational)](ARCHITECTURE.md)
 [![CI Audit](https://github.com/omid-io/vibe-ui-skills/actions/workflows/evals.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
 [![Security Policy](https://img.shields.io/badge/Security-Policy-brightgreen)](SECURITY.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Compatible with](https://img.shields.io/badge/Compatible%20with-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Copilot-8A2BE2)](#-universal-ide-adapters)
 [![Golden Prompts](https://img.shields.io/badge/Cheatsheet-30%20Golden%20Prompts-gold)](PROMPTS.md)
-[![UI Primitives](https://img.shields.io/badge/Recipes-70%2B%20AI%20%26%20Shadcn-success)](#-the-sub-skills-arsenal)
+[![UI Primitives](https://img.shields.io/badge/Recipes-70%2B%20AI%20%26%20Shadcn-success)](#-the-6-sub-skills-arsenal-commanded-by-mr-ui-designer)
+[![Changelog: Keep a Changelog](https://img.shields.io/badge/Changelog-SemVer%202.0.0-orange)](CHANGELOG.md)
 
 <p align="center">
-  <b>Eliminate generic, low-effort AI interface outputs.</b><br>
-  <b><code>mr-ui-designer</code></b> is a specialized frontend architect agent that commands a modular arsenal of 6 specialized design, physics, and verification skills—injecting deliberate visual chemistries, 70+ curated UI component recipes, WCAG 2.2 AA accessibility, and conversion copy into AI coding workflows.<br><br>
+  <b>Production-grade frontend engineering for autonomous AI coding agents.</b><br>
+  <b><code>mr-ui-designer</code></b> is a specialized frontend architect agent that commands a modular pipeline of 6 specialized design, physics, and verification skills—injecting deliberate visual chemistries, 70+ curated UI component recipes, WCAG 2.2 AA accessibility (&ge; 4.5:1 contrast), and conversion copy into AI coding workflows.<br><br>
   👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>Explore the Live Interactive Showcase & Theme Switcher</b></a>
 </p>
 
@@ -31,17 +33,19 @@
   <img src="assets/comparison_banner.webp" alt="Before vs After: Default AI Slop vs Vibe UI Suite" width="100%">
 </p>
 
-## 🛑 The Problem: AI UI Slop
+## 🛑 The Problem: Generic AI Interface Outputs & Visual Drift
 
-By default, every major LLM (Claude, GPT-4o, Gemini) defaults to predictable, generic, low-effort designs:
-- ❌ Boring `border-radius: 8px` cards with flat gray borders.
-- ❌ Cliché purple-to-blue linear gradients on every single button.
-- ❌ Missing AI states (no thinking skeletons, tool chips, diff viewers, or streaming bubbles).
-- ❌ Rigid, unnatural layout grids without depth, lighting, or physics.
+By default, frontier LLMs generate repetitive, uncalibrated interface code that frequently violates production engineering standards:
+- ❌ **Unverified Contrast Ratios:** Unchecked color pairs that fail WCAG 2.2 AA accessibility standards (< 4.5:1 for body copy, < 3:1 for headings).
+- ❌ **Monotonous Structural Clichés:** Predictable `border-radius: 8px` cards with flat gray borders and generic purple-to-blue linear gradients on buttons.
+- ❌ **Missing AI Execution States:** Complete absence of collapsible reasoning drawers, tool execution chips, streaming token cursors, and human-in-the-loop approval cards.
+- ❌ **Mobile Viewport Breakage:** Rigid layout grids that cause horizontal overflow (> 0px blowout) on 375px mobile viewports.
+- ❌ **Fragile RTL Layout Inversions:** Naive horizontal flipping of entire macro column grids and navigation structures instead of scoping directionality strictly to readable text nodes.
+- ❌ **Uncapped Compositing Cost:** Excessive, unconstrained stacking of `backdrop-filter` blur layers that exhausts GPU fill-rate.
 
 ## 👑 The Solution: mr-ui-designer (Master Orchestrator Agent)
 
-Instead of relying on disconnected prompts, **`mr-ui-designer`** operates as a specialized **Lead Frontend Architect**. When you ask it to design or build an interface, it autonomously orchestrates an arsenal of **6 specialized sub-skills**:
+Instead of relying on fragile prompt engineering, **`mr-ui-designer`** operates as a specialized **Lead Frontend Architect**. When tasked with designing or implementing an interface, it autonomously coordinates a pipeline of **6 specialized sub-skills**:
 
 <p align="center">
   <img src="assets/showcase_hero.webp" alt="Interactive Showcase Preview - Glassmorphism 2.0" width="100%">
@@ -61,6 +65,44 @@ flowchart TD
 
 ---
 
+## ⚡ 2-Minute Quick Start
+
+Get production-grade UI running in your AI agent workflow in 3 actionable steps:
+
+### Step 1: Install Skills
+Prompt your AI coding assistant directly (**Antigravity, Cursor Composer, Claude Code, GitHub Copilot, or Windsurf**):
+> *"Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active workspace and activate `mr-ui-designer`."*
+
+*Or run the 1-command installer via terminal:*
+- **Windows (PowerShell):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
+  ```
+- **macOS / Linux (Bash):**
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
+  ```
+
+### Step 2: Prompt `mr-ui-designer`
+Direct your AI assistant to generate or refactor any interface component:
+> *"Build a high-performance SaaS telemetry dashboard with an AI thinking drawer, metric cards with JetBrains Mono numbers, and a Minimalist SaaS theme with OKLCH tokens."*
+
+### Step 3: Verify Output Quality
+Audit the generated code against Vibe UI's deterministic engineering gates:
+```bash
+python evals/run_evals.py
+```
+This empirically verifies:
+- **WCAG 2.2 AA Contrast:** $\ge 4.5:1$ (body text) and $\ge 3.0:1$ (headings).
+- **Responsive Viewports:** 0px horizontal overflow on 375px mobile screens.
+- **Compositing Budget:** $\le 3$ active `backdrop-filter` blur surfaces.
+- **Physics Fidelity:** Frame-rate-independent deltaTime motion loop ($\alpha = 1 - e^{-\lambda \cdot \Delta t}, \lambda = 14$).
+- **Semantic RTL Stability:** Physically fixed macro coordinates, `<bdi>` BiDi punctuation isolation, and pure LTR telemetry.
+
+---
+
+<a id="-the-6-sub-skills-arsenal-commanded-by-mr-ui-designer"></a>
+<a id="the-6-sub-skills-arsenal-commanded-by-mr-ui-designer"></a>
 ## 📦 The 6 Sub-Skills Arsenal (Commanded by mr-ui-designer)
 
 | Skill | Category | Description | Key Capabilities |
@@ -98,13 +140,14 @@ The easiest way to install! Simply copy and paste this single prompt directly in
 ### Method 1: One-Line Terminal Installer (PowerShell for Windows)
 
 ```powershell
-irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
 ```
-*Or run locally:*
+
+*Or run locally via PowerShell:*
 ```powershell
 git clone https://github.com/omid-io/vibe-ui-skills.git
 cd vibe-ui-skills
-.\install.ps1
+powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
 ### Method 2: One-Line Terminal Installer (Bash for macOS / Linux)
@@ -115,17 +158,25 @@ curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install
 
 ### Method 3: Local Clone & Setup
 
+**On Windows (PowerShell):**
+```powershell
+git clone https://github.com/omid-io/vibe-ui-skills.git
+cd vibe-ui-skills
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**On macOS / Linux (Bash):**
 ```bash
 git clone https://github.com/omid-io/vibe-ui-skills.git
 cd vibe-ui-skills
-# On Windows PowerShell:
-.\install.ps1
-# On macOS / Linux:
+chmod +x ./install.sh
 ./install.sh
 ```
 
 ---
 
+<a id="-universal-ide-adapters"></a>
+<a id="universal-ide-adapters"></a>
 ## 🔌 Universal IDE Adapters
 
 Drop-in rule files are pre-configured for every major AI coding assistant in the [`adapters/`](adapters/) directory:
@@ -195,6 +246,21 @@ Unlike prompt libraries that only offer unverified claims, this repository inclu
   - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): Persian Bento Grid demonstrating semantic RTL, Vazirmatn font, and BiDi punctuation isolation.
   - [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html): Neobrutalist high-contrast creative layout with tactile physical button press feedback.
   - [`examples/swiss_editorial_article.html`](examples/swiss_editorial_article.html): Swiss Editorial typographic layout on paper ivory canvas with zero blur layers.
+- **`examples/nextjs-starter/`**: Clean, runnable Next.js 15 App Router & React 19 production starter featuring TypeScript, typed OKLCH tokens, AI component primitives (`AiThinkingDrawer.tsx`, `HeroSection.tsx`), and fixed-structure semantic RTL support.
+
+---
+
+## ⚡ Modern Production Starter (Next.js 15 & React 19)
+
+For full-stack enterprise applications, Vibe UI provides a production-grade template in `examples/nextjs-starter/`:
+- **Framework Core:** Next.js 15 App Router (`next: ^15.1.7`), React 19 (`react: ^19.0.0`), and TypeScript 5.
+- **Typed OKLCH Design Tokens:** `lib/tokens.ts` defines typed color scales across all 5 visual chemistries.
+- **AI-Native Component Primitives:**
+  - `AiThinkingDrawer.tsx`: Dynamic height CSS grid accordion (`0fr` to `1fr`), ARIA live regions, radar pulse indicator, and micro-latency tool execution chips.
+  - `HeroSection.tsx`: Responsive landing hero combining conversion copy, chemistry indicator, embedded drawer, and telemetry HUD with `.ltr-code`.
+- **Fixed-Structure Semantic RTL:** Bidirectional text support using CSS logical properties, `<bdi>` Latin phrase isolation, and physically locked macro coordinates.
+
+For complete architectural documentation, data contracts, and parameter taxonomies (P01–P30), consult the formal specification in **[`ARCHITECTURE.md`](ARCHITECTURE.md)**.
 
 ---
 
@@ -213,6 +279,8 @@ Once installed, your AI agent automatically activates these skills when you prom
 ---
 
 ## 📜 Philosophy & Architecture
+
+For the complete technical specification, data contracts, and visual chemistry matrix, see **[`ARCHITECTURE.md`](ARCHITECTURE.md)**.
 
 1. **Zero Runtime Dependencies in Core:** Built using standard web standards (CSS Grid, OKLCH, Modern JS, Tailwind CSS classes) — no heavy unneeded runtime bloat.
 2. **Framework Agnostic:** Primitives work out of the box with React, Next.js, Vue, Svelte, Tailwind CSS, or vanilla HTML/CSS.
