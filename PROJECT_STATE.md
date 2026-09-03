@@ -78,17 +78,20 @@
   - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
 - [x] **R13: Architecture & V3 Strategic Specification (Design Intelligence)**:
   - Formulated comprehensive architectural specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
-  - Defined 6-phase strategic transformation: `Design Director` inference model, single-question VoI clarification protocol, `Style Genome` multidimensional composition, and `Design Critic` auto-refinement loop.
+  - Authored deep algorithmic specification in [`docs/V3_DECISION_ENGINE_SPEC.md`](docs/V3_DECISION_ENGINE_SPEC.md) (confidence thresholds, recommendation scoring, hard/soft conflict resolution, and decision trace).
+  - Authored empirical benchmark specification in [`docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md`](docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md) (Two-Tier quality gates, priority auto-refinement, user-effort KPIs, and A/B baseline).
   - Aligned project roadmap to elevate First-Pass Quality (>70%) and eliminate repetitive manual user prompt iterations.
 
 ## Immediate Next Steps & Execution Plan
-1. **Phase 1 Execution (Design Director)**: Upgrade `autonomous-intent-expander` to extract business context (`product_domain`, `trust_requirement`, `visual_energy`) and formalize the 3-Candidate direction protocol.
-2. **Phase 2 Execution (Recommendation Engine)**: Define Domain Design Priors mapping 12 industry archetypes to style, palette, and typography pairings.
-3. **Phase 3 Execution (Design Genome Schema)**: Upgrade `schemas/design-spec.v1.schema.json` to support orthogonal style composition (`Style × Mood × Density × Mode`).
-4. **Phase 4 Execution (Design Critic)**: Add heuristic anti-slop and visual hierarchy verification to `ui-verifier`.
+1. **Phase 1 Execution (Design Director Core)**: Upgrade `autonomous-intent-expander` to extract business context and implement the 3-Candidate direction protocol.
+2. **Phase 2 Execution (Knowledge Base Ingestion)**: Create structured JSON databases in `data/` (`taxonomy.json`, `styles.json`, `palettes.json`, `typography.json`, `priors.json`).
+3. **Phase 3 Execution (Recommendation & Genome)**: Implement `scripts/search.py` scoring and upgrade `schemas/design-spec.v1.schema.json`.
+4. **Phase 4 Execution (Design Critic & Gates)**: Implement `evals/design_critic.py` style-aware heuristic audit and two-tier gates.
 
 ## Modified / Created Files Index
 - [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
+- [`docs/V3_DECISION_ENGINE_SPEC.md`](docs/V3_DECISION_ENGINE_SPEC.md)
+- [`docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md`](docs/V3_EVALUATION_AND_BENCHMARK_SPEC.md)
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - [`CHANGELOG.md`](CHANGELOG.md)
 - [`README.md`](README.md)
