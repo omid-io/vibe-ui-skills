@@ -17,7 +17,9 @@ if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-const typesDir = path.resolve(__dirname, '../../examples/nextjs-starter/node_modules/@types');
+const localTypesDir = path.resolve(__dirname, 'node_modules/@types');
+const fallbackTypesDir = path.resolve(__dirname, '../../examples/nextjs-starter/node_modules/@types');
+const detectedTypeRoots = [localTypesDir, fallbackTypesDir].filter(d => fs.existsSync(d));
 
 const files = [
   path.join(__dirname, 'src', 'vscode.d.ts'),
@@ -32,7 +34,7 @@ const options = {
   strict: true,
   esModuleInterop: true,
   moduleResolution: ts.ModuleResolutionKind.Node10,
-  typeRoots: [typesDir],
+  typeRoots: detectedTypeRoots.length > 0 ? detectedTypeRoots : undefined,
   types: ['node'],
   skipLibCheck: true
 };

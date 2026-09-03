@@ -79,6 +79,7 @@
     "build": "node build.js"
   },
   "devDependencies": {
+    "@types/node": "^20.14.0",
     "typescript": "^5.6.3"
   },
   "author": "Omid Zaferi <https://github.com/omid-io>",
