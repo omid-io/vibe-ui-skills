@@ -1,306 +1,190 @@
 <div align="center">
-  <img src="assets/icon.png" width="100" height="100" alt="Vibe UI Suite Icon" style="border-radius: 22px; margin-bottom: 12px;" />
 
-# سوئیت مهارت‌های Vibe UI (`mr-ui-designer`)
-### *قراردادهای قطعی رابط کاربری و هوش طراحی برای دستیارهای برنامه‌نویسی هوش مصنوعی*
+<img src="assets/icon.png" alt="Vibe UI Suite Logo" width="96" height="96" style="border-radius: 18px; margin-bottom: 12px;">
 
-<p align="center">
-  <a href="README.md"><b>English</b></a> •
-  <a href="README.fa.md"><b>فارسی</b></a>
-</p>
+# اکوسیستم Vibe UI Suite
 
-[![Open VSX](https://img.shields.io/badge/Open--VSX-v2.3.0-purple)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
-[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
-[![NPM Package](https://img.shields.io/badge/npm-v2.3.0-crimson)](https://www.npmjs.com/package/@omid-io/tokens)
-[![معماری سیستم](https://img.shields.io/badge/سند_معماری-ARCHITECTURE.md-informational)](ARCHITECTURE.md)
-[![پایپ‌لاین ارزیابی CI](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
-[![دموی زنده](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
-[![خط‌مشی امنیت](https://img.shields.io/badge/امنیت-SECURITY.md-brightgreen)](SECURITY.md)
-[![لایسنس: MIT](https://img.shields.io/badge/لایسنس-MIT-blue.svg)](LICENSE)
-[![سازگار با](https://img.shields.io/badge/سازگار_با-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Antigravity-8A2BE2)](#-آداپتورهای-آماده-برای-محیط‌های-ai)
-[![سوئیت ارزیابی](https://img.shields.io/badge/آزمون_خودکار-WCAG%20AA%20%26%20Schema-success)](evals/README.md)
-[![تاریخچه تغییرات](https://img.shields.io/badge/نسخه-SemVer%202.3.0-orange)](CHANGELOG.md)
+**مهندسی قراردادمحور فرانت‌اند، قیدهای دیزاین‌سیستم و موتور اعتبارسنجی ران‌تایم برای دستیاران کدنویسی هوش مصنوعی.**
+
+[![CI Pipeline](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@omid-io/tokens.svg?color=cb3837&label=npm)](https://www.npmjs.com/package/@omid-io/tokens)
+[![Open VSX](https://img.shields.io/badge/Open--VSX-omid--io.vibe--ui--vscode-purple.svg)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-omid--io.vibe--ui--vscode-blue.svg)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![WCAG 2.2 AA](https://img.shields.io/badge/WCAG_2.2-AA_Mathematical-success.svg)](evals/)
 
 <p align="center">
-  <b>قراردادهای قطعی و گیت‌های کنترل کیفی فرانت‌اند برای ایجنت‌های هوش مصنوعی.</b><br>
-  <b><code>mr-ui-designer</code></b> یک ایجنت معمار فرانت‌اند است که خط لوله‌ای از ۶ مهارت تخصصی طراحی، فیزیک و اعتبارسنجی را هدایت می‌کند تا اسکیماهای ماشین‌خوان دیزاین، توکن‌های تایپ‌شده OKLCH، اعتبارسنجی ریاضی کنتراست WCAG 2.2 AA، و راست‌چین پایدار ساختار-ثابت (Semantic RTL) را در محیط‌های Cursor، Claude Code، Windsurf و Antigravity مستقر سازد.<br><br>
-  👉 <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><b>مشاهده دموی زنده و تغییر آنی تم‌ها</b></a>
+  <a href="README.md"><strong>English Documentation</strong></a> •
+  <a href="ARCHITECTURE.md"><strong>مستندات معماری سیستم</strong></a> •
+  <a href="docs/ENTERPRISE_ADAPTATION.md"><strong>راهنمای تطبیق سازمانی</strong></a> •
+  <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><strong>شوکیس تعاملی زنده</strong></a>
 </p>
-
----
 
 </div>
 
-<p align="center">
-  <img src="assets/comparison_banner.webp" alt="مقایسه قبل و بعد: هوش مصنوعی معمولی در برابر Vibe UI" width="100%">
-</p>
+---
 
-## 🛑 مسئله اصلی: خروجی‌های تکراری و انحراف کیفی هوش مصنوعی
+مجموعه **Vibe UI Suite** چارچوبی ساختاریافته، ماشین‌فهم و قابل‌سنجش در اختیار ادیتورها و ایجنت‌های هوش مصنوعی (Cursor، Claude Code، Windsurf و Antigravity) قرار می‌دهد تا رابط‌های کاربری را با اصول واقعی مهندسی فرانت‌اند طراحی، پیاده‌سازی و اعتبارسنجی کنند.
 
-مدل‌های زبانی بزرگ (LLMs) به طور پیش‌فرض کدهای رابط کاربری تولید می‌کنند که استانداردهای وب تجاری و دسترسی‌پذیری را نقض می‌کنند:
-- ❌ **کنتراست نسنجیده رنگ‌ها:** استفاده از ترکیب رنگ‌های تصادفی که معیارهای WCAG 2.2 AA را نقض می‌کنند (کنتراست کمتر از ۴.۵:۱ در متون بدنه و کمتر از ۳.۰:۱ در عناوین).
-- ❌ **کارت‌ها و استایل‌های کلیشه‌ای:** کارت‌های یکنواخت با گوشه‌های تکراری، بوردرهای خاکستری بدون عمق و گرادینت‌های خطی تکراری بنفش-آبی روی دکمه‌ها.
-- ❌ **فقدان وضعیت‌های زنده هوش مصنوعی:** نبود کامل دراور بازشونده تفکر (Thinking Drawer)، تراشه‌های اجرای ابزار (Tool Chips)، استریم توکن‌ها و دیالوگ‌های تایید انسانی.
-- ❌ **شکست در ویوپورت موبایل:** گریدها و المان‌های بدون انعطاف که باعث سرریز افقی (> 0px blowout) در ویوپورت‌های ۳۷۵ پیکسلی می‌شوند.
-- ❌ **تخریب ساختار در زبان‌های راست‌چین:** وارونه‌سازی ناآگاهانه کل اسکلت صفحه و ستون‌های گرید به جای اعمال جهت صرفاً بر متون خواندنی.
-- ❌ **سربار پردازش رندر گرافیکی:** استفاده نامحدود از فیلترهای بلور (`backdrop-filter`) که باعث افت شدید نرخ فریم در دستگاه‌های موبایل می‌شود.
+به جای اتکا به پرامپت‌نویسی شکننده («یک داشبورد شیک و مدرن بساز»)، این سیستم یک پایپ‌لاین صریح مشابه کامپایلر ایجاد می‌کند:
 
-## 🤖 راهکار: mr-ui-designer (ایجنت معمار فرانت‌اند)
-
-به جای تکیه بر پرامپت‌های ناپایدار و سلیقه‌ای، **`mr-ui-designer`** به عنوان یک **معمار ارشد فرانت‌اند** عمل می‌کند. هر زمان که طراحی یا پیاده‌سازی رابط کاربری را درخواست کنید، خط لوله‌ای شامل **۶ مهارت تخصصی** را هدایت می‌کند:
-
-<p align="center">
-  <img src="assets/showcase_persian.webp" alt="پیش‌نمایش دموی زنده با فونت وزیرمتن و چیدمان راست‌چین" width="100%">
-</p>
-
-```mermaid
-flowchart TD
-    UserPrompt["پرامپت کاربر: 'یک داشبورد یا لندینگ پیج بساز'"] --> MasterAgent["🤖 mr-ui-designer\n(ایجنت معمار فرانت‌اند)"]
-    MasterAgent --> Expander["🧠 ۱. autonomous-intent-expander\n(سند ۳۰ پارامتری با بودجه ابهام سنجیده)"]
-    MasterAgent --> VisualEngine["🎨 ۲. visual-chemistry-engine\n(موتور ۵ استایل بصری + پروتکل ضدتکرار)"]
-    MasterAgent --> UIComponents["🧩 ۳. ui-kit\n(۷۰+ رسپی هوش مصنوعی، شدسن و بنتو)"]
-    MasterAgent --> Physics["⚡ ۴. vibe-physics-engine\n(رنگ‌های OKLCH، اسکرول نرم و درون‌یابی rAF)"]
-    MasterAgent --> Copy["✍️ ۵. conversion-copy-engine\n(کپی‌رایتینگ ارزش‌محور صنایع + پالیسی ضد دارک‌پترن)"]
-    Expander & VisualEngine & UIComponents & Physics & Copy --> Verifier["🔍 ۶. ui-verifier\n(آدیت ۵‌پایه کنترل کیفیت و دسترسی‌پذیری)"]
-    Verifier --> Output["✨ خروجی آماده پروداکشن\n(دیزاین سیستم استاندارد • دسترسی‌پذیری WCAG AA • راست‌چین معنادار)"]
+```text
+قصد و خواسته کاربر
+    ↓
+بسط نیت و خواسته (قرارداد فنی ۳۰ پارامتری)
+    ↓
+اسکیمای ماشین‌فهم (design-spec.v1.schema.json)
+    ↓
+انتخاب استایل دیزاین + رسیپی‌های کامپوننت
+    ↓
+پیاده‌سازی کد (Next.js 15 / React 19 / Tailwind OKLCH)
+    ↓
+ارزیابی استاتیک (اسکیما، ریاضیات کنتراست، تست‌های منفی)
+    ↓
+ارزیابی زنده در مرورگر (پلی‌رایت در ویوپورت موبایل ۳۷۵ پیکسل)
+    ↓
+خروجی تست‌شده یا گزارش دقیق خطاهای مهندسی
 ```
+
+> **شفافیت روز نخست:** این پروژه هم‌اکنون در نسخه `v2.4.0` است و به صورت مداوم در حال تکامل می‌باشد. از نقدها، باگ‌ریپورت‌ها و مشارکت‌های مهندسان فرانت‌اند صمیمانه استقبال می‌کنیم.
 
 ---
 
-## ⚡ راه‌اندازی سریع با ابزار خط فرمان CLI (پیشنهادی)
+## ⚡ راه‌اندازی سریع با خط فرمان CLI (پیشنهادی)
 
-بدون نیاز به کپی دستی فایل‌ها، قوانین ادیتور هوش مصنوعی و کامپوننت‌های آماده را با یک دستور در ترمینال ایجاد کنید:
+بدون نیاز به کپی دستی فایل‌ها یا نوشتن کانفیگ، پروژه‌تان را در چند ثانیه به قراردادهای Vibe UI مجهز کنید:
+
+### ۱. راه‌اندازی قراردادهای محیط کار (`init`)
 
 ```bash
-# راه‌اندازی قوانین ادیتور (.cursorrules، CLAUDE.md، .windsurfrules) و متغیرهای توکن
 npx @omid-io/tokens init
+```
+این دستور تعاملی در ترمینال:
+1. استایل بصری پروژه را انتخاب می‌کند (`Minimalist SaaS`، `Luxury Glass`، `Neobrutalism`، `Swiss Editorial`، `Stripe Crisp Light`).
+2. قوانین ادیتور هوش مصنوعی مورد نظر شما را می‌سازد (`.cursorrules`، `CLAUDE.md`، `.windsurfrules`).
+3. متغیرهای استاندارد OKLCH را در فایل `vibe-tokens.css` تولید می‌کند.
 
-# افزودن مستقیم کامپوننت‌های تست‌شده React 19 به پروژه (components/vibe-ui/)
+### ۲. تزریق کامپوننت‌های تست‌شده هوش مصنوعی (`add`)
+
+```bash
+# دراور تاشوی استدلال هوش مصنوعی با ترنزیشن گرید و پالس رادار
 npx @omid-io/tokens add thinking-drawer
+
+# هاد تله‌متری با ساختار ایزوله LTR برای نمایش لتنسی و توکن‌ها
 npx @omid-io/tokens add telemetry-hud
+
+# بج اعتبارسنجی ریاضیاتی کنتراست WCAG 2.2 AA / AAA
 npx @omid-io/tokens add contrast-badge
 ```
+کامپوننت‌ها مستقیماً داخل پوشه `components/vibe-ui/` پروژه شما تزریق می‌شوند.
+
+### ۳. مشاهده فهرست کامپوننت‌ها (`list`)
+
+```bash
+npx @omid-io/tokens list
+```
 
 ---
 
-## 🛠️ راه‌اندازی دستی در محیط‌های مختلف (Multi-IDE Setup)
+## 💻 افزونه ادیتورها (VS Code & Cursor)
 
-قراردادهای قطعی رابط کاربری را بدون وابستگی خارجی در ۳۰ ثانیه به محیط هوش مصنوعی خود متصل کنید:
+افزونه رسمی Vibe UI مستقیماً در سایدبار ادیتور شما فعال است:
 
-### ۱. بارگذاری آداپتور متناسب با ادیتور شما
+- **VS Code Marketplace:** [`omid-io.vibe-ui-vscode`](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
+- **Open-VSX Registry:** [`omid-io.vibe-ui-vscode`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) (مخصوص Cursor، Windsurf، VSCodium)
 
-* **محیط Cursor IDE:**
-  ```bash
-  cp adapters/cursor/.cursorrules .cursorrules
-  # یا کپی در دایرکتوری .cursor/rules/
-  ```
-* **محیط Claude Code (`CLAUDE.md`):**
-  ```bash
-  # برای پروژه‌های جدید:
-  cp adapters/claude/CLAUDE.md CLAUDE.md
-  # یا الصاق بدون تخریب به دستورالعمل‌های موجود:
-  cat adapters/claude/CLAUDE.md >> CLAUDE.md
-  ```
-* **محیط Windsurf IDE:**
-  ```bash
-  cp adapters/windsurf/.windsurfrules .windsurfrules
-  ```
-* **محیط Google Antigravity / Gemini CLI (`~/.gemini/config/skills/`):**
-  ```bash
-  # روش پیشنهادی: کلون مستقیم در پوشه اسکیل‌ها
-  git clone https://github.com/omid-io/vibe-ui-skills.git ~/.gemini/config/skills/vibe-ui-skills
-  
-  # یا نصب از طریق اسکریپت خودکار:
-  # ویندوز (PowerShell):
-  powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
-  # مک / لینوکس (Bash):
-  curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
-  ```
+### امکانات افزونه:
+- **ماشین‌حساب زنده کنتراست WCAG 2.2:** محاسبه آنی و ریاضیاتی نسبت روشنایی ($L_1 / L_2$) با انتخاب رنگ و نمایش زنده وضعیت قبولی AA و AAA.
+- **درج ۱-کلیک کامپوننت:** کلیک روی دکمه **Insert into Active Editor** برای نوشتن کد کامپوننت در موقعیت مکان‌نما.
+- **دستور بررسی سریع فایل:** با فشردن `Ctrl+Shift+P` و اجرای `Vibe UI: Audit Active File Contrast`.
 
-### ۲. تست سلامت راه‌اندازی (آزمون ۱ دقیقه‌ای)
-برای اطمینان از اینکه دستیار هوش مصنوعی شما قوانین Vibe UI را لود کرده است، این پرامپت را تست کنید:
-> *"یک دکمه فراخوان به اقدام (CTA) اولیه همراه با آیکون بساز."*
+---
 
-- **✅ وضعیت موفق (PASS):** خروجی حاوی متغیرهای رنگی OKLCH، تگ سمانتیک `<button>`، آیکون وکتور SVG بدون هیچ ایموجی خام است.
-- **❌ وضعیت ناموفق (FAIL):** استفاده از ایموجی خام (مانند 🚀 یا ✨) یا رنگ‌های هگز سنتی (نشان‌دهنده عدم لود شدن فایل رول).
-- **راهنمای رفع اشکال (Troubleshooting):**
-  - **در Cursor:** مطمئن شوید فایل `.cursorrules` در ریشه پروژه یا `.cursor/rules/vibe-ui.mdc` قرار دارد.
-  - **در Claude Code:** بررسی کنید دستورالعمل‌ها به انتهای `CLAUDE.md` افزوده شده باشند.
-  - **در Windsurf:** فایل `.windsurfrules` باید در ریشه ورک‌اسپیس باشد.
+## 🏛️ معماری: پایپ‌لاین هماهنگی ۶ مهارت تخصصی
 
-### ۳. درخواست طراحی از `mr-ui-designer`
-نیازمندی رابط کاربری خود را مستقیماً از دستیار هوش مصنوعی بخواهید:
-> *"یک داشبورد تله‌متری و تحلیل داده با سبک مینیمال SaaS، دراور آکاردئونی وضعیت تفکر هوش مصنوعی، اعداد مونو و تم رنگی پایدار OKLCH طراحی کن."*
+هماهنگی فرآیندها توسط ایجنت معمار ارشد فرانت‌اند (**`mr-ui-designer`**) انجام می‌شود که ۶ ساب‌اسکیل تخصصی را هدایت می‌کند:
 
-### ۴. اعتبارسنجی کیفیت با آزمون‌های خودکار
-کد تولیدشده را با ابزار ارزیابی خودکار پروژه بسنجید:
+| مهارت تخصصی | نقش و محدوده وظایف | تضمین کلیدی |
+| :--- | :--- | :--- |
+| **`autonomous-intent-expander`** | بسط پرامپت با بودجه ابهام‌زدایی کالیبره‌شده | پرهیز از حدس زدن الزامات کسب‌وکار و تبدیل به قرارداد ۳۰ پارامتری |
+| **`visual-chemistry-engine`** | انتخاب سیستم زیبایی‌شناسی یکپارچه | ۵ استایل متمایز با قانون جلوگیری از شباهت به وبسایت‌های قبلی |
+| **`ui-kit`** | کامپوننت‌ها و الگوهای تعاملی هوش مصنوعی | دراور پردازش فکر، چیپ ابزارها، هاد تله‌متری، الگوهای بنتو |
+| **`vibe-physics-engine`** | فیزیک انیمیشن، رنگ‌های ادراکی و بودجه GPU | فضای رنگی OKLCH، منحنی اسپرینگ، سقف حداکثر ۳ لایه بلور |
+| **`conversion-copy-engine`** | روایت ارزش و سناریوی شفاف محصول | متن‌های داده‌محور؛ ممنوعیت اکید نظرات ساختگی و فوریت فیک |
+| **`ui-verifier`** | گیت‌های اعتبارسنجی کیفیت و دسترس‌پذیری | محاسبات استاتیک + تست زنده DOM در مرورگر پلی‌رایت |
+
+---
+
+## 🎨 ۵ استایل بصری و شیمی دیزاین
+
+1. **Minimalist SaaS:** سادگی تک‌رنگ، بردرهای ظریف، تراکم اطلاعات بالا، تایپوگرافی کاربردی (`oklch(0.12 0.01 260)`).
+2. **Luxury Obsidian / Glass 2.0:** سطوح تیره، هایلایت‌های فرنل، تاکیدهای طلایی ظریف، مدیریت بودجه بلور GPU (`oklch(0.08 0.02 270)`).
+3. **Neobrutalism:** کارت‌های اشباع، سایه‌های سخت هندسی ۳ پیکسلی مشکی، بدون بلور، مرزهای صریح فیزیکی (`oklch(0.98 0.02 95)`).
+4. **Swiss Editorial:** گرید نامتقارن، چیدمان متن‌محور الهام‌گرفته از مکتب بین‌المللی سوئیس (`oklch(0.97 0.005 80)`).
+5. **Stripe Crisp Light:** دیزاین روشن داکیومنت‌های فنی، خطوط تفکیک میکرونی، سایه‌های محو (`oklch(0.99 0.002 250)`).
+
+---
+
+## 🌐 اصل راست‌چین‌سازی معنادار با ساختار ثابت (Semantic RTL)
+
+رابط‌های کاربری تولیدشده توسط هوش مصنوعی معمولاً با اعمال ناشیانه `dir="rtl"` دچار به‌هم‌ریختگی چیدمان، معکوس شدن منوهای ناوبری و وارونگی چارت‌ها می‌شوند.
+
+قانون قطعی Vibe UI:
+- **پایداری ساختار کلان:** ستون‌ها، سایدبار، نوبار و محور چارت‌ها ۱۰۰٪ ثابت و بدون جهش فیزیکی باقی می‌مانند.
+- **RTL صرفاً روی محتوا:** جهت راست‌به‌چپ فقط روی پاراگراف‌ها، متون و عناوین با ویژگی‌های منطقی CSS (`margin-inline-start`) اعمال می‌شود.
+- **ایزولاسیون دوزبانه (BiDi):** کدهای فنی، دستورات ترمینال، تله‌متری و آدرس‌های URL با تگ `<bdi>` یا `dir="ltr"` محافظت می‌شوند.
+
+---
+
+## 🧪 موتور ارزیابی و تست‌های ران‌تایم
+
 ```bash
+# ۱. اجرای آزمون‌های استاتیک و تست‌های منفی
+python evals/run_evals.py
+
+# ۲. خروجی ماشین‌فهم جهت پایپ‌لاین‌های CI
+python evals/run_evals.py --json
+
+# ۳. آزمون زنده در مرورگر واقعی با پلی‌رایت
+python evals/run_evals.py --browser
+```
+
+### تفاوت آزمون‌های قطعی و تحلیلی:
+
+| گیت کنترلی | ماهیت | روش ارزیابی | محدوده پوشش |
+| :--- | :--- | :--- | :--- |
+| **اعتبارسنجی اسکیما** | قطعی | اعتبارسنجی با Draft 2020-12 | تست ۳۰ پارامتر با `additionalProperties: false` |
+| **رد تست‌های منفی** | قطعی | بررسی کد خروج ۱ در ترمینال | رد آنتروپی غیرمجاز، کهن‌الگوی نامعتبر، تاچ‌تارگت زیر ۲۴px |
+| **کنتراست WCAG AA** | قطعی | فرمول $L = 0.2126 R' + 0.7152 G' + 0.0722 B'$ | تضمین کنتراست $\ge 4.5:1$ برای متن و $\ge 3.0:1$ برای عناوین |
+| **سرریز در موبایل** | ران‌تایم | موتور Chromium با Playwright | اطمینان از عدم سرریز افقی (`scrollWidth <= clientWidth`) در ۳۷۵px |
+| **المان‌های کلیک‌پذیر** | استاتیک | پیمایش درخت DOM | عدم وجود `<div onclick>` خام و الزام به استفاده از دکمه |
+| **فوکوس کیبورد** | استاتیک | استخراج استایل‌ها | الزام به تعریف استایل‌های `:focus-visible` |
+| **سقف بلور GPU** | تحلیلی | استخراج لایه‌ها | حداکثر ۳ لایه `backdrop-filter` فعال |
+
+---
+
+## 🛡️ آنچه Vibe UI هست — و آنچه نیست
+
+### آنچه هست:
+- یک سیستم کنترل کیفی، دیزاین‌سیستم و لینتر قراردادمحور برای ادیتورهای هوش مصنوعی.
+- یک پایپ‌لاین DAG که قصد کاربر، قواعد دیزاین، کد کامپوننت و تست‌ها را تفکیک می‌کند.
+- مجموعه‌ای از گیت‌های محاسباتی که کدهای دارای نقص بصری را ریجکت می‌کند.
+
+### آنچه نیست:
+- ادعایی مبنی بر اینکه کد هوش مصنوعی بدون نیاز به بررسی انسان ۱۰۰٪ بی‌نقص است.
+- جایگزین تست‌های جامع اسکرین‌ریدر و دستیابی صوتی در دسترس‌پذیری.
+- جایگزین دیزاین‌سیستم شرکتی؛ این ابزار با سند [`docs/ENTERPRISE_ADAPTATION.md`](docs/ENTERPRISE_ADAPTATION.md) به کامپوننت‌های داخلی سازمان شما متصل می‌شود.
+
+---
+
+## 🤝 مشارکت و جامعه متن‌باز
+
+پروژه Vibe UI Suite تحت مجوز **MIT** منتشر شده است. ما مشتاقانه از پیشنهادات، ایشوها و مشارکت‌های شما استقبال می‌کنیم:
+
+```bash
+git clone https://github.com/omid-io/vibe-ui-skills.git
+cd vibe-ui-skills
 python evals/run_evals.py
 ```
-موارد مورد سنجش در این آزمون:
-- **کنتراست ریاضی WCAG 2.2 AA:** نسبت کنتراست $\ge 4.5:1$ در متون بدنه و $\ge 3.0:1$ در تیترها.
-- **ریسپانسیو موبایل:** عدم سرریز افقی (0px overflow) در صفحات ۳۷۵ پیکسلی.
-- **سقف پردازش گرافیکی:** حداکثر ۳ لایه فیلتر بلور در صفحه.
-- **پایداری فیزیک حرکتی:** محاسبات مستقل از رفرش‌ریت ($\alpha = 1 - e^{-\lambda \cdot \Delta t}, \lambda = 14$).
-- **راست‌چین‌سازی ساختار-ثابت:** ثبات ساختار کلان گرید، ایزولاسیون اصطلاحات انگلیسی با `<bdi>` و حفظ کدها به صورت LTR مونو.
-- **استارتر پروداکشن:** اعتبارسنجی معماری Next.js 15، توکن‌های تایپ‌شده OKLCH و کامپوننت‌های React 19.
 
-### 📚 فهرست و کاتالوگ جامع ۷۰+ کامپوننت
-تمام ۷۰ رسپی تاییدشده همراه با کدهای آماده در [`skills/ui-kit/SKILL.md`](skills/ui-kit/SKILL.md) فهرست شده‌اند:
-- **کامپوننت‌های نیتیو هوش مصنوعی (۲۰ رسپی):** دراور وضعیت تفکر (Thinking Drawer)، تراشه‌های اجرای ابزار، مقایسه زنده کد (Diff)، کارت تایید انسان.
-- **چیدمان‌های ساختاری (۱۵ رسپی):** بنتو گریدهای نامتقارن، هدر راست‌چین ساختار-ثابت، گرید ادیتوریال سوئیسی.
-- **کنترل‌های تعاملی (۲۵ رسپی):** اسلایدر مقایسه قبل/بعد با deltaTime، دکمه‌های فنری مغناطیسی، مدال‌های دسترسی‌پذیر (`aria-modal`).
-- **تله‌متری و داده (۱۰ رسپی):** کاشی‌های متریک با اعداد JetBrains Mono، کارت‌های روند اسپارک‌لاین، پالس وضعیت.
-
----
-
-<a id="-جعبه‌ابزار-مهارت‌های-زیردست"></a>
-<a id="-جعبه‌ابزار-مهارت‌های-زیردست-تحت-فرماندهی-mr-ui-designer"></a>
-## 📦 جعبه‌ابزار مهارت‌های زیردست (تحت فرماندهی mr-ui-designer)
-
-| مهارت | دسته‌بندی | توضیح عملکرد | قابلیت‌های کلیدی |
-| :--- | :--- | :--- | :--- |
-| **🎨 [`visual-chemistry-engine`](skills/visual-chemistry-engine/)** | معماری بصری | موتور طراحی بصری تطبیقی با ۵ شیمی استایل متمایز. | بافت نویز SVG، گرادینت مِش محیطی، گلس‌مورفیسم ۲.۰ با نور فرنل، پروتکل ضدتکرار، اسلایدر قبل/بعد با درون‌یابی مستقل از زمان، دکمه‌های مغناطیسی. |
-| **🧩 [`ui-kit`](skills/ui-kit/)** | سیستم کامپوننت | ۷۰+ رسپی و کامپوننت آماده AI. | **۲۰ کامپوننت هوش مصنوعی** (حالت تفکر، تراشه‌های ابزار، کارت تایید، استریم)، **۵۰+ کامپوننت Shadcn**، **بنتو گرید**، نودهای گردش‌کار و ترنزیشن‌های خالص CSS. |
-| **⚡ [`vibe-physics-engine`](skills/vibe-physics-engine/)** | فیزیک و رنگ | حرکت نرم و علم رنگ پیشرفته. | تئوری رنگ OKLCH چندزبانه، اسکرول نرم کاملاً نیتیو بدون وابستگی + لنیس مدرن اختیاری، انیمیشن‌های وابسته به رفرش‌ریت، حذف کامل ایموجی با SVG. |
-| **✍️ [`conversion-copy-engine`](skills/conversion-copy-engine/)** | کپی‌رایتینگ ارزش‌محور | معماری متون ترغیبی و تبدیل بدون دارک‌پترن. | فرمول‌های تخصصی صنایع (B2B JTBD/ROI، پزشکی، لوکس)، هدلاین‌های ارزش‌محور، میکروکپی‌های رفع تردید، پالیسی ضد دارک‌پترن. |
-| **🧠 [`autonomous-intent-expander`](skills/autonomous-intent-expander/)** | سنتز مشخصات فنی | کامپایلر قصد کاربر و مشخصات ۳۰ پارامتری. | تبدیل پرامپت‌های کوتاه به ۳۰ پارامتر کامل دیزاین و معماری با بودجه ابهام سنجیده (Ambiguity Budget). |
-| **🔍 [`ui-verifier`](skills/ui-verifier/)** | ارزیابی کیفیت و آدیت | آدیتور خودکار فرانت با چک‌لیست ۵‌گانه. | دسترسی‌پذیری WCAG 2.2 AA، تست ریسپانسیو (۳۷۵/۷۶۸/۱۴۴۰)، سنجش اصالت بصری و ضداسلوپ، بهینگی رندر GPU، پایداری BiDi و متن فارسی. |
-
----
-
-## 📐 معماری راست‌چین‌سازی ساختار-ثابت و معنادار (Semantic RTL)
-
-یکی از وجوه تمایز بنیادین Vibe UI، پایبندی به استاندارد **ساختار ثابت بین‌المللی در کنار میرور معنایی** است:
-- ❌ **اشتباه رایج هوش مصنوعی‌های معمولی:** معکوس کردن کل ساختار صفحه، جابجا شدن ستون‌های گرید، پرش منوها و تغییر مکان دکمه‌ها هنگام سوییچ به فارسی.
-- ✅ **استاندارد Vibe UI:** اسکلت کلان، گریدها، ترتیب کارت‌ها و منوها **کاملاً ثابت و بدون پرش** باقی می‌مانند. جهت RTL تنها بر روی متون و پاراگراف‌ها اعمال شده، المان‌های ذاتاً جهت‌دار (مثل فلش‌های بعدی/قبلی و استپرها) به شکل معنادار قرینه می‌شوند، اصطلاحات انگلیسی دچار به‌هم‌ریختگی نمی‌شوند، و بخش‌های کد، اعداد و متریک‌ها همواره در حالت اصیل LTR مونو باقی می‌مانند.
-
----
-
-## 🚀 روش‌های نصب سریع
-
-### 🤖 روش ۰: نصب خودکار با یک پرامپت به هوش مصنوعی (بدون نیاز به کد و ترمینال)
-
-ساده‌ترین روش ممکن! کافیست متن پرامپت زیر را کپی کرده و مستقیماً به هوش مصنوعی خود (**Google Antigravity، Cursor Composer، Claude Code، GitHub Copilot یا Windsurf**) بدهید:
-
-> **متن پرامپت را کپی کرده و به هوش مصنوعی بدهید:**
-> ```text
-> لطفاً سوئیت اسکیل‌های Vibe UI را از ریپازیتوری https://github.com/omid-io/vibe-ui-skills در محیط فعال هوش مصنوعی من (پوشه skills یا تنظیمات پروژه) نصب و مستقر کن و مطمئن شو اسکیل‌های visual-chemistry-engine، ui-kit و ui-verifier آماده استفاده هستند.
-> ```
-
----
-
-### روش ۱: نصب ۱-خطی از طریق ترمینال ویندوز (PowerShell)
-
-```powershell
-powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
-```
-
-*یا اجرای محلی در پاورشل:*
-```powershell
-git clone https://github.com/omid-io/vibe-ui-skills.git
-cd vibe-ui-skills
-powershell -ExecutionPolicy Bypass -File .\install.ps1
-```
-
-### روش ۲: نصب ۱-خطی در مک و لینوکس (Bash)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
-```
-
-### روش ۳: کلون مخزن و اجرای محلی اسکریپت نصب
-
-**در ویندوز (PowerShell):**
-```powershell
-git clone https://github.com/omid-io/vibe-ui-skills.git
-cd vibe-ui-skills
-powershell -ExecutionPolicy Bypass -File .\install.ps1
-```
-
-**در مک و لینوکس (Bash):**
-```bash
-git clone https://github.com/omid-io/vibe-ui-skills.git
-cd vibe-ui-skills
-chmod +x ./install.sh
-./install.sh
-```
-
----
-
-<a id="-آداپتورهای-آماده-برای-محیط‌های-ai"></a>
-## 🔌 آداپتورهای آماده برای محیط‌های AI
-
-فایل‌های قوانین آماده برای تمامی ابزارهای برتر برنامه‌نویسی با هوش مصنوعی در پوشه [`adapters/`](adapters/) قرار دارد:
-
-| ابزار هوش مصنوعی | فایل کانفیگ | نحوه استفاده |
-| :--- | :--- | :--- |
-| **Cursor** | [`adapters/cursor/.cursorrules`](adapters/cursor/.cursorrules) | کپی به ریشه پروژه به عنوان `.cursorrules` |
-| **Claude Code** | [`adapters/claude/CLAUDE.md`](adapters/claude/CLAUDE.md) | کپی به ریشه پروژه به عنوان `CLAUDE.md` |
-| **GitHub Copilot** | [`adapters/copilot/copilot-instructions.md`](adapters/copilot/copilot-instructions.md) | کپی به `.github/copilot-instructions.md` |
-| **Windsurf / Cascade** | [`adapters/windsurf/.windsurfrules`](adapters/windsurf/.windsurfrules) | کپی به ریشه پروژه به عنوان `.windsurfrules` |
-
----
-
-## 🎨 ۵ سبک بصری مستر (۵ زبان طراحی مجزا)
-
-1. **⚡ مینیمال مهندسی و دارک SaaS (استایل Linear / Vercel):** پس‌زمینه مشکی خالص، بوردرهای ۱ پیکسلی تیز، گرادینت ملایم جهت‌دار، فونت منواسپیس برای داده‌ها.
-2. **💎 آبسیدین لوکس و گلس‌مورفیسم ۲.۰:** پس‌زمینه مخمل تیره، نویز ظریف، نور انعکاسی فرنل (Fresnel Specular Inset).
-3. **🎨 نئوبروتالیسم (استایل Gumroad / Figma):** رنگ‌های شاداب پاستلی، خطوط ضخیم ۲ پیکسلی مشکی، سایه‌های سخت ۴ پیکسلی، کلیک‌های فیزیکی دکمه‌ها.
-4. **📰 ادیتوریال سوئیسی و Paper Craft:** رنگ کاغذ طبیعی کرم، تیترهای سریف باکلاس، چیدمان نامتقارن مجله‌ای.
-5. **☀️ لایت شفاف و مدرن (استایل Stripe / Apple):** سفید برفی، سایه‌های نرم پخش‌شده چندمرحله‌ای، کنتراست بالای دسترسی‌پذیری.
-
----
-
-## 🇮🇷 پشتیبانی بومی از زبان فارسی و راست‌چین (RTL)
-
-- استفاده خودکار از ویژگی‌های منطقی CSS (`ms-*`, `me-*`, `start-*`, `end-*`) جهت تطبیق کامل بدون باگ با جهت `dir="rtl"`.
-- پشته فونت‌های استاندارد فارسی شامل **وزیرمتن (Vazirmatn)**، **ایران‌یکان / یکان‌بخ (Yekan Bakh)** و **شبنم (Shabnam)**.
-- نمونه پرامپت‌ها و ساختار کپی‌رایتینگ بهینه‌سازی‌شده برای مخاطبان فارسی‌زبان در فایل [`PROMPTS.fa.md`](PROMPTS.fa.md).
-
----
-
-## 🎯 کتابچه ۳۰ فرمول پرامپت طلایی
-
-برای مشاهده فرمول‌های پرامپت آماده فارسی به تفکیک حوزه‌ها (داشبورد، ایجنت، فروشگاهی، خدمات)، به فایل **[`PROMPTS.fa.md`](PROMPTS.fa.md)** مراجعه کنید.
-
----
-
-## 🧪 مجموعه بنچمارک‌های ارزیابی و نمونه‌های واقعی خروجی
-
-برخلاف کالکشن‌های متنی که فقط ادعای کیفی دارند، این مخزن شامل یک **مجموعه رسمی ارزیابی ([`evals/`](evals/))**، **اسکیمای رسمی داده‌ها ([`schemas/design-spec.v1.schema.json`](schemas/design-spec.v1.schema.json))** و **نمونه‌های واقعی خروجی ایجنت ([`examples/`](examples/))** است:
-
-- **[`schemas/`](schemas/)**: ساختار داده‌ای استاندارد JSON Schema ([`schemas/design-spec.v1.schema.json`](schemas/design-spec.v1.schema.json)) برای اعتبارسنجی ماشینی مشخصات خروجی `autonomous-intent-expander`.
-- **[`evals/`](evals/)**: اسکریپت رانر خودکار ([`evals/run_evals.py`](evals/run_evals.py)) و سناریوهای بنچمارک همراه با شروط قبولی عینی.
-- **[`examples/`](examples/)**: فایل‌های HTML/CSS مستقل و آماده پیش‌نمایش در مرورگر *(از CDN تیل‌ویند برای باز شدن سریع در مرورگر استفاده شده؛ برای نسخه‌های تجاری پروداکشن، خروجی با Tailwind CLI کامپایل می‌شود)*:
-  - [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html): هیرو بخش SaaS با وضعیت تفکر هوش مصنوعی و تراشه اجرای ابزار.
-  - [`examples/persian_rtl_bento.html`](examples/persian_rtl_bento.html): بنتو گرید فارسی با فونت وزیرمتن، چیدمان ثابت و ایزولاسیون علائم نگارشی انگلیسی.
-  - [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html): لندینگ پیج نئوبروتالیسم با کنتراست بالا، سایه‌های سخت و بازخورد فیزیکی کلیک‌ها.
-  - [`examples/swiss_editorial_article.html`](examples/swiss_editorial_article.html): چیدمان ادیتوریال سوئیسی با فونت سریف روی بوم کاغذ طبیعی و بدون هیچ‌گونه بلور تزئینی.
-- **`examples/nextjs-starter/`**: استارتر آماده پروداکشن Next.js 15 App Router و React 19 شامل تایپ‌اسکریپت، توکن‌های تایپ‌شده OKLCH، کامپوننت‌های نیتیو هوش مصنوعی (`AiThinkingDrawer.tsx` و `HeroSection.tsx`) و پشتیبانی پایدار از راست‌چین ساختار-ثابت.
-
----
-
-## ⚡ استارتر مدرن پروداکشن (Next.js 15 و React 19)
-
-برای پروژه‌های فول‌استک تجاری، یک پروژه استارتر آماده در مسیر `examples/nextjs-starter/` پیاده‌سازی شده است:
-- **هسته فریم‌ورک:** Next.js 15 App Router (`next: ^15.1.7`)، React 19 (`react: ^19.0.0`) و TypeScript 5.
-- **توکن‌های تایپ‌شده OKLCH:** فایل `lib/tokens.ts` شامل پالت‌های رنگی ۵ سبک بصری مستر.
-- **کامپوننت‌های مدرن هوش مصنوعی:**
-  - `AiThinkingDrawer.tsx`: دراور آکاردئونی روان با CSS Grid (`0fr` به `1fr`)، نواحی زنده ARIA، پالس رادار و تراشه‌های اجرای ابزار.
-  - `HeroSection.tsx`: بخش هیرو لندینگ همراه با کپی‌رایتینگ ترغیبی، دراور تعبیه‌شده و ویجت تله‌متری با استایل `.ltr-code`.
-- **راست‌چین‌سازی معنادار ساختار-ثابت:** سازگاری کامل دوطرفه با پراپرتی‌های منطقی CSS، ایزولاسیون واژگان انگلیسی با `<bdi>` و حفظ مختصات کلان گرید.
-
-برای مطالعه کامل سند فنی معماری، قراردادهای اسکیمای JSON و تحلیل ۳۰ پارامتر طراحی، به سند **[`ARCHITECTURE.md`](ARCHITECTURE.md)** مراجعه کنید.
-
----
-
-## 👤 سازنده و توسعه‌دهنده
-
-**امید ظفری (Omid Zaferi)**
-- گیت‌هاب: [@omid-io](https://github.com/omid-io)
-- معمار سیستم‌های نرم‌افزاری و ایجنت‌های خودکار هوش مصنوعی
-
-## 📄 لایسنس
-
-این پروژه تحت لایسنس متن‌باز MIT منتشر شده است — فایل [LICENSE](LICENSE) را مشاهده کنید.
+توسعه‌دهنده: [امید ظفری](https://github.com/omid-io) • ثبت ایشو: [GitHub Issues](https://github.com/omid-io/vibe-ui-skills/issues)
