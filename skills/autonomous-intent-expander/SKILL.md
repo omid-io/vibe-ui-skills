@@ -21,16 +21,21 @@ The `autonomous-intent-expander` skill eliminates friction and interrogation fat
    - **Tier 3: High-Risk Logic, Financials, Auth & Legal/Compliance (Zero Guesswork):**
      Never blindly guess transaction logic, payment split math, HIPAA/GDPR constraints, or authentication models. If critical information is missing that changes liability or data integrity, surface the exact decision fork.
 
-2. **Domain Archetype Classification:**
-   Map the input prompt to the most fitting of 8 Master Archetypes:
-   - `LUXURY_CLINICAL` (Beauty, Aesthetics, High-End Medicine, Spa)
-   - `HIGH_PERFORMANCE_SAAS` (B2B, Dashboards, Developer Tools, Analytics)
-   - `HIGH_TICKET_SERVICE` (Legal, Consulting, Real Estate, Wealth Management)
-   - `HEAVY_INDUSTRIAL_ECOMMERCE` (Gym, Fitness, Apparel, Supplements)
-   - `CREATIVE_EDITORIAL` (Agencies, Design Studios, Portfolios, Architecture)
-   - `HOSPITALITY_EXPERIENCE` (Restaurants, Hotels, Event Venues)
-   - `HYPER_LOCAL_TRADES` (Plumbing, HVAC, Auto Repair, Local Services)
-   - `EDTECH_ACADEMY` (Courses, Certifications, Training Academies)
+2. **Domain Archetype & 24 Taxonomy Classification:**
+   The expander queries `scripts/search.py` (<10ms zero-token retrieval) and matches the input prompt to the 24 canonical domains in `data/taxonomy.json` and 12 anchor styles in `data/styles.json`:
+   - `beauty_clinical_wellness` (Quiet Luxury / Soft Humanist)
+   - `fintech_banking` (Clean Stripe / Minimal Swiss)
+   - `crypto_trading_web3` (Linear Dark / Terminal HUD)
+   - `devops_cloud_terminal` (Data-Dense Terminal / Linear Dark)
+   - `saas_b2b_enterprise` (Clean Stripe / Minimal Swiss)
+   - `ai_developer_platform` (Linear Dark / Modern Glass 2.0)
+   - `creative_portfolio_agency` (Neo-Brutalism / Editorial / Bauhaus)
+   - Plus 17 additional specialized domains with bilingual Persian/English aliases.
+
+2.1. **Fast Zero-Token Retrieval Command:**
+   ```bash
+   python scripts/search.py "<user prompt>" --pretty
+   ```
 
 3. **Structured Specification Pipeline (Core vs. Conditional Parameters):**
    Synthesizes an explicit architectural contract without inflating irrelevant metadata:
