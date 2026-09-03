@@ -103,8 +103,12 @@
 2. **Community Expansion**: Add community contribution guidelines for custom style recipes in `data/styles.json`.
 
 ## Modified / Created Files Index
-- [`docs/V3_IMPLEMENTATION_CONTRACT.md`](docs/V3_IMPLEMENTATION_CONTRACT.md)
-- [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
+- [`vibe_cli.py`](vibe_cli.py)
+- [`vibe_core/`](vibe_core/)
+- [`data/`](data/)
+- [`schemas/`](schemas/)
+- [`scripts/`](scripts/)
+- [`evals/benchmark/`](evals/benchmark/)
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - [`CHANGELOG.md`](CHANGELOG.md)
 - [`README.md`](README.md)
