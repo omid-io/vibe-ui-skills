@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "3.0.0",
+  "description": "Machine-readable contract mapping connecting Vibe UI skills claims to executable tests, fixtures, and verification gates.",
+  "contracts": [
+    {
+      "skill": "autonomous-intent-expander",
+      "claims": [
+        {
+          "id": "intent-domain-resolution",
+          "statement": "Infers canonical domain and ambiguity budget deterministically from sparse prompts in <10ms.",
+          "tests": ["tests/test_recommendation.py::test_intent_resolution", "evals/benchmark/run_benchmark.py::test_domain_accuracy"],
+          "status": "verified"
+        },
+        {
+          "id": "style-orchestration",
+          "statement": "Resolves user prompt to one of 26 canonical styles with orthogonal spatial and material DNA.",
+          "tests": ["tests/test_recommendation.py::test_style_mapping", "scripts/validate_data.py::test_styles_catalog"],
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "skill": "visual-chemistry-engine",
+      "claims": [
+        {
+          "id": "typed-oklch-tokens",
+          "statement": "Generates perceptually uniform OKLCH color tokens complying with WCAG 2.2 contrast ratios.",
+          "tests": ["evals/run_evals.py::audit_nextjs_starter", "packages/tokens/tests/token_gen.test.ts"],
+          "status": "verified"
+        },
+        {
+          "id": "anti-slop-critic",
+          "statement": "Flags generic SaaS gradients, default fonts, overused cards, and emoji violations with actionable remedies.",
+          "tests": ["tests/test_critic.py::test_anti_slop_rules", "vibe_core/critic.py::evaluate_anti_patterns"],
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "skill": "ui-kit",
+      "claims": [
+        {
+          "id": "4-state-lifecycle",
+          "statement": "Delivers default, skeleton, empty, and error recovery states with zero CLS layout stability.",
+          "tests": ["evals/run_evals.py::test_component_lifecycle_states", "examples/generated_dex.html::states_matrix"],
+          "status": "verified"
+        },
+        {
+          "id": "accessible-primitives",
+          "statement": "Interactive controls guarantee min 44x44px touch targets and valid accessible names.",
+          "tests": ["evals/run_evals.py::audit_browser_runtime_touch_targets", "evals/run_evals.py::audit_accessible_names"],
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "skill": "vibe-physics-engine",
+      "claims": [
+        {
+          "id": "reduced-motion-contract",
+          "statement": "Suppresses all motion and transitions below 0.05s when prefers-reduced-motion: reduce is asserted.",
+          "tests": ["evals/run_evals.py::audit_prefers_reduced_motion", "evals/run_evals.py::test_css_motion_suppression"],
+          "status": "verified"
+        },
+        {
+          "id": "gpu-composite-budget",
+          "statement": "Limits simultaneous backdrop-filter blur layers to <= 3 to prevent GPU pipeline saturation.",
+          "tests": ["evals/run_evals.py::audit_backdrop_blur_budget", "scripts/run_all_tests.py::test_starter_blur_budget"],
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "skill": "conversion-copy-engine",
+      "claims": [
+        {
+          "id": "bilingual-bidi-isolation",
+          "statement": "Strictly isolates mixed LTR/RTL prose, numbers, and code blocks using semantic <bdi> or isolate unicode-bidi.",
+          "tests": ["evals/run_evals.py::audit_bidi_punctuation", "evals/run_evals.py::audit_rtl_bounding_geometry"],
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "skill": "ui-verifier",
+      "claims": [
+        {
+          "id": "headless-chromium-pixel-contrast",
+          "statement": "Computes physical pixel luminance via Canvas 2D in live headless Chromium to verify >= 4.5:1 WCAG AA contrast.",
+          "tests": ["evals/run_evals.py::audit_browser_runtime_contrast", ".github/workflows/ci.yml::browser-runtime-evals"],
+          "status": "verified"
+        },
+        {
+          "id": "keyboard-focus-visibility",
+          "statement": "Asserts visible focus indicator (outline/box-shadow) on all focusable interactive elements during tab traversal.",
+          "tests": ["evals/run_evals.py::audit_browser_runtime_focus", ".github/workflows/ci.yml::browser-runtime-evals"],
+          "status": "verified"
+        },
+        {
+          "id": "narrow-mobile-overflow",
+          "statement": "Asserts zero horizontal scroll overflow at 375px and 320px extreme viewport boundaries.",
+          "tests": ["evals/run_evals.py::audit_mobile_overflow_320", "evals/run_evals.py::audit_mobile_overflow_375"],
+          "status": "verified"
+        }
+      ]
+    }
+  ]
+}
