@@ -56,6 +56,15 @@
   - Hardened `schemas/design-spec.v1.schema.json` with `additionalProperties: false` and synced version `2.4.0`.
   - Added explicit "What Vibe UI Is / What It Is Not" and deterministic vs. heuristic verification matrix to `README.md` and `README.fa.md`.
 
+- [x] **R10: Multi-LLM Round 4 Adversarial Audit & Deep Hardening (Consensus 8.7/10 — Launch Ready)**:
+  - **Consensus Score 8.4–8.7/10**: ChatGPT rated 8.4/10 and Grok rated 8.7/10, confirming the suite has crossed the threshold to an authentic, deterministic design contract engine and issued the explicit directive: *"Ship v2.4.0. The project is now past the point where I'd say 'don't launch until you fix the fundamentals.' I would be comfortable putting this in public."*
+  - **True Closed-World Validator Enforcement**: Implemented `additionalProperties: false` enforcement inside `validate_json_instance()` in `evals/run_evals.py` so any undeclared key at root or nested level is rejected immediately.
+  - **Domain Numerical Ranges**: Added strict bounds to `schemas/design-spec.v1.schema.json` for coordinates (`latitude: [-90, 90]`, `longitude: [-180, 180]`), financial math (`precision_decimals: [0, 8]`), and Core Web Vitals (`lcp_max_ms: [100, 10000]`, `cls_max: [0.0, 1.0]`, `inp_max_ms: [10, 1000]`).
+  - **Browser Runtime & CI Failure Integrity**: Browser exceptions fail non-zero (`results["overall_status"] = "FAIL"`).
+  - **Multi-Viewport Real DOM Assertions**: Tested both `375x667` and `320x568` in headless Chromium. Caught and surgically resolved a 320px narrow mobile overflow in `neobrutalist_creative_store.html`.
+  - **Accessible Name & Label Verification**: Asserted that every interactive button, anchor, and input has a non-empty accessible name, title, or ARIA label.
+  - **Adversarial Negative Mutation Fixtures**: Created [`evals/fixtures/illegal_additional_property.json`](evals/fixtures/illegal_additional_property.json) and [`evals/fixtures/out_of_range_latitude.json`](evals/fixtures/out_of_range_latitude.json), automatically verified in CI.
+
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
 1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
