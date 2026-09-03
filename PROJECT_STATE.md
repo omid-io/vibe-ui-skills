@@ -31,9 +31,17 @@
   - De-hyped documentation across [`README.md`](README.md) and [`README.fa.md`](README.fa.md): eliminated promotional claims ("Awwwards-grade", "Masterpiece", crown emojis) and connected live GitHub Actions badge.
   - Formulated 30-Second Multi-IDE Quick Start for Cursor (`.cursorrules`), Claude Code (`CLAUDE.md`), Windsurf (`.windsurfrules`), and Antigravity.
 
-## Immediate Next Steps (For Launch Session)
-1. **GitHub Launch**: Push v2.2.1 to GitHub, set repo topics (`ai-agents`, `ui-ux`, `shadcn-ui`, `rtl`, `accessibility`, `tailwind`), and enable GitHub Pages on `showcase/`.
-2. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
+## Immediate Next Steps & Roadmap
+1. **GitHub Launch & Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md), set repository topics, and verify live showcase.
+2. **Post-Review Action 1 (Next Milestone): Official VS Code & Cursor Extension (`vibe-ui-vscode`)**:
+   - Zero-cost ($0) publishing on Microsoft Visual Studio Marketplace & Open-VSX (used by Cursor & Windsurf).
+   - Sidebar UI for 5 visual chemistries, 1-click adapter injection into projects, and right-click "Audit WCAG Contrast".
+3. **Post-Review Action 2: NPM Token Package & Tailwind Plugin (`@vibe-ui/tokens` / `@vibe-ui/tailwind`)**:
+   - Zero-cost ($0) scoped public npm package exporting typed OKLCH tokens and zero-config Tailwind preset.
+4. **Post-Review Action 3: Headless Playwright Runtime Evals**:
+   - Add `--browser` flag to `evals/run_evals.py` testing real DOM overflow on 375px viewports and computed styles via Chromium.
+5. **Post-Review Action 4: Enterprise Design System Adaptation Guide**:
+   - Document `docs/ENTERPRISE_ADAPTATION.md` for mapping custom brand tokens to Vibe UI schemas.
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
