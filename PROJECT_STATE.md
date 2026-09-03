@@ -121,6 +121,15 @@
   - **Verification Provenance & Layering**: Enriched `manifests/skill_contracts.json` with execution provenance, timestamps, commit hashes, and formal verification layers (`L0_schema`, `L1_static_ast`, `L2_dom_runtime`, `L3_visual_runtime`).
   - **Quality Gates Certified**: 100% pass across all 7 test suites in 713ms. Zero regressions.
 
+- [x] **R19: Full P0 Bug Fixes & Critic Overhaul [2026-09-03]** (`c0215f8`):
+  - **Measurement-Based Critic:** Eliminated all static hardcoded scoring constants (`domain_fit = 14`, `brand_coherence = 9`). Replaced with computed evidence signals: CSS custom property count (`var(--...)`), heading tag presence, font-family declarations, brand token set matching, and blur surface measurement.
+  - **Threshold Harmonization:** Unified `MAX_BLUR_SURFACES = 3` across `critic.py`, `verifier.py`, `run_evals.py` and docs — single named constant, zero policy drift.
+  - **Touch Target Policy Declared:** `HARD_MIN_TOUCH = 24px` (WCAG 2.2 AA), `RECOMMENDED_TOUCH = 44px` (mobile HIG) formally documented in `critic.py`.
+  - **Benchmark Methodology Transparency:** Added `BASELINE_TYPE = "estimated_prior_study"` and full methodological note to `run_benchmark.py` and JSON output — academically defensible.
+  - **`data/styles.json` Version Fix:** Corrected version from `3.0.0-alpha.1` to `3.0.0` stable — complete version harmonization.
+  - **Test Fixtures Upgraded:** Test 1 and Test 11 in `test_critic_refiner.py` enriched with realistic CSS custom properties so measurement-based critic correctly evaluates above 80-point threshold.
+  - **Zero Regressions:** All 7 test suites pass 100% in 791ms.
+
 ## Immediate Next Steps & Execution Plan
 1. **Package Release**: Publish `@omid-io/tokens` v3.0.0 to NPM and `vibe-ui-vscode` to Visual Studio Marketplace.
 2. **Community & Content Expansion**: Launch video demonstration of the Design Compiler Studio on social channels.
