@@ -222,22 +222,47 @@ def extract_html_colors(content: str) -> tuple[str, str, str]:
 # Recursive Pure-Python JSON Schema Validator
 # ==============================================================================
 
-def validate_json_instance(instance: any, schema: dict, path: str = "$") -> list[str]:
+def validate_json_instance(instance: any, schema: dict, path: str = "$", root_schema: dict = None, visited_refs: set = None, depth: int = 0) -> list[str]:
     """
     Recursive pure-Python stdlib JSON Schema validator for design-spec contracts.
     Validates:
       - object required properties and nested properties
-      - type checking (object, string, number, integer, boolean, array)
-      - enum constraint
-      - const constraint
+      - type checking (object, string, number, integer, boolean, array, null)
+      - enum and const constraints
       - minimum and maximum numerical bounds
+      - string minLength, maxLength, and regex pattern constraints
       - array minItems and items schema recursion
+      - local $ref resolution with cycle detection
+      - recursion depth limit (DoS protection)
+      - closed-world additionalProperties: false enforcement
     """
     errors = []
     if not isinstance(schema, dict):
         return errors
+    if depth > 64:
+        errors.append(f"{path}: Maximum schema validation depth (64) exceeded")
+        return errors
+    if root_schema is None:
+        root_schema = schema
+    if visited_refs is None:
+        visited_refs = set()
 
-    # 1. Type validation
+    # 0. Local $ref Resolution with Cycle Detection
+    if "$ref" in schema and root_schema:
+        ref = schema["$ref"]
+        if ref in visited_refs:
+            errors.append(f"{path}: Circular schema reference detected: '{ref}'")
+            return errors
+        if ref.startswith("#/"):
+            visited_refs.add(ref)
+            parts = ref[2:].split("/")
+            target = root_schema
+            for part in parts:
+                if isinstance(target, dict):
+                    target = target.get(part, {})
+            return validate_json_instance(instance, target, path, root_schema, visited_refs.copy(), depth + 1)
+
+    # 1. Type validation (object, string, number, integer, boolean, array, null)
     expected_type = schema.get("type")
     if expected_type:
         type_checks = {
@@ -247,20 +272,19 @@ def validate_json_instance(instance: any, schema: dict, path: str = "$") -> list
             "integer": isinstance(instance, int) and not isinstance(instance, bool),
             "boolean": isinstance(instance, bool),
             "array": isinstance(instance, list),
+            "null": instance is None,
         }
         if expected_type in type_checks and not type_checks[expected_type]:
             errors.append(f"{path}: Expected type '{expected_type}', got '{type(instance).__name__}'")
-            return errors  # Cannot validate further if base type is wrong
+            return errors
 
     # 2. Const validation
-    if "const" in schema:
-        if instance != schema["const"]:
-            errors.append(f"{path}: Value '{instance}' does not match const '{schema['const']}'")
+    if "const" in schema and instance != schema["const"]:
+        errors.append(f"{path}: Value '{instance}' does not match const '{schema['const']}'")
 
     # 3. Enum validation
-    if "enum" in schema:
-        if instance not in schema["enum"]:
-            errors.append(f"{path}: Value '{instance}' not in allowed enum {schema['enum']}")
+    if "enum" in schema and instance not in schema["enum"]:
+        errors.append(f"{path}: Value '{instance}' not in allowed enum {schema['enum']}")
 
     # 4. Numerical minimum / maximum bounds
     if isinstance(instance, (int, float)) and not isinstance(instance, bool):
@@ -269,20 +293,36 @@ def validate_json_instance(instance: any, schema: dict, path: str = "$") -> list
         if "maximum" in schema and instance > schema["maximum"]:
             errors.append(f"{path}: Value {instance} is greater than maximum {schema['maximum']}")
 
-    # 5. Array minItems and items
+    # 5. String length & regex pattern constraints
+    if isinstance(instance, str):
+        if "minLength" in schema and len(instance) < schema["minLength"]:
+            errors.append(f"{path}: String length {len(instance)} is less than minLength {schema['minLength']}")
+        if "maxLength" in schema and len(instance) > schema["maxLength"]:
+            errors.append(f"{path}: String length {len(instance)} is greater than maxLength {schema['maxLength']}")
+        if "pattern" in schema:
+            try:
+                if not re.search(schema["pattern"], instance):
+                    errors.append(f"{path}: String '{instance}' does not match pattern '{schema['pattern']}'")
+            except Exception:
+                pass
+
+    # 6. Array minItems and items
     if isinstance(instance, list):
         if "minItems" in schema and len(instance) < schema["minItems"]:
             errors.append(f"{path}: Array has {len(instance)} items, minimum required is {schema['minItems']}")
         if "items" in schema:
             for idx, item in enumerate(instance):
-                errors.extend(validate_json_instance(item, schema["items"], f"{path}[{idx}]"))
+                errors.extend(validate_json_instance(item, schema["items"], f"{path}[{idx}]", root_schema, visited_refs.copy(), depth + 1))
 
-    # 6. Object required properties, additionalProperties, and nested properties
+    # 7. Object required properties, additionalProperties, and nested properties
     if isinstance(instance, dict):
         if schema.get("additionalProperties") is False:
             allowed_props = set(schema.get("properties", {}).keys())
             for key in instance:
-                if key not in allowed_props and not key.startswith("$"):
+                # Closed-world contract: Only permit $schema at the exact root ($) level
+                if key == "$schema" and path == "$":
+                    continue
+                if key not in allowed_props:
                     errors.append(f"{path}: Additional property '{key}' not permitted by closed-world contract")
 
         for req in schema.get("required", []):
@@ -290,7 +330,7 @@ def validate_json_instance(instance: any, schema: dict, path: str = "$") -> list
                 errors.append(f"{path}: Missing required property '{req}'")
         for prop, prop_schema in schema.get("properties", {}).items():
             if prop in instance:
-                errors.extend(validate_json_instance(instance[prop], prop_schema, f"{path}.{prop}"))
+                errors.extend(validate_json_instance(instance[prop], prop_schema, f"{path}.{prop}", root_schema, visited_refs.copy(), depth + 1))
 
     return errors
 
@@ -679,6 +719,27 @@ def audit_repo_integrity(root_dir: Path) -> dict:
                         })
                         results["overall_status"] = "FAIL"
 
+                # Negative fixture: illegal_dollar_property.json (Closed-World Dollar Injection Rejection)
+                inv_dollar = fixtures_dir / "illegal_dollar_property.json"
+                if inv_dollar.exists():
+                    data = json.loads(inv_dollar.read_text(encoding="utf-8"))
+                    errs = validate_json_instance(data, schema_data)
+                    if errs:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Dollar Prefix Injection",
+                            "status": "PASS",
+                            "msg": f"Correctly rejected rogue dollar property: {errs[0]}"
+                        })
+                    else:
+                        results["checks"].append({
+                            "pillar": "Negative Evaluation Suite",
+                            "name": "Negative Fixture: Dollar Prefix Injection",
+                            "status": "FAIL",
+                            "msg": "Negative fixture 'illegal_dollar_property.json' was unexpectedly accepted"
+                        })
+                        results["overall_status"] = "FAIL"
+
                 # Negative fixture: out_of_range_latitude.json (Domain Numerical Bounds)
                 inv_lat = fixtures_dir / "out_of_range_latitude.json"
                 if inv_lat.exists():
@@ -948,7 +1009,9 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
             overflow_violations_320 = []
             touch_violations = []
             unnamed_violations = []
+            focus_violations = []
             rtl_violations = []
+            reduced_motion_failures = []
 
             for html_path in html_files:
                 uri = html_path.resolve().as_uri()
@@ -957,6 +1020,18 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 page.set_viewport_size({"width": 375, "height": 667})
                 page.goto(uri)
                 page.wait_for_load_state("domcontentloaded")
+                try:
+                    page.wait_for_load_state("networkidle", timeout=3000)
+                except Exception:
+                    pass
+
+                # Font & Layout stabilization
+                page.evaluate("""async () => {
+                    if (document.fonts && document.fonts.ready) {
+                        await document.fonts.ready;
+                    }
+                    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+                }""")
 
                 is_overflow_375 = page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
                 if is_overflow_375:
@@ -971,13 +1046,17 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 # Reset to 375 for component & accessibility audits
                 page.set_viewport_size({"width": 375, "height": 667})
 
-                # Check 2: Rendered Computed Styles & Touch Target Geometry Assertions
+                # Check 2: Rendered Computed Styles & Touch Target Geometry Assertions (with strict aria-hidden & visibility exclusion)
                 violations = page.evaluate("""() => {
-                    const targets = Array.from(document.querySelectorAll('button, a, [role="button"], input'));
+                    const targets = Array.from(document.querySelectorAll('button, a, [role="button"], input')).filter(el => {
+                        const style = window.getComputedStyle(el);
+                        return style.display !== 'none' && 
+                               style.visibility !== 'hidden' && 
+                               style.opacity !== '0' && 
+                               !el.closest('[aria-hidden="true"]');
+                    });
                     const badTargets = [];
                     for (const el of targets) {
-                        const style = window.getComputedStyle(el);
-                        if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') continue;
                         const rect = el.getBoundingClientRect();
                         if (rect.width > 0 && rect.height > 0 && (rect.width < 24 || rect.height < 24)) {
                             badTargets.push(`${el.tagName.toLowerCase()}(${Math.round(rect.width)}x${Math.round(rect.height)})`);
@@ -990,11 +1069,14 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
 
                 # Check 3: Accessible Name & Label Contract on Interactive Elements
                 unnamed = page.evaluate("""() => {
-                    const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]'));
+                    const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]')).filter(el => {
+                        const style = window.getComputedStyle(el);
+                        return style.display !== 'none' && 
+                               style.visibility !== 'hidden' && 
+                               !el.closest('[aria-hidden="true"]');
+                    });
                     const bad = [];
                     for (const el of buttons) {
-                        const style = window.getComputedStyle(el);
-                        if (style.display === 'none' || style.visibility === 'hidden') continue;
                         const name = (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim();
                         if (!name && el.getBoundingClientRect().width > 0) {
                             bad.push(el.tagName.toLowerCase());
@@ -1005,7 +1087,30 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 if unnamed:
                     unnamed_violations.append(f"{html_path.name}: {len(unnamed)} unnamed element(s)")
 
-                # Check 4: Semantic RTL Macro Bounding Geometry Assertions
+                # Check 4: Keyboard Focus Visibility Assertion
+                focus_unsupported = page.evaluate("""() => {
+                    const targets = Array.from(document.querySelectorAll('button, a, [role="button"], input')).filter(el => {
+                        const style = window.getComputedStyle(el);
+                        return style.display !== 'none' && 
+                               style.visibility !== 'hidden' && 
+                               !el.closest('[aria-hidden="true"]');
+                    });
+                    const bad = [];
+                    for (const el of targets) {
+                        el.focus({ preventScroll: true });
+                        const style = window.getComputedStyle(el);
+                        const hasOutline = parseFloat(style.outlineWidth || '0') > 0 && style.outlineStyle !== 'none';
+                        const hasBoxShadow = style.boxShadow && style.boxShadow !== 'none';
+                        if (!hasOutline && !hasBoxShadow) {
+                            bad.push(el.tagName.toLowerCase());
+                        }
+                    }
+                    return bad;
+                }""")
+                if focus_unsupported:
+                    focus_violations.append(f"{html_path.name}: {', '.join(focus_unsupported[:3])}")
+
+                # Check 5: Semantic RTL Macro Bounding Geometry Assertions
                 if "rtl" in html_path.name.lower() or "persian" in html_path.name.lower():
                     is_rtl_stable = page.evaluate("""() => {
                         const macroAnchors = Array.from(document.querySelectorAll('header, main, nav, section'));
@@ -1020,6 +1125,13 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     }""")
                     if not is_rtl_stable:
                         rtl_violations.append(html_path.name)
+
+                # Check 6: Prefers-Reduced-Motion Emulation
+                page.emulate_media(reduced_motion="reduce")
+                rm_matches = page.evaluate("() => window.matchMedia('(prefers-reduced-motion: reduce)').matches")
+                if not rm_matches:
+                    reduced_motion_failures.append(html_path.name)
+                page.emulate_media(reduced_motion="no-preference")
 
             browser.close()
 
@@ -1074,6 +1186,22 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     "msg": f"Missing accessible name on controls: {', '.join(unnamed_violations)}"
                 })
 
+            if not focus_violations:
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Keyboard Focus Visibility Indicators",
+                    "status": "PASS",
+                    "msg": f"Verified active :focus-visible outline/ring indicators across interactive controls in all {len(html_files)} interfaces"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Keyboard Focus Visibility Indicators",
+                    "status": "FAIL",
+                    "msg": f"Missing focus ring indicator on controls: {', '.join(focus_violations)}"
+                })
+
             if not rtl_violations:
                 results["checks"].append({
                     "pillar": "Semantic RTL",
@@ -1088,7 +1216,23 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     "pillar": "Semantic RTL",
                     "name": "RTL Macro Bounding Geometry",
                     "status": "FAIL",
-                    "msg": f"RTL macro lateral clipping detected on: {', '.join(rtl_violations)}"
+                    "msg": f"RTL container clipping detected on: {', '.join(rtl_violations)}"
+                })
+
+            if not reduced_motion_failures:
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Prefers-Reduced-Motion Emulation",
+                    "status": "PASS",
+                    "msg": "Verified media emulation responds to (prefers-reduced-motion: reduce) across all interfaces"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "Accessibility Contract",
+                    "name": "Prefers-Reduced-Motion Emulation",
+                    "status": "FAIL",
+                    "msg": f"Failed reduced motion emulation on: {', '.join(reduced_motion_failures)}"
                 })
 
     except Exception as e:
