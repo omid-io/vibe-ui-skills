@@ -46,7 +46,21 @@ const saasColors = VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors;
 console.log(saasColors.primaryAccent); // 'oklch(0.65 0.22 260)'
 ```
 
-### 2. Zero-Config Tailwind Plugin
+### 2. Native Tailwind CSS v4 (@theme) — Recommended
+
+In your global stylesheet (e.g. `app/globals.css`):
+
+```css
+@import "tailwindcss";
+@import "@omid-io/tokens/v4.css";
+```
+
+Zero JavaScript configuration files needed. Instantly unlocks:
+- Semantic color utilities: `bg-vibe-canvas`, `bg-vibe-surface`, `text-vibe-primary`, `border-vibe-border`
+- Physics curves: `transition-vibe-spring`, `transition-vibe-snap`, `transition-vibe-glide`
+- Shadows: `shadow-vibe-brutal`, `shadow-vibe-glass`
+
+### 3. Tailwind CSS v3 Legacy Plugin (Backward Compatible)
 
 In your `tailwind.config.js` or `tailwind.config.ts`:
 
@@ -58,8 +72,6 @@ export default {
   plugins: [vibeUiPlugin],
 };
 ```
-
-This injects OKLCH CSS variables (`--vibe-canvas`, `--vibe-surface`, etc.) and physics utility classes (`.vibe-spring`, `.vibe-glass`).
 
 ## License
 

@@ -93,4 +93,10 @@ if (fs.existsSync(cliPath)) {
   } catch (e) {}
 }
 
-console.log('✅ @omid-io/tokens build complete: CLI, ESM, CJS, and .d.ts generated in dist/');
+// Copy Tailwind v4 theme CSS to dist
+const v4CssSrc = path.join(__dirname, 'v4.css');
+if (fs.existsSync(v4CssSrc)) {
+  fs.copyFileSync(v4CssSrc, path.join(distDir, 'v4.css'));
+}
+
+console.log('✅ @omid-io/tokens build complete: CLI, ESM, CJS, v4.css, and .d.ts generated in dist/');

@@ -19,7 +19,9 @@
       "types": "./dist/tailwind.d.ts",
       "import": "./dist/tailwind.mjs",
       "require": "./dist/tailwind.js"
-    }
+    },
+    "./v4": "./dist/v4.css",
+    "./v4.css": "./dist/v4.css"
   },
   "scripts": {
     "build": "node build.js"
