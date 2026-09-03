@@ -112,19 +112,25 @@ graph TD
 
 ---
 
-### ۳. `design-genome` (ژنوم ترکیب‌پذیر سبک‌ها)
-ظاهر رابط از ضرب دکارتی این ۵ بردار ساخته می‌شود:
+### ۳. `design-genome` (ژنوم جامع ۱۴ بعدی طراحی)
+برای جلوگیری از محبوس شدن تصمیمات در پرامپت‌های پراکنده، ژنوم طراحی کل ابعاد یک رابط کاربری را در یک ماتریس ۱۴ بعدی استاندارد مدل‌سازی می‌کند:
 
-$$\text{Interface Appearance} = \mathbf{Style} \times \mathbf{Mood} \times \mathbf{Density} \times \mathbf{Product Mode}$$
+$$\text{Interface Genome} = \mathbf{Domain} \times \mathbf{Audience} \times \mathbf{Brand} \times \mathbf{Mode} \times \mathbf{Style} \times \mathbf{Mood} \times \mathbf{Density} \times \dots$$
 
-* **Style Vectors (۱۲ سبک لنگری):** `minimal_swiss`, `clean_stripe`, `linear_dark`, `quiet_luxury`, `data_dense_terminal`, `neobrutalism`, `soft_humanist`, `organic_nordic`, `bauhaus_geometric`, `modern_glass_2`, `retro_futurism`, `editorial_magazine`.
-* **Mood Vectors:** `Calm`, `Serious`, `Energetic`, `Playful`, `Technical`.
-* **Density Vectors:** `Airy` (لندینگ و برند), `Balanced` (اپ عمومی), `Dense` (ابزار کار و ادمین).
-* **Product Mode:**
-  * `Persuade`: لندینگ و افزایش نرخ تبدیل
-  * `Operate`: پنل مدیریت، تریدینگ و نرم‌افزارهای ابزاری
-  * `Read`: داکیومنت، مقاله و وبلاگ
-  * `Experience`: پورتفولیو و معرفی ایونت
+1. **حوزه و صنعت (Domain):** ۲۴ صنعت طبقه‌بندی شده (فین‌تک، پزشکی، تریدینگ، املاک و ...).
+2. **پرسونای مخاطب (Audience):** سن، دانش فنی، سطح درآمد و زمینه کاربرد.
+3. **شخصیت برند (Brand Personality):** باوقار، مدرن، پرانرژی، نوستالژیک یا صمیمی.
+4. **حالت محصول (Product Mode):** Persuade (تبدیل), Operate (ابزار/ادمین), Read (مستندات), Experience (روایت‌گری).
+5. **سبک پایه (Base Style):** ۱۲ سبک لنگری استاندارد (`minimal_swiss`, `clean_stripe`, `linear_dark`, `quiet_luxury`, `data_dense_terminal`, `neobrutalism`, `soft_humanist`, `organic_nordic`, `bauhaus_geometric`, `modern_glass_2`, `retro_futurism`, `editorial_magazine`).
+6. **لحن و حس (Mood):** Calm, Serious, Energetic, Playful, Technical.
+7. **تراکم چیدمان (Density):** Airy (باز), Balanced (متعادل), Dense (فشرده).
+8. **سیستم تایپوگرافی (Typography System):** جفت‌های سریف، سنز و مونو به همراه معادل وب فارسی (وزیرمتن، دانا، یکان‌بخ).
+9. **معماری رنگ (Color Architecture):** پالت OKLCH شامل Canvas، Surface، Accent، Border و Text با کنتراست تضمینی.
+10. **هندسه و انحنا (Geometry & Radius):** Sharp (0-2px), Standard (4-8px), Soft (12-16px), Pill (9999px).
+11. **عمق و سایه (Depth & Elevation):** Flat, Micro-shadow, Diffused, Specular Glass 2.0, Hard Drop (نئوبروتال).
+12. **فیزیک انیمیشن (Motion Curves):** ثابت زمانی $\lambda=14$، منحنی‌های فنری و کنترل `prefers-reduced-motion`.
+13. **بافت و متریال (Texture & Material):** پس‌زمینه سالید، گرین مات، شیشه نیمه‌شفاف کالیبره، نور لبه‌ای.
+14. **رفتار حالات کامپوننت (State Completeness):** قرارداد رفتاری در حالات Default, Hover, Focus, Skeleton Loading, Empty, Error Retry.
 
 ---
 
@@ -179,11 +185,20 @@ $$\text{Final Acceptance} = \mathbf{HardGates} \land (\text{QualityScore} \ge 80
 5. **Reduced Motion Gate:** خاموش شدن انیمیشن‌های طولانی در `prefers-reduced-motion`.
 6. **Zero Raw Emojis Gate:** صفر درصد ایموجی متنی؛ الزام استفاده از آیکون SVG.
 
-### سطح ۲: نمره کیفی منتقد طراحی (Tier 2: Quality Score 0 to 100)
-* **جریمه یکنواختی قالب (سقف ۳۰ نمره):** کسر نمره در صورت وجود بیش از ۴ کارت با کلاس‌های یکسان.
-* **سلسله‌مراتب اسکن دیداری (سقف ۲۵ نمره):** داشتن دقیقاً یک دکمه اصلی متمایز در هیرو.
-* **تناسب دامین (سقف ۲۵ نمره):** انطباق رنگ و ریتم با ماهیت کسب‌وکار.
-* **کامل بودن حالات (سقف ۲۰ نمره):** داشتن اسکلتون لودینگ، استیت خالی و خطا.
+### سطح ۲: کارت امتیازی چندبعدی منتقد طراحی (Tier 2: Critic Multi-Dimensional Scorecard - 0 to 100)
+برخلاف مدل‌های ساده که یک نمره کلی و مبهم می‌دهند، منتقد طراحی ۹ بعد مستقل و قابل‌سنجش را ارزیابی می‌کند:
+
+1. **سلسله‌مراتب اسکن دیداری (Visual Hierarchy - ۱۵ نمره):** وضوح خطوط دید (Z یا F)، هدایت نگاه و داشتن یک CTA غالب در اولین ۳ ثانیه.
+2. **اصالت و مقابله با کلیشه (Distinctiveness / Anti-Slop - ۱۵ نمره):** کسر نمره برای استفاده از گرادیان بنفش کلیشه‌ای، کارت‌های کپی‌شده یکنواخت و تمپلیت‌های تکراری.
+3. **تناسب با دامین و هدف (Domain & Intent Fit - ۱۵ نمره):** انطباق لحن بصری با صنعت (مثلاً حفظ پرستیژ در پزشکی یا تراکم در تریدینگ).
+4. **کاربردپذیری و تاچ‌تارگت (Usability & Targets - ۱۰ نمره):** رعایت فاصله ۸px+ بین دکمه‌ها و حداقل ابعاد ۴۴px در موبایل.
+5. **تایپوگرافی و تضاد مقیاس (Typography Hierarchy - ۱۰ نمره):** تمایز شارپ تیترها از متن بدنه و تناسب فونت انگلیسی و فارسی.
+6. **پایداری موبایل و پاسخ‌گویی (Responsive Integrity - ۱۰ نمره):** ری‌فلو تمیز محتوا بدون اسکرول افقی در عرض‌های کوچک.
+7. **کامل بودن حالات (State Completeness - ۱۰ نمره):** وجود اسکلتون لودینگ، استیت خالی و مدیریت خطا.
+8. **انسجام با برند (Brand Coherence - ۱۰ نمره):** هماهنگی المان‌ها با پالت و هویت سازمانی کاربر.
+9. **بار پردازشی و بودجه بلور (Performance Budget - ۵ نمره):** رعایت بودجه بلور شیشه‌ای ($\le 2$ لایه) و عدم افت فریم.
+
+* **آستانه قبولی نهایی:** حداقل ۸۰ از ۱۰۰ (مشروط به پاس شدن ۱۰۰٪ گیت‌های سخت سطح ۱).
 
 ### صف اولویت‌بندی پچ‌های خوداصلاحی:
 $$\text{Critical Blockers} \longrightarrow \text{High-Impact Visual} \longrightarrow \text{Usability / States} \longrightarrow \text{Aesthetic Polish}$$
