@@ -6,7 +6,7 @@
 
 **Contract-driven frontend engineering, design-system constraints, and runtime verification for AI coding assistants.**
 
-[![CI Pipeline](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/omid-io/vibe-ui-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-suite/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@omid-io/tokens.svg?color=cb3837&label=npm)](https://www.npmjs.com/package/@omid-io/tokens)
 [![Open VSX](https://img.shields.io/badge/Open--VSX-omid--io.vibe--ui--vscode-purple.svg)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
 [![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-omid--io.vibe--ui--vscode-blue.svg)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
@@ -17,7 +17,7 @@
   <a href="README.fa.md"><strong>فارسی (Persian Documentation)</strong></a> •
   <a href="ARCHITECTURE.md"><strong>Architecture Specification</strong></a> •
   <a href="docs/ENTERPRISE_ADAPTATION.md"><strong>Enterprise Guide</strong></a> •
-  <a href="https://omid-io.github.io/vibe-ui-skills/"><strong>Interactive Studio Playground</strong></a>
+  <a href="https://omid-io.github.io/vibe-ui-suite/"><strong>Interactive Studio Playground</strong></a>
 </p>
 
 </div>
@@ -32,7 +32,7 @@ What happens when you ask an AI assistant to generate a frontend component?
 ┌──────────────────────────────────────┐  vs  ┌──────────────────────────────────────┐
 │ ❌ VANILLA AI SLOP                   │      │ ✨ VIBE UI V3 COMPILED               │
 ├──────────────────────────────────────┤      ├──────────────────────────────────────┤
-│ • Generic purple gradient buttons    │      │ • Orthogonal Style DNA (12 families) │
+│ • Generic purple gradient buttons    │      │ • Orthogonal Style DNA (26 families) │
 │ • Low contrast text (3.2:1 FAILS AA) │      │ • Mathematical WCAG 2.2 AAA (17.8:1) │
 │ • Broken mobile overflow (375px)     │      │ • Zero layout shift, mobile audited  │
 │ • Hallucinated raw emojis            │      │ • Deterministic inline vector icons  │
@@ -41,7 +41,7 @@ What happens when you ask an AI assistant to generate a frontend component?
 └──────────────────────────────────────┘      └──────────────────────────────────────┘
 ```
 
-👉 **[Launch the Interactive Design Compiler Studio Live](https://omid-io.github.io/vibe-ui-skills/)** — Zero server latency, instantaneous client-side domain inference & component preview.
+👉 **[Launch the Interactive Design Compiler Studio Live](https://omid-io.github.io/vibe-ui-suite/)** — Zero server latency, instantaneous client-side domain inference & component preview.
 
 ---
 
@@ -260,9 +260,9 @@ Vibe UI Suite is open-source under the **MIT License**. We actively welcome comm
 - Real-world bug reports with minimal reproductions
 
 ```bash
-git clone https://github.com/omid-io/vibe-ui-skills.git
-cd vibe-ui-skills
+git clone https://github.com/omid-io/vibe-ui-suite.git
+cd vibe-ui-suite
 python evals/run_evals.py
 ```
 
-Maintainer: [Omid Zaferi](https://github.com/omid-io) • Issues: [GitHub Issues](https://github.com/omid-io/vibe-ui-skills/issues)
+Maintainer: [Omid Zaferi](https://github.com/omid-io) • Issues: [GitHub Issues](https://github.com/omid-io/vibe-ui-suite/issues)

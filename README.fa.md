@@ -6,7 +6,7 @@
 
 **مهندسی قراردادمحور فرانت‌اند، قیدهای دیزاین‌سیستم و موتور اعتبارسنجی ران‌تایم برای دستیاران کدنویسی هوش مصنوعی.**
 
-[![CI Pipeline](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/omid-io/vibe-ui-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-suite/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@omid-io/tokens.svg?color=cb3837&label=npm)](https://www.npmjs.com/package/@omid-io/tokens)
 [![Open VSX](https://img.shields.io/badge/Open--VSX-omid--io.vibe--ui--vscode-purple.svg)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
 [![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-omid--io.vibe--ui--vscode-blue.svg)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
@@ -17,7 +17,7 @@
   <a href="README.md"><strong>English Documentation</strong></a> •
   <a href="ARCHITECTURE.md"><strong>مستندات معماری سیستم</strong></a> •
   <a href="docs/ENTERPRISE_ADAPTATION.md"><strong>راهنمای تطبیق سازمانی</strong></a> •
-  <a href="https://omid-io.github.io/vibe-ui-skills/"><strong>استودیوی تعاملی کامپایلر آنلاین</strong></a>
+  <a href="https://omid-io.github.io/vibe-ui-suite/"><strong>استودیوی تعاملی کامپایلر آنلاین</strong></a>
 </p>
 
 </div>
@@ -32,7 +32,7 @@
 ┌──────────────────────────────────────┐  در  ┌──────────────────────────────────────┐
 │ ❌ خروجی کلیشه‌ای AI (Vanilla Slop)  │ برابر│ ✨ خروجی مهندسی‌شده Vibe UI V3       │
 ├──────────────────────────────────────┤      ├──────────────────────────────────────┤
-│ • دکمه‌های تکراری با گرادیان بنفش   │      │ • ژنوم ارتوگونال سبک (۱۲ خانواده)    │
+│ • دکمه‌های تکراری با گرادیان بنفش   │      │ • ژنوم ارتوگونال سبک (۲۶ خانواده)    │
 │ • کنتراست ضعیف متن (۳.۲ به ۱ - مردود)│      │ • کنتراست ریاضی WCAG 2.2 AAA (۱۷.۸)  │
 │ • سرریز افقی در موبایل (۳۷۵ پیکسل)   │      │ • بدون پرش ساختار، تایید کامل موبایل │
 │ • اموجی‌های متنی زرد و آماتور        │      │ • آیکون‌های وکتور SVG بهینه‌سازی‌شده  │
@@ -41,7 +41,7 @@
 └──────────────────────────────────────┘      └──────────────────────────────────────┘
 ```
 
-👉 **[استودیوی کامپایلر طراحی آنلاین را زنده امتحان کنید](https://omid-io.github.io/vibe-ui-skills/)** — بدون تاخیر سرور، استنتاج آنی سمت کاربر و پیش‌نمایش بلادرنگ کامپوننت‌ها.
+👉 **[استودیوی کامپایلر طراحی آنلاین را زنده امتحان کنید](https://omid-io.github.io/vibe-ui-suite/)** — بدون تاخیر سرور، استنتاج آنی سمت کاربر و پیش‌نمایش بلادرنگ کامپوننت‌ها.
 
 ---
 
@@ -203,9 +203,9 @@ python evals/run_evals.py --browser
 پروژه Vibe UI Suite تحت مجوز **MIT** منتشر شده است. ما مشتاقانه از پیشنهادات، ایشوها و مشارکت‌های شما استقبال می‌کنیم:
 
 ```bash
-git clone https://github.com/omid-io/vibe-ui-skills.git
-cd vibe-ui-skills
+git clone https://github.com/omid-io/vibe-ui-suite.git
+cd vibe-ui-suite
 python evals/run_evals.py
 ```
 
-توسعه‌دهنده: [امید ظفری](https://github.com/omid-io) • ثبت ایشو: [GitHub Issues](https://github.com/omid-io/vibe-ui-skills/issues)
+توسعه‌دهنده: [امید ظفری](https://github.com/omid-io) • ثبت ایشو: [GitHub Issues](https://github.com/omid-io/vibe-ui-suite/issues)

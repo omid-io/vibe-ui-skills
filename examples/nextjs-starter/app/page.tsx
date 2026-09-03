@@ -107,7 +107,7 @@ export default function HomePage() {
 
             {/* GitHub Repo Link */}
             <a
-              href="https://github.com/omid-io/vibe-ui-skills"
+              href="https://github.com/omid-io/vibe-ui-suite"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View Vibe UI repository on GitHub"

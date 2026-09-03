@@ -2459,7 +2459,7 @@
         <p id="install-subtext">Copy this prompt directly into your AI Assistant (Cursor, Claude, Antigravity, Copilot):</p>
       </div>
       <div class="code-pill-wrapper" style="margin-bottom: 8px;">
-        <div class="code-pill-text" id="agentPromptText" style="font-size: 12px;">Please install the Vibe UI Skills Suite from https://github.com/omid-io/vibe-ui-skills into my active AI agent environment.</div>
+        <div class="code-pill-text" id="agentPromptText" style="font-size: 12px;">Please install Vibe UI Suite from https://github.com/omid-io/vibe-ui-suite into my active AI agent environment.</div>
         <button class="copy-btn" type="button" onclick="copyText('agentPromptText', 'copyPromptText', 'copyPromptIcon')" id="copyPromptBtn" aria-label="Copy AI Agent prompt">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="copyPromptIcon" aria-hidden="true">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -2469,7 +2469,7 @@
         </button>
       </div>
       <div class="code-pill-wrapper">
-        <div class="code-pill-text" id="installCmd">irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex</div>
+        <div class="code-pill-text" id="installCmd">irm https://raw.githubusercontent.com/omid-io/vibe-ui-suite/main/install.ps1 | iex</div>
         <button class="copy-btn" type="button" onclick="copyText('installCmd', 'copyBtnText', 'copyIcon')" id="copyBtn" aria-label="Copy PowerShell command">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="copyIcon" aria-hidden="true">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -2482,7 +2482,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>Crafted with mathematical precision & OKLCH color science &bull; Part of the <a href="https://github.com/omid-io/vibe-ui-skills" target="_blank" rel="noopener noreferrer">vibe-ui-skills suite</a></p>
+      <p>Crafted with mathematical precision & OKLCH color science &bull; Part of the <a href="https://github.com/omid-io/vibe-ui-suite" target="_blank" rel="noopener noreferrer">Vibe UI Suite</a></p>
     </footer>
   </div>
 
@@ -2749,7 +2749,7 @@
         installDesc: "Copy this prompt directly into your AI Assistant (Cursor, Claude, Antigravity, Copilot):",
         copyPromptText: "Copy Prompt",
         copyPs1Text: "Copy PS1",
-        footer: "Crafted with mathematical precision &bull; Part of the <a href=\"https://github.com/omid-io/vibe-ui-skills\" target=\"_blank\" rel=\"noopener noreferrer\">vibe-ui-skills suite</a>",
+        footer: "Crafted with mathematical precision &bull; Part of the <a href=\"https://github.com/omid-io/vibe-ui-suite\" target=\"_blank\" rel=\"noopener noreferrer\">Vibe UI Suite</a>",
         studioTitle: "Vibe UI V3 — Design Compiler Studio",
         studioSubtitle: "Type any product prompt in English or Persian. Watch the Design Director infer the domain, resolve Style DNA, render multi-state UI, and audit WCAG AA in real-time (< 5ms).",
         studioBadge: "Client-Side Deterministic • 0 Server Calls",
@@ -2767,7 +2767,7 @@
         lblTraceAvoid: "Forbidden Patterns:"
       },
       fa: {
-        badge: "سوئیت مهارت‌های طراحی مدرن Vibe UI",
+        badge: "سوئیت طراحی مدرن Vibe UI Suite",
         h1: "معماری مهندسی رابط کاربری برای هوش مصنوعی",
         subtitle: "دستیارهای هوش مصنوعی (Claude Code، Cursor، Antigravity، Copilot) را به معماران ارشد فرانت‌اند تبدیل کنید. ۵ زبان طراحی و بیش از ۷۰ کامپوننت مدرن را تست کنید.",
         styleLabel: "موتور انطباق‌پذیر زبان‌های طراحی (Visual Chemistries)",
@@ -2813,7 +2813,7 @@
         installDesc: "این پرامپت را مستقیماً در هوش مصنوعی خود (Cursor، Claude، Antigravity، Copilot) کپی کنید:",
         copyPromptText: "کپی پرامپت",
         copyPs1Text: "کپی دستور",
-        footer: "طراحی‌شده با دقت ریاضی و علم رنگ OKLCH • بخشی از <a href=\"https://github.com/omid-io/vibe-ui-skills\" target=\"_blank\" rel=\"noopener noreferrer\">سوئیت vibe-ui-skills</a>",
+        footer: "طراحی‌شده با دقت ریاضی و علم رنگ OKLCH • بخشی از <a href=\"https://github.com/omid-io/vibe-ui-suite\" target=\"_blank\" rel=\"noopener noreferrer\">سوئیت Vibe UI Suite</a>",
         studioTitle: "استودیوی کامپایلر طراحی هوشمند Vibe UI V3",
         studioSubtitle: "هر پرامپت یا ایده محصول را به فارسی یا انگلیسی بنویسید. دایرکتور دامین را استنتاج کرده، DNA سبک را برگزیده، وضعیت‌های مختلف رابط را کامپایل و کنتراست را به صورت زنده ارزیابی می‌کند (< ۵ میلی‌ثانیه).",
         studioBadge: "کامپایلر جبری سمت کاربر • بدون هزینه سرور",
@@ -3387,7 +3387,7 @@
 }`;
       } else if (type === 'contract') {
         textToCopy = JSON.stringify({
-          "$schema": "https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/schemas/design-spec.v1.schema.json",
+          "$schema": "https://raw.githubusercontent.com/omid-io/vibe-ui-suite/main/schemas/design-spec.v1.schema.json",
           "spec_version": "3.0.0-alpha.1",
           "product_domain": sc.domain,
           "resolved_style": sc.styleName,

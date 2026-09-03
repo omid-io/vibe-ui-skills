@@ -73,13 +73,13 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "skills"))) {
     # Running remotely via 'irm ... | iex' - download archive from GitHub
     Write-Host "Fetching skills suite (version: $Version) from GitHub repository..." -ForegroundColor Cyan
     if ($Version -and $Version -ne "main") {
-        $ZipUrl = "https://github.com/omid-io/vibe-ui-skills/archive/refs/tags/$Version.zip"
-        $FolderPrefix = "vibe-ui-skills-$($Version.TrimStart('v'))"
+        $ZipUrl = "https://github.com/omid-io/vibe-ui-suite/archive/refs/tags/$Version.zip"
+        $FolderPrefix = "vibe-ui-suite-$($Version.TrimStart('v'))"
     } else {
-        $ZipUrl = "https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.zip"
-        $FolderPrefix = "vibe-ui-skills-main"
+        $ZipUrl = "https://github.com/omid-io/vibe-ui-suite/archive/refs/heads/main.zip"
+        $FolderPrefix = "vibe-ui-suite-main"
     }
-    $TempDir = Join-Path ([System.IO.Path]::GetTempPath()) ("vibe_ui_skills_" + [System.Guid]::NewGuid().ToString("N"))
+    $TempDir = Join-Path ([System.IO.Path]::GetTempPath()) ("vibe_ui_suite_" + [System.Guid]::NewGuid().ToString("N"))
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
     $ZipFile = Join-Path $TempDir "bundle.zip"
     

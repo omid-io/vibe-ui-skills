@@ -1,8 +1,8 @@
-# Project State: vibe-ui-skills
+# Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 7 — Vibe UI v3.0: Autonomous Design Intelligence & Decision Director
-- **Status**: **Strategic Pivot & V3 Master Architecture Formulated**. Released `v2.4.2` hardened baseline; authored master architectural roadmap [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md) transitioning the ecosystem from a static 5-style catalogue to an autonomous Design Decision Engine (`Design Director` → `Style Genome` → `Design Critic` → `Auto-Refinement`).
+- **Active Phase**: Phase 7 — Vibe UI Suite (v3.0.0 Production Baseline)
+- **Status**: **Engineering Roadmap & Rebrand to Vibe UI Suite 100% Completed**. All 25 engineering phases satisfied, 26 orthogonal styles integrated, machine-readable skill contracts mapped, GitHub repository renamed to `omid-io/vibe-ui-suite`, and 100% CI pass rate verified.
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
@@ -103,6 +103,11 @@
   - **Skill Contract Mapping (Phase 20)**: Implemented machine-readable contracts in [`manifests/skill_contracts.json`](file:///E:/programming/vibe-ui-skills/manifests/skill_contracts.json) mapping claims across all 6 skills directly to executable tests and fixtures.
   - **Final Architectural Deliverables (Phase 24 & 25)**: Authored [`docs/FINAL_ARCHITECTURE.md`](file:///E:/programming/vibe-ui-skills/docs/FINAL_ARCHITECTURE.md), [`docs/FINAL_EVAL_REPORT.md`](file:///E:/programming/vibe-ui-skills/docs/FINAL_EVAL_REPORT.md), and [`docs/STYLE_CATALOG.md`](file:///E:/programming/vibe-ui-skills/docs/STYLE_CATALOG.md).
   - **Quality Gates Certified**: All 7 test suites passing 100% in 759ms. Zero regression blockers.
+
+- [x] **R17: Official Rebranding to Vibe UI Suite [2026-09-03]**:
+  - **GitHub Repository Renamed**: Successfully renamed repository on GitHub from `vibe-ui-skills` to `vibe-ui-suite` via GitHub CLI (`gh repo rename vibe-ui-suite`).
+  - **Remote Origin Synchronized**: Updated local git remote tracking to `https://github.com/omid-io/vibe-ui-suite.git`.
+  - **Global Documentation & Manifest Alignment**: Updated branding, repository URLs, install scripts (`install.ps1`, `install.sh`), central manifest (`version.json`), VS Code extension manifest, design tokens package, Next.js starter, and online studio on GitHub Pages.
 
 ## Immediate Next Steps & Execution Plan
 1. **Package Release**: Publish `@omid-io/tokens` v3.0.0 to NPM and `vibe-ui-vscode` to Visual Studio Marketplace.

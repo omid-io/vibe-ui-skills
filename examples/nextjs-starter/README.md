@@ -97,4 +97,4 @@ When switching to Persian or Arabic:
 ## 📄 License
 
 MIT © [Omid Zaferi](https://github.com/omid-io)
-Part of the **[Vibe UI Skills Suite](https://github.com/omid-io/vibe-ui-skills)**.
+Part of the **[Vibe UI Suite](https://github.com/omid-io/vibe-ui-suite)**.

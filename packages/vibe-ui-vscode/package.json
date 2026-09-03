@@ -85,7 +85,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/omid-io/vibe-ui-skills.git",
+    "url": "https://github.com/omid-io/vibe-ui-suite.git",
     "directory": "packages/vibe-ui-vscode"
   }
 }

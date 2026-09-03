@@ -82,9 +82,9 @@ if [ -z "$SOURCE_SKILLS" ] || [ ! -d "$SOURCE_SKILLS" ]; then
     echo "📦 Fetching skills suite (version: $VERSION) from GitHub repository..."
     TEMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'vibe_ui')
     if [ -n "$VERSION" ] && [ "$VERSION" != "main" ]; then
-        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-skills/archive/refs/tags/${VERSION}.tar.gz"
+        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-suite/archive/refs/tags/${VERSION}.tar.gz"
     else
-        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-skills/archive/refs/heads/main.tar.gz"
+        ARCHIVE_URL="https://github.com/omid-io/vibe-ui-suite/archive/refs/heads/main.tar.gz"
     fi
     
     if command -v curl >/dev/null 2>&1; then
