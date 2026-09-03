@@ -48,8 +48,30 @@ jobs:
 
       - name: Install dependencies
         working-directory: examples/nextjs-starter
-        run: npm ci || npm install
+        run: npm ci
 
       - name: Run TypeScript & Next.js Build
         working-directory: examples/nextjs-starter
         run: npm run build
+
+  browser-runtime-evals:
+    name: Headless Playwright Browser Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Playwright & Chromium
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Run Playwright Browser Runtime Verification
+        run: python evals/run_evals.py --browser
+

@@ -30,18 +30,21 @@
   - Validated local Next.js 15 App Router production build: compiled in 42s with zero TypeScript or type-stripping errors.
   - De-hyped documentation across [`README.md`](README.md) and [`README.fa.md`](README.fa.md): eliminated promotional claims ("Awwwards-grade", "Masterpiece", crown emojis) and connected live GitHub Actions badge.
   - Formulated 30-Second Multi-IDE Quick Start for Cursor (`.cursorrules`), Claude Code (`CLAUDE.md`), Windsurf (`.windsurfrules`), and Antigravity.
+- [x] **R6: v2.3.0 Ecosystem, Tooling & Runtime Conformance Shipped**:
+  - **1-Minute Setup Verification & Recipe Catalog**: Added sanity check prompt, troubleshooting guide, safe install hierarchy, and 70+ component index to [`README.md`](README.md) and [`README.fa.md`](README.fa.md).
+  - **VS Code & Cursor Extension (`packages/vibe-ui-vscode`)**: Created full extension with Webview Visual Chemistry sidebar, in-editor WCAG contrast/anti-slop diagnostics, and packaged installable binary [`vibe-ui-vscode-2.3.0.vsix`](packages/vibe-ui-vscode/vibe-ui-vscode-2.3.0.vsix).
+  - **Scoped NPM Design Tokens (`@vibe-ui/tokens`)**: Created [`packages/tokens`](packages/tokens) with dual ESM/CJS export, TypeScript `.d.ts` declarations, typed OKLCH colors, physics motion curves, and zero-config Tailwind plugin.
+  - **Enterprise Architecture Guide**: Authored [`docs/ENTERPRISE_ADAPTATION.md`](docs/ENTERPRISE_ADAPTATION.md) for Figma token translation and company UI library bindings.
+  - **Headless Playwright Browser Verification (`--browser`)**: Added runtime Chromium DOM inspection to [`evals/run_evals.py`](evals/run_evals.py), caught and fixed 25px horizontal overflow on mobile 375px viewport in [`examples/saas_ai_hero.html`](examples/saas_ai_hero.html), and added `browser-runtime-evals` job to [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+  - **GitHub Roadmap Board Updated**: All issues #1 through #5 moved to `Done` on [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3).
 
-## Immediate Next Steps & Public Roadmap
-- **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3) (Linked to [`omid-io/vibe-ui-skills`](https://github.com/omid-io/vibe-ui-skills/projects))
-1. **GitHub Launch & Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md), with updated repository topics and live showcase.
-2. **Milestone v2.3.0 — Ecosystem & Extensions ([Issue #1](https://github.com/omid-io/vibe-ui-skills/issues/1))**:
-   - Official VS Code & Cursor Extension (`vibe-ui-vscode`) with sidebar chemistry browser, in-editor diagnostics, and 1-click workspace provisioning.
-3. **Milestone v2.3.0 — Design Tokens Package ([Issue #2](https://github.com/omid-io/vibe-ui-skills/issues/2))**:
-   - Scoped public NPM package `@vibe-ui/tokens` with typed OKLCH colors, motion curves, and zero-config Tailwind plugin.
-4. **Milestone v2.3.0 — Enterprise Architecture ([Issue #3](https://github.com/omid-io/vibe-ui-skills/issues/3))**:
-   - Comprehensive `docs/ENTERPRISE_ADAPTATION.md` for mapping Figma Tokens, Storybook components, and proprietary brand palettes.
-5. **Milestone v2.4.0 — Runtime Conformance ([Issue #4](https://github.com/omid-io/vibe-ui-skills/issues/4))**:
-   - Headless Playwright runtime DOM inspection (`evals/run_evals.py --browser`) for real 375px viewport overflow assertion and computed-style contrast extraction.
+## Immediate Next Steps & Public Launch
+- **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
+1. **Publish to Registries (User Login Action)**:
+   - Visual Studio Marketplace: Upload `packages/vibe-ui-vscode/vibe-ui-vscode-2.3.0.vsix` via [Marketplace Manage](https://marketplace.visualstudio.com/manage).
+   - Open-VSX Registry: Publish `vibe-ui-vscode-2.3.0.vsix` via [Open-VSX](https://open-vsx.org/).
+   - NPM: Publish `@vibe-ui/tokens` via `npm publish --access public`.
+2. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)

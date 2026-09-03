@@ -1,0 +1,84 @@
+{
+  "name": "vibe-ui-vscode",
+  "displayName": "Vibe UI — Design Systems & Contrast Linter",
+  "description": "Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor & Windsurf",
+  "version": "2.3.0",
+  "publisher": "omid-io",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "vibe-ui",
+    "oklch",
+    "wcag",
+    "accessibility",
+    "cursor",
+    "design-system",
+    "tailwind"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vibe-ui-sidebar",
+          "title": "Vibe UI",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "vibe-ui-sidebar": [
+        {
+          "type": "webview",
+          "id": "vibe-ui.chemistryExplorer",
+          "name": "Visual Chemistries & Tokens"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vibe-ui.auditContrast",
+        "title": "Audit Component WCAG Contrast & Invariants",
+        "category": "Vibe UI"
+      },
+      {
+        "command": "vibe-ui.insertAdapter",
+        "title": "Configure Workspace Adapter (Cursor / Claude Code / Windsurf)",
+        "category": "Vibe UI"
+      },
+      {
+        "command": "vibe-ui.openShowcase",
+        "title": "Open Live Component Showcase",
+        "category": "Vibe UI"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vibe-ui.auditContrast",
+          "when": "resourceExtname =~ /\\.(tsx|jsx|html|vue|svelte)$/",
+          "group": "vibe-ui"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node build.js"
+  },
+  "author": "Omid Zaferi <https://github.com/omid-io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omid-io/vibe-ui-skills.git",
+    "directory": "packages/vibe-ui-vscode"
+  }
+}

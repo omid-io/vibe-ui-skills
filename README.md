@@ -90,17 +90,32 @@ Choose your environment and load the pre-configured adapter:
   ```
 * **Antigravity / Gemini CLI (`~/.gemini/config/skills/`):**
   ```bash
+  # Recommended: Clone or copy directly into skills directory
+  git clone https://github.com/omid-io/vibe-ui-skills.git ~/.gemini/config/skills/vibe-ui-skills
+  
+  # Or via automated installer:
   # Windows (PowerShell):
   powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.ps1 | iex"
   # Linux / macOS (Bash):
   curl -fsSL https://raw.githubusercontent.com/omid-io/vibe-ui-skills/main/install.sh | bash
   ```
 
-### 2. Prompt `mr-ui-designer`
+### 2. Verify Your Setup (1-Minute Sanity Check)
+Verify that your coding assistant is actively adhering to Vibe UI contracts:
+> *"Generate a primary CTA button component with an icon."*
+
+- **✅ PASS:** Emits typed OKLCH color variables (`oklch(...)`), an inline SVG icon, semantic `<button>`, and zero raw emojis.
+- **❌ FAIL:** Emits raw unicode emojis (e.g. 🚀, ✨) or generic unverified hex colors (indicates rules file was not loaded).
+- **Troubleshooting:**
+  - **Cursor:** Ensure `.cursorrules` is at project root, or move to `.cursor/rules/vibe-ui.mdc`.
+  - **Claude Code:** Confirm instructions were appended to `CLAUDE.md`.
+  - **Windsurf:** Ensure `.windsurfrules` is located in your workspace root.
+
+### 3. Prompt `mr-ui-designer`
 Prompt your assistant to generate or refactor any interface component:
 > *"Build a high-performance SaaS telemetry dashboard with an AI thinking drawer, metric cards with JetBrains Mono numbers, and a Minimalist SaaS theme with OKLCH tokens."*
 
-### 3. Run Automated Verification
+### 4. Run Automated Verification
 Audit the generated code against Vibe UI's deterministic engineering gates:
 ```bash
 python evals/run_evals.py
@@ -112,6 +127,13 @@ This empirically verifies:
 - **Physics Fidelity:** Frame-rate-independent deltaTime motion loop ($\alpha = 1 - e^{-\lambda \cdot \Delta t}, \lambda = 14$).
 - **Semantic RTL Stability:** Physically fixed macro coordinates, `<bdi>` BiDi punctuation isolation, and pure LTR telemetry.
 - **Production Starter:** Next.js 15 App Router architecture, typed OKLCH tokens, and React 19 AI primitives.
+
+### 📚 70+ Component Recipe Index
+All 70+ verified component recipes are cataloged with copy-paste code in [`skills/ui-kit/SKILL.md`](skills/ui-kit/SKILL.md):
+- **AI-Native Primitives (20 Recipes):** Collapsible AI Thinking Drawers, Tool Execution Chips, Streaming Diffs, Approval Cards, Telemetry Badges.
+- **Structural Layouts (15 Recipes):** Asymmetric Bento Grids, Fixed-Structure Semantic RTL Headers, Swiss Editorial Grids.
+- **Interactive Controls (25 Recipes):** Before/After deltaTime Lerp Sliders, Magnetic Spring Buttons, Accessible Modals (`aria-modal`), Drawer Overlays.
+- **Data & Telemetry (10 Recipes):** JetBrains Mono Metric Tiles, Sparkline Trend Cards, Status Pulse Indicators.
 
 ---
 

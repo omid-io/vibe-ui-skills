@@ -1,0 +1,39 @@
+{
+  "name": "@vibe-ui/tokens",
+  "version": "2.3.0",
+  "description": "Typed OKLCH design tokens, physics curves, and zero-config Tailwind plugin for Vibe UI",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./tailwind": {
+      "types": "./dist/tailwind.d.ts",
+      "import": "./dist/tailwind.mjs",
+      "require": "./dist/tailwind.js"
+    }
+  },
+  "scripts": {
+    "build": "node build.js"
+  },
+  "keywords": [
+    "design-tokens",
+    "oklch",
+    "tailwind",
+    "vibe-ui",
+    "ai-agents",
+    "accessibility",
+    "wcag"
+  ],
+  "author": "Omid Zaferi <https://github.com/omid-io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omid-io/vibe-ui-skills.git",
+    "directory": "packages/tokens"
+  }
+}
