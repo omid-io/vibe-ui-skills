@@ -27,9 +27,9 @@ export function activate(context: vscode.ExtensionContext) {
       if (hasEmoji) {
         vscode.window.showErrorMessage('Vibe UI Audit: Detected raw unicode emojis in component. Replace with inline SVG icons per anti-slop guidelines.');
       } else if (!hasOklch) {
-        vscode.window.showInformationMessage('Vibe UI Audit: Code structure is valid. Consider migrating legacy hex colors to typed OKLCH tokens.');
+        vscode.window.showInformationMessage('Vibe UI Audit: Clean vector icons verified. Consider migrating legacy hex colors to typed OKLCH tokens.');
       } else {
-        vscode.window.showInformationMessage('Vibe UI Audit: ✅ 100% WCAG AA contrast, OKLCH tokens, and vector standards verified!');
+        vscode.window.showInformationMessage('Vibe UI Audit: Vector standards & OKLCH color spaces detected. (Run Playwright browser runtime eval for mathematical WCAG 2.2 AA contrast verification)');
       }
     })
   );
@@ -123,6 +123,7 @@ class ChemistrySidebarProvider implements vscode.WebviewViewProvider {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibe UI Studio</title>
   <style>
@@ -173,9 +174,9 @@ class ChemistrySidebarProvider implements vscode.WebviewViewProvider {
 </head>
 <body>
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('chemistries')">Chemistries</button>
-    <button class="tab-btn" onclick="switchTab('contrast')">WCAG Calculator</button>
-    <button class="tab-btn" onclick="switchTab('components')">Components</button>
+    <button class="tab-btn active" onclick="switchTab('chemistries', this)">Chemistries</button>
+    <button class="tab-btn" onclick="switchTab('contrast', this)">WCAG Calculator</button>
+    <button class="tab-btn" onclick="switchTab('components', this)">Components</button>
   </div>
 
   <!-- Pane 1: Chemistries -->
@@ -266,11 +267,12 @@ class ChemistrySidebarProvider implements vscode.WebviewViewProvider {
   <script>
     const vscode = acquireVsCodeApi();
 
-    function switchTab(tabId) {
+    function switchTab(tabId, el) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('pane-' + tabId).classList.add('active');
+      if (el) el.classList.add('active');
+      const pane = document.getElementById('pane-' + tabId);
+      if (pane) pane.classList.add('active');
     }
 
     const TOKENS = {

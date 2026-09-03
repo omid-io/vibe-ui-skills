@@ -1,6 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-const ts = require('../../examples/nextjs-starter/node_modules/typescript');
+let ts;
+try {
+  ts = require('typescript');
+} catch (e) {
+  try {
+    ts = require('../../examples/nextjs-starter/node_modules/typescript');
+  } catch (e2) {
+    console.error('Error: typescript is required to build @omid-io/tokens.');
+    process.exit(1);
+  }
+}
 
 const distDir = path.join(__dirname, 'dist');
 if (!fs.existsSync(distDir)) {

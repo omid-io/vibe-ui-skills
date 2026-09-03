@@ -6,7 +6,7 @@ triggers: ["ui-kit", "uikit", "beautifului", "beui", "rareui", "transitions.dev"
 
 # 🎨 UI-Kit: Exhaustive AI-Native & Modern Component Recipes
 
-`ui-kit` is a 100% domain-agnostic component encyclopedia and design intelligence engine. It contains 70+ battle-tested component recipes and reference implementations across premier modern design ecosystems.
+`ui-kit` is a 100% domain-agnostic component encyclopedia and design intelligence engine. It contains 70+ accessible component recipes and reference implementations across premier modern design ecosystems.
 
 ---
 

@@ -2,7 +2,7 @@
   "name": "vibe-ui-vscode",
   "displayName": "Vibe UI — Design Systems & Contrast Linter",
   "description": "Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor & Windsurf",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "publisher": "omid-io",
   "icon": "media/icon.png",
   "engines": {
@@ -24,7 +24,9 @@
   ],
   "main": "./dist/extension.js",
   "activationEvents": [
-    "onStartupFinished"
+    "onView:vibe-ui-view",
+    "onCommand:vibe-ui.auditContrast",
+    "onCommand:vibe-ui.insertComponent"
   ],
   "contributes": {
     "viewsContainers": {
@@ -74,6 +76,9 @@
   },
   "scripts": {
     "build": "node build.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
   },
   "author": "Omid Zaferi <https://github.com/omid-io>",
   "license": "MIT",

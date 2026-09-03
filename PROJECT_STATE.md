@@ -1,8 +1,8 @@
 # Project State: vibe-ui-skills
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 6 — Public Launch & Ecosystem Release (v2.4.2 Hardened)
-- **Status**: **100% VERIFIED & PRODUCTION READY**. Official release `v2.4.2` verified across all audit gates; non-destructive CLI (`@omid-io/tokens`) with `--force` backups and `--dry-run`; live Chromium DOM physical pixel contrast calculations verified; 30-parameter closed-world schema hardened with cycle-safe `$ref` resolution; clean documentation and single source of truth manifest (`version.json`).
+- **Active Phase**: Phase 6 — Continuous Evaluation & Ecosystem Release (v2.4.2 Hardened Reference Implementation)
+- **Status**: **Hardened Reference Implementation & Continuous Evaluation Pipeline**. Official release `v2.4.2` verified across all audit gates; non-destructive CLI (`@omid-io/tokens`) with `--force` backups and `--dry-run`; live Chromium DOM physical pixel contrast calculations verified; 30-parameter closed-world schema hardened with cycle-safe `$ref` resolution and combinator support; clean documentation and single source of truth manifest (`version.json`).
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
@@ -20,10 +20,8 @@
 - [x] **R4: Supply-Chain & Release Integrity**:
   - Added `-Version` / `--version` parameter to [`install.ps1`](install.ps1) and [`install.sh`](install.sh) for immutable, version-pinned installations.
   - Tagged `v2.2.0` on git.
-- [x] **Round 2 Multi-LLM Review & Hotfix**:
-  - Consensus score jumped to **8.6/10** across ChatGPT and Grok (Architecture: 9.2/10, RTL: 9.3/10, Docs: 9.0/10).
-  - Evaluated as true "Contract-Driven Production-Ready AI UI Engineering System".
-  - Addressed subtle unclosed `<div>` caught by Kimi in [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html) (commit `ae03bf9`).
+- [x] **R5: Multi-Model Evaluation & Hardening**:
+  - Resolved structural DOM edge case in [`examples/neobrutalist_creative_store.html`](examples/neobrutalist_creative_store.html).
 - [x] **R5: v2.2.1 Deep Hardening & Adversarial Audit Fixes**:
   - Created real GitHub Actions CI pipeline in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) with Python 3.10/3.12 eval matrix and Node 20 Next.js 15 production compilation (`npm run build`).
   - Added `audit_nextjs_starter()` to [`evals/run_evals.py`](evals/run_evals.py) issuing automated scorecards for `examples/nextjs-starter` (typed tokens, layout semantics, AI primitives, zero raw emojis, and GPU compositing budget).
@@ -71,7 +69,14 @@
   - **Keyboard Focus-Visible Ring Assertion**: Programmatically verified that interactive controls receive physical focus rings (`outline` or `box-shadow`) under `:focus-visible`.
   - **Prefers-Reduced-Motion Emulation**: Verified Chromium response to `(prefers-reduced-motion: reduce)`.
   - **CLI Non-Destructive Operations**: Added `--force` (with automated `.bak` backups) and `--dry-run` to `npx @omid-io/tokens` (`init` and `add`).
-  - **Version Harmonization**: Pinned all installers (`install.sh`, `install.ps1`), security policy (`SECURITY.md`), architecture specification (`ARCHITECTURE.md`), and central manifest (`version.json`) to `v2.4.1`.
+  - **Version Harmonization**: Pinned all installers (`install.sh`, `install.ps1`), security policy (`SECURITY.md`), architecture specification (`ARCHITECTURE.md`), and central manifest (`version.json`) to `v2.4.2`.
+- [x] **R12: Multi-LLM Blind Audit Hardening (Release v2.4.2)**:
+  - **Decoupled Package Builds**: Eliminated `examples/nextjs-starter/node_modules/typescript` coupling in `packages/tokens/build.js` and `packages/vibe-ui-vscode/build.js`. Added explicit devDependencies and independent build pipelines.
+  - **Fail-Closed JSON Validator**: Eliminated silent `pass` in pattern evaluation in `evals/run_evals.py`; added standard combinators (`allOf`, `anyOf`, `oneOf`, and `maxItems`).
+  - **Extension Diagnostics Correction**: Removed misleading "100% WCAG AA verified" message in `packages/vibe-ui-vscode/src/extension.ts` on simple token presence; explicitly scoped to heuristic scan with instructions to run browser runtime eval.
+  - **WebView Security Hardening**: Injected strict Content-Security-Policy (CSP) meta tag into VS Code webview and decoupled implicit global `event` in `switchTab`.
+  - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
+  - **Single Source of Truth Manifest**: Coordinated version `2.4.2` across `version.json`, `package.json`, `package_vsix.py`, and `nextjs-starter/package.json`.
 
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)

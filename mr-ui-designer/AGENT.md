@@ -45,7 +45,7 @@ Whenever invoked by the user (e.g., *"mr-ui-designer یک لندینگ پیج م
 2. **Step 2: Visual Chemistry & Structure Selection (`visual-chemistry-engine`)**
    - Applies the Anti-Repetition Protocol and selects the optimal chemistry (Minimalist SaaS, Luxury Glass 2.0, Neobrutalism, Swiss Editorial, or Stripe Light).
 3. **Step 3: Component Assembly (`ui-kit`)**
-   - Injects battle-tested component recipes (AI thinking bubbles, tool chips, Bento grids, dynamic accordions).
+   - Injects accessible component recipes (AI thinking bubbles, tool chips, Bento grids, dynamic accordions).
 4. **Step 4: Motion & Physics Tuning (`vibe-physics-engine`)**
    - Applies OKLCH tokens, smooth scrolling, sub-pixel rAF interpolation, and `@media (prefers-reduced-motion: reduce)`.
 5. **Step 5: Narrative & Value Copy (`conversion-copy-engine`)**

@@ -3,8 +3,9 @@
   "name": "vibe-ui-skills",
   "version": "2.4.2",
   "schemaVersion": "1.0.0",
-  "tokensPackageVersion": "2.4.1",
-  "vscodeExtensionVersion": "2.4.0",
-  "cliVersion": "2.4.1",
+  "tokensPackageVersion": "2.4.2",
+  "vscodeExtensionVersion": "2.4.2",
+  "cliVersion": "2.4.2",
+  "starterVersion": "2.4.2",
   "supportedVersions": ["2.4.x", "2.3.x"]
 }

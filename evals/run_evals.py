@@ -303,18 +303,40 @@ def validate_json_instance(instance: any, schema: dict, path: str = "$", root_sc
             try:
                 if not re.search(schema["pattern"], instance):
                     errors.append(f"{path}: String '{instance}' does not match pattern '{schema['pattern']}'")
-            except Exception:
-                pass
+            except Exception as e:
+                errors.append(f"{path}: Regex pattern evaluation error for '{schema['pattern']}': {e}")
 
-    # 6. Array minItems and items
+    # 6. Array minItems, maxItems, and items
     if isinstance(instance, list):
         if "minItems" in schema and len(instance) < schema["minItems"]:
             errors.append(f"{path}: Array has {len(instance)} items, minimum required is {schema['minItems']}")
+        if "maxItems" in schema and len(instance) > schema["maxItems"]:
+            errors.append(f"{path}: Array has {len(instance)} items, maximum allowed is {schema['maxItems']}")
         if "items" in schema:
             for idx, item in enumerate(instance):
                 errors.extend(validate_json_instance(item, schema["items"], f"{path}[{idx}]", root_schema, visited_refs.copy(), depth + 1))
 
-    # 7. Object required properties, additionalProperties, and nested properties
+    # 7. Combinators: allOf, anyOf, oneOf
+    if "allOf" in schema:
+        for sub_schema in schema["allOf"]:
+            errors.extend(validate_json_instance(instance, sub_schema, path, root_schema, visited_refs.copy(), depth + 1))
+    if "anyOf" in schema:
+        any_passed = False
+        for sub_schema in schema["anyOf"]:
+            if not validate_json_instance(instance, sub_schema, path, root_schema, visited_refs.copy(), depth + 1):
+                any_passed = True
+                break
+        if not any_passed:
+            errors.append(f"{path}: Value does not match any allowed schema in 'anyOf'")
+    if "oneOf" in schema:
+        match_count = 0
+        for sub_schema in schema["oneOf"]:
+            if not validate_json_instance(instance, sub_schema, path, root_schema, visited_refs.copy(), depth + 1):
+                match_count += 1
+        if match_count != 1:
+            errors.append(f"{path}: Value matched {match_count} schemas in 'oneOf' (expected exactly 1)")
+
+    # 8. Object required properties, additionalProperties, and nested properties
     if isinstance(instance, dict):
         if schema.get("additionalProperties") is False:
             allowed_props = set(schema.get("properties", {}).keys())

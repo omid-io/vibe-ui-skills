@@ -3,12 +3,16 @@ import json
 from pathlib import Path
 
 pkg_dir = Path(__file__).resolve().parent
-out_vsix = pkg_dir / "vibe-ui-vscode-2.4.0.vsix"
 
-vsix_manifest = """<?xml version="1.0" encoding="utf-8"?>
+with open(pkg_dir / "package.json", "r", encoding="utf-8") as f:
+    pkg_data = json.load(f)
+version = pkg_data.get("version", "2.4.2")
+out_vsix = pkg_dir / f"vibe-ui-vscode-{version}.vsix"
+
+vsix_manifest = f"""<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="vibe-ui-vscode" Version="2.4.0" Language="en-US" Publisher="omid-io"/>
+    <Identity Id="vibe-ui-vscode" Version="{version}" Language="en-US" Publisher="omid-io"/>
     <DisplayName>Vibe UI — Design Systems &amp; Contrast Linter</DisplayName>
     <Description>Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor &amp; Windsurf</Description>
     <Icon>extension/media/icon.png</Icon>
