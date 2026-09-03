@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Idle — v3.0.0 & v3.0.1 GitHub Releases Published Worldwide.
-- **Status**: **v3.0.0 & v3.0.1 Live on GitHub Releases**. Successfully published [`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) (Autonomous Design Intelligence, 26 Orthogonal Styles, DAG Compiler) and [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1) (AST Parser, Self-Healing Loop, Tiered Verification, Centralized Constants, E2E Integration Suite). Formatted release notes and attached binaries ([`vibe-ui-vscode-3.0.0.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.0/vibe-ui-vscode-3.0.0.vsix), [`vibe-ui-vscode-3.0.1.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.1/vibe-ui-vscode-3.0.1.vsix)) verified live. All 8 quality gates passing 100% in 3233ms. Zero regressions.
+- **Active Phase**: Production Complete — Worldwide Multi-Registry Release Live (NPM + Open-VSX + GitHub Releases).
+- **Status**: **Multi-Registry Publication 100% Live**. Package [`@omid-io/tokens@3.0.1`](https://www.npmjs.com/package/@omid-io/tokens) is live worldwide on NPM. VS Code extension is live on Open-VSX and GitHub Releases ([`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) & [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1)). All 8 quality gate suites pass 100% in 3007ms. Zero regressions. Zero open bugs.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
@@ -146,13 +146,14 @@
 - [x] **R22: Production Multi-Release Publication (`v3.0.0` & `v3.0.1`) [2026-09-03]**:
   - **Release v3.0.0 Live**: Published [`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) documenting the full V3 Design Intelligence architecture, 26 orthogonal style families, 19-parameter Genome Engine, Independent Design Critic, Priority AutoRefiner, and attached binary [`vibe-ui-vscode-3.0.0.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.0/vibe-ui-vscode-3.0.0.vsix).
   - **Release v3.0.1 Live (Latest)**: Published [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1) addressing Qwen Senior Review findings with BeautifulSoup4 AST parsing, SelfHealingLoop (`vibe_core.healer`), tiered verification (`--strict`), centralized constants (`vibe_core/constants.py`), dynamic UTC timestamps, and attached binary [`vibe-ui-vscode-3.0.1.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.1/vibe-ui-vscode-3.0.1.vsix).
+  - **NPM Package Live**: [`@omid-io/tokens@3.0.1`](https://www.npmjs.com/package/@omid-io/tokens) published and verified live on NPM.
+  - **Open-VSX Extension Live**: Automated GitHub Actions CI workflow completed and published to Open-VSX Registry.
   - **Repository & Changelog Harmonization**: Fully synchronized [`CHANGELOG.md`](file:///E:/programming/vibe-ui-skills/CHANGELOG.md), [`version.manifest.json`](file:///E:/programming/vibe-ui-skills/version.manifest.json), [`version.json`](file:///E:/programming/vibe-ui-skills/version.json), and package files to `3.0.1`.
   - **CLI External Output Path Safety**: Fixed potential `ValueError` crash in [`vibe_cli.py`](file:///E:/programming/vibe-ui-skills/vibe_cli.py) and [`scripts/generate.py`](file:///E:/programming/vibe-ui-skills/scripts/generate.py) when saving artifacts to paths outside the project root directory.
   - **Quality Gates Certified**: All 8 test suites PASS 100% in 3007ms.
 
 ## Immediate Next Steps & Execution Plan
-1. **NPM & Marketplace Deployment**: Run automated publish action or push `@omid-io/tokens@3.0.1` to NPM and upload VSIX to Visual Studio Marketplace.
-2. **Community Launch**: Publish launch demo and documentation highlights.
+1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
 
 ## Modified / Created Files Index
 - [`vibe_cli.py`](vibe_cli.py)
