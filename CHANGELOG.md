@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.1] - 2026-09-03
+
+### Security & Validator Hardening
+- **Closed-World Exploit Prevention**: Restricted `$schema` strictly to the root level (`path == "$"`); rejected any unauthorized `$`-prefixed property. Added adversarial test fixture `evals/fixtures/illegal_dollar_property.json`.
+- **Cycle-Safe `$ref` Resolution**: Implemented recursion depth limit (64) and visited reference set tracking in `validate_json_instance()` to prevent circular reference DoS crashes.
+- **String Constraints**: Added `minLength`, `maxLength`, and regex `pattern` validations to `validate_json_instance()`.
+- **Strict Domain Bounds**: Enforced strict numerical bounds for coordinates (`latitude: [-90, 90]`, `longitude: [-180, 180]`), financial math (`precision_decimals: [0, 8]`), and Core Web Vitals budgets.
+
+### Browser Runtime & Real DOM Evals
+- **Deterministic Rendering Stabilization**: Replaced bare `domcontentloaded` with bounded `networkidle` (3000ms timeout), `document.fonts.ready`, and double `requestAnimationFrame` to eliminate race conditions before geometry measurement.
+- **Multi-Viewport Mobile Boundary**: Added simultaneous 375px and 320px narrow mobile viewport testing in headless Chromium. Fixed a 320px horizontal overflow in `neobrutalist_creative_store.html`.
+- **Physical Focus Rings Assertion**: Programmatically verified active `:focus-visible` indicators (`outline` or `box-shadow`) on all interactive controls.
+- **Prefers-Reduced-Motion Media Emulation**: Emulated `(prefers-reduced-motion: reduce)` in Playwright and verified CSS media responsiveness.
+- **Visibility & Accessibility Filtering**: Filtered out elements inside `[aria-hidden="true"]`, `display: none`, or `visibility: hidden` from interactive target sweeps.
+
+---
+
 ## [2.4.0] - 2026-09-03
 
 ### Added
