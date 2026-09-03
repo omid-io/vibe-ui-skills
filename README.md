@@ -17,10 +17,31 @@
   <a href="README.fa.md"><strong>فارسی (Persian Documentation)</strong></a> •
   <a href="ARCHITECTURE.md"><strong>Architecture Specification</strong></a> •
   <a href="docs/ENTERPRISE_ADAPTATION.md"><strong>Enterprise Guide</strong></a> •
-  <a href="https://omid-io.github.io/vibe-ui-skills/showcase/"><strong>Interactive Showcase</strong></a>
+  <a href="https://omid-io.github.io/vibe-ui-skills/"><strong>Interactive Studio Playground</strong></a>
 </p>
 
 </div>
+
+---
+
+## ⚖️ Visual Impact: Vanilla AI Slop vs. Vibe UI V3
+
+What happens when you ask an AI assistant to generate a frontend component?
+
+```text
+┌──────────────────────────────────────┐  vs  ┌──────────────────────────────────────┐
+│ ❌ VANILLA AI SLOP                   │      │ ✨ VIBE UI V3 COMPILED               │
+├──────────────────────────────────────┤      ├──────────────────────────────────────┤
+│ • Generic purple gradient buttons    │      │ • Orthogonal Style DNA (12 families) │
+│ • Low contrast text (3.2:1 FAILS AA) │      │ • Mathematical WCAG 2.2 AAA (17.8:1) │
+│ • Broken mobile overflow (375px)     │      │ • Zero layout shift, mobile audited  │
+│ • Hallucinated raw emojis            │      │ • Deterministic inline vector icons  │
+│ • No loading / empty / error states  │      │ • Full 4-state lifecycle baked in    │
+│ • Mixed direction text / numbers     │      │ • Strict LTR metrics & BiDi isolation│
+└──────────────────────────────────────┘      └──────────────────────────────────────┘
+```
+
+👉 **[Launch the Interactive Design Compiler Studio Live](https://omid-io.github.io/vibe-ui-skills/)** — Zero server latency, instantaneous client-side domain inference & component preview.
 
 ---
 

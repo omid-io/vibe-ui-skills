@@ -1,6 +1,7 @@
 {
   "$schema": "../schemas/design-genome.v1.json",
   "version": "3.0.0-alpha.1",
+  "description": "Canonical Style DNA Registry defining 12 orthogonal style families with geometry, spatial grids, material textures, typography pairings, motion physics, and anti-pattern avoid lists.",
   "styles": [
     {
       "id": "minimal_swiss",
@@ -9,11 +10,15 @@
       "family": "Swiss International",
       "geometry": { "radius_base": "0px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "strict_hierarchy" },
+      "spatial_dna": { "grid_type": "strict_modular_12col", "density": "dense", "whitespace_factor": 1.0 },
+      "material_dna": { "surface": "matte_paper", "texture": "none", "shadow_style": "none" },
       "elevation": "flat",
       "backdrop_blur_limit": 0,
       "density_support": ["balanced", "dense"],
       "motion": { "time_constant_lambda": 16, "curve": "linear_fast" },
+      "motion_dna": { "spring_stiffness": 300, "damping_ratio": 1.0, "reduced_motion": "instant_cut" },
       "tailwind_signatures": ["font-sans", "border-zinc-900", "bg-white", "rounded-none", "tracking-tight"],
+      "avoid_patterns": ["generic-purple-gradient", "soft-blurry-shadow", "excessive-border-radius", "decorative-icons"],
       "personality": ["rational", "uncompromising", "clean", "structured"]
     },
     {
@@ -23,11 +28,15 @@
       "family": "Modern Corporate SaaS",
       "geometry": { "radius_base": "6px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "sentence" },
+      "spatial_dna": { "grid_type": "fluid_bento_grid", "density": "balanced", "whitespace_factor": 1.2 },
+      "material_dna": { "surface": "crisp_light_tint", "texture": "subtle_edge_light", "shadow_style": "micro_elevation" },
       "elevation": "micro_shadow",
       "backdrop_blur_limit": 1,
       "density_support": ["airy", "balanced"],
       "motion": { "time_constant_lambda": 14, "curve": "spring_smooth" },
+      "motion_dna": { "spring_stiffness": 260, "damping_ratio": 0.85, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["font-sans", "border-slate-200", "bg-slate-50", "rounded-md", "shadow-sm"],
+      "avoid_patterns": ["harsh-black-borders", "saturated-neon-backgrounds", "playful-script-fonts"],
       "personality": ["reliable", "friendly", "convertible", "polished"]
     },
     {
@@ -37,11 +46,15 @@
       "family": "Technical Dark",
       "geometry": { "radius_base": "8px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "sentence" },
+      "spatial_dna": { "grid_type": "keyboard_navigable_lanes", "density": "dense", "whitespace_factor": 0.9 },
+      "material_dna": { "surface": "obsidian_matte", "texture": "specular_border_glow", "shadow_style": "diffused_dark" },
       "elevation": "diffused_soft",
       "backdrop_blur_limit": 2,
       "density_support": ["balanced", "dense"],
       "motion": { "time_constant_lambda": 14, "curve": "cubic_snappy" },
+      "motion_dna": { "spring_stiffness": 280, "damping_ratio": 0.9, "reduced_motion": "opacity_crossfade" },
       "tailwind_signatures": ["font-sans", "border-zinc-800", "bg-zinc-950", "text-zinc-100", "rounded-lg"],
+      "avoid_patterns": ["bright-white-surfaces", "loud-saturated-gradients", "decorative-playful-doodles"],
       "personality": ["sharp", "developer_grade", "focused", "high_tech"]
     },
     {
@@ -51,11 +64,15 @@
       "family": "Prestige Heritage",
       "geometry": { "radius_base": "4px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "serif", "body": "sans", "case": "title_case" },
+      "spatial_dna": { "grid_type": "generous_editorial_canvas", "density": "airy", "whitespace_factor": 1.8 },
+      "material_dna": { "surface": "warm_limestone", "texture": "monochrome_grain", "shadow_style": "diffused_whisper" },
       "elevation": "diffused_soft",
       "backdrop_blur_limit": 1,
       "density_support": ["airy"],
       "motion": { "time_constant_lambda": 10, "curve": "gentle_float" },
+      "motion_dna": { "spring_stiffness": 180, "damping_ratio": 1.1, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["font-serif", "border-stone-200", "bg-stone-50", "text-stone-900", "tracking-wide"],
+      "avoid_patterns": ["high-saturation-neon", "noisy-flash-animations", "hard-black-borders", "cheap-plastic-glass"],
       "personality": ["calm", "expensive", "understated", "exclusive"]
     },
     {
@@ -65,11 +82,15 @@
       "family": "Monospace HUD",
       "geometry": { "radius_base": "2px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "mono", "body": "mono", "case": "uppercase_headers" },
+      "spatial_dna": { "grid_type": "tabular_matrix_lanes", "density": "dense", "whitespace_factor": 0.7 },
+      "material_dna": { "surface": "pure_pitch_black", "texture": "phosphor_mono", "shadow_style": "none" },
       "elevation": "flat",
       "backdrop_blur_limit": 0,
       "density_support": ["dense"],
       "motion": { "time_constant_lambda": 20, "curve": "instant" },
+      "motion_dna": { "spring_stiffness": 400, "damping_ratio": 1.2, "reduced_motion": "instant_cut" },
       "tailwind_signatures": ["font-mono", "border-emerald-900/40", "bg-black", "text-emerald-400", "tabular-nums"],
+      "avoid_patterns": ["rounded-corners-above-4px", "serif-fonts", "large-hero-illustrations", "soft-shadows"],
       "personality": ["efficient", "raw", "realtime", "command_center"]
     },
     {
@@ -79,11 +100,15 @@
       "family": "Raw High-Contrast",
       "geometry": { "radius_base": "0px", "border_width": "2px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "uppercase_headers" },
+      "spatial_dna": { "grid_type": "asymmetric_box_cluster", "density": "balanced", "whitespace_factor": 1.1 },
+      "material_dna": { "surface": "flat_pigment", "texture": "hard_offset_shadow", "shadow_style": "hard_4px_black" },
       "elevation": "hard_drop",
       "backdrop_blur_limit": 0,
       "density_support": ["airy", "balanced"],
       "motion": { "time_constant_lambda": 16, "curve": "punchy_pop" },
+      "motion_dna": { "spring_stiffness": 320, "damping_ratio": 0.75, "reduced_motion": "instant_cut" },
       "tailwind_signatures": ["font-sans", "border-black", "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]", "font-black"],
+      "avoid_patterns": ["soft-diffuse-blur", "low-contrast-text", "rounded-pills", "subtle-translucency"],
       "personality": ["rebellious", "vibrant", "playful", "unapologetic"]
     },
     {
@@ -93,11 +118,15 @@
       "family": "Human Centered",
       "geometry": { "radius_base": "12px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "sentence" },
+      "spatial_dna": { "grid_type": "cushioned_cards", "density": "balanced", "whitespace_factor": 1.3 },
+      "material_dna": { "surface": "porcelain_soft", "texture": "warm_tactile", "shadow_style": "cushion_soft" },
       "elevation": "micro_shadow",
       "backdrop_blur_limit": 1,
       "density_support": ["airy", "balanced"],
       "motion": { "time_constant_lambda": 12, "curve": "gentle_ease" },
+      "motion_dna": { "spring_stiffness": 220, "damping_ratio": 0.95, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["font-sans", "border-teal-100", "bg-teal-50/30", "rounded-xl", "text-slate-800"],
+      "avoid_patterns": ["sharp-90deg-corners", "pure-black-backgrounds", "aggressive-hard-shadows"],
       "personality": ["empathic", "warm", "approachable", "healing"]
     },
     {
@@ -107,11 +136,15 @@
       "family": "Scandinavian Organic",
       "geometry": { "radius_base": "8px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "serif", "body": "sans", "case": "sentence" },
+      "spatial_dna": { "grid_type": "natural_rhythm_columns", "density": "airy", "whitespace_factor": 1.5 },
+      "material_dna": { "surface": "unbleached_cotton", "texture": "earth_tint", "shadow_style": "soft_ambient" },
       "elevation": "diffused_soft",
       "backdrop_blur_limit": 0,
       "density_support": ["airy"],
       "motion": { "time_constant_lambda": 10, "curve": "organic_breeze" },
+      "motion_dna": { "spring_stiffness": 190, "damping_ratio": 1.05, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["font-serif", "border-amber-900/10", "bg-[#fbf9f5]", "text-stone-800"],
+      "avoid_patterns": ["synthetic-neon", "pure-white-sterile-canvas", "angular-harsh-dividers"],
       "personality": ["natural", "sustainable", "zen", "grounded"]
     },
     {
@@ -121,11 +154,15 @@
       "family": "Constructivist Geometric",
       "geometry": { "radius_base": "0px", "border_width": "2px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "bold_modular" },
+      "spatial_dna": { "grid_type": "primary_geometric_grid", "density": "balanced", "whitespace_factor": 1.1 },
+      "material_dna": { "surface": "flat_industrial_canvas", "texture": "color_block_stripes", "shadow_style": "none" },
       "elevation": "flat",
       "backdrop_blur_limit": 0,
       "density_support": ["balanced"],
       "motion": { "time_constant_lambda": 15, "curve": "geometric_snap" },
+      "motion_dna": { "spring_stiffness": 310, "damping_ratio": 1.0, "reduced_motion": "instant_cut" },
       "tailwind_signatures": ["font-sans", "border-zinc-950", "rounded-none", "font-bold", "tracking-wider"],
+      "avoid_patterns": ["rounded-corners", "organic-curved-shapes", "blurred-gradients", "pastel-wash"],
       "personality": ["architectural", "artistic", "functional", "bold"]
     },
     {
@@ -135,11 +172,15 @@
       "family": "Luminous Depth",
       "geometry": { "radius_base": "16px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "sans", "body": "sans", "case": "sentence" },
+      "spatial_dna": { "grid_type": "floating_island_bento", "density": "balanced", "whitespace_factor": 1.3 },
+      "material_dna": { "surface": "specular_optic_glass", "texture": "chromatic_rim_glow", "shadow_style": "ambient_refraction" },
       "elevation": "specular_glass_2",
       "backdrop_blur_limit": 2,
       "density_support": ["airy", "balanced"],
       "motion": { "time_constant_lambda": 12, "curve": "fluid_glow" },
+      "motion_dna": { "spring_stiffness": 240, "damping_ratio": 0.88, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["backdrop-blur-md", "bg-white/10", "border-white/20", "rounded-2xl", "shadow-xl"],
+      "avoid_patterns": ["excessive-blur-over-2-layers", "low-contrast-text-on-glass", "muddy-opaque-fills"],
       "personality": ["futuristic", "luminous", "ethereal", "tactile"]
     },
     {
@@ -149,11 +190,15 @@
       "family": "Synthwave Cybernetic",
       "geometry": { "radius_base": "4px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "mono", "body": "sans", "case": "uppercase_headers" },
+      "spatial_dna": { "grid_type": "cyber_matrix_lanes", "density": "dense", "whitespace_factor": 0.9 },
+      "material_dna": { "surface": "deep_space_violet", "texture": "subtle_scanline_edge", "shadow_style": "neon_halo" },
       "elevation": "diffused_soft",
       "backdrop_blur_limit": 1,
       "density_support": ["balanced", "dense"],
       "motion": { "time_constant_lambda": 16, "curve": "laser_quick" },
+      "motion_dna": { "spring_stiffness": 330, "damping_ratio": 0.8, "reduced_motion": "instant_cut" },
       "tailwind_signatures": ["font-mono", "border-violet-500/40", "bg-[#090514]", "text-violet-200", "shadow-[0_0_15px_rgba(139,92,246,0.3)]"],
+      "avoid_patterns": ["earth-tone-colors", "serif-typography", "natural-wooden-textures"],
       "personality": ["nostalgic", "neon", "immersive", "arcade"]
     },
     {
@@ -163,11 +208,15 @@
       "family": "Editorial Typographic",
       "geometry": { "radius_base": "0px", "border_width": "1px", "border_style": "solid" },
       "typography": { "display": "serif", "body": "sans", "case": "editorial_columns" },
+      "spatial_dna": { "grid_type": "asymmetric_rule_divider", "density": "balanced", "whitespace_factor": 1.4 },
+      "material_dna": { "surface": "fine_print_newsprint", "texture": "hairline_dividers", "shadow_style": "none" },
       "elevation": "flat",
       "backdrop_blur_limit": 0,
       "density_support": ["airy", "balanced"],
       "motion": { "time_constant_lambda": 12, "curve": "smooth_scroll" },
+      "motion_dna": { "spring_stiffness": 200, "damping_ratio": 1.0, "reduced_motion": "fade_only" },
       "tailwind_signatures": ["font-serif", "border-zinc-200", "bg-[#faf8f5]", "text-zinc-900", "leading-relaxed"],
+      "avoid_patterns": ["rounded-card-islands", "floating-glass-bubbles", "loud-cta-buttons", "multicolor-icons"],
       "personality": ["literary", "authoritative", "curated", "intellectual"]
     }
   ]
