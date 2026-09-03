@@ -50,6 +50,12 @@
   - **Interactive VS Code Extension Studio**: Added live WCAG 2.2 contrast calculator with color pickers and instant pass/fail ratios; added interactive component catalog with 1-click **Insert into Active Editor**.
   - **Multi-Registry Publication**: `@omid-io/tokens` v2.4.0 live on NPM; `omid-io.vibe-ui-vscode` v2.4.0 live on Open-VSX; packaged `vibe-ui-vscode-2.4.0.vsix` and published GitHub [Release v2.4.0](https://github.com/omid-io/vibe-ui-skills/releases/tag/v2.4.0).
 
+- [x] **R9: Multi-LLM Adversarial Audit & Documentation Overhaul**:
+  - Executed independent Round 3 review across ChatGPT-4o, Grok, and Claude 3.7 Sonnet.
+  - Eliminated promotional superlatives in favor of calm, high-signal engineering documentation.
+  - Hardened `schemas/design-spec.v1.schema.json` with `additionalProperties: false` and synced version `2.4.0`.
+  - Added explicit "What Vibe UI Is / What It Is Not" and deterministic vs. heuristic verification matrix to `README.md` and `README.fa.md`.
+
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
 1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
