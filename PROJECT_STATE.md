@@ -147,7 +147,8 @@
   - **Release v3.0.0 Live**: Published [`v3.0.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.0) documenting the full V3 Design Intelligence architecture, 26 orthogonal style families, 19-parameter Genome Engine, Independent Design Critic, Priority AutoRefiner, and attached binary [`vibe-ui-vscode-3.0.0.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.0/vibe-ui-vscode-3.0.0.vsix).
   - **Release v3.0.1 Live (Latest)**: Published [`v3.0.1`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.0.1) addressing Qwen Senior Review findings with BeautifulSoup4 AST parsing, SelfHealingLoop (`vibe_core.healer`), tiered verification (`--strict`), centralized constants (`vibe_core/constants.py`), dynamic UTC timestamps, and attached binary [`vibe-ui-vscode-3.0.1.vsix`](https://github.com/omid-io/vibe-ui-suite/releases/download/v3.0.1/vibe-ui-vscode-3.0.1.vsix).
   - **Repository & Changelog Harmonization**: Fully synchronized [`CHANGELOG.md`](file:///E:/programming/vibe-ui-skills/CHANGELOG.md), [`version.manifest.json`](file:///E:/programming/vibe-ui-skills/version.manifest.json), [`version.json`](file:///E:/programming/vibe-ui-skills/version.json), and package files to `3.0.1`.
-  - **Quality Gates Certified**: All 8 test suites PASS 100% in 3233ms.
+  - **CLI External Output Path Safety**: Fixed potential `ValueError` crash in [`vibe_cli.py`](file:///E:/programming/vibe-ui-skills/vibe_cli.py) and [`scripts/generate.py`](file:///E:/programming/vibe-ui-skills/scripts/generate.py) when saving artifacts to paths outside the project root directory.
+  - **Quality Gates Certified**: All 8 test suites PASS 100% in 3007ms.
 
 ## Immediate Next Steps & Execution Plan
 1. **NPM & Marketplace Deployment**: Run automated publish action or push `@omid-io/tokens@3.0.1` to NPM and upload VSIX to Visual Studio Marketplace.
