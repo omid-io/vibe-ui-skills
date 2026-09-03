@@ -11,7 +11,7 @@ vsix_manifest = """<?xml version="1.0" encoding="utf-8"?>
     <Identity Id="vibe-ui-vscode" Version="2.3.0" Language="en-US" Publisher="omid-io"/>
     <DisplayName>Vibe UI — Design Systems &amp; Contrast Linter</DisplayName>
     <Description>Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor &amp; Windsurf</Description>
-    <Icon>extension/media/icon.svg</Icon>
+    <Icon>extension/media/icon.png</Icon>
     <Categories>Linters,Programming Languages,Other</Categories>
   </Metadata>
   <Installation>
@@ -21,7 +21,7 @@ vsix_manifest = """<?xml version="1.0" encoding="utf-8"?>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/>
-    <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/media/icon.svg" Addressable="true"/>
+    <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/media/icon.png" Addressable="true"/>
   </Assets>
 </PackageManifest>"""
 
@@ -30,6 +30,7 @@ content_types = """<?xml version="1.0" encoding="utf-8"?>
   <Default Extension="json" ContentType="application/json"/>
   <Default Extension="vsixmanifest" ContentType="text/xml"/>
   <Default Extension="md" ContentType="text/markdown"/>
+  <Default Extension="png" ContentType="image/png"/>
   <Default Extension="svg" ContentType="image/svg+xml"/>
   <Default Extension="js" ContentType="application/javascript"/>
 </Types>"""
@@ -37,6 +38,7 @@ content_types = """<?xml version="1.0" encoding="utf-8"?>
 files_to_pack = [
     ("package.json", "extension/package.json"),
     ("README.md", "extension/README.md"),
+    ("media/icon.png", "extension/media/icon.png"),
     ("media/icon.svg", "extension/media/icon.svg"),
     ("dist/extension.js", "extension/dist/extension.js"),
 ]

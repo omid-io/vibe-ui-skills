@@ -4,6 +4,7 @@
   "description": "Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor & Windsurf",
   "version": "2.3.0",
   "publisher": "omid-io",
+  "icon": "media/icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },
