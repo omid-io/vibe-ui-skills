@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/feedback.v1.json",
+  "title": "DesignFeedback",
+  "description": "Continuous design intelligence calibration and feedback record schema in Vibe UI V3.",
+  "type": "object",
+  "required": ["decision_id", "user_accepted", "timestamp"],
+  "properties": {
+    "decision_id": { "type": "string" },
+    "user_accepted": { "type": "boolean" },
+    "corrections_made": { "type": "integer" },
+    "user_rating": { "type": "number", "minimum": 1.0, "maximum": 5.0 },
+    "user_notes": { "type": "string" },
+    "timestamp": { "type": "string" }
+  },
+  "additionalProperties": false
+}

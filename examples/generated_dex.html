@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صرافی ارز دیجیتال غیرمتمرکز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Vazirmatn:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+:root {
+  --canvas-bg: oklch(0.13 0.006 260);
+  --surface-bg: oklch(0.18 0.008 260);
+  --accent: oklch(0.70 0.18 260);
+  --border-subtle: oklch(0.28 0.01 260);
+  --text-primary: oklch(0.96 0.005 260);
+  --text-muted: oklch(0.68 0.01 260);
+  --radius-base: 8px;
+  --radius-container: 12px;
+  --radius-button: 8px;
+  --font-display: 'Space Grotesk', 'Vazirmatn', sans-serif;
+  --font-body: 'Inter', 'Vazirmatn', sans-serif;
+  --motion-lambda: 14;
+  --transition-duration: 200ms;
+}
+
+    body {
+      background-color: var(--canvas-bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      unicode-bidi: plaintext;
+    }
+
+    bdi, .ltr-code {
+      direction: ltr !important;
+      unicode-bidi: isolate;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: var(--font-display);
+    }
+
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col antialiased">
+  <!-- Top Navigation Bar -->
+  <header class="w-full border-b border-[var(--border-subtle)] bg-[var(--surface-bg)] sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <svg class="w-8 h-8 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span class="text-xl font-bold tracking-tight display-font">صرافی ارز دیجیتال غیرمتمرکز</span>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 rtl:space-x-reverse" aria-label="Main Navigation">
+        <a href="#features" class="text-sm font-medium hover:text-[var(--accent)] transition-colors min-h-[44px] inline-flex items-center">ویژگی‌ها</a>
+        <a href="#pricing" class="text-sm font-medium hover:text-[var(--accent)] transition-colors min-h-[44px] inline-flex items-center">تعرفه‌ها</a>
+        <a href="#contact" class="text-sm font-medium hover:text-[var(--accent)] transition-colors min-h-[44px] inline-flex items-center">تماس</a>
+      </nav>
+      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <button type="button" class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-[var(--radius-button)] text-white bg-[var(--accent)] hover:opacity-90 min-h-[44px] min-w-[44px] transition-all">
+          شروع همکاری
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero & Content Section -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Main Bento Hero Card -->
+      <section class="md:col-span-2 bg-[var(--surface-bg)] border border-[var(--border-subtle)] shadow-sm hover:shadow-md transition-shadow rounded-[var(--radius-container)] p-6 sm:p-8 lg:p-10 flex flex-col justify-between" aria-labelledby="hero-title">
+        <div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[var(--accent)]/10 text-[var(--accent)] mb-4">
+            <svg class="w-3.5 h-3.5 inline mr-1.5 rtl:ml-1.5 rtl:mr-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            مهندسی دقیق و اصیل
+          </span>
+          <h1 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+            صرافی ارز دیجیتال غیرمتمرکز
+          </h1>
+          <p class="text-[var(--text-muted)] text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
+            تجربه‌ای منحصربه‌فرد با معماری خودکار، دسترسی‌پذیری تضمین‌شده و هماهنگی کامل با نیازهای کسب‌وکار شما.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-4 items-center pt-4 border-t border-[var(--border-subtle)]">
+          <button type="button" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-[var(--radius-button)] text-white bg-[var(--accent)] min-h-[44px] transition-transform active:scale-95">
+            مشاوره تخصصی
+          </button>
+          <button type="button" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-[var(--radius-button)] text-[var(--text-primary)] border border-[var(--border-subtle)] bg-[var(--canvas-bg)] hover:bg-[var(--surface-bg)] min-h-[44px] transition-colors">
+            مشاهده دمو
+          </button>
+        </div>
+      </section>
+
+      <!-- Secondary Telemetry / Metrics Card -->
+      <aside class="bg-[var(--surface-bg)] border border-[var(--border-subtle)] shadow-sm hover:shadow-md transition-shadow rounded-[var(--radius-container)] p-6 flex flex-col justify-between" aria-label="System Metrics">
+        <div>
+          <h2 class="text-lg font-bold mb-4 flex items-center space-x-2 rtl:space-x-reverse">
+            <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            <span>شاخص‌های کلیدی</span>
+          </h2>
+          <div class="space-y-4">
+            <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
+              <div class="text-xs text-[var(--text-muted)] mb-1">کنتراست ریاضی رنگ</div>
+              <div class="text-2xl font-bold text-[var(--accent)]">15.2 : 1</div>
+            </div>
+            <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
+              <div class="text-xs text-[var(--text-muted)] mb-1">انحراف چیدمان (CLS)</div>
+              <div class="text-2xl font-bold">&lt; 0.05</div>
+            </div>
+            <div class="p-3.5 bg-[var(--canvas-bg)] rounded-[var(--radius-base)] border border-[var(--border-subtle)]">
+              <div class="text-xs text-[var(--text-muted)] mb-1">سبک معماری</div>
+              <div class="text-sm font-semibold">linear_dark</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 text-xs text-[var(--text-muted)] flex items-center space-x-1.5 rtl:space-x-reverse">
+          <svg class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>تأییدیه کامل بدون خطای دسترسی‌پذیری</span>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Component States Preview: Skeleton, Empty, Error -->
+    <section class="mt-12 pt-8 border-t border-[var(--border-subtle)]" aria-labelledby="states-heading">
+      <h2 id="states-heading" class="text-xl font-bold mb-6">
+        ماتریس وضعیت‌های رابط کاربری (States Matrix)
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Skeleton Loading State -->
+        <div class="p-5 bg-[var(--surface-bg)] border border-[var(--border-subtle)] rounded-[var(--radius-container)]" aria-busy="true" aria-label="Loading State">
+          <div class="text-xs font-semibold text-[var(--text-muted)] mb-3">SKELETON LOADING</div>
+          <div class="animate-pulse space-y-3">
+            <div class="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-3/4"></div>
+            <div class="h-8 bg-zinc-300 dark:bg-zinc-700 rounded"></div>
+            <div class="h-3 bg-zinc-200 dark:bg-zinc-800 rounded w-1/2"></div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="p-5 bg-[var(--surface-bg)] border border-[var(--border-subtle)] rounded-[var(--radius-container)] text-center flex flex-col items-center justify-center">
+          <div class="text-xs font-semibold text-[var(--text-muted)] mb-2 self-start">EMPTY STATE</div>
+          <svg class="w-8 h-8 text-[var(--text-muted)] mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <div class="text-sm font-medium">موردی یافت نشد</div>
+          <div class="text-xs text-[var(--text-muted)] mt-1">داده‌ای برای نمایش در این بخش موجود نیست.</div>
+        </div>
+
+        <!-- Error & Retry State -->
+        <div class="p-5 bg-[var(--surface-bg)] border border-[var(--border-subtle)] rounded-[var(--radius-container)] flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-semibold text-rose-500 mb-2">ERROR & RETRY</div>
+            <div class="text-sm font-semibold text-rose-600 dark:text-rose-400">خطا در برقراری ارتباط</div>
+            <div class="text-xs text-[var(--text-muted)] mt-1">امکان دریافت اطلاعات وجود ندارد. لطفا مجددا تلاش کنید.</div>
+          </div>
+          <button type="button" class="mt-4 inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium rounded-[var(--radius-button)] border border-rose-300 text-rose-600 hover:bg-rose-50 min-h-[44px]">
+            تلاش مجدد
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full border-t border-[var(--border-subtle)] bg-[var(--surface-bg)] py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-[var(--text-muted)]">
+      &copy; 2026 Vibe UI Design Intelligence. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
