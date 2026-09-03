@@ -87,16 +87,18 @@ class VerificationEngine:
             })
 
         # 4. Performance: Backdrop Blur Budget Check
+        # Canonical policy: MAX_BLUR_SURFACES = 3 (aligned with critic.py and run_evals.py)
+        MAX_BLUR_SURFACES = 3
         blur_count = len(re.findall(r"backdrop-blur|blur\(", html_content))
-        if blur_count <= 2:
+        if blur_count <= MAX_BLUR_SURFACES:
             passed += 1
             evidence_records.append({
                 "pillar": "Performance Budget",
                 "check_name": "GPU Composite Backdrop Blur",
                 "status": "PASS",
-                "evidence": f"{blur_count} blur layer(s) within GPU composite budget (<= 2)",
+                "evidence": f"{blur_count} blur layer(s) within GPU composite budget (<= {MAX_BLUR_SURFACES})",
                 "measured_value": str(blur_count),
-                "threshold": "<= 2"
+                "threshold": f"<= {MAX_BLUR_SURFACES}"
             })
         else:
             failed += 1
@@ -104,30 +106,56 @@ class VerificationEngine:
                 "pillar": "Performance Budget",
                 "check_name": "GPU Composite Backdrop Blur",
                 "status": "FAIL",
-                "evidence": f"{blur_count} blur layer(s) exceeds budget (<= 2)",
+                "evidence": f"{blur_count} blur layer(s) exceeds budget (<= {MAX_BLUR_SURFACES})",
                 "measured_value": str(blur_count),
-                "threshold": "<= 2"
+                "threshold": f"<= {MAX_BLUR_SURFACES}"
             })
 
-        # 5. Reduced Motion Check
+        # 5. Reduced Motion — Deterministic Hard Gate (P0 from Qwen Review)
+        # Rule: If ANY motion token is declared (transition, animation, lenis),
+        # THEN @media (prefers-reduced-motion: reduce) MUST be present to neutralize it.
+        # Absence of motion tokens = SKIP (not a failure — no motion declared).
+        MOTION_TOKENS = re.compile(
+            r"\btransition\s*:|animation\s*:|@keyframes\b|lenis\b|scroll-behavior\s*:\s*smooth",
+            re.IGNORECASE
+        )
+        # Extract CSS from <style> blocks to check motion declarations
+        style_blocks = " ".join(re.findall(r"<style[^>]*>(.*?)</style>", html_content, re.DOTALL | re.IGNORECASE))
+        has_motion_tokens = bool(MOTION_TOKENS.search(style_blocks))
         has_reduced_motion = "prefers-reduced-motion" in html_content
-        if has_reduced_motion:
+
+        if not has_motion_tokens:
+            # No motion declared at all — gate is not applicable
             passed += 1
             evidence_records.append({
                 "pillar": "Motion & Physics",
-                "check_name": "Respect Reduced Motion",
+                "check_name": "Reduced Motion Override Gate",
                 "status": "PASS",
-                "evidence": "Verified @media (prefers-reduced-motion: reduce) rule present",
-                "threshold": "declared"
+                "evidence": "No motion tokens (transition/animation/lenis) declared — gate not applicable",
+                "threshold": "prefers-reduced-motion required when motion present"
             })
-        else:
-            failed += 1
+        elif has_motion_tokens and has_reduced_motion:
+            # Motion declared AND override present — correct
+            passed += 1
             evidence_records.append({
                 "pillar": "Motion & Physics",
-                "check_name": "Respect Reduced Motion",
+                "check_name": "Reduced Motion Override Gate",
+                "status": "PASS",
+                "evidence": "Motion tokens detected; @media (prefers-reduced-motion: reduce) override verified",
+                "threshold": "prefers-reduced-motion required when motion present"
+            })
+        else:
+            # Motion declared WITHOUT override — hard gate FAIL
+            failed += 1
+            # Collect evidence of which tokens were found
+            found_tokens = MOTION_TOKENS.findall(style_blocks)[:5]
+            evidence_records.append({
+                "pillar": "Motion & Physics",
+                "check_name": "Reduced Motion Override Gate",
                 "status": "FAIL",
-                "evidence": "Missing prefers-reduced-motion media query",
-                "threshold": "declared"
+                "evidence": f"Motion tokens detected ({found_tokens}) without @media (prefers-reduced-motion: reduce) override. Risk: nausea/vestibular disorder for affected users.",
+                "threshold": "prefers-reduced-motion required when motion present",
+                "remediation": "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }"
             })
 
         # 6. Semantic RTL Check (if dir="rtl")

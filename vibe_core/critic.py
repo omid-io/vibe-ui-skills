@@ -132,8 +132,31 @@ class DesignCritic:
                     "message": "Wrap mixed-language terms or add unicode-bidi: plaintext.",
                     "suggested_patch": "body { unicode-bidi: plaintext; }"
                 })
+        # 8. Reduced Motion Hard Gate — Deterministic (P0 from Qwen Review)
+        # RULE: Motion tokens WITHOUT @media (prefers-reduced-motion: reduce) = CRITICAL hard gate failure.
+        # Rationale: CSS animations without override can cause nausea/vestibular disorder in affected users.
+        MOTION_TOKEN_RE = re.compile(
+            r"\btransition\s*:|animation\s*:|@keyframes\b|lenis\b|scroll-behavior\s*:\s*smooth",
+            re.IGNORECASE
+        )
+        style_blocks_content = " ".join(re.findall(r"<style[^>]*>(.*?)</style>", html_content, re.DOTALL | re.IGNORECASE))
+        has_motion_tokens = bool(MOTION_TOKEN_RE.search(style_blocks_content))
+        has_reduced_motion_override = "prefers-reduced-motion" in html_content
 
-        # 8. Component States Matrix Check
+        if has_motion_tokens and not has_reduced_motion_override:
+            hard_gate_failures.append({
+                "gate": "Reduced Motion Override",
+                "message": "Motion tokens (transition/animation/lenis) declared without @media (prefers-reduced-motion: reduce) override.",
+                "evidence": "Risk: vestibular/nausea disorder for affected users. WCAG 2.1 SC 2.3.3 (AAA)."
+            })
+            defects_ranked.append({
+                "severity": "critical",
+                "type": "missing_reduced_motion_override",
+                "message": "Add @media (prefers-reduced-motion: reduce) to neutralize all motion declarations.",
+                "suggested_patch": "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }"
+            })
+
+        # 9. Component States Matrix Check
         has_skeleton = "skeleton" in html_content.lower() or "animate-pulse" in html_content
         has_empty = "empty" in html_content.lower() or "یافت نشد" in html_content or "no records" in html_content.lower()
         has_error = "retry" in html_content.lower() or "خطا" in html_content or "error" in html_content.lower()
