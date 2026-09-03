@@ -1,8 +1,8 @@
 {
   "name": "vibe-ui-vscode",
-  "displayName": "Vibe UI — Design Systems & Contrast Linter",
-  "description": "Deterministic design contracts, visual chemistries, and WCAG contrast linter for VS Code, Cursor & Windsurf",
-  "version": "3.0.1",
+  "displayName": "Vibe UI Studio & Contrast Gate",
+  "description": "Interactive Visual Chemistry Studio, live mathematical WCAG contrast auditor, and component inserter for Vibe UI",
+  "version": "3.1.0",
   "publisher": "omid-io",
   "icon": "media/icon.png",
   "engines": {

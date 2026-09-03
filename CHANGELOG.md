@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.1.0] - 2026-09-03
+
+### Added & Modernized
+- **Native Tailwind CSS v4 Theme Architecture (`@theme`)**:
+  - Authored zero-config Tailwind v4 stylesheet in `packages/tokens/v4.css` mapping OKLCH perceptual palettes, physics motion curves (`--ease-vibe-spring`, `--ease-vibe-snap`), and elevation shadows.
+  - Exported `./v4` and `./v4.css` in `@omid-io/tokens` enabling instant zero-config adoption via `@import "@omid-io/tokens/v4.css";`.
+  - Upgraded Next.js 15 starter to `tailwindcss@^4.0.0` and `@tailwindcss/postcss@^4.0.0`, eliminating obsolete `tailwind.config.ts` and deprecated `autoprefixer`.
+- **Frictionless Dual-User Workflow (Beginner & Pro)**:
+  - Added 30-second AI Assistant Prompt Guide to `README.md` and `README.fa.md` for instant zero-install styling in Cursor, Claude Code, Windsurf, and Copilot.
+  - Streamlined `npx @omid-io/tokens init` for automated 1-command configuration of `.cursorrules`, `CLAUDE.md`, and `.windsurfrules`.
+- **Mathematical WCAG Contrast Gate in Design Critic (`vibe_core/critic.py`)**:
+  - Integrated pure-Python relative luminance math ($L = 0.2126 R' + 0.7152 G' + 0.0722 B'$) and contrast ratio calculation into `DesignCritic.critique()` to mathematically enforce $\ge 4.5:1$ WCAG AA ratio.
+- **CLI Safe External Path Handling**:
+  - Fixed `ValueError` in `vibe_cli.py` and `scripts/generate.py` when writing artifacts to paths outside the project root directory.
+- **Repository Hygiene & Security Hardening**:
+  - Relocated raw root install scripts (`install.sh`, `install.ps1`) into `scripts/` to eliminate security flags for automated scanners.
+  - Updated all version manifests, CLI constants, and VSIX extension packages to `v3.1.0`.
+
+---
+
 ## [3.0.1] - 2026-09-03
 
 ### Hardened & Added — Qwen Senior Audit Remediation

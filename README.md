@@ -67,28 +67,55 @@ Headless Browser Evaluation (Playwright 375px mobile overflow)
 Verified Output or Actionable Failure Diagnostics
 ```
 
-> **Day-One Transparency**: Vibe UI Suite is at `v2.4.0`. The project is actively evolving. Constructive criticism, issues, and contributions from frontend engineers and AI researchers are warmly welcomed.
+> **Day-One Transparency**: Vibe UI Suite is at `v3.1.0`. The project is actively evolving. Constructive criticism, issues, and contributions from frontend engineers and AI researchers are warmly welcomed.
 
 ---
 
-## ⚡ 1-Command CLI Quick Start
+## 🤖 30-Second Quick Start for AI Assistants (Cursor, Claude Code, Windsurf)
 
-Scaffold AI editor contracts, OKLCH design tokens, and AI-native component primitives in seconds with zero manual copy-paste:
+Whether you are a beginner building your first app or a senior engineer designing enterprise software, you can equip your AI assistant with Vibe UI in one of two ways:
 
-### 1. Initialize Workspace Contracts (`init`)
+### Option A: The Prompt (Zero Install)
+Copy and paste this single prompt directly into **Cursor, Claude Code, Windsurf, or Copilot**:
+```text
+Design and style this application using Vibe UI standards (https://github.com/omid-io/vibe-ui-suite):
+- Use OKLCH color palettes & native Tailwind CSS v4 (@theme)
+- Enforce strict WCAG 2.2 AA contrast (Luminance ratio >= 4.5:1)
+- Never use raw emojis in UI — use inline SVG vector icons with currentColor
+- Use fixed-structure semantic RTL with <bdi> isolation and pure LTR metrics
+```
 
+### Option B: The 1-Command CLI Setup
+In your project directory, run:
 ```bash
 npx @omid-io/tokens init
 ```
-Interactive terminal prompt:
-1. Selects your Visual Chemistry (`Minimalist SaaS`, `Luxury Glass`, `Neobrutalism`, `Swiss Editorial`, `Stripe Crisp Light`).
-2. Configures your AI editor environment (`.cursorrules`, `CLAUDE.md`, `.windsurfrules`).
-3. Generates `vibe-tokens.css` with typed OKLCH root variables.
+This interactive command:
+1. Configures your AI editor rules (`.cursorrules`, `CLAUDE.md`, `.windsurfrules`).
+2. Selects your Visual Chemistry (`Minimalist SaaS`, `Luxury Glass`, `Neobrutalism`, `Swiss Editorial`, `Stripe Crisp Light`).
+3. Injects OKLCH design variables into your project.
 
-### 2. Inject Verified AI Component Primitives (`add`)
+---
 
+## 🎨 Native Tailwind CSS v4 (@theme) — Zero Config
+
+In your `app/globals.css` or main stylesheet:
+```css
+@import "tailwindcss";
+@import "@omid-io/tokens/v4.css";
+```
+Zero JavaScript configuration files needed. Instantly unlocks:
+- **Semantic OKLCH colors**: `bg-vibe-canvas`, `bg-vibe-surface`, `text-vibe-primary`, `border-vibe-border`
+- **Physics curves**: `transition-vibe-spring`, `transition-vibe-snap`, `transition-vibe-glide`
+- **Material shadows**: `shadow-vibe-brutal`, `shadow-vibe-glass`
+
+---
+
+## 📦 Verified Component Recipes (`add`)
+
+Add production-ready, accessible component templates directly into `components/vibe-ui/`:
 ```bash
-# Collapsible AI reasoning drawer with CSS grid zero-JS transition & radar status
+# Collapsible AI reasoning drawer with CSS grid zero-JS transition & status radar
 npx @omid-io/tokens add thinking-drawer
 
 # LTR-isolated technical metric HUD for latency, tokens, and model status
@@ -97,10 +124,7 @@ npx @omid-io/tokens add telemetry-hud
 # Live mathematical WCAG AA / AAA contrast compliance indicator badge
 npx @omid-io/tokens add contrast-badge
 ```
-Components are injected directly into your local `components/vibe-ui/` directory.
-
-### 3. List Available Components (`list`)
-
+List all available registry components:
 ```bash
 npx @omid-io/tokens list
 ```

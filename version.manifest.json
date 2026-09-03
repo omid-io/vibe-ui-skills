@@ -1,12 +1,12 @@
 {
   "$schema": "./schemas/version-manifest.schema.json",
-  "version": "3.0.1",
-  "codename": "Design Intelligence Hardened",
+  "version": "3.1.0",
+  "codename": "Tailwind v4 Native & Zero-Config Intelligence",
   "release_channel": "stable",
   "packages": {
-    "@omid-io/tokens": "3.0.1",
-    "vibe-ui-vscode": "3.0.1",
-    "vibe-ui-nextjs-starter": "3.0.1"
+    "@omid-io/tokens": "3.1.0",
+    "vibe-ui-vscode": "3.1.0",
+    "vibe-ui-nextjs-starter": "3.1.0"
   },
   "schemas": {
     "intent_contract": "v1",

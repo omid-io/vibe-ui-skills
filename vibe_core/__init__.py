@@ -13,7 +13,7 @@ from vibe_core.constants import (
     MAX_DEFECTS_IN_CORRECTION_PROMPT,
 )
 
-__version__ = "3.0.1"
+__version__ = "3.1.0"
 
 __all__ = [
     "MAX_BLUR_SURFACES",

@@ -6,6 +6,7 @@ AST-based HTML parsing via BeautifulSoup4 (falls back to regex if unavailable).
 
 import re
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
@@ -14,6 +15,7 @@ from vibe_core.constants import (
     MAX_BLUR_SURFACES,
     HARD_MIN_TOUCH_PX,
     RECOMMENDED_TOUCH_PX,
+    MIN_WCAG_AA_CONTRAST_NORMAL,
 )
 
 try:
@@ -22,6 +24,50 @@ try:
 except ImportError:  # pragma: no cover
     _BS4_AVAILABLE = False
     _BS4 = None  # type: ignore
+
+def _srgb_to_linear(c_byte: float) -> float:
+    c_norm = c_byte / 255.0
+    if c_norm <= 0.04045:
+        return c_norm / 12.92
+    return ((c_norm + 0.055) / 1.055) ** 2.4
+
+def _oklch_to_linear_srgb(l: float, c: float, h: float) -> Tuple[float, float, float]:
+    theta = math.radians(h)
+    a = c * math.cos(theta)
+    b = c * math.sin(theta)
+    l_ = l + 0.3963377774 * a + 0.2158037573 * b
+    m_ = l - 0.1055613458 * a - 0.0638541728 * b
+    s_ = l - 0.0894841775 * a - 1.2914855480 * b
+    r_lin = +4.0767416621 * (l_**3) - 3.3077115913 * (m_**3) + 0.2309699292 * (s_**3)
+    g_lin = -1.2684380046 * (l_**3) + 2.6097574011 * (m_**3) - 0.3413193965 * (s_**3)
+    b_lin = -0.0041960863 * (l_**3) - 0.7034186147 * (m_**3) + 1.7076147010 * (s_**3)
+    return max(0.0, min(1.0, r_lin)), max(0.0, min(1.0, g_lin)), max(0.0, min(1.0, b_lin))
+
+def _calculate_color_luminance(color_str: str) -> float:
+    color_str = color_str.strip().lower()
+    oklch_match = re.search(r"oklch\(\s*([\d.]+%?)\s+([\d.]+)\s+([\d.]+)", color_str)
+    if oklch_match:
+        l_str, c_str, h_str = oklch_match.groups()
+        l_val = float(l_str[:-1]) / 100.0 if l_str.endswith("%") else float(l_str)
+        r, g, b = _oklch_to_linear_srgb(l_val, float(c_str), float(h_str))
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    hex_match = re.search(r"#([0-9a-f]{3,8})", color_str)
+    if hex_match:
+        h = hex_match.group(1)
+        if len(h) in (3, 4):
+            h = "".join([c * 2 for c in h[:3]])
+        elif len(h) >= 6:
+            h = h[:6]
+        r = _srgb_to_linear(int(h[0:2], 16))
+        g = _srgb_to_linear(int(h[2:4], 16))
+        b = _srgb_to_linear(int(h[4:6], 16))
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return 0.5
+
+def _calculate_contrast_ratio(lum1: float, lum2: float) -> float:
+    lighter = max(lum1, lum2)
+    darker = min(lum1, lum2)
+    return (lighter + 0.05) / (darker + 0.05)
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -213,6 +259,23 @@ class DesignCritic:
                 "message": "No error and retry recovery state detected.",
                 "suggested_patch": "Add error container with retry button."
             })
+
+        # 10. Mathematical WCAG Contrast Evaluation
+        canvas_match = re.search(r"--canvas(?:-bg)?\s*:\s*([^;]+);", html_content)
+        text_match = re.search(r"--text-primary\s*:\s*([^;]+);", html_content)
+        if canvas_match and text_match:
+            canvas_color = canvas_match.group(1).strip()
+            text_color = text_match.group(1).strip()
+            lum_canvas = _calculate_color_luminance(canvas_color)
+            lum_text = _calculate_color_luminance(text_color)
+            contrast_val = _calculate_contrast_ratio(lum_canvas, lum_text)
+            if contrast_val < MIN_WCAG_AA_CONTRAST_NORMAL:
+                defects_ranked.append({
+                    "severity": "high",
+                    "type": "low_wcag_contrast",
+                    "message": f"Mathematical contrast ratio ({contrast_val:.2f}:1) fails WCAG AA minimum ({MIN_WCAG_AA_CONTRAST_NORMAL}:1).",
+                    "suggested_patch": f"Adjust lightness of text or canvas to achieve at least {MIN_WCAG_AA_CONTRAST_NORMAL}:1 contrast."
+                })
 
         # Scorecard computation — all values derived from measurable HTML signals, no hardcoded constants.
         # Touch target policy: HARD_MIN_TOUCH_PX = 24px (WCAG 2.2 AA), RECOMMENDED_TOUCH_PX = 44px (mobile HIG)
