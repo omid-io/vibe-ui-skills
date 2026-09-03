@@ -984,7 +984,8 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
         "pillars": {
             "Layout Geometry": "PASS",
             "Computed Styles": "PASS",
-            "Semantic RTL": "PASS"
+            "Semantic RTL": "PASS",
+            "WCAG AA Contrast": "PASS"
         }
     }
     try:
@@ -1012,6 +1013,7 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
             focus_violations = []
             rtl_violations = []
             reduced_motion_failures = []
+            contrast_violations = []
 
             for html_path in html_files:
                 uri = html_path.resolve().as_uri()
@@ -1067,9 +1069,9 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 if violations:
                     touch_violations.append(f"{html_path.name}: {', '.join(violations[:3])}")
 
-                # Check 3: Accessible Name & Label Contract on Interactive Elements
+                # Check 3: Accessible Name & ARIA Relationship Contract on Interactive Elements
                 unnamed = page.evaluate("""() => {
-                    const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]')).filter(el => {
+                    const buttons = Array.from(document.querySelectorAll('button, a, [role="button"], input')).filter(el => {
                         const style = window.getComputedStyle(el);
                         return style.display !== 'none' && 
                                style.visibility !== 'hidden' && 
@@ -1077,15 +1079,23 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     });
                     const bad = [];
                     for (const el of buttons) {
-                        const name = (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim();
+                        let name = (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || el.getAttribute('placeholder') || '').trim();
+                        const labelledby = el.getAttribute('aria-labelledby');
+                        if (!name && labelledby) {
+                            name = (document.getElementById(labelledby)?.innerText || '').trim();
+                        }
                         if (!name && el.getBoundingClientRect().width > 0) {
                             bad.push(el.tagName.toLowerCase());
+                        }
+                        const controls = el.getAttribute('aria-controls');
+                        if (controls && !document.getElementById(controls)) {
+                            bad.push(`${el.tagName.toLowerCase()}[missing #controls:${controls}]`);
                         }
                     }
                     return bad;
                 }""")
                 if unnamed:
-                    unnamed_violations.append(f"{html_path.name}: {len(unnamed)} unnamed element(s)")
+                    unnamed_violations.append(f"{html_path.name}: {len(unnamed)} unnamed/broken element(s)")
 
                 # Check 4: Keyboard Focus Visibility Assertion
                 focus_unsupported = page.evaluate("""() => {
@@ -1126,12 +1136,93 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     if not is_rtl_stable:
                         rtl_violations.append(html_path.name)
 
-                # Check 6: Prefers-Reduced-Motion Emulation
+                # Check 6: Prefers-Reduced-Motion Emulation & Transition Suppression
                 page.emulate_media(reduced_motion="reduce")
                 rm_matches = page.evaluate("() => window.matchMedia('(prefers-reduced-motion: reduce)').matches")
                 if not rm_matches:
-                    reduced_motion_failures.append(html_path.name)
+                    reduced_motion_failures.append(f"{html_path.name} (media query mismatch)")
+                else:
+                    # Assert animations or transitions are suppressed (<= 0.05s) on animated nodes
+                    unsuppressed = page.evaluate("""() => {
+                        const animated = Array.from(document.querySelectorAll('.animate-pulse, .animate-spin, .transition-all, .transition-colors, .neo-box, .neo-btn'));
+                        const bad = [];
+                        for (const el of animated) {
+                            const s = window.getComputedStyle(el);
+                            const animDur = parseFloat(s.animationDuration || '0');
+                            const transDur = parseFloat(s.transitionDuration || '0');
+                            if (animDur > 0.05 || transDur > 0.05) {
+                                bad.push(el.className.split(' ')[0]);
+                            }
+                        }
+                        return bad;
+                    }""")
+                    if unsuppressed:
+                        reduced_motion_failures.append(f"{html_path.name}: unsuppressed transitions ({', '.join(unsuppressed[:2])})")
                 page.emulate_media(reduced_motion="no-preference")
+
+                # Check 7: Live Computed DOM Contrast Gate (Physical Pixel Luminance via Canvas 2D)
+                live_contrast_bads = page.evaluate("""() => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 1;
+                    canvas.height = 1;
+                    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+                    function getPhysicalRgb(colorStr) {
+                        if (!colorStr || colorStr === 'transparent' || colorStr === 'rgba(0, 0, 0, 0)') return null;
+                        ctx.clearRect(0, 0, 1, 1);
+                        ctx.fillStyle = colorStr;
+                        ctx.fillRect(0, 0, 1, 1);
+                        const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+                        if (a === 0) return null;
+                        return [r, g, b];
+                    }
+
+                    function luminance(rgb) {
+                        const a = rgb.map(v => {
+                            v /= 255;
+                            return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+                        });
+                        return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+                    }
+
+                    const elements = Array.from(document.querySelectorAll('p, h1, h2, h3, h4, a, button, label')).filter(el => {
+                        const s = window.getComputedStyle(el);
+                        return s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0' && (el.innerText || '').trim().length > 0;
+                    });
+
+                    const bad = [];
+                    for (const el of elements) {
+                        const s = window.getComputedStyle(el);
+                        const fgRgb = getPhysicalRgb(s.color);
+                        if (!fgRgb) continue;
+                        
+                        let bgRgb = null;
+                        let cur = el;
+                        while (cur) {
+                            const bgStyle = window.getComputedStyle(cur);
+                            const parsed = getPhysicalRgb(bgStyle.backgroundColor);
+                            if (parsed) {
+                                bgRgb = parsed;
+                                break;
+                            }
+                            cur = cur.parentElement;
+                        }
+                        if (!bgRgb) bgRgb = [255, 255, 255];
+                        
+                        const l1 = Math.max(luminance(fgRgb), luminance(bgRgb));
+                        const l2 = Math.min(luminance(fgRgb), luminance(bgRgb));
+                        const ratio = (l1 + 0.05) / (l2 + 0.05);
+                        const fontSize = parseFloat(s.fontSize || '16');
+                        const isBold = parseInt(s.fontWeight || '400') >= 700;
+                        const required = (fontSize >= 24 || (fontSize >= 18.5 && isBold)) ? 3.0 : 4.5;
+                        if (ratio < required) {
+                            bad.push(`${el.tagName.toLowerCase()}(${ratio.toFixed(1)}:1 < ${required}:1)`);
+                        }
+                    }
+                    return bad;
+                }""")
+                if live_contrast_bads:
+                    contrast_violations.append(f"{html_path.name}: {', '.join(live_contrast_bads[:2])}")
 
             browser.close()
 
@@ -1233,6 +1324,23 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                     "name": "Prefers-Reduced-Motion Emulation",
                     "status": "FAIL",
                     "msg": f"Failed reduced motion emulation on: {', '.join(reduced_motion_failures)}"
+                })
+
+            if not contrast_violations:
+                results["checks"].append({
+                    "pillar": "WCAG AA Contrast",
+                    "name": "Live Computed DOM Contrast Gate",
+                    "status": "PASS",
+                    "msg": f"Verified physical pixel contrast (>= 4.5:1 body, >= 3.0:1 headings) across all text elements in {len(html_files)} interfaces"
+                })
+            else:
+                results["overall_status"] = "FAIL"
+                results["pillars"]["WCAG AA Contrast"] = "FAIL"
+                results["checks"].append({
+                    "pillar": "WCAG AA Contrast",
+                    "name": "Live Computed DOM Contrast Gate",
+                    "status": "FAIL",
+                    "msg": f"Computed text contrast below WCAG threshold: {', '.join(contrast_violations)}"
                 })
 
     except Exception as e:

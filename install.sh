@@ -14,7 +14,7 @@ set -e
 
 AGENT="antigravity"
 TARGET_DIR=""
-VERSION="v2.2.0"
+VERSION="v2.4.2"
 BACKUP=true
 FORCE=false
 

@@ -6,7 +6,12 @@ import * as readline from 'readline';
 import { COMPONENT_REGISTRY } from './registry/components';
 import { VISUAL_CHEMISTRIES } from './index';
 
-const VERSION = '2.4.0';
+const VERSION = '2.4.1';
+
+interface CliOptions {
+  force: boolean;
+  dryRun: boolean;
+}
 
 function printBanner() {
   console.log(`
@@ -27,18 +32,42 @@ function printHelp() {
   \x1b[32mlist\x1b[0m               List all available component primitives in the registry
 
 \x1b[1mOPTIONS:\x1b[0m
+  -f, --force        Overwrite existing files (creates automated .bak backups)
+  --dry-run          Preview file operations without making actual modifications
   -v, --version      Show CLI version
   -h, --help         Show help menu
 
 \x1b[1mEXAMPLES:\x1b[0m
   npx @omid-io/tokens init
+  npx @omid-io/tokens init --dry-run
   npx @omid-io/tokens add thinking-drawer
-  npx @omid-io/tokens add telemetry-hud
+  npx @omid-io/tokens add thinking-drawer --force
 `);
 }
 
 function prompt(rl: readline.Interface, query: string): Promise<string> {
   return new Promise((resolve) => rl.question(query, resolve));
+}
+
+function safeWriteFile(filePath: string, content: string, options: CliOptions): { written: boolean; skipped: boolean; backup?: string } {
+  const relPath = path.relative(process.cwd(), filePath);
+  if (options.dryRun) {
+    console.log(`  \x1b[34m[dry-run]\x1b[0m Would write: ${relPath}`);
+    return { written: false, skipped: false };
+  }
+  if (fs.existsSync(filePath) && !options.force) {
+    console.log(`  \x1b[33m[skip]\x1b[0m ${relPath} already exists. (Use --force to overwrite)`);
+    return { written: false, skipped: true };
+  }
+  if (fs.existsSync(filePath) && options.force) {
+    const backupPath = `${filePath}.bak`;
+    fs.copyFileSync(filePath, backupPath);
+    fs.writeFileSync(filePath, content, 'utf-8');
+    console.log(`  \x1b[35m[backup]\x1b[0m Backed up existing file to ${path.relative(process.cwd(), backupPath)}`);
+    return { written: true, skipped: false, backup: backupPath };
+  }
+  fs.writeFileSync(filePath, content, 'utf-8');
+  return { written: true, skipped: false };
 }
 
 const CONTRACT_RULES = `# Vibe UI Design & Code Quality Contract
@@ -52,8 +81,12 @@ Follow strict anti-slop guidelines:
 - Semantic RTL: preserve physical macro coordinate stability
 `;
 
-async function handleInit() {
+async function handleInit(options: CliOptions) {
   printBanner();
+  if (options.dryRun) {
+    console.log('\x1b[34m[DRY-RUN MODE ACTIVATED: No files will be modified on disk]\x1b[0m\n');
+  }
+
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -90,29 +123,32 @@ async function handleInit() {
 
     const editorChoice = (await prompt(rl, 'Choice [1-4] (default: 1): ')).trim() || '1';
 
-    // 3. Write contract rules
+    // 3. Write contract rules safely
     const cwd = process.cwd();
     const createdFiles: string[] = [];
 
     if (editorChoice === '1' || editorChoice === '4') {
-      fs.writeFileSync(path.join(cwd, '.cursorrules'), CONTRACT_RULES, 'utf-8');
-      createdFiles.push('.cursorrules');
+      const res = safeWriteFile(path.join(cwd, '.cursorrules'), CONTRACT_RULES, options);
+      if (res.written) createdFiles.push('.cursorrules');
     }
     if (editorChoice === '2' || editorChoice === '4') {
       const claudePath = path.join(cwd, 'CLAUDE.md');
-      if (fs.existsSync(claudePath)) {
+      if (options.dryRun) {
+        console.log('  \x1b[34m[dry-run]\x1b[0m Would update CLAUDE.md');
+      } else if (fs.existsSync(claudePath)) {
         fs.appendFileSync(claudePath, `\n\n${CONTRACT_RULES}`, 'utf-8');
+        createdFiles.push('CLAUDE.md (appended)');
       } else {
-        fs.writeFileSync(claudePath, CONTRACT_RULES, 'utf-8');
+        const res = safeWriteFile(claudePath, CONTRACT_RULES, options);
+        if (res.written) createdFiles.push('CLAUDE.md');
       }
-      createdFiles.push('CLAUDE.md');
     }
     if (editorChoice === '3' || editorChoice === '4') {
-      fs.writeFileSync(path.join(cwd, '.windsurfrules'), CONTRACT_RULES, 'utf-8');
-      createdFiles.push('.windsurfrules');
+      const res = safeWriteFile(path.join(cwd, '.windsurfrules'), CONTRACT_RULES, options);
+      if (res.written) createdFiles.push('.windsurfrules');
     }
 
-    // 4. Generate CSS Tokens file
+    // 4. Generate CSS Tokens file safely
     const cssContent = `:root {
   /* Vibe UI Chemistry: ${selectedChem.name} (${selectedChem.archetype}) */
   --vibe-canvas: ${selectedChem.colors.canvas};
@@ -127,12 +163,14 @@ async function handleInit() {
 }
 `;
     const cssPath = path.join(cwd, 'vibe-tokens.css');
-    fs.writeFileSync(cssPath, cssContent, 'utf-8');
-    createdFiles.push('vibe-tokens.css');
+    const cssRes = safeWriteFile(cssPath, cssContent, options);
+    if (cssRes.written) createdFiles.push('vibe-tokens.css');
 
     console.log('\n\x1b[32m✔ Initialized successfully!\x1b[0m');
-    console.log('\x1b[90mGenerated files:\x1b[0m');
-    createdFiles.forEach((f) => console.log(`  + ${f}`));
+    if (createdFiles.length > 0) {
+      console.log('\x1b[90mGenerated/Updated files:\x1b[0m');
+      createdFiles.forEach((f) => console.log(`  + ${f}`));
+    }
 
     console.log(`
 \x1b[1mNext Steps:\x1b[0m
@@ -144,12 +182,12 @@ async function handleInit() {
   }
 }
 
-function handleAdd(componentName?: string) {
+function handleAdd(componentName?: string, options: CliOptions = { force: false, dryRun: false }) {
   printBanner();
   if (!componentName) {
     console.log('\x1b[33mError: Please specify a component to add.\x1b[0m\n');
     handleList();
-    console.log('\nUsage: npx @omid-io/tokens add <component>');
+    console.log('\nUsage: npx @omid-io/tokens add <component> [--force]');
     process.exit(1);
   }
 
@@ -162,16 +200,27 @@ function handleAdd(componentName?: string) {
 
   const cwd = process.cwd();
   const targetDir = path.join(cwd, 'components', 'vibe-ui');
-  fs.mkdirSync(targetDir, { recursive: true });
+  if (!options.dryRun) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
 
   const targetFile = path.join(targetDir, comp.filename);
-  fs.writeFileSync(targetFile, comp.code, 'utf-8');
+  const writeRes = safeWriteFile(targetFile, comp.code, options);
 
-  console.log(`\x1b[32m✔ Added component "${comp.name}"!\x1b[0m`);
-  console.log(`  \x1b[90mLocation:\x1b[0m components/vibe-ui/${comp.filename}`);
-  console.log(`  \x1b[90mDescription:\x1b[0m ${comp.description}\n`);
-  console.log(`\x1b[1mUsage in your page or view:\x1b[0m`);
-  console.log(`  import { ${comp.filename.replace('.tsx', '')} } from '@/components/vibe-ui/${comp.filename.replace('.tsx', '')}';\n`);
+  if (writeRes.skipped) {
+    console.log(`\n\x1b[33mWarning: Component already exists at components/vibe-ui/${comp.filename}\x1b[0m`);
+    console.log(`To overwrite with automated .bak backup, re-run with:`);
+    console.log(`  \x1b[32mnpx @omid-io/tokens add ${componentName} --force\x1b[0m\n`);
+    return;
+  }
+
+  if (writeRes.written) {
+    console.log(`\x1b[32m✔ Added component "${comp.name}"!\x1b[0m`);
+    console.log(`  \x1b[90mLocation:\x1b[0m components/vibe-ui/${comp.filename}`);
+    console.log(`  \x1b[90mDescription:\x1b[0m ${comp.description}\n`);
+    console.log(`\x1b[1mUsage in your page or view:\x1b[0m`);
+    console.log(`  import { ${comp.filename.replace('.tsx', '')} } from '@/components/vibe-ui/${comp.filename.replace('.tsx', '')}';\n`);
+  }
 }
 
 function handleList() {
@@ -182,8 +231,13 @@ function handleList() {
 }
 
 async function main() {
-  const args = process.argv.slice(2);
-  const cmd = args[0]?.toLowerCase();
+  const rawArgs = process.argv.slice(2);
+  const force = rawArgs.includes('--force') || rawArgs.includes('-f');
+  const dryRun = rawArgs.includes('--dry-run');
+  const filteredArgs = rawArgs.filter((a) => !['--force', '-f', '--dry-run'].includes(a));
+  const cmd = filteredArgs[0]?.toLowerCase();
+
+  const options: CliOptions = { force, dryRun };
 
   if (!cmd || cmd === '--help' || cmd === '-h') {
     printHelp();
@@ -197,10 +251,10 @@ async function main() {
 
   switch (cmd) {
     case 'init':
-      await handleInit();
+      await handleInit(options);
       break;
     case 'add':
-      handleAdd(args[1]);
+      handleAdd(filteredArgs[1], options);
       break;
     case 'list':
       printBanner();
@@ -217,3 +271,4 @@ main().catch((err) => {
   console.error('\x1b[31mFatal CLI error:\x1b[0m', err);
   process.exit(1);
 });
+

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "vibe-ui-skills",
+  "version": "2.4.2",
+  "schemaVersion": "1.0.0",
+  "tokensPackageVersion": "2.4.1",
+  "vscodeExtensionVersion": "2.4.0",
+  "cliVersion": "2.4.1",
+  "supportedVersions": ["2.4.x", "2.3.x"]
+}

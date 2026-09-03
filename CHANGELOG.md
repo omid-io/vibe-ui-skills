@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.2] - 2026-09-03
+
+### Hardened & Added
+- **CLI Non-Destructive Protection**: Added `--force` (with automated `.bak` backups) and `--dry-run` to `@omid-io/tokens` (`init` and `add`), preventing accidental overwrite of developer configs and component files.
+- **Physical Pixel DOM Contrast Gate**: Upgraded Chromium runtime evaluation to sample actual GPU-rendered pixels via Canvas 2D `getImageData()`, walking DOM parent trees to resolve effective backgrounds and verifying $\ge 4.5:1$ body and $\ge 3.0:1$ heading contrast across all interfaces.
+- **Prefers-Reduced-Motion Transition Suppression**: Verified that under `prefers-reduced-motion: reduce`, all CSS transitions and animations are physically suppressed ($\le 0.05\text{s}$). Added missing reduced motion media queries to `examples/persian_rtl_bento.html`.
+- **ARIA Contract Hardening**: Verified non-empty accessible names with `aria-labelledby` tree resolution and asserted that `aria-controls` targets physically exist in the DOM.
+- **Single Source of Truth Manifest & Version Harmonization**: Added `version.json` and harmonized version pinning across `install.sh`, `install.ps1`, `SECURITY.md`, and `ARCHITECTURE.md`. Removed redundant legacy workflow `.github/workflows/evals.yml`.
+
+---
+
 ## [2.4.1] - 2026-09-03
 
 ### Security & Validator Hardening

@@ -1,6 +1,6 @@
 # 🏛️ Vibe UI Skills — System Architecture & Data Contract Specification
 
-**Version:** 2.2.1  
+**Version:** 2.4.2  
 **Status:** Production Standard  
 **Document Type:** Core Architectural Specification  
 **Machine Contract Reference:** [`schemas/design-spec.v1.schema.json`](schemas/design-spec.v1.schema.json)  

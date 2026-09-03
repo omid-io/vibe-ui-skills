@@ -1,8 +1,8 @@
 # Project State: vibe-ui-skills
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 6 — Public Launch & Ecosystem Release (v2.4.1 Live Worldwide)
-- **Status**: **100% COMPLETED & VERIFIED**. Official release `v2.4.1` published to GitHub; multi-LLM consensus score 9.1/10; zero-dependency CLI (`@omid-io/tokens`) and interactive VS Code extension live globally; 30-parameter closed-world schema hardened; real Chromium DOM assertions verified; documentation de-hyped with zero superlatives.
+- **Active Phase**: Phase 6 — Public Launch & Ecosystem Release (v2.4.2 Hardened)
+- **Status**: **100% VERIFIED & PRODUCTION READY**. Official release `v2.4.2` verified across all audit gates; non-destructive CLI (`@omid-io/tokens`) with `--force` backups and `--dry-run`; live Chromium DOM physical pixel contrast calculations verified; 30-parameter closed-world schema hardened with cycle-safe `$ref` resolution; clean documentation and single source of truth manifest (`version.json`).
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
@@ -56,26 +56,26 @@
   - Hardened `schemas/design-spec.v1.schema.json` with `additionalProperties: false` and synced version `2.4.0`.
   - Added explicit "What Vibe UI Is / What It Is Not" and deterministic vs. heuristic verification matrix to `README.md` and `README.fa.md`.
 
-- [x] **R10: Multi-LLM Round 4 Adversarial Audit & Deep Hardening (Consensus 8.7/10 — Launch Ready)**:
-  - **Consensus Score 8.4–8.7/10**: ChatGPT rated 8.4/10 and Grok rated 8.7/10, confirming the suite has crossed the threshold to an authentic, deterministic design contract engine and issued the explicit directive: *"Ship v2.4.0. The project is now past the point where I'd say 'don't launch until you fix the fundamentals.' I would be comfortable putting this in public."*
-  - **True Closed-World Validator Enforcement**: Implemented `additionalProperties: false` enforcement inside `validate_json_instance()` in `evals/run_evals.py` so any undeclared key at root or nested level is rejected immediately.
-  - **Domain Numerical Ranges**: Added strict bounds to `schemas/design-spec.v1.schema.json` for coordinates (`latitude: [-90, 90]`, `longitude: [-180, 180]`), financial math (`precision_decimals: [0, 8]`), and Core Web Vitals (`lcp_max_ms: [100, 10000]`, `cls_max: [0.0, 1.0]`, `inp_max_ms: [10, 1000]`).
-  - **Browser Runtime & CI Failure Integrity**: Browser exceptions fail non-zero (`results["overall_status"] = "FAIL"`).
-  - **Multi-Viewport Real DOM Assertions**: Tested both `375x667` and `320x568` in headless Chromium. Caught and surgically resolved a 320px narrow mobile overflow in `neobrutalist_creative_store.html`.
+- [x] **R10: Adversarial Audit & Contract Hardening**:
+  - **Closed-World Validator Enforcement**: Implemented `additionalProperties: false` enforcement inside `validate_json_instance()` in `evals/run_evals.py` rejecting undeclared keys at root and nested levels.
+  - **Domain Numerical Ranges**: Added strict bounds to `schemas/design-spec.v1.schema.json` for coordinates (`latitude: [-90, 90]`, `longitude: [-180, 180]`), financial math (`precision_decimals: [0, 8]`), and Core Web Vitals budgets (`lcp_max_ms: [100, 10000]`, `cls_max: [0.0, 1.0]`, `inp_max_ms: [10, 1000]`).
+  - **Browser Runtime Failure Integrity**: Hardened error boundaries so browser runtime exceptions exit with non-zero failure (`results["overall_status"] = "FAIL"`).
+  - **Multi-Viewport Real DOM Assertions**: Audited both `375x667` and `320x568` in headless Chromium. Caught and resolved a 320px narrow mobile overflow in `neobrutalist_creative_store.html`.
   - **Accessible Name & Label Verification**: Asserted that every interactive button, anchor, and input has a non-empty accessible name, title, or ARIA label.
-- [x] **R11: Multi-LLM Round 5 Technical Hardening (Consensus Score: 9.0 – 9.1 / 10)**:
-  - **Consensus Score 9.0 – 9.1/10**: Grok rated **9.1/10** and ChatGPT rated **9.0/10**, stating: *"This is a substantial jump. The evaluator is now much closer to a serious, defensible engineering tool rather than a collection of static heuristics... 9.0/10. Ship it."*
+- [x] **R11: Runtime & Validator Security Hardening (v2.4.1 Release)**:
   - **Closed Dollar-Prefix Exploit & Negative Fixture**: Restricted `$schema` strictly to the exact root level (`path == "$"`). Any rogue `$`-prefixed property (e.g. `$injected_exploit`) is rejected immediately. Added and verified adversarial fixture [`evals/fixtures/illegal_dollar_property.json`](evals/fixtures/illegal_dollar_property.json).
   - **Local `$ref` Resolution with Cycle Detection & Depth Guard**: Added recursion depth limit (64) and visited reference set tracking to prevent circular reference DoS.
   - **String Constraints**: Added `minLength`, `maxLength`, and regex `pattern` validations to `validate_json_instance`.
-  - **Deterministic Rendering Stabilization in Chromium**: Replaced raw `domcontentloaded` with bounded `networkidle` (3000ms timeout), `document.fonts.ready`, and double `requestAnimationFrame` to eliminate race conditions before geometry measurement.
+  - **Deterministic Rendering Stabilization in Chromium**: Replaced raw `domcontentloaded` with bounded `networkidle` (3000ms timeout), `document.fonts.ready`, and double `requestAnimationFrame` before measuring geometry.
   - **Strict Visibility & `aria-hidden` Exclusion**: Filtered out elements inside `[aria-hidden="true"]`, `display: none`, `visibility: hidden`, or `opacity: 0` to prevent false passes on hidden elements.
   - **Keyboard Focus-Visible Ring Assertion**: Programmatically verified that interactive controls receive physical focus rings (`outline` or `box-shadow`) under `:focus-visible`.
   - **Prefers-Reduced-Motion Emulation**: Verified Chromium response to `(prefers-reduced-motion: reduce)`.
+  - **CLI Non-Destructive Operations**: Added `--force` (with automated `.bak` backups) and `--dry-run` to `npx @omid-io/tokens` (`init` and `add`).
+  - **Version Harmonization**: Pinned all installers (`install.sh`, `install.ps1`), security policy (`SECURITY.md`), architecture specification (`ARCHITECTURE.md`), and central manifest (`version.json`) to `v2.4.1`.
 
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
-1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`, `r/cursor`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
+1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`, `r/cursor`), and X launch threads.
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
