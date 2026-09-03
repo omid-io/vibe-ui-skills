@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Idle — R20 Complete. Next: v3.0.1 patch release or R21 (Node.js ESLint Plugin).
-- **Status**: **R20 Completed 100%** (`993511b`). Shipped BeautifulSoup4 AST parser replacing fragile Regex in `critic.py`/`verifier.py`, new `SelfHealingLoop` module (`healer.py`) bridging Critic output to LLM Correction Prompts, and Tiered Verification (`fast`/`--strict`) in `verifier.py` and `vibe_cli.py`. All 7 test suites PASS 100% in 2808ms. Zero regressions.
+- **Active Phase**: Idle — R21 Complete. Ready for v3.0.1 Multi-Registry Release.
+- **Status**: **R21 Completed 100%** (`3d196a4`). Fully resolved Qwen Senior Audit findings: comprehensive `.gitignore` protection, centralized policy constants in [`vibe_core/constants.py`](vibe_core/constants.py), eliminated static timestamps in favor of dynamic UTC `datetime.now(timezone.utc).isoformat()` in [`vibe_core/critic.py`](vibe_core/critic.py) and [`vibe_core/verifier.py`](vibe_core/verifier.py), added transparent methodology disclaimers in [`evals/benchmark/run_benchmark.py`](evals/benchmark/run_benchmark.py) & [`schemas/benchmark-result.v1.json`](schemas/benchmark-result.v1.json), and authored Full Pipeline E2E Integration Suite in [`scripts/test_pipeline_e2e.py`](scripts/test_pipeline_e2e.py). All 8 quality gate suites pass 100% in 2977ms. Zero regressions.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
@@ -136,9 +136,16 @@
   - **Tiered Verification (P1)**: `VerificationEngine.verify_html()` gains `mode` param (`"fast"` default / `"strict"` Playwright). Added `_fast_path()` (<50ms static) and `_strict_path()` (Playwright headless multi-viewport) separation. `vibe verify --strict` and `vibe generate --strict` flags added. New `vibe heal <file>` CLI command with `-p`/`-o` args.
   - **All 7 test suites**: 100% PASS in 2808ms. Zero regressions.
 
+- [x] **R21: Qwen Senior Audit Remediation — Constants, E2E Pipeline, Dynamic Timestamps & Benchmark Transparency (v3.0.1) [2026-09-03]** (`3d196a4`):
+  - **Comprehensive `.gitignore` Hardening**: Expanded root [`.gitignore`](file:///E:/programming/vibe-ui-skills/.gitignore) to industry standard, covering virtualenvs (`.venv/`, `venv/`), test caches (`.pytest_cache/`, `.mypy_cache/`), test coverage (`coverage/`, `htmlcov/`, `.coverage`), environment files (`.env*`), and IDE workspaces (`.idea/`).
+  - **Centralized Constants Architecture**: Created [`vibe_core/constants.py`](file:///E:/programming/vibe-ui-skills/vibe_core/constants.py) as single source of truth for `MAX_BLUR_SURFACES = 3`, `HARD_MIN_TOUCH_PX = 24`, `RECOMMENDED_TOUCH_PX = 44`, and loop bounds, eliminating policy drift across modules.
+  - **Dynamic ISO 8601 Timestamps**: Completely eliminated hardcoded static `2026-09-03T12:00:00Z` timestamps in [`vibe_core/critic.py`](file:///E:/programming/vibe-ui-skills/vibe_core/critic.py), [`vibe_core/verifier.py`](file:///E:/programming/vibe-ui-skills/vibe_core/verifier.py), and [`evals/benchmark/run_benchmark.py`](file:///E:/programming/vibe-ui-skills/evals/benchmark/run_benchmark.py) in favor of real-time `datetime.now(timezone.utc).isoformat()`.
+  - **Benchmark Transparency & Schema Harmonization**: Added `benchmark_type: "internal_deterministic_heuristic"` and explicit methodology notes to [`schemas/benchmark-result.v1.json`](file:///E:/programming/vibe-ui-skills/schemas/benchmark-result.v1.json) and regenerated [`evals/benchmark/benchmark_results.json`](file:///E:/programming/vibe-ui-skills/evals/benchmark/benchmark_results.json) stating that metrics evaluate rule-engine compliance rather than subjective human A/B testing.
+  - **End-to-End Pipeline Integration Test Suite**: Authored [`scripts/test_pipeline_e2e.py`](file:///E:/programming/vibe-ui-skills/scripts/test_pipeline_e2e.py) exercising the entire multi-agent lifecycle across Persian RTL, English SaaS, defect recovery via SelfHealingLoop, and constant integrity. Integrated as 8th gate in [`scripts/run_all_tests.py`](file:///E:/programming/vibe-ui-skills/scripts/run_all_tests.py) (100% PASS in 2977ms).
+
 ## Immediate Next Steps & Execution Plan
-1. **v3.0.1 Patch Release**: Tag and publish `@omid-io/tokens` v3.0.1 to NPM + VS Code Marketplace with R20 changelog.
-2. **R21 (Optional)**: Port `critic.py`/`verifier.py` fast-path to a Node.js Custom ESLint Plugin for native `npm run vibe-check` integration in Next.js projects.
+1. **v3.0.1 Patch Release**: Tag and publish `@omid-io/tokens` v3.0.1 to NPM + VS Code Marketplace with R20/R21 changelog.
+2. **Community & Content Expansion**: Launch video demonstration of the Design Compiler Studio on social channels.
 
 ## Modified / Created Files Index
 - [`vibe_cli.py`](vibe_cli.py)
