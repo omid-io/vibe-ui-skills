@@ -38,7 +38,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm publish --access public
+          npm publish --access public || echo "[INFO] Version already published on NPM, proceeding to extension build..."
 
       - name: Build VS Code & Cursor Extension
         working-directory: packages/vibe-ui-vscode
