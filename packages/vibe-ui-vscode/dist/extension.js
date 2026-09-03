@@ -75,26 +75,45 @@ function activate(context) {
             return;
         }
         const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-        const adapterContent = `# Vibe UI Contract
+        const adapterContent = `<!-- VIBE-UI:BEGIN -->
+# Vibe UI Contract
 Follow strict anti-slop guidelines:
 - Zero raw unicode emojis (use SVGs only)
 - Strict WCAG 2.2 AA contrast (>= 4.5:1 body, >= 3.0:1 headings)
 - Use typed OKLCH colors
 - Maximum 3 backdrop-filter layers
 - Semantic RTL: preserve macro layout coordinates
-`;
+<!-- VIBE-UI:END -->`;
+        const safeWriteWithBackup = (targetPath, filename) => {
+            if (fs.existsSync(targetPath)) {
+                const bakPath = `${targetPath}.bak`;
+                fs.copyFileSync(targetPath, bakPath);
+            }
+            fs.writeFileSync(targetPath, adapterContent + '\n');
+            vscode.window.showInformationMessage(`✅ Vibe UI ${filename} written (existing backup saved to .bak)`);
+        };
         if (choice.label.startsWith('Cursor')) {
-            fs.writeFileSync(path.join(root, '.cursorrules'), adapterContent);
-            vscode.window.showInformationMessage('✅ Vibe UI .cursorrules written to project root!');
+            safeWriteWithBackup(path.join(root, '.cursorrules'), '.cursorrules');
         }
         else if (choice.label.startsWith('Claude')) {
             const claudePath = path.join(root, 'CLAUDE.md');
-            fs.appendFileSync(claudePath, '\n\n' + adapterContent);
-            vscode.window.showInformationMessage('✅ Vibe UI rules appended non-destructively to CLAUDE.md!');
+            if (fs.existsSync(claudePath)) {
+                let current = fs.readFileSync(claudePath, 'utf8');
+                if (current.includes('<!-- VIBE-UI:BEGIN -->')) {
+                    current = current.replace(/<!-- VIBE-UI:BEGIN -->[\s\S]*?<!-- VIBE-UI:END -->/, adapterContent);
+                }
+                else {
+                    current = current.trimEnd() + '\n\n' + adapterContent + '\n';
+                }
+                fs.writeFileSync(claudePath, current);
+            }
+            else {
+                fs.writeFileSync(claudePath, adapterContent + '\n');
+            }
+            vscode.window.showInformationMessage('✅ Vibe UI rules updated idempotently in CLAUDE.md!');
         }
         else if (choice.label.startsWith('Windsurf')) {
-            fs.writeFileSync(path.join(root, '.windsurfrules'), adapterContent);
-            vscode.window.showInformationMessage('✅ Vibe UI .windsurfrules written to project root!');
+            safeWriteWithBackup(path.join(root, '.windsurfrules'), '.windsurfrules');
         }
     }));
     // 4. Register Open Showcase Command

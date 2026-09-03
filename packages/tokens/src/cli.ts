@@ -6,7 +6,7 @@ import * as readline from 'readline';
 import { COMPONENT_REGISTRY } from './registry/components';
 import { VISUAL_CHEMISTRIES } from './index';
 
-const VERSION = '2.4.1';
+const VERSION = '3.0.0-alpha.1';
 
 interface CliOptions {
   force: boolean;
@@ -150,16 +150,14 @@ async function handleInit(options: CliOptions) {
 
     // 4. Generate CSS Tokens file safely
     const cssContent = `:root {
-  /* Vibe UI Chemistry: ${selectedChem.name} (${selectedChem.archetype}) */
+  /* Vibe UI Chemistry: ${selectedChem.name} (${selectedChem.id}) */
   --vibe-canvas: ${selectedChem.colors.canvas};
   --vibe-surface: ${selectedChem.colors.surface};
-  --vibe-surface-subtle: ${selectedChem.colors.surfaceSubtle};
   --vibe-border: ${selectedChem.colors.border};
+  --vibe-primary-accent: ${selectedChem.colors.primaryAccent};
   --vibe-text-primary: ${selectedChem.colors.textPrimary};
-  --vibe-text-secondary: ${selectedChem.colors.textSecondary};
-  --vibe-accent-primary: ${selectedChem.colors.primaryAccent};
-  --vibe-accent-secondary: ${selectedChem.colors.secondaryAccent};
-  --vibe-accent-highlight: ${selectedChem.colors.highlightAccent};
+  --vibe-text-muted: ${selectedChem.colors.textMuted};
+  --vibe-ring: ${selectedChem.colors.ring};
 }
 `;
     const cssPath = path.join(cwd, 'vibe-tokens.css');
@@ -183,12 +181,12 @@ async function handleInit(options: CliOptions) {
 }
 
 function handleAdd(componentName?: string, options: CliOptions = { force: false, dryRun: false }) {
-  printBanner();
   if (!componentName) {
     console.log('\x1b[33mError: Please specify a component to add.\x1b[0m\n');
     handleList();
     console.log('\nUsage: npx @omid-io/tokens add <component> [--force]');
     process.exit(1);
+    return;
   }
 
   const comp = COMPONENT_REGISTRY[componentName.toLowerCase()];
@@ -196,6 +194,7 @@ function handleAdd(componentName?: string, options: CliOptions = { force: false,
     console.log(`\x1b[31mError: Unknown component "${componentName}".\x1b[0m\n`);
     handleList();
     process.exit(1);
+    return;
   }
 
   const cwd = process.cwd();
@@ -234,7 +233,7 @@ async function main() {
   const rawArgs = process.argv.slice(2);
   const force = rawArgs.includes('--force') || rawArgs.includes('-f');
   const dryRun = rawArgs.includes('--dry-run');
-  const filteredArgs = rawArgs.filter((a) => !['--force', '-f', '--dry-run'].includes(a));
+  const filteredArgs = rawArgs.filter((a: string) => !['--force', '-f', '--dry-run'].includes(a));
   const cmd = filteredArgs[0]?.toLowerCase();
 
   const options: CliOptions = { force, dryRun };

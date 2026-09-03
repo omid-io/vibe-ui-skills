@@ -24,9 +24,10 @@
   ],
   "main": "./dist/extension.js",
   "activationEvents": [
-    "onView:vibe-ui-view",
+    "onView:vibe-ui.chemistryExplorer",
     "onCommand:vibe-ui.auditContrast",
-    "onCommand:vibe-ui.insertComponent"
+    "onCommand:vibe-ui.insertAdapter",
+    "onCommand:vibe-ui.openShowcase"
   ],
   "contributes": {
     "viewsContainers": {

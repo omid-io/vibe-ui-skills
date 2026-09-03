@@ -16,7 +16,7 @@
   "properties": {
     "spec_version": {
       "type": "string",
-      "enum": ["1.0.0", "1.1.0", "2.0.0", "2.2.0", "2.4.0"]
+      "enum": ["1.0.0", "1.1.0", "2.0.0", "2.2.0", "2.4.0", "3.0.0-alpha.1"]
     },
     "domain_archetype": {
       "type": "string",

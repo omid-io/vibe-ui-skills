@@ -24,6 +24,8 @@ const files = [
   path.join(__dirname, 'src', 'cli.ts')
 ];
 
+const typesDir = path.resolve(__dirname, '../../examples/nextjs-starter/node_modules/@types');
+
 // Compile CommonJS and .d.ts
 const cjsOptions = {
   target: ts.ScriptTarget.ES2022,
@@ -32,9 +34,24 @@ const cjsOptions = {
   outDir: distDir,
   strict: true,
   esModuleInterop: true,
+  moduleResolution: ts.ModuleResolutionKind.Node10,
+  typeRoots: [typesDir],
+  types: ['node'],
+  skipLibCheck: true,
 };
 
 const cjsProgram = ts.createProgram(files, cjsOptions);
+const cjsDiagnostics = ts.getPreEmitDiagnostics(cjsProgram);
+if (cjsDiagnostics.length > 0) {
+  const formatHost = {
+    getCanonicalFileName: (f) => f,
+    getCurrentDirectory: ts.sys.getCurrentDirectory,
+    getNewLine: () => ts.sys.newLine,
+  };
+  const message = ts.formatDiagnosticsWithColorAndContext(cjsDiagnostics, formatHost);
+  console.error(message);
+  process.exit(1);
+}
 cjsProgram.emit();
 
 // Compile ESM (.mjs)
@@ -45,6 +62,10 @@ const esmOptions = {
   outDir: distDir,
   strict: true,
   esModuleInterop: true,
+  moduleResolution: ts.ModuleResolutionKind.Node10,
+  typeRoots: [typesDir],
+  types: ['node'],
+  skipLibCheck: true,
 };
 
 const esmProgram = ts.createProgram(files, esmOptions);

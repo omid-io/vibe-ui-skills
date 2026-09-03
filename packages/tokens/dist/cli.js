@@ -39,7 +39,7 @@ const path = __importStar(require("path"));
 const readline = __importStar(require("readline"));
 const components_1 = require("./registry/components");
 const index_1 = require("./index");
-const VERSION = '2.4.1';
+const VERSION = '3.0.0-alpha.1';
 function printBanner() {
     console.log(`
 \x1b[35m  ▲ VIBE UI CLI v${VERSION}\x1b[0m
@@ -168,16 +168,14 @@ async function handleInit(options) {
         }
         // 4. Generate CSS Tokens file safely
         const cssContent = `:root {
-  /* Vibe UI Chemistry: ${selectedChem.name} (${selectedChem.archetype}) */
+  /* Vibe UI Chemistry: ${selectedChem.name} (${selectedChem.id}) */
   --vibe-canvas: ${selectedChem.colors.canvas};
   --vibe-surface: ${selectedChem.colors.surface};
-  --vibe-surface-subtle: ${selectedChem.colors.surfaceSubtle};
   --vibe-border: ${selectedChem.colors.border};
+  --vibe-primary-accent: ${selectedChem.colors.primaryAccent};
   --vibe-text-primary: ${selectedChem.colors.textPrimary};
-  --vibe-text-secondary: ${selectedChem.colors.textSecondary};
-  --vibe-accent-primary: ${selectedChem.colors.primaryAccent};
-  --vibe-accent-secondary: ${selectedChem.colors.secondaryAccent};
-  --vibe-accent-highlight: ${selectedChem.colors.highlightAccent};
+  --vibe-text-muted: ${selectedChem.colors.textMuted};
+  --vibe-ring: ${selectedChem.colors.ring};
 }
 `;
         const cssPath = path.join(cwd, 'vibe-tokens.css');
@@ -200,18 +198,19 @@ async function handleInit(options) {
     }
 }
 function handleAdd(componentName, options = { force: false, dryRun: false }) {
-    printBanner();
     if (!componentName) {
         console.log('\x1b[33mError: Please specify a component to add.\x1b[0m\n');
         handleList();
         console.log('\nUsage: npx @omid-io/tokens add <component> [--force]');
         process.exit(1);
+        return;
     }
     const comp = components_1.COMPONENT_REGISTRY[componentName.toLowerCase()];
     if (!comp) {
         console.log(`\x1b[31mError: Unknown component "${componentName}".\x1b[0m\n`);
         handleList();
         process.exit(1);
+        return;
     }
     const cwd = process.cwd();
     const targetDir = path.join(cwd, 'components', 'vibe-ui');
