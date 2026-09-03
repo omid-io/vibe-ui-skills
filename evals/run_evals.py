@@ -1123,7 +1123,9 @@ def audit_browser_runtime(html_files: list[Path]) -> dict:
                 focus_unsupported = page.evaluate("""() => {
                     const targets = Array.from(document.querySelectorAll('button, a, [role="button"], input')).filter(el => {
                         const style = window.getComputedStyle(el);
-                        return style.display !== 'none' && 
+                        const isVisible = el.checkVisibility ? el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) : (el.offsetParent !== null || el.getClientRects().length > 0);
+                        return isVisible && 
+                               style.display !== 'none' && 
                                style.visibility !== 'hidden' && 
                                !el.closest('[aria-hidden="true"]');
                     });
