@@ -63,11 +63,19 @@
   - **Browser Runtime & CI Failure Integrity**: Browser exceptions fail non-zero (`results["overall_status"] = "FAIL"`).
   - **Multi-Viewport Real DOM Assertions**: Tested both `375x667` and `320x568` in headless Chromium. Caught and surgically resolved a 320px narrow mobile overflow in `neobrutalist_creative_store.html`.
   - **Accessible Name & Label Verification**: Asserted that every interactive button, anchor, and input has a non-empty accessible name, title, or ARIA label.
-  - **Adversarial Negative Mutation Fixtures**: Created [`evals/fixtures/illegal_additional_property.json`](evals/fixtures/illegal_additional_property.json) and [`evals/fixtures/out_of_range_latitude.json`](evals/fixtures/out_of_range_latitude.json), automatically verified in CI.
+- [x] **R11: Multi-LLM Round 5 Technical Hardening (Consensus Score: 9.0 – 9.1 / 10)**:
+  - **Consensus Score 9.0 – 9.1/10**: Grok rated **9.1/10** and ChatGPT rated **9.0/10**, stating: *"This is a substantial jump. The evaluator is now much closer to a serious, defensible engineering tool rather than a collection of static heuristics... 9.0/10. Ship it."*
+  - **Closed Dollar-Prefix Exploit & Negative Fixture**: Restricted `$schema` strictly to the exact root level (`path == "$"`). Any rogue `$`-prefixed property (e.g. `$injected_exploit`) is rejected immediately. Added and verified adversarial fixture [`evals/fixtures/illegal_dollar_property.json`](evals/fixtures/illegal_dollar_property.json).
+  - **Local `$ref` Resolution with Cycle Detection & Depth Guard**: Added recursion depth limit (64) and visited reference set tracking to prevent circular reference DoS.
+  - **String Constraints**: Added `minLength`, `maxLength`, and regex `pattern` validations to `validate_json_instance`.
+  - **Deterministic Rendering Stabilization in Chromium**: Replaced raw `domcontentloaded` with bounded `networkidle` (3000ms timeout), `document.fonts.ready`, and double `requestAnimationFrame` to eliminate race conditions before geometry measurement.
+  - **Strict Visibility & `aria-hidden` Exclusion**: Filtered out elements inside `[aria-hidden="true"]`, `display: none`, `visibility: hidden`, or `opacity: 0` to prevent false passes on hidden elements.
+  - **Keyboard Focus-Visible Ring Assertion**: Programmatically verified that interactive controls receive physical focus rings (`outline` or `box-shadow`) under `:focus-visible`.
+  - **Prefers-Reduced-Motion Emulation**: Verified Chromium response to `(prefers-reduced-motion: reduce)`.
 
 ## Immediate Next Steps & Public Launch
 - **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
-1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
+1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`, `r/cursor`), and X launch threads from [`DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md`](file:///e:/programming/omid-core/DISTRIBUTION/LAUNCH_VIBE_UI_SKILLS.md).
 
 ## Modified / Created Files Index
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
