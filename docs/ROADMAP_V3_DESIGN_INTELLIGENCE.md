@@ -1,261 +1,1149 @@
-# 🧠 Vibe UI v3.0 Master Architecture & Engineering Specification
-## From "Static Style Catalog" to "Autonomous Design Decision Engine & Director"
+# Vibe UI V3 — Design Intelligence
+## Final Product & Architecture Specification
+
+> هدف این سند: تبدیل Vibe UI از یک مجموعه Skill و Style Catalog به یک **Design Decision Engine** که بتواند با یک prompt ساده، تصمیم‌های طراحی را خودش استخراج، پیشنهاد، ترکیب، نقد، اصلاح و verify کند؛ در حالی که کاربر حرفه‌ای بتواند کنترل دقیق را حفظ کند.
+
+**Status:** Proposed Final Specification  
+**Target:** V3 Design Intelligence  
+**Date:** 2026-09-03  
+**Source baseline:** `docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`
 
 ---
 
-## 📑 فهرست مطالب (Table of Contents)
-1. [خلاصه مدیریتی (Executive Summary)](#-خلاصه-مدیریتی-executive-summary)
-2. [دیاگرام معماری کلان (System Architecture DAG)](#-دیاگرام-معماری-کلان-system-architecture-dag)
-3. [زیرسیستم‌های هسته V3 (The Core Subsystems)](#-زیرسیستمهای-هسته-v3-the-core-subsystems)
-4. [موتور تصمیم‌گیری، نمره‌دهی و حل تعارض (Decision Engine & Conflict Resolution)](#-موتور-تصمیمگیری-نمرەدهی-و-حل-تعارض-decision-engine--conflict-resolution)
-5. [گیت‌های پذیرش دولایه و شاخص‌های زحمت کاربر (Two-Tier Gates & User-Effort KPIs)](#-گیتهای-پذیرش-دولایه-و-شاخصهای-زحمت-کاربر-two-tier-gates--user-effort-kpis)
-6. [حل قطعی ۷ مجهول کلیدی معماری (Exhaustive Resolution of All 7 Unknowns)](#-حل-قطعی-۷-مجهول-کلیدی-معماری-exhaustive-resolution-of-all-7-unknowns)
-7. [نقشه راه اجرایی ۱۲ مرحله‌ای (12-Phase Execution Pipeline)](#-نقشه-راه-اجرایی-۱۲-مرحلهای-12-phase-execution-pipeline)
+# 1. Product North Star
 
----
+Vibe UI نباید کاربر را مجبور کند زبان تخصصی طراحی را بداند.
 
-## 🏛️ خلاصه مدیریتی (Executive Summary)
-نسخه فعلی پروژه (`v2.4.2`) زیرساخت مهندسی مکانیکی، ریاضی کنتراست رنگ (WCAG AA)، آزمون‌های مرورگر Playwright، پکیج‌های رجیستری و سیستم ضدگلوله راست‌چین سمنتیک (Semantic RTL) را با موفقیت اثبات کرده است. 
+ورودی ایده‌آل:
 
-اما بزرگ‌ترین خلأ پروژه این بود که به عنوان یک **«مجموعه ابزار با ۵ پوسته ثابت»** رفتار می‌کرد و فاقد **«موتور تصمیم‌گیری، استنتاج و خودانتقادی طراحی»** بود. در نتیجه، کاربر مجبور می‌شد مفاهیم تخصصی دیزاین را بداند و برای رسیدن به یک نتیجه جذاب، بارها و بارها پرامپت اصلاحی بدهد.
+> «برای یک کلینیک زیبایی، سایت مدرن و لوکس می‌خوام؛ حس اعتماد و آرامش بده و روی موبایل عالی باشه.»
 
-این سند، **معماری جامع نسل سوم (V3: Design Intelligence)** را به صورت یکپارچه و ۱۰۰٪ بدون مجهول پایه‌ریزی می‌کند:
-1. **کاربر عادی** فقط یک پرامپت ساده از نیاز کسب‌وکارش می‌دهد (`یک سایت برای کلینیک پوست و زیبایی`).
-2. سیستم خودش دامین، مخاطب، میزان اعتماد، انرژی بصری و اولویت‌ها را با **مدل آستانه اطمینان (Confidence Model)** استنتاج می‌کند.
-3. در صورت ابهام، سیستم **فقط ۱ سوال باارزش (VoI)** یا **۳ مسیر کاندید با لحن ملموس** ارائه می‌دهد، نه ۱۵ سوال پیچیده فنی.
-4. سبک‌ها از ۵ تم هاردکد شده به **«ژنوم طراحی (Design Genome)»** ارتقا می‌یابند ($\text{Style} \times \text{Mood} \times \text{Density} \times \text{Mode}$).
-5. قبل از تحویل به کاربر، سیستم خودش در نقش **منتقد طراحی (Design Critic)** ظاهر شده و با **چرخه اصلاح خودکار اولویت‌بندی شده (حداکثر ۲ دور)** ایرادات را رفع می‌کند.
-6. هدف نهایی: **کیفیت در اولین شات (First-Pass Quality > 70%) و رساندن دفعات ویرایش دستی طراح به زیر ۱.۵ بار.**
+خروجی مطلوب:
 
----
+```text
+Understand
+→ Infer
+→ Recommend
+→ Compose
+→ Generate
+→ Critique
+→ Refine
+→ Verify
+→ Deliver
+```
 
-## 🏛️ دیاگرام معماری کلان (System Architecture DAG)
+معیار موفقیت، تعداد Styleها نیست.
+
+معیار اصلی:
+
+- کیفیت خروجی در اولین generation
+- کاهش تعداد اصلاحات دستی
+- تناسب Design با محصول و مخاطب
+- تنوع واقعی خروجی‌ها
+- حفظ کنترل برای کاربر حرفه‌ای
+- قابل‌سنجش بودن کیفیت
+
+# 2. Core Product Promise
+
+V3 باید سه تجربه همزمان ارائه دهد.
+
+## 2.1 Assisted Mode
+
+کاربر فقط نیاز کسب‌وکار را بیان می‌کند.
+
+سیستم:
+
+1. intent را استخراج می‌کند.
+2. domain و audience را infer می‌کند.
+3. design direction را پیشنهاد می‌دهد.
+4. فقط در صورت ambiguity معنی‌دار سؤال می‌پرسد.
+5. design system را می‌سازد.
+6. UI را تولید می‌کند.
+7. خودش آن را نقد و اصلاح می‌کند.
+8. سپس verification انجام می‌دهد.
+
+## 2.2 Expert Mode
+
+کاربر می‌تواند مستقیماً مشخص کند:
+
+- style
+- font
+- palette
+- layout
+- density
+- motion
+- radius
+- brand rules
+- platform
+- constraints
+
+در این حالت سیستم نباید تصمیم‌های صریح کاربر را بی‌دلیل override کند.
+
+## 2.3 Reference / Brand Mode
+
+کاربر می‌تواند:
+
+- design موجود
+- screenshot
+- brand guideline
+- logo
+- color
+- existing UI
+
+را به‌عنوان reference وارد کند.
+
+سیستم باید **principle extraction** انجام دهد، نه clone کردن.
+
+# 3. V3 System Architecture
 
 ```mermaid
-graph TD
-    UserPrompt["User Natural Language Prompt"] --> DesignDirector["1. Design Director (Intent & Domain Inference)"]
-    
-    subgraph DirectorPhase ["Inference & Alignment"]
-        DesignDirector --> ConfidenceCheck{"Confidence Score C?"}
-        ConfidenceCheck -- "High (C >= 0.8)" --> AutoInference["Autonomous Parameter Synthesis"]
-        ConfidenceCheck -- "Medium (0.5 <= C < 0.8)" --> SoftConfirm["Auto-Infer + 1-Line Soft Notice"]
-        ConfidenceCheck -- "Low (C < 0.5)" --> VoIClarification["VoI: Single High-Impact Question OR 3 Candidates"]
-        VoIClarification --> CandidateSelected["Direction Confirmed"]
-        SoftConfirm --> CandidateSelected
-        AutoInference --> CandidateSelected
-    end
-
-    CandidateSelected --> RecommendationEngine["2. Recommendation Engine (Scored Fit - Penalties)"]
-
-    subgraph DecisionPhase ["Decision Synthesis"]
-        RecommendationEngine --> ConflictResolver{"Hard vs. Soft Conflict?"}
-        ConflictResolver -- "Conflict Detected" --> ControlledHybrid["Synthesize Controlled Hybrid Style"]
-        ConflictResolver -- "No Conflict" --> StyleGenome["3. Style Genome Composition"]
-        ControlledHybrid --> StyleGenome
-        StyleGenome --> TokenAndLayoutSpec["Synthesized V3 Design Contract (JSON) + Decision Trace"]
-    end
-
-    TokenAndLayoutSpec --> CodeGeneration["4. Multi-Skill Code Generation (Tailwind / Next.js / HTML)"]
-
-    subgraph CritiquePhase ["Autonomous Quality Loop"]
-        CodeGeneration --> Tier1Gates{"Tier 1: Hard Gates (WCAG AA, DOM, Keyboards)"}
-        Tier1Gates -- "FAIL" --> CriticalPatcher["Priority Patcher (Critical Fix)"]
-        CriticalPatcher --> CodeGeneration
-        Tier1Gates -- "PASS" --> DesignCritic["5. Style-Aware Design Critic (Quality Score 0-100)"]
-        
-        DesignCritic --> ScoreCheck{"Score >= 80?"}
-        ScoreCheck -- "FAIL (< 80) & Iteration < 2" --> AutoRefiner["6. Priority Auto-Refinement Engine"]
-        AutoRefiner --> CodeGeneration
-        ScoreCheck -- "PASS (>= 80)" --> FinalDelivery["Final High-Signal Output (First-Pass Complete)"]
-    end
+flowchart TD
+    U[User Prompt / Reference] --> D[Design Director]
+    D --> C{Confidence / Ambiguity}
+    C -->|High confidence| I[Inference]
+    C -->|Low confidence| Q[VoI Question / 3 Directions]
+    I --> R[Recommendation Engine]
+    Q --> R
+    R --> G[Design Genome]
+    G --> K[Design Contract]
+    K --> X[Code Generation]
+    X --> CR[Design Critic]
+    CR --> DEC{Quality / Hard Gates}
+    DEC -->|Fixable| RF[Auto Refinement]
+    RF --> X
+    DEC -->|Pass| V[Verification Engine]
+    V --> OUT[Final Delivery]
 ```
 
----
+اصل معماری:
 
-## 🧩 زیرسیستم‌های هسته V3 (The Core Subsystems)
+> هیچ لایه‌ای نباید تصمیمی را که توسط یک لایه authoritative بالاتر گرفته بدون دلیل معتبر بازنویسی کند.
 
-### ۱. `design-director` (مغز استراتژیک و استنتاج دامین)
-از پرامپت خام کاربر، ابعاد کسب‌وکاری زیر استخراج می‌شود بدون اینکه کاربر واژگان فنی بداند:
+# 4. Design Decision Pipeline
+
+## Stage A — Intent Extraction
+
+خروجی:
 
 ```json
 {
-  "product_domain": "luxury_clinical_dermatology",
-  "primary_audience": "high_net_worth_individuals",
-  "trust_requirement": "very_high",
-  "visual_energy": "calm_restrained",
-  "density_profile": "airy_breathing",
-  "platform_priority": "mobile_first",
-  "value_hook": "clinical_accreditation_and_subtle_elegance"
+  "product_domain": "...",
+  "primary_audience": "...",
+  "product_mode": "...",
+  "business_goal": "...",
+  "tone": ["..."],
+  "trust_requirement": "...",
+  "visual_energy": "...",
+  "density": "...",
+  "platform": ["..."],
+  "constraints": []
 }
 ```
 
-#### قانون ارزش اطلاعات (Value of Information - VoI):
-اگر سطح ابهام بالا بود:
-* **ممنوعیت مطلق:** پرسیدن سوالات فنی گیج‌کننده (مثل کنتراست یا سیستم گرید).
-* **ارائه ۳ مسیر ملموس:**
-  * **مسیر الف (پیشنهادی):** باوقار و اصیل (Editorial Premium)
-  * **مسیر ب:** مدرن و صمیمی (Soft Humanist)
-  * **مسیر ج:** سازمانی و تمیز (Corporate Clean)
+## Stage B — Confidence Estimation
 
----
+هر inference باید confidence داشته باشد.
 
-### ۲. `recommendation-engine` و اولویت‌های دامین (Design Priors)
-هر صنعتی اولویت‌های ذاتی خودش را دارد:
+```text
+0.80–1.00 → Auto decide
+0.50–0.79 → Decide + expose alternatives
+< 0.50    → Ask one high-value question
+```
 
-| حوزه (Domain) | اولویت اصلی (Design Prior) | سبک‌های همگن | سبک‌های ممنوعه / پرریسک |
-| :--- | :--- | :--- | :--- |
-| **Fintech & Banking** | $\text{Trust} > \text{Novelty}$ | Swiss Editorial, Data-Dense, Clean Stripe | Neobrutalism, Cyberpunk Neon |
-| **Healthcare & Clinics** | $\text{Clarity} + \text{Serenity} > \text{Decoration}$ | Soft Humanist, Quiet Luxury | Glitch Art, Harsh Shadows, Acid |
-| **Trading & DevOps** | $\text{Density} + \text{Efficiency} > \text{Marketing}$ | Data-Dense Terminal, Monospace HUD | Fluffy Cards, Heavy Blur, Parallax |
-| **Creative & Fashion** | $\text{Brand Distinction} > \text{Standard Grid}$ | Neo-Brutalism, Experimental Editorial | Generic Bootstrap/Tailwind Cards |
-| **E-Commerce & Trades** | $\text{Conversion} > \text{Experimentation}$ | Crisp Minimal, Clear Pricing Cards | Complex Abstract 3D Meshes |
+Confidence باید برای تصمیم‌های مهم جداگانه ثبت شود:
 
----
+- domain
+- audience
+- product mode
+- tone
+- style
+- typography
+- palette
+- layout
 
-### ۳. `design-genome` (ژنوم جامع ۱۴ بعدی طراحی)
-برای جلوگیری از محبوس شدن تصمیمات در پرامپت‌های پراکنده، ژنوم طراحی کل ابعاد یک رابط کاربری را در یک ماتریس ۱۴ بعدی استاندارد مدل‌سازی می‌کند:
+## Stage C — Candidate Generation
 
-$$\text{Interface Genome} = \mathbf{Domain} \times \mathbf{Audience} \times \mathbf{Brand} \times \mathbf{Mode} \times \mathbf{Style} \times \mathbf{Mood} \times \mathbf{Density} \times \dots$$
+Recommendation Engine چند Design Direction تولید می‌کند.
 
-1. **حوزه و صنعت (Domain):** ۲۴ صنعت طبقه‌بندی شده (فین‌تک، پزشکی، تریدینگ، املاک و ...).
-2. **پرسونای مخاطب (Audience):** سن، دانش فنی، سطح درآمد و زمینه کاربرد.
-3. **شخصیت برند (Brand Personality):** باوقار، مدرن، پرانرژی، نوستالژیک یا صمیمی.
-4. **حالت محصول (Product Mode):** Persuade (تبدیل), Operate (ابزار/ادمین), Read (مستندات), Experience (روایت‌گری).
-5. **سبک پایه (Base Style):** ۱۲ سبک لنگری استاندارد (`minimal_swiss`, `clean_stripe`, `linear_dark`, `quiet_luxury`, `data_dense_terminal`, `neobrutalism`, `soft_humanist`, `organic_nordic`, `bauhaus_geometric`, `modern_glass_2`, `retro_futurism`, `editorial_magazine`).
-6. **لحن و حس (Mood):** Calm, Serious, Energetic, Playful, Technical.
-7. **تراکم چیدمان (Density):** Airy (باز), Balanced (متعادل), Dense (فشرده).
-8. **سیستم تایپوگرافی (Typography System):** جفت‌های سریف، سنز و مونو به همراه معادل وب فارسی (وزیرمتن، دانا، یکان‌بخ).
-9. **معماری رنگ (Color Architecture):** پالت OKLCH شامل Canvas، Surface، Accent، Border و Text با کنتراست تضمینی.
-10. **هندسه و انحنا (Geometry & Radius):** Sharp (0-2px), Standard (4-8px), Soft (12-16px), Pill (9999px).
-11. **عمق و سایه (Depth & Elevation):** Flat, Micro-shadow, Diffused, Specular Glass 2.0, Hard Drop (نئوبروتال).
-12. **فیزیک انیمیشن (Motion Curves):** ثابت زمانی $\lambda=14$، منحنی‌های فنری و کنترل `prefers-reduced-motion`.
-13. **بافت و متریال (Texture & Material):** پس‌زمینه سالید، گرین مات، شیشه نیمه‌شفاف کالیبره، نور لبه‌ای.
-14. **رفتار حالات کامپوننت (State Completeness):** قرارداد رفتاری در حالات Default, Hover, Focus, Skeleton Loading, Empty, Error Retry.
+هر candidate شامل:
 
----
+```text
+name
+human-readable description
+score
+confidence
+pros
+risks
+style family
+mood
+density
+product mode
+domain fit
+```
 
-## 🧮 موتور تصمیم‌گیری، نمره‌دهی و حل تعارض (Decision Engine & Conflict Resolution)
+## Stage D — Candidate Selection
 
-### ۱. مدل آستانه اطمینان عددی (Confidence Thresholds)
-سیستم ضریب اطمینان میانگین ($\bar{C} \in [0.0, 1.0]$) را محاسبه می‌کند:
-* **$\bar{C} \ge 0.80$ (اطمینان بالا):** استنتاج ۱۰۰٪ خودکار بدون مزاحمت برای کاربر.
-* **$0.50 \le \bar{C} < 0.80$ (اطمینان متوسط):** استنتاج با یک اعلام ۱-خطی و تایید نرم.
-* **$\bar{C} < 0.50$ (ابهام بالا):** فعال‌سازی پروتکل VoI (ارائه ۳ کاندید ملموس).
+انتخاب می‌تواند:
 
-### ۲. فرمول نمره‌دهی چندعاملی انتخاب سبک
-$$\text{Score}(S) = \sum_{i} w_i \cdot \text{Fit}_i(S) - \sum_{j} \text{Penalty}_j(S)$$
-ضرایب وزن‌دهی: دامین ($0.25$)، مخاطب ($0.20$)، مود محصول ($0.20$)، لحن ($0.15$)، پلتفرم ($0.10$) و هدروم دسترسی‌پذیری ($0.10$). در صورت تداخل سبک نامناسب با دامین پرریسک، جریمه ۴۰- نمره اعمال می‌شود.
+- خودکار
+- توسط کاربر
+- یا hybrid
 
-### ۳. حل تعارض قیدهای سخت و ترجیحات نرم (Conflict Resolver)
-اگر کاربر سبکی خواست که با دامین ناسازگار است (مثلاً بروتالیسم برای اپلیکیشن بانکی):
-* سیستم درخواست را رد نمی‌کند، بلکه یک **هیبرید کنترل‌شده (Controlled Hybrid)** تولید می‌کند:
-  `Controlled Swiss Brutalism` (بوردرهای تیره و شارپ، اما با حفظ کامل فونت‌های خوانای تریدینگ و حذف هرگونه نویز تزئینی).
+باشد.
 
-### ۴. ردپای تصمیمات طراحی (`decision_trace`)
-هر خروجی شامل گزارش متادیتای تصمیم است تا مشخص باشد چرا این سبک، پالت و فونت انتخاب شدند:
+# 5. Value of Information (VoI)
+
+سیستم نباید کاربر را با پرسش‌های تخصصی خسته کند.
+
+قواعد:
+
+### Low ambiguity
+هیچ سؤال اضافی پرسیده نشود.
+
+### Medium ambiguity
+سیستم بهترین گزینه را انتخاب کند و امکان override بدهد.
+
+### High ambiguity
+فقط یکی از این دو:
+
+1. یک سؤال با بیشترین ارزش اطلاعاتی
+2. سه Design Direction با زبان انسانی
+
+کاربر نباید مجبور باشد واژه‌هایی مثل OKLCH، Bento، Swiss Grid یا Neobrutalism را بشناسد.
+
+# 6. Recommendation Engine
+
+Recommendation Engine نباید صرفاً lookup table باشد.
+
+برای هر candidate باید scoring انجام شود.
+
+## Candidate Score
+
+```text
+Score =
+  Domain Fit
++ Audience Fit
++ Product Mode Fit
++ Brand Fit
++ Content Fit
++ Platform Fit
++ Accessibility Fit
++ Performance Fit
++ Distinctiveness Fit
+- Anti-pattern Penalty
+- Compatibility Penalty
+```
+
+وزن‌ها باید قابل تنظیم باشند.
+
+خروجی نمونه:
+
 ```json
 {
-  "decision_trace": {
-    "recommended_style": "quiet_luxury",
-    "composite_score": 92.4,
-    "rationale": [
-      "High-trust clinical domain requires calm, non-sterile prestige.",
-      "High-contrast serif typography paired with warm stone tones."
-    ]
-  }
+  "candidate": "Editorial Premium",
+  "score": 0.89,
+  "confidence": 0.92,
+  "reasons": [
+    "High trust requirement",
+    "Premium audience",
+    "Calm visual energy",
+    "Strong mobile typography"
+  ],
+  "risks": [
+    "May feel too formal for young consumer brands"
+  ]
 }
 ```
 
-### ۵. دریافت رنگ برند موجود و الگوبرداری از مراجع
-* **Brand Ingestion:** اگر کاربر رنگ سازمانی یا لوگو داد، رنگ‌ها قفل شده (`locked_brand_palette`) و کنتراست سطوح بر مبنای همان رنگ بازتنظیم می‌شود.
-* **Reference Principles:** اگر کاربر گفت «شبیه Linear اما گرم‌تر»، اصول معماری Linear (بوردر مویی، دارک عمیق) استخراج شده و به سمت پالت گرم شیفت داده می‌شود.
+# 7. Hard Constraints vs Soft Preferences
 
----
+## Hard Constraints
 
-## 📊 گیت‌های پذیرش دولایه و شاخص‌های زحمت کاربر (Two-Tier Gates & User-Effort KPIs)
+مواردی که نباید شکسته شوند:
 
-پذیرش نهایی خروجی منوط به پاس شدن معادله زیر است:
-$$\text{Final Acceptance} = \mathbf{HardGates} \land (\text{QualityScore} \ge 80)$$
+- accessibility requirements
+- explicit brand colors
+- required platform
+- required language
+- legal constraints
+- explicit user requirements
+- technical limitations
 
-### سطح ۱: گیت‌های سخت باینری (Tier 1: Hard Gates - Pass/Fail)
-1. **WCAG 2.2 AA Contrast Gate:** کنتراست بدنه $\ge 4.5:1$ و تیترها $\ge 3.0:1$.
-2. **Mobile Layout Integrity Gate:** صفر درصد اورفلو در عرض‌های ۳۲۰px و ۳۷۵px.
-3. **Keyboard & Focus Ring Gate:** داشتن استایل واضح `:focus-visible`.
-4. **Accessible Label Gate:** وجود `aria-label` یا عنوان غیرخالی روی کنترل‌ها.
-5. **Reduced Motion Gate:** خاموش شدن انیمیشن‌های طولانی در `prefers-reduced-motion`.
-6. **Zero Raw Emojis Gate:** صفر درصد ایموجی متنی؛ الزام استفاده از آیکون SVG.
+## Soft Preferences
 
-### سطح ۲: کارت امتیازی چندبعدی منتقد طراحی (Tier 2: Critic Multi-Dimensional Scorecard - 0 to 100)
-برخلاف مدل‌های ساده که یک نمره کلی و مبهم می‌دهند، منتقد طراحی ۹ بعد مستقل و قابل‌سنجش را ارزیابی می‌کند:
+مواردی که قابل compromise هستند:
 
-1. **سلسله‌مراتب اسکن دیداری (Visual Hierarchy - ۱۵ نمره):** وضوح خطوط دید (Z یا F)، هدایت نگاه و داشتن یک CTA غالب در اولین ۳ ثانیه.
-2. **اصالت و مقابله با کلیشه (Distinctiveness / Anti-Slop - ۱۵ نمره):** کسر نمره برای استفاده از گرادیان بنفش کلیشه‌ای، کارت‌های کپی‌شده یکنواخت و تمپلیت‌های تکراری.
-3. **تناسب با دامین و هدف (Domain & Intent Fit - ۱۵ نمره):** انطباق لحن بصری با صنعت (مثلاً حفظ پرستیژ در پزشکی یا تراکم در تریدینگ).
-4. **کاربردپذیری و تاچ‌تارگت (Usability & Targets - ۱۰ نمره):** رعایت فاصله ۸px+ بین دکمه‌ها و حداقل ابعاد ۴۴px در موبایل.
-5. **تایپوگرافی و تضاد مقیاس (Typography Hierarchy - ۱۰ نمره):** تمایز شارپ تیترها از متن بدنه و تناسب فونت انگلیسی و فارسی.
-6. **پایداری موبایل و پاسخ‌گویی (Responsive Integrity - ۱۰ نمره):** ری‌فلو تمیز محتوا بدون اسکرول افقی در عرض‌های کوچک.
-7. **کامل بودن حالات (State Completeness - ۱۰ نمره):** وجود اسکلتون لودینگ، استیت خالی و مدیریت خطا.
-8. **انسجام با برند (Brand Coherence - ۱۰ نمره):** هماهنگی المان‌ها با پالت و هویت سازمانی کاربر.
-9. **بار پردازشی و بودجه بلور (Performance Budget - ۵ نمره):** رعایت بودجه بلور شیشه‌ای ($\le 2$ لایه) و عدم افت فریم.
+- style preference
+- mood
+- density
+- decorative effects
+- novelty
+- animation intensity
 
-* **آستانه قبولی نهایی:** حداقل ۸۰ از ۱۰۰ (مشروط به پاس شدن ۱۰۰٪ گیت‌های سخت سطح ۱).
+در conflict:
 
-### صف اولویت‌بندی پچ‌های خوداصلاحی:
-$$\text{Critical Blockers} \longrightarrow \text{High-Impact Visual} \longrightarrow \text{Usability / States} \longrightarrow \text{Aesthetic Polish}$$
-حداکثر سقف تکرار حلقه خوداصلاحی: **۲ دور**.
-
-### شاخص‌های کلیدی زحمت کاربر (User-Effort KPIs):
-* **First-Pass Success Rate:** بیش از **۷۰٪** خروجی‌ها در شات اول بدون پرامپت اصلاحی پذیرفته شوند.
-* **Average Correction Prompts:** میانگین دفعات نیاز به پرامپت اصلاحی به **زیر ۱.۵ بار** برسد.
-* **Correction Token Volume:** حجم توکن‌های اصلاحی کاربر به **زیر ۱۵۰ توکن** برسد.
-* **Time to Acceptable Result:** رسیدن به طراحی ایده‌آل در **کمتر از ۴۵ ثانیه**.
-
----
-
-## 🔬 حل قطعی ۷ مجهول کلیدی معماری (Exhaustive Resolution of All 7 Unknowns)
-
-1. **سازگاری با گذشته (Backward Compatibility):** ارتقای اسکیما کاملاً افزایشی (Additive) است؛ تمام فایل‌ها و آزمون‌های نسخه `v2.4.2` بدون تغییر با کد خروج ۰ پاس می‌شوند.
-2. **پردازش زبان طبیعی و تطبیق دامین با مدل اطمینان (Bilingual NLP & No Silent Fallbacks):**
-   * در `taxonomy.json` برای هر دامین ده‌ها تگ و مترادف دوزبانه تعریف شده و حروف نرمالایز می‌شوند.
-   * **جلوگیری از خطای پنهان:** اگر ضریب اطمینان زیر ۰.۵۰ باشد، سیستم هرگز به صورت خاموش (Silently) به دامین دیگر تغییر جهت نمی‌دهد؛ بلکه با اعلام سطح اطمینان، پروتکل ۳ کاندیدا یا ۱ سوال باارزش (VoI) را فعال می‌کند. دامین عمومی صرفاً در صورتی استفاده می‌شود که کاربر صراحتاً بگوید: «تصمیم را به خودت می‌سپارم».
-3. **لود پایدار فونت‌ها و جبران شیفت چیدمان (Font Metric Compensation & CLS Prevention):**
-   * استفاده از فونت استاندارد **وزیرمتن (Vazirmatn)** از CDN جهانی Google Fonts.
-   * برای جلوگیری از پرش و شیفت لایه‌بندی در قطع اینترنت یا تاخیر لود (FOIT/FOUT)، فونت‌های پشتیبان سیستمی با ویژگی‌های جبران متریک فونت (`font-display: swap`, `size-adjust`) تنظیم می‌شوند تا شاخص Cumulative Layout Shift همواره زیر ۰.۱ ($CLS < 0.1$) باقی بماند.
-4. **منتقد طراحی سبک‌آگاه (Style-Aware Critic):** خط‌کش نقد برای هر سبک مجزاست؛ مثلاً سایه سخت مشکی در نئوبروتالیسم مجاز است، اما در سوئیسی خطا محسوب می‌شود.
-5. **اشتراک داده بین پایتون، نود و اکستنشن (Single Source of Truth):** داده‌ها در قالب فایل‌های JSON استاندارد در پوشه `data/` ذخیره می‌شوند و مستقیماً توسط پایتون، تایپ‌اسکریپت، CLI و اکستنشن بدون تبدیل کدهای موازی خوانده می‌شوند.
-6. **اصلاح خودکار اولویت‌بندی شده و مهار رگرسیون (Priority Refinement & Anti-Regression):**
-   * سقف تکرار: حداکثر ۲ دور. هر پچ اصلاحی صرفاً روی بزرگ‌ترین نقص شناسایی‌شده (از صف اولویت: بحرانی ➔ ظاهر ➔ کاربردپذیری) متمرکز می‌شود.
-   * **تست ضد رگرسیون:** بعد از اعمال هر پچ، تمام گیت‌های سخت (Hard Gates) مجدداً ارزیابی می‌شوند تا اطمینان حاصل شود اصلاح یک نقص ظاهری، منجر به افت کنتراست یا خرابی کیبورد نشده است.
-7. **پرامپت کوتاه در برابر بلند (Assisted vs. Expert Mode):** کاربر عادی با پرامپت یک‌خطی ۳ مسیر ملموس دریافت می‌کند؛ کاربر حرفه‌ای با پرامپت تخصصی، تنظیمات خود را بدون مداخله دریافت می‌کند.
-
----
-
-## 📅 نقشه راه اجرایی ۱۲ مرحله‌ای (12-Phase Execution Pipeline)
-
+```text
+Hard Constraint > Soft Preference
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ گام ۱: ساخت هسته تصمیم‌گیری (Design Intelligence Core & search.py)                      │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۲: پایگاه دانش داده‌های طراحی (Design Knowledge Base: data/ JSONs)                 │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۳: استنتاج، مدل اطمینان و پروتکل VoI (Inference, Confidence & 3-Candidates)        │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۴: موتور توصیه نمره‌محور و ردپای تصمیم (Recommendation Scoring & Decision Trace)   │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۵: ژنوم سبک‌ها و حل تعارض قیدها (Design Genome & Conflict Resolver)                │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۶: تولید کدهای واکنش‌گرا و دوزبانه (Responsive Bilingual Code Generation)          │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۷: منتقد طراحی سبک‌آگاه (Style-Aware Design Critic Engine)                         │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۸: حلقه اصلاح خودکار اولویت‌بندی شده (Priority-Based Auto-Refinement Loop)          │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۹: پلتفرم ارزیابی فیزیکی ۲.۰ (Verification 2.0: WCAG AA, Playwright, Reduced-Motion)│
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۱۰: گسترش تدریجی کاتالوگ سبک‌ها به ۲۴ خانواده استاندارد                            │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۱۱: آزمون بنچ‌مارک ۱۰۰ سناریو و مقایسه A/B با هوش مصنوعی خام (A/B Evaluation)      │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ گام ۱۲: ارتقای اکستنشن VS Code، ابزار CLI (@omid-io/tokens) و پایداری پروداکشن          │
-└────────────────────────────────────────────────────────────────────────────────────────┘
+
+اما سیستم باید conflict را ثبت و توضیح دهد.
+
+# 8. Decision Trace
+
+تمام تصمیم‌های مهم باید قابل توضیح باشند.
+
+```json
+{
+  "decision": "style",
+  "selected": "Quiet Humanist",
+  "score": 0.89,
+  "alternatives": [
+    {"id": "editorial", "score": 0.83},
+    {"id": "luxury", "score": 0.77}
+  ],
+  "reasons": [
+    "Healthcare domain",
+    "High trust",
+    "Calm tone",
+    "Mobile-first"
+  ]
+}
 ```
+
+هدف Decision Trace:
+
+- debugging
+- user trust
+- critic feedback
+- reproducibility
+- benchmark analysis
+- future learning
+
+# 9. Design Genome
+
+Genome نباید فقط Style باشد.
+
+مدل پیشنهادی:
+
+```text
+Style
+× Mood
+× Domain
+× Audience
+× Product Mode
+× Density
+× Typography
+× Color
+× Layout
+× Radius
+× Depth
+× Motion
+× Texture
+× Iconography
+× Interaction
+× Content Tone
+× Platform
+```
+
+Genome باید **composable** باشد.
+
+مثال:
+
+```text
+Editorial
++
+Quiet Luxury
++
+Data Dense
+```
+
+می‌تواند یک design direction معتبر بسازد بدون اینکه لازم باشد یک style جدید دائمی برای آن ایجاد شود.
+
+# 10. Style Taxonomy
+
+Styleها باید به خانواده‌های قابل تشخیص تقسیم شوند.
+
+## Core
+
+- Minimal
+- Swiss / International
+- Editorial
+- Modern Corporate
+- Flat
+- Material
+- Geometric
+
+## Distinctive
+
+- Neo-Brutalist
+- Brutalist
+- Organic / Humanist
+- Quiet Luxury
+- Tactile
+- Skeuomorphic
+- Art Deco
+- Retro
+
+## Digital / Experimental
+
+- Bento
+- Glass
+- Soft UI
+- Dark Editorial
+- Futuristic
+- Spatial
+- Experimental
+
+## Specialized
+
+- Data-Dense
+- Developer / Technical
+- Commerce
+- Healthcare
+- Civic / Government
+
+هدف اولیه:
+
+> حدود 24–40 خانواده‌ی واقعاً متمایز، نه ده‌ها skin مشابه.
+
+# 11. Style Acceptance Rule
+
+Style جدید فقط زمانی اضافه شود که یکی از این‌ها را به‌طور معنی‌دار توسعه دهد:
+
+- geometry
+- layout
+- typography
+- density
+- interaction
+- motion
+- content presentation
+
+تغییر صرفاً رنگی یا shadow variation نباید Style Family جدید محسوب شود.
+
+# 12. Domain Intelligence
+
+Domain باید فقط tag نباشد؛ باید **design priors** داشته باشد.
+
+نمونه:
+
+```text
+Fintech
+  trust > novelty
+  clarity > decoration
+
+Healthcare
+  clarity + serenity > decoration
+
+Trading / DevOps
+  efficiency + density > marketing
+
+Creative / Fashion
+  brand distinction > standardization
+
+E-commerce
+  conversion clarity > experimental interaction
+```
+
+این‌ها policyهای پیش‌فرض‌اند، نه قوانین مطلق.
+
+کاربر و brand constraint می‌تواند آن‌ها را override کند.
+
+# 13. Typography Intelligence
+
+Typography باید از style جدا و در عین حال قابل ترکیب باشد.
+
+سیستم باید تصمیم بگیرد:
+
+- font family
+- font pairing
+- display/body relationship
+- scale
+- weight
+- line height
+- language coverage
+- fallback
+- readability
+
+برای bilingual UI، Persian و Latin باید به‌صورت یک سیستم typography واحد ارزیابی شوند.
+
+# 14. Color Intelligence
+
+Color Engine مسئول:
+
+- palette generation
+- semantic roles
+- accent
+- surfaces
+- text hierarchy
+- dark mode
+- light mode
+- states
+- contrast
+
+است.
+
+```text
+Brand color
+≠
+Primary action color
+≠
+Decorative accent
+```
+
+و سیستم باید در صورت conflict، accessibility را بر سلیقه مقدم کند.
+
+# 15. Layout Intelligence
+
+Layout Engine باید تصمیم بگیرد:
+
+- grid
+- columns
+- container
+- whitespace
+- alignment
+- hierarchy
+- asymmetry
+- density
+- responsive transformation
+
+Responsive نباید صرفاً breakpoint switching باشد.
+
+هدف:
+
+> **Responsive Information Architecture**
+
+# 16. State & Interaction Intelligence
+
+هیچ component مهمی فقط یک state ندارد.
+
+حداقل:
+
+```text
+default
+hover
+focus
+active
+disabled
+loading
+success
+error
+empty
+offline
+permission
+validation
+streaming
+```
+
+الگوهای interaction:
+
+- modal
+- drawer
+- popover
+- menu
+- tabs
+- search
+- filter
+- forms
+- tables
+- navigation
+- multi-step flows
+
+# 17. Responsive & Platform Intelligence
+
+سیستم باید capability-based تصمیم بگیرد:
+
+```text
+mobile
+ tablet
+ desktop
+
+touch
+pointer
+keyboard
+
+RTL
+LTR
+
+reduced motion
+```
+
+هر platform باید بتواند composition و interaction را تغییر دهد، نه فقط اندازه‌ی component را.
+
+# 18. Design Critic
+
+Design Critic باید style-aware باشد.
+
+معیارهای پایه:
+
+```text
+Visual Hierarchy
+Composition
+Spacing Rhythm
+Typography
+Color Hierarchy
+Distinctiveness
+Domain Fit
+Brand Coherence
+State Completeness
+Responsive Integrity
+Interaction Quality
+Accessibility
+Motion
+Performance
+Genericity / AI Slop
+```
+
+خروجی:
+
+```text
+score
+violations
+severity
+evidence
+suggested fix
+```
+
+# 19. Hard Gates vs Quality Score
+
+این دو مفهوم باید مستقل باشند.
+
+## Hard Gates
+
+مثلاً:
+
+```text
+Build FAIL → Reject
+Accessibility critical FAIL → Reject
+Keyboard critical FAIL → Reject
+Schema FAIL → Reject
+```
+
+## Quality Score
+
+بعد از گذر از Hard Gates، Visual، Originality، Domain Fit، Typography، Composition و ... امتیاز می‌گیرند.
+
+# 20. Auto-Refinement
+
+چرخه:
+
+```text
+Generate
+→ Critique
+→ Rank Problems
+→ Apply Highest-Impact Fix
+→ Re-render
+→ Re-evaluate
+```
+
+حداکثر 2–3 iteration.
+
+Refinement نباید regeneration کور باشد.
+
+هر iteration باید:
+
+- علت مشخص
+- patch محدود
+- regression check
+
+داشته باشد.
+
+# 21. Visual Verification
+
+Verification باید شامل:
+
+- viewport matrix
+- screenshot baseline
+- visual diff
+- typography check
+- layout overflow
+- spacing
+- state rendering
+- RTL/LTR
+
+باشد.
+
+حداقل viewportها:
+
+```text
+320
+375
+768
+1024
+1440
+```
+
+# 22. Accessibility Verification
+
+ترکیب پیشنهادی:
+
+```text
+Standard JSON/schema validation
++
+axe-core
++
+Accessibility Tree
++
+Keyboard E2E
++
+Custom project invariants
+```
+
+هیچ heuristic منفردی نباید به‌عنوان «100% WCAG verified» معرفی شود.
+
+# 23. Performance Verification
+
+حداقل:
+
+- LCP
+- CLS
+- INP
+- Long Tasks
+- Layout Shifts
+- image/asset cost
+- animation cost
+
+Static heuristics فقط signal کمکی هستند.
+
+# 24. Reference / Brand Analysis
+
+اگر reference داده شده:
+
+```text
+Reference
+→ Extract Principles
+→ Generate
+→ Compare Principles
+→ Critique
+```
+
+نباید screenshot clone شود.
+
+# 25. Benchmark System
+
+Benchmark از روز اول V3 فعال باشد.
+
+Dataset حداقل 100–500 prompt با تنوع در:
+
+- domains
+- product modes
+- short/long prompts
+- Persian/English/bilingual
+- mobile/desktop
+- ambiguous/explicit
+- style-constrained
+- brand-constrained
+
+باشد.
+
+# 26. Baseline Comparison
+
+V3 باید با V2 مقایسه شود.
+
+```text
+V2
+vs
+V3
+```
+
+معیارها:
+
+- First-Pass Quality
+- Iteration Count
+- User Effort
+- Human Preference
+- Accessibility
+- Visual Diversity
+- Domain Fit
+
+# 27. User Effort KPI
+
+اندازه‌گیری:
+
+```text
+Correction Count
+Correction Tokens
+Manual Overrides
+Time to Accept
+Number of Regenerations
+```
+
+هدف:
+
+> کاربر نباید تبدیل به QA designer سیستم شود.
+
+# 28. Human Evaluation
+
+برای بخشی از benchmark، designerهای مستقل باید خروجی‌ها را blind-rate کنند.
+
+ابعاد:
+
+```text
+Visual Quality
+Originality
+Product Fit
+Usability
+Brand Fit
+Professionalism
+```
+
+Human score باید با automated score مقایسه شود.
+
+# 29. Learning / Feedback Loop
+
+```text
+User Outcome
+→ Feedback
+→ Benchmark Dataset
+→ Failure Analysis
+→ Knowledge Update
+→ Recommendation Update
+```
+
+feedback نباید بدون review مستقیماً policy را تغییر دهد.
+
+# 30. Data Architecture
+
+```text
+data/
+  taxonomy/
+  styles/
+  domains/
+  typography/
+  palettes/
+  layouts/
+  patterns/
+  states/
+  anti-patterns/
+  compatibility/
+```
+
+Python، TypeScript، CLI، VS Code و evaluator باید همین داده‌ها را مصرف کنند.
+
+# 31. Contract Architecture
+
+سه نوع contract داشته باشید:
+
+## Design Intent Contract
+آنچه کاربر می‌خواهد.
+
+## Design Decision Contract
+تصمیمی که سیستم گرفته.
+
+## Verification Contract
+آنچه برای acceptance باید پاس شود.
+
+این سه نباید با هم قاطی شوند.
+
+# 32. Release / Versioning Rules
+
+هر نسخه باید از یک source مرکزی مشتق شود.
+
+```text
+release manifest
+├── repository version
+├── schema version
+├── CLI version
+├── package versions
+├── extension version
+└── starter version
+```
+
+CI باید version drift را fail کند.
+
+# 33. Security / Supply Chain
+
+```text
+Build
+→ Artifact
+→ SHA-256
+→ Signature / Provenance
+→ Verify
+→ Publish
+```
+
+Installer باید verify، temp extract، validate، atomic install و rollback را پشتیبانی کند.
+
+# 34. Execution Phases
+
+## Phase 0 — Product Definition
+هدف، کاربران، KPIها و baseline.
+
+## Phase 1 — Foundation Hardening
+schema، contracts، versioning، package isolation، CI.
+
+## Phase 2 — Design Intelligence Contract
+Intent Contract، Decision Contract، Verification Contract.
+
+## Phase 3 — Design Director
+inference، confidence، VoI، candidate directions.
+
+## Phase 4 — Knowledge Base & Taxonomy
+styles، domains، typography، palette، layout، states.
+
+## Phase 5 — Recommendation Engine
+scoring، priors، compatibility، explanation.
+
+## Phase 6 — Design Genome
+composition، constraints، overrides، hybrid styles.
+
+## Phase 7 — Generation Intelligence
+multi-skill generation بر اساس Design Contract.
+
+## Phase 8 — Design Critic
+heuristics، evidence، severity، style awareness.
+
+## Phase 9 — Auto-Refinement
+surgical fixes، bounded iterations، regression protection.
+
+## Phase 10 — Verification 2.0
+schema، browser، accessibility، responsive، RTL.
+
+## Phase 11 — Visual & Performance
+visual regression، Core Web Vitals، runtime evidence.
+
+## Phase 12 — Style Universe Expansion
+گسترش خانواده‌های style بر اساس gapهای benchmark.
+
+## Phase 13 — Benchmark & Human Evaluation
+100–500 prompts، V2 baseline، human scoring.
+
+## Phase 14 — Unified Orchestrator
+اتصال تمام مراحل به یک pipeline واحد.
+
+## Phase 15 — Developer Experience
+CLI، VS Code، reports، debugging، overrides.
+
+## Phase 16 — Security & Release
+signed artifacts، reproducible builds، installer hardening.
+
+## Phase 17 — Production Validation
+end-to-end audit، KPI verification، regression suite.
+
+## Phase 18 — Continuous Design Intelligence
+feedback، learning، taxonomy evolution.
+
+# 35. Definition of Done for V3
+
+## User Experience
+
+- کاربر عادی با یک prompt ساده بتواند شروع کند.
+- کاربر حرفه‌ای کنترل کامل داشته باشد.
+- سیستم حداکثر یک سؤال high-value در حالت ambiguity بپرسد.
+- توضیح تصمیم‌های اصلی قابل مشاهده باشد.
+
+## Design Intelligence
+
+- domain inference
+- audience inference
+- product mode
+- style recommendation
+- typography recommendation
+- color recommendation
+- layout recommendation
+- density recommendation
+
+وجود داشته باشند.
+
+## Generation
+
+- Design Contract تولید شود.
+- Generator بر اساس Contract کار کند.
+- style composition پشتیبانی شود.
+
+## Critic / Refinement
+
+- خروجی قبل از تحویل critic شود.
+- مشکلات severity داشته باشند.
+- حداکثر 2–3 refinement انجام شود.
+- refinement باعث regression نشود.
+
+## Verification
+
+- schema gate
+- accessibility gate
+- keyboard gate
+- responsive gate
+- RTL gate
+- visual regression
+- performance checks
+
+## Evidence
+
+هر PASS مهم باید evidence قابل ردیابی داشته باشد.
+
+# 36. V3 Success Criteria
+
+## Primary KPIs
+
+### First-Pass Quality
+> 70%+
+
+### User Correction Count
+> average < 2
+
+### Time to Accept
+کاهش معنی‌دار نسبت به V2
+
+### Human Preference
+V3 باید در blind evaluation از V2 بهتر باشد.
+
+### Visual Diversity
+برای promptهای متفاوت، خروجی‌ها نباید صرفاً theme variation باشند.
+
+### Domain Fit
+انتخاب design direction باید با context محصول هم‌راستا باشد.
+
+# 37. چیزهایی که V3 نباید انجام دهد
+
+- اضافه کردن style صرفاً برای افزایش count
+- پرسیدن سؤال‌های فنی از user عادی
+- hardcode کردن تمام تصمیم‌های طراحی در prompt
+- استفاده از score واحد برای همه چیز
+- ادعای WCAG verification بر اساس heuristic محدود
+- regeneration کامل برای هر اصلاح کوچک
+- override کردن brand constraints بدون دلیل
+- ساختن databaseهای duplicate برای هر runtime
+- وابسته کردن packageهای مستقل به starter/example
+- release بدون version synchronization
+
+# 38. Architectural Principle
+
+اصل نهایی پروژه:
+
+> **Vibe UI نباید به کاربر بگوید چگونه طراحی کند؛ باید بفهمد کاربر چه می‌خواهد، بهترین زبان طراحی را برای آن انتخاب کند، آن را به سیستم طراحی قابل اجرا تبدیل کند، نتیجه را خودش نقد کند و قبل از تحویل کیفیت را اثبات کند.**
+
+در نتیجه:
+
+```text
+Prompt
+   ↓
+Intent
+   ↓
+Inference
+   ↓
+Recommendation
+   ↓
+Design Genome
+   ↓
+Design Contract
+   ↓
+Generation
+   ↓
+Critique
+   ↓
+Refinement
+   ↓
+Verification
+   ↓
+Evidence-backed Delivery
+```
+
+این pipeline هسته Vibe UI V3 است.
+
+# 39. Final Direction
+
+پروژه نباید با هدف:
+
+> «داشتن بیشترین تعداد Style»
+
+رقابت کند.
+
+باید با هدف:
+
+> **«تولید بهترین Design Decision با کمترین دخالت کاربر»**
+
+رقابت کند.
+
+Style Library فقط یکی از منابع این تصمیم است.
+
+# 40. Recommended Repository Structure for V3
+
+```text
+docs/
+  V3_PRODUCT_VISION.md
+  V3_ARCHITECTURE.md
+  V3_DESIGN_INTELLIGENCE_SPEC.md
+  V3_EVALUATION_SPEC.md
+  V3_ROADMAP.md
+
+data/
+  taxonomy/
+  styles/
+  domains/
+  typography/
+  palettes/
+  layouts/
+  patterns/
+  states/
+  anti-patterns/
+
+skills/
+  design-director/
+  recommendation-engine/
+  design-genome/
+  design-critic/
+  auto-refiner/
+  ui-verifier/
+
+packages/
+  design-contract/
+  design-intelligence/
+  verifier/
+  cli/
+  vscode/
+
+evals/
+  benchmark/
+  fixtures/
+  visual/
+  accessibility/
+  performance/
+```
+
+# Final Verdict
+
+این specification باید جایگزین یک roadmap صرفاً feature-oriented شود.
+
+تمرکز V3:
+
+**Design Intelligence > Style Count**  
+**Decision Quality > Prompt Complexity**  
+**First-Pass Quality > Manual Iteration**  
+**Evidence > Claims**  
+**Composable System > Static Catalog**  
+**User Intent > Design Jargon**
+
+این تغییر جهت، Vibe UI را از یک collection of UI skills به یک **AI-assisted design decision and verification platform** تبدیل می‌کند.
+
+---
+
+# 41. پیوست مهندسی: حل قطعی ۷ مجهول کلیدی و گره‌های فنی (Resolution of 7 Core Unknowns)
+
+برای به صفر رساندن آزمون‌وخطا در حین اجرا، تمام مجهولات احتمالی شناسایی و با راهکار قطعی مهندسی بسته شدند:
+
+### ۱. مجهول سازگاری با گذشته (Backward Compatibility)
+* **گره:** آیا ارتقای اسکیما و معرفی سبک‌های جدید، باعث شکسته شدن بیلدها، تست‌های ریاضی قبلی یا اگزمپل‌های موجود می‌شود؟
+* **پاسخ قطعی:** خیر. ارتقا به صورت **سازگار افزایشی (Additive Extension)** انجام می‌شود:
+  - مقادیر ۵ سبک قبلی در اسکیما حفظ شده و مقادیر جدید به آن اضافه می‌شوند.
+  - فیلدهای جدید (`candidate_directions`, `style_genome`, `state_matrix`) به صورت اختیاری (`optional`) تعریف می‌شوند تا تست‌های قبلی همچنان با کد خروج ۰ پاس شوند.
+
+### ۲. پردازش زبان طبیعی و تطبیق دامین با مدل اطمینان (Bilingual NLP & No Silent Fallbacks)
+* در `taxonomy.json` برای هر دامین ده‌ها تگ و مترادف دوزبانه تعریف شده و حروف نرمالایز می‌شوند.
+* **جلوگیری از خطای پنهان:** اگر ضریب اطمینان زیر ۰.۵۰ باشد، سیستم هرگز به صورت خاموش (Silently) به دامین دیگر تغییر جهت نمی‌دهد؛ بلکه با اعلام سطح اطمینان، پروتکل ۳ کاندیدا یا ۱ سوال باارزش (VoI) را فعال می‌کند. دامین عمومی صرفاً در صورتی استفاده می‌شود که کاربر صراحتاً بگوید: «تصمیم را به خودت می‌سپارم».
+
+### ۳. لود پایدار فونت‌ها و جبران شیفت چیدمان (Font Metric Compensation & CLS Prevention)
+* استفاده از فونت استاندارد **وزیرمتن (Vazirmatn)** از CDN جهانی Google Fonts.
+* برای جلوگیری از پرش و شیفت لایه‌بندی در قطع اینترنت یا تاخیر لود (FOIT/FOUT)، فونت‌های پشتیبان سیستمی با ویژگی‌های جبران متریک فونت (`font-display: swap`, `size-adjust`) تنظیم می‌شوند تا شاخص Cumulative Layout Shift همواره زیر ۰.۱ ($CLS < 0.1$) باقی بماند.
+
+### ۴. منتقد طراحی سبک‌آگاه (Style-Aware Critic)
+* خط‌کش نقد برای هر سبک مجزاست؛ مثلاً سایه سخت مشکی در نئوبروتالیسم مجاز است، اما در سوئیسی خطا محسوب می‌شود.
+
+### ۵. اشتراک داده بین پایتون، نود و اکستنشن (Single Source of Truth)
+* داده‌ها در قالب فایل‌های JSON استاندارد در پوشه `data/` ذخیره می‌شوند و مستقیماً توسط پایتون، تایپ‌اسکریپت، CLI و اکستنشن بدون تبدیل کدهای موازی خوانده می‌شوند.
+
+### ۶. اصلاح خودکار اولویت‌بندی شده و مهار رگرسیون (Priority Refinement & Anti-Regression)
+* سقف تکرار: حداکثر ۲ دور. هر پچ اصلاحی صرفاً روی بزرگ‌ترین نقص شناسایی‌شده (از صف اولویت: بحرانی ➔ ظاهر ➔ کاربردپذیری) متمرکز می‌شود.
+* **تست ضد رگرسیون:** بعد از اعمال هر پچ، تمام گیت‌های سخت (Hard Gates) مجدداً ارزیابی می‌شوند تا اطمینان حاصل شود اصلاح یک نقص ظاهری، منجر به افت کنتراست یا خرابی کیبورد نشده است.
+
+### ۷. پرامپت کوتاه در برابر بلند (Assisted vs. Expert Mode)
+* کاربر عادی با پرامپت یک‌خطی ۳ مسیر ملموس دریافت می‌کند؛ کاربر حرفه‌ای با پرامپت تخصصی، تنظیمات خود را بدون مداخله دریافت می‌کند.
