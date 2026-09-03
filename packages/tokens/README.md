@@ -1,11 +1,11 @@
-# @vibe-ui/tokens
+# @omid-io/tokens
 
 > Typed OKLCH design tokens, physics curves, and zero-config Tailwind CSS preset for Vibe UI.
 
 ## Installation
 
 ```bash
-npm install @vibe-ui/tokens
+npm install @omid-io/tokens
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install @vibe-ui/tokens
 ### 1. Direct Token Imports
 
 ```typescript
-import { VISUAL_CHEMISTRIES, MOTION_CURVES, getContrastRatio } from '@vibe-ui/tokens';
+import { VISUAL_CHEMISTRIES, MOTION_CURVES, getContrastRatio } from '@omid-io/tokens';
 
 // Access typed OKLCH color spaces
 const saasColors = VISUAL_CHEMISTRIES.MINIMALIST_SAAS.colors;

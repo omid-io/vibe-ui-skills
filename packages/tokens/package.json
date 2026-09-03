@@ -1,5 +1,5 @@
 {
-  "name": "@vibe-ui/tokens",
+  "name": "@omid-io/tokens",
   "version": "2.3.0",
   "description": "Typed OKLCH design tokens, physics curves, and zero-config Tailwind plugin for Vibe UI",
   "main": "./dist/index.js",

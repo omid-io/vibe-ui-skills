@@ -10,7 +10,8 @@
 </p>
 
 [![Open VSX](https://img.shields.io/badge/Open--VSX-v2.3.0-purple)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
-[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/manage/publishers/omid-io)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
+[![NPM Package](https://img.shields.io/badge/npm-v2.3.0-crimson)](https://www.npmjs.com/package/@omid-io/tokens)
 [![معماری سیستم](https://img.shields.io/badge/سند_معماری-ARCHITECTURE.md-informational)](ARCHITECTURE.md)
 [![پایپ‌لاین ارزیابی CI](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![دموی زنده](https://img.shields.io/badge/دموی_زنده-پلی‌گراند_تعاملی-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)

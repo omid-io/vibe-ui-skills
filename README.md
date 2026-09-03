@@ -10,7 +10,8 @@
 </p>
 
 [![Open VSX](https://img.shields.io/badge/Open--VSX-v2.3.0-purple)](https://open-vsx.org/extension/omid-io/vibe-ui-vscode)
-[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/manage/publishers/omid-io)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-v2.3.0-blue)](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode)
+[![NPM Package](https://img.shields.io/badge/npm-v2.3.0-crimson)](https://www.npmjs.com/package/@omid-io/tokens)
 [![Architecture: Specification](https://img.shields.io/badge/Architecture-Specification-informational)](ARCHITECTURE.md)
 [![CI Audit & Quality Gates](https://github.com/omid-io/vibe-ui-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/omid-io/vibe-ui-skills/actions)
 [![Live Showcase](https://img.shields.io/badge/Live_Demo-Interactive_Showcase-blueviolet)](https://omid-io.github.io/vibe-ui-skills/showcase/)
