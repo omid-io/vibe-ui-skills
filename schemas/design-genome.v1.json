@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/design-genome.v1.json",
+  "title": "DesignGenome",
+  "description": "19-parameter composable Design Genome specification in Vibe UI V3.",
+  "type": "object",
+  "required": [
+    "style_family",
+    "mood",
+    "domain",
+    "product_mode",
+    "density",
+    "typography",
+    "color",
+    "layout",
+    "radius",
+    "depth",
+    "motion",
+    "accessibility"
+  ],
+  "properties": {
+    "style_family": {
+      "type": "string",
+      "description": "Anchor style family or synthesized hybrid"
+    },
+    "is_hybrid": {
+      "type": "boolean"
+    },
+    "hybrid_components": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mood": {
+      "type": "string",
+      "enum": ["calm", "serious", "energetic", "playful", "technical", "prestigious", "minimalist"]
+    },
+    "domain": { "type": "string" },
+    "audience": { "type": "object" },
+    "product_mode": {
+      "type": "string",
+      "enum": ["persuade", "operate", "read", "experience"]
+    },
+    "brand_personality": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["display_family", "body_family", "persian_family"],
+      "properties": {
+        "display_family": { "type": "string" },
+        "body_family": { "type": "string" },
+        "mono_family": { "type": "string" },
+        "persian_family": { "type": "string" },
+        "scale_ratio": { "type": "number", "minimum": 1.1, "maximum": 1.618 },
+        "line_height_body": { "type": "number", "minimum": 1.3, "maximum": 1.8 }
+      }
+    },
+    "color": {
+      "type": "object",
+      "required": ["canvas", "surface", "accent", "border", "text"],
+      "properties": {
+        "canvas": { "type": "string" },
+        "surface": { "type": "string" },
+        "accent": { "type": "string" },
+        "border": { "type": "string" },
+        "text": { "type": "string" },
+        "muted_text": { "type": "string" },
+        "color_space": { "type": "string", "enum": ["oklch", "hex", "p3"] }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "required": ["grid_type", "container_max_width"],
+      "properties": {
+        "grid_type": { "type": "string", "enum": ["standard_columns", "asymmetric_bento", "editorial_single_col", "dense_hud_grid"] },
+        "container_max_width": { "type": "string" },
+        "whitespace_cadence": { "type": "string", "enum": ["compact", "balanced", "generous"] }
+      }
+    },
+    "density": {
+      "type": "string",
+      "enum": ["airy", "balanced", "dense"]
+    },
+    "radius": {
+      "type": "object",
+      "required": ["base"],
+      "properties": {
+        "base": { "type": "string" },
+        "container": { "type": "string" },
+        "button": { "type": "string" }
+      }
+    },
+    "depth": {
+      "type": "string",
+      "enum": ["flat", "micro_shadow", "diffused_soft", "specular_glass_2", "hard_drop"]
+    },
+    "motion": {
+      "type": "object",
+      "required": ["time_constant_lambda"],
+      "properties": {
+        "time_constant_lambda": { "type": "number", "minimum": 6, "maximum": 24 },
+        "duration_ms": { "type": "integer", "minimum": 50, "maximum": 600 },
+        "spring_damping": { "type": "number" },
+        "respect_reduced_motion": { "type": "boolean" }
+      }
+    },
+    "texture": {
+      "type": "string",
+      "enum": ["solid_clean", "subtle_grain", "frosted_glass_calibrated", "mesh_glow_calibrated"]
+    },
+    "iconography": {
+      "type": "string",
+      "enum": ["svg_geometric", "svg_duotone", "svg_outline", "svg_sharp"]
+    },
+    "interaction": {
+      "type": "object",
+      "required": ["touch_target_min_px"],
+      "properties": {
+        "touch_target_min_px": { "type": "integer", "minimum": 24, "maximum": 48 }
+      }
+    },
+    "content_tone": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "platform": {
+      "type": "object",
+      "properties": {
+        "mobile_first": { "type": "boolean" },
+        "rtl_support": { "type": "boolean" }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "required": ["target_contrast", "focus_visible_required"],
+      "properties": {
+        "target_contrast": { "type": "string", "enum": ["WCAG_AA", "WCAG_AAA"] },
+        "focus_visible_required": { "type": "boolean" }
+      }
+    },
+    "states": {
+      "type": "object",
+      "properties": {
+        "skeleton_loading": { "type": "boolean" },
+        "empty_state": { "type": "boolean" },
+        "error_retry": { "type": "boolean" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

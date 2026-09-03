@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/benchmark-result.v1.json",
+  "title": "BenchmarkResult",
+  "description": "Comparative A/B benchmark evaluation result schema in Vibe UI V3.",
+  "type": "object",
+  "required": [
+    "suite_version",
+    "scenario_count",
+    "baseline_system",
+    "candidate_system",
+    "kpi_comparison"
+  ],
+  "properties": {
+    "timestamp": { "type": "string" },
+    "suite_version": { "type": "string" },
+    "scenario_count": { "type": "integer", "minimum": 1 },
+    "baseline_system": { "type": "string" },
+    "candidate_system": { "type": "string" },
+    "kpi_comparison": {
+      "type": "object",
+      "required": [
+        "first_pass_rate",
+        "avg_correction_prompts",
+        "avg_correction_tokens"
+      ],
+      "properties": {
+        "first_pass_rate": {
+          "type": "object",
+          "properties": {
+            "baseline": { "type": "number" },
+            "candidate": { "type": "number" },
+            "delta_percent": { "type": "number" }
+          }
+        },
+        "avg_correction_prompts": {
+          "type": "object",
+          "properties": {
+            "baseline": { "type": "number" },
+            "candidate": { "type": "number" }
+          }
+        },
+        "avg_correction_tokens": {
+          "type": "object",
+          "properties": {
+            "baseline": { "type": "number" },
+            "candidate": { "type": "number" }
+          }
+        },
+        "visual_diversity_index": {
+          "type": "object",
+          "properties": {
+            "baseline": { "type": "number" },
+            "candidate": { "type": "number" }
+          }
+        }
+      }
+    },
+    "scenario_breakdown": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scenario_id", "domain", "prompt"],
+        "properties": {
+          "scenario_id": { "type": "string" },
+          "domain": { "type": "string" },
+          "prompt": { "type": "string" },
+          "candidate_passed_first_pass": { "type": "boolean" },
+          "critic_score": { "type": "number" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/decision-contract.v1.json",
+  "title": "DesignDecisionContract",
+  "description": "Authoritative system design decision contract in Vibe UI V3 including transparent decision trace.",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "selected_style",
+    "composite_score",
+    "confidence",
+    "genome",
+    "decision_trace"
+  ],
+  "properties": {
+    "decision_id": { "type": "string" },
+    "intent_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "selected_style": { "type": "string" },
+    "composite_score": { "type": "number", "minimum": 0.0, "maximum": 100.0 },
+    "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "genome": { "$ref": "design-genome.v1.json" },
+    "decision_trace": {
+      "type": "object",
+      "required": ["rationale", "alternatives_considered"],
+      "properties": {
+        "scoring_breakdown": {
+          "type": "object",
+          "properties": {
+            "domain_fit": { "type": "number" },
+            "audience_fit": { "type": "number" },
+            "mode_fit": { "type": "number" },
+            "tone_fit": { "type": "number" },
+            "platform_fit": { "type": "number" },
+            "a11y_fit": { "type": "number" },
+            "penalties": { "type": "number" }
+          }
+        },
+        "rationale": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "alternatives_considered": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["style", "score"],
+            "properties": {
+              "style": { "type": "string" },
+              "score": { "type": "number" },
+              "rejection_reason": { "type": "string" }
+            }
+          }
+        },
+        "conflict_resolutions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["conflict_type", "user_preference", "domain_prior", "resolved_outcome"],
+            "properties": {
+              "conflict_type": { "type": "string" },
+              "user_preference": { "type": "string" },
+              "domain_prior": { "type": "string" },
+              "resolved_outcome": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "hard_constraints_verified": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

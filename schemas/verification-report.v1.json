@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/verification-report.v1.json",
+  "title": "VerificationReport",
+  "description": "Evidence-backed physical runtime verification report schema in Vibe UI V3.",
+  "type": "object",
+  "required": [
+    "overall_status",
+    "runtime_mode",
+    "pillars_evaluated",
+    "checks_summary"
+  ],
+  "properties": {
+    "timestamp": { "type": "string" },
+    "target_artifact": { "type": "string" },
+    "overall_status": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "runtime_mode": { "type": "string", "enum": ["headless_chromium", "static_dom_eval", "full_e2e"] },
+    "pillars_evaluated": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "checks_summary": {
+      "type": "object",
+      "required": ["total", "passed", "failed"],
+      "properties": {
+        "total": { "type": "integer" },
+        "passed": { "type": "integer" },
+        "failed": { "type": "integer" }
+      }
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pillar", "check_name", "status", "evidence"],
+        "properties": {
+          "pillar": { "type": "string" },
+          "check_name": { "type": "string" },
+          "status": { "type": "string", "enum": ["PASS", "FAIL", "SKIP"] },
+          "evidence": { "type": "string" },
+          "measured_value": { "type": "string" },
+          "threshold": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/intent-contract.v1.json",
+  "title": "DesignIntentContract",
+  "description": "Canonical schema representing extracted user intent, domain inference, confidence, and constraints in Vibe UI V3.",
+  "type": "object",
+  "required": [
+    "product_domain",
+    "product_mode",
+    "confidence",
+    "ambiguity_status",
+    "hard_constraints"
+  ],
+  "properties": {
+    "product_domain": {
+      "type": "string",
+      "description": "Normalized business domain (e.g. beauty_clinical_wellness, fintech_banking, devops_terminal)"
+    },
+    "audience": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "technical_level": { "type": "string", "enum": ["low", "general", "expert"] },
+        "primary_device": { "type": "string", "enum": ["mobile", "desktop", "cross_platform"] }
+      }
+    },
+    "product_mode": {
+      "type": "string",
+      "enum": ["persuade", "operate", "read", "experience"],
+      "description": "Primary interaction archetype"
+    },
+    "business_goal": {
+      "type": "string",
+      "description": "High level business target (e.g. conversion, documentation readability, data density)"
+    },
+    "brand_personality": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tone": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "visual_energy": {
+      "type": "string",
+      "enum": ["calm_restrained", "high_energy", "technical_dense", "warm_inviting", "editorial_prestige"]
+    },
+    "density": {
+      "type": "string",
+      "enum": ["airy", "balanced", "dense"]
+    },
+    "platform": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["mobile", "tablet", "desktop", "responsive"] }
+    },
+    "language": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["en", "fa", "bilingual_fa_en"] }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["overall", "domain"],
+      "properties": {
+        "overall": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "domain": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "audience": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "product_mode": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      }
+    },
+    "ambiguity_status": {
+      "type": "string",
+      "enum": ["low_ambiguity", "medium_ambiguity", "high_ambiguity"]
+    },
+    "clarification_needed": {
+      "type": "boolean"
+    },
+    "candidate_directions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "description": { "type": "string" },
+          "tradeoff": { "type": "string" }
+        }
+      }
+    },
+    "hard_constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "soft_preferences": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["user_explicit", "inferred", "default", "reference_extracted", "system_policy"]
+      }
+    }
+  },
+  "additionalProperties": false
+}

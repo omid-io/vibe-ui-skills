@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-ui.io/schemas/version-manifest.schema.json",
+  "title": "VersionManifest",
+  "description": "Schema for canonical Vibe UI release manifest.",
+  "type": "object",
+  "required": ["version", "codename", "packages", "compatibility"],
+  "properties": {
+    "version": { "type": "string" },
+    "codename": { "type": "string" },
+    "release_channel": { "type": "string", "enum": ["alpha", "beta", "rc", "stable"] },
+    "packages": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "schemas": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "last_updated": { "type": "string" }
+  },
+  "additionalProperties": false
+}
