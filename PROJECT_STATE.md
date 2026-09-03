@@ -1,8 +1,8 @@
 # Project State: vibe-ui-skills
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Phase 6 — Continuous Evaluation & Ecosystem Release (v2.4.2 Hardened Reference Implementation)
-- **Status**: **Hardened Reference Implementation & Continuous Evaluation Pipeline**. Official release `v2.4.2` verified across all audit gates; non-destructive CLI (`@omid-io/tokens`) with `--force` backups and `--dry-run`; live Chromium DOM physical pixel contrast calculations verified; 30-parameter closed-world schema hardened with cycle-safe `$ref` resolution and combinator support; clean documentation and single source of truth manifest (`version.json`).
+- **Active Phase**: Phase 7 — Vibe UI v3.0: Autonomous Design Intelligence & Decision Director
+- **Status**: **Strategic Pivot & V3 Master Architecture Formulated**. Released `v2.4.2` hardened baseline; authored master architectural roadmap [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md) transitioning the ecosystem from a static 5-style catalogue to an autonomous Design Decision Engine (`Design Director` → `Style Genome` → `Design Critic` → `Auto-Refinement`).
 
 ## Completed Milestones
 - [x] **R1: System Architecture & Documentation**:
@@ -76,13 +76,19 @@
   - **Extension Diagnostics Correction**: Removed misleading "100% WCAG AA verified" message in `packages/vibe-ui-vscode/src/extension.ts` on simple token presence; explicitly scoped to heuristic scan with instructions to run browser runtime eval.
   - **WebView Security Hardening**: Injected strict Content-Security-Policy (CSP) meta tag into VS Code webview and decoupled implicit global `event` in `switchTab`.
   - **Eliminated Hype Remnants**: Cleaned legacy marketing terms ("Awwwards-grade", "120fps", "battle-tested") across all HTML showcases (`index.html`, `showcase/index.html`), prompts, and agent descriptions.
-  - **Single Source of Truth Manifest**: Coordinated version `2.4.2` across `version.json`, `package.json`, `package_vsix.py`, and `nextjs-starter/package.json`.
+- [x] **R13: Architecture & V3 Strategic Specification (Design Intelligence)**:
+  - Formulated comprehensive architectural specification in [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md).
+  - Defined 6-phase strategic transformation: `Design Director` inference model, single-question VoI clarification protocol, `Style Genome` multidimensional composition, and `Design Critic` auto-refinement loop.
+  - Aligned project roadmap to elevate First-Pass Quality (>70%) and eliminate repetitive manual user prompt iterations.
 
-## Immediate Next Steps & Public Launch
-- **Live Engineering Board**: [`Vibe UI — Engineering Roadmap & Ecosystem RFCs`](https://github.com/users/omid-io/projects/3)
-1. **Community Distribution**: Execute Show HN, Reddit (`r/webdev`, `r/ClaudeAI`, `r/cursor`), and X launch threads.
+## Immediate Next Steps & Execution Plan
+1. **Phase 1 Execution (Design Director)**: Upgrade `autonomous-intent-expander` to extract business context (`product_domain`, `trust_requirement`, `visual_energy`) and formalize the 3-Candidate direction protocol.
+2. **Phase 2 Execution (Recommendation Engine)**: Define Domain Design Priors mapping 12 industry archetypes to style, palette, and typography pairings.
+3. **Phase 3 Execution (Design Genome Schema)**: Upgrade `schemas/design-spec.v1.schema.json` to support orthogonal style composition (`Style × Mood × Density × Mode`).
+4. **Phase 4 Execution (Design Critic)**: Add heuristic anti-slop and visual hierarchy verification to `ui-verifier`.
 
 ## Modified / Created Files Index
+- [`docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md`](docs/ROADMAP_V3_DESIGN_INTELLIGENCE.md)
 - [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - [`CHANGELOG.md`](CHANGELOG.md)
 - [`README.md`](README.md)
