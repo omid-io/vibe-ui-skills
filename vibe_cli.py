@@ -94,7 +94,12 @@ def cmd_generate(args):
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"\n[SUCCESS] Completed autonomous pipeline. Artifact saved to: {out_path.relative_to(ROOT_DIR)}")
+    try:
+        display_path = out_path.relative_to(ROOT_DIR)
+    except ValueError:
+        display_path = out_path
+
+    print(f"\n[SUCCESS] Completed autonomous pipeline. Artifact saved to: {display_path}")
 
 def cmd_critique(args):
     path = Path(args.file)

@@ -53,7 +53,12 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"\n[SUCCESS] Generated interface written to {out_path.relative_to(ROOT_DIR)}")
+    try:
+        display_path = out_path.relative_to(ROOT_DIR)
+    except ValueError:
+        display_path = out_path
+
+    print(f"\n[SUCCESS] Generated interface written to {display_path}")
     return 0
 
 if __name__ == "__main__":
