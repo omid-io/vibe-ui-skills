@@ -1,12 +1,12 @@
 {
   "$schema": "./schemas/version-manifest.schema.json",
-  "version": "3.1.0",
-  "codename": "Tailwind v4 Native & Zero-Config Intelligence",
+  "version": "3.1.1",
+  "codename": "Tailwind v4 Native & VS Code Ecosystem Overhaul",
   "release_channel": "stable",
   "packages": {
-    "@omid-io/tokens": "3.1.0",
+    "@omid-io/tokens": "3.1.1",
     "vibe-ui-vscode": "3.1.1",
-    "vibe-ui-nextjs-starter": "3.1.0"
+    "vibe-ui-nextjs-starter": "3.1.1"
   },
   "schemas": {
     "intent_contract": "v1",
@@ -23,5 +23,5 @@
     "nextjs": ">=15.0.0",
     "react": ">=19.0.0"
   },
-  "last_updated": "2026-09-03"
+  "last_updated": "2026-09-04"
 }

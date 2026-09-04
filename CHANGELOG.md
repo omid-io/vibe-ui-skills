@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.1.1] - 2026-09-04
+
+### Enhanced & Standardized — VS Code & Open-VSX Extension Overhaul
+- **Comprehensive VS Code Extension Documentation**:
+  - Overhauled `packages/vibe-ui-vscode/README.md` with dynamic Open-VSX status badges, visual chemistry previews, command palette reference, and multi-IDE setup instructions.
+  - Added dedicated `packages/vibe-ui-vscode/CHANGELOG.md` tracking extension history from `v2.3.0` to `v3.1.1`, registered as official asset in VSIX package manifest.
+- **Automated Marketplace & Headless Deployment**:
+  - Validated and published `omid-io.vibe-ui-vscode@3.1.1` live on Visual Studio Marketplace via in-memory DOM DataTransfer protocol.
+  - Published `vibe-ui-vscode@3.1.1` live on Open-VSX Registry.
+  - Submitted official namespace verification claim to Eclipse Foundation ([#13006](https://github.com/EclipseFdn/open-vsx.org/issues/13006)).
+- **Version & Ecosystem Harmonization**:
+  - Bumped suite packages (`@omid-io/tokens`, `vibe-ui-vscode`, `vibe-ui-nextjs-starter`) to `v3.1.1`.
+  - Certified 100% pass across all 8 quality gate suites in <3500ms.
+
+---
+
 ## [3.1.0] - 2026-09-03
 
 ### Added & Modernized

@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/benchmark-result.v1.json",
-  "timestamp": "2026-09-04T01:42:37.946277+00:00",
+  "timestamp": "2026-09-04T02:19:37.349614+00:00",
   "suite_version": "3.0.1",
   "scenario_count": 100,
   "benchmark_type": "internal_deterministic_heuristic",
@@ -25,7 +25,7 @@
       "reduction_percent": 100.0
     },
     "avg_time_to_accept_ms": {
-      "candidate": 18.37
+      "candidate": 20.08
     },
     "visual_diversity_index": {
       "candidate": 66.7,
@@ -45,7 +45,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 35.43
+      "elapsed_ms": 40.04
     },
     {
       "scenario_id": "sc-002",
@@ -56,7 +56,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.59
+      "elapsed_ms": 18.85
     },
     {
       "scenario_id": "sc-003",
@@ -67,7 +67,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.39
+      "elapsed_ms": 19.49
     },
     {
       "scenario_id": "sc-004",
@@ -78,7 +78,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.59
+      "elapsed_ms": 19.58
     },
     {
       "scenario_id": "sc-005",
@@ -89,7 +89,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.14
+      "elapsed_ms": 19.46
     },
     {
       "scenario_id": "sc-006",
@@ -100,7 +100,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 21.1
+      "elapsed_ms": 19.07
     },
     {
       "scenario_id": "sc-007",
@@ -111,7 +111,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 20.62
+      "elapsed_ms": 20.75
     },
     {
       "scenario_id": "sc-008",
@@ -122,7 +122,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.77
+      "elapsed_ms": 21.22
     },
     {
       "scenario_id": "sc-009",
@@ -133,7 +133,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.89
+      "elapsed_ms": 25.93
     },
     {
       "scenario_id": "sc-010",
@@ -144,7 +144,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 21.16
+      "elapsed_ms": 18.09
     },
     {
       "scenario_id": "sc-011",
@@ -155,7 +155,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 20.24
+      "elapsed_ms": 21.54
     },
     {
       "scenario_id": "sc-012",
@@ -166,7 +166,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 26.92
+      "elapsed_ms": 23.13
     },
     {
       "scenario_id": "sc-013",
@@ -177,7 +177,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 20.25
+      "elapsed_ms": 17.28
     },
     {
       "scenario_id": "sc-014",
@@ -188,7 +188,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.04
+      "elapsed_ms": 22.35
     },
     {
       "scenario_id": "sc-015",
@@ -199,7 +199,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.53
+      "elapsed_ms": 18.39
     },
     {
       "scenario_id": "sc-016",
@@ -210,7 +210,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.76
+      "elapsed_ms": 19.23
     },
     {
       "scenario_id": "sc-017",
@@ -221,7 +221,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.51
+      "elapsed_ms": 19.31
     },
     {
       "scenario_id": "sc-018",
@@ -232,7 +232,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.06
+      "elapsed_ms": 18.77
     },
     {
       "scenario_id": "sc-019",
@@ -243,7 +243,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.32
+      "elapsed_ms": 17.57
     },
     {
       "scenario_id": "sc-020",
@@ -254,7 +254,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.55
+      "elapsed_ms": 20.33
     },
     {
       "scenario_id": "sc-021",
@@ -265,7 +265,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.59
+      "elapsed_ms": 18.96
     },
     {
       "scenario_id": "sc-022",
@@ -276,7 +276,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.77
+      "elapsed_ms": 20.02
     },
     {
       "scenario_id": "sc-023",
@@ -287,7 +287,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 23.58
+      "elapsed_ms": 17.44
     },
     {
       "scenario_id": "sc-024",
@@ -298,7 +298,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 20.05
+      "elapsed_ms": 19.99
     },
     {
       "scenario_id": "sc-025",
@@ -309,7 +309,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.27
+      "elapsed_ms": 19.75
     },
     {
       "scenario_id": "sc-026",
@@ -320,7 +320,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.39
+      "elapsed_ms": 19.03
     },
     {
       "scenario_id": "sc-027",
@@ -331,7 +331,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.3
+      "elapsed_ms": 17.01
     },
     {
       "scenario_id": "sc-028",
@@ -342,7 +342,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.85
+      "elapsed_ms": 21.22
     },
     {
       "scenario_id": "sc-029",
@@ -353,7 +353,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.9
+      "elapsed_ms": 35.85
     },
     {
       "scenario_id": "sc-030",
@@ -364,7 +364,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.58
+      "elapsed_ms": 21.62
     },
     {
       "scenario_id": "sc-031",
@@ -375,7 +375,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.2
+      "elapsed_ms": 24.55
     },
     {
       "scenario_id": "sc-032",
@@ -386,7 +386,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.02
+      "elapsed_ms": 18.67
     },
     {
       "scenario_id": "sc-033",
@@ -397,7 +397,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.11
+      "elapsed_ms": 21.09
     },
     {
       "scenario_id": "sc-034",
@@ -408,7 +408,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.39
+      "elapsed_ms": 19.16
     },
     {
       "scenario_id": "sc-035",
@@ -419,7 +419,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 26.41
+      "elapsed_ms": 27.49
     },
     {
       "scenario_id": "sc-036",
@@ -430,7 +430,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.59
+      "elapsed_ms": 17.49
     },
     {
       "scenario_id": "sc-037",
@@ -441,7 +441,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.61
+      "elapsed_ms": 18.17
     },
     {
       "scenario_id": "sc-038",
@@ -452,7 +452,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.28
+      "elapsed_ms": 19.18
     },
     {
       "scenario_id": "sc-039",
@@ -463,7 +463,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.61
+      "elapsed_ms": 20.88
     },
     {
       "scenario_id": "sc-040",
@@ -474,7 +474,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.47
+      "elapsed_ms": 18.19
     },
     {
       "scenario_id": "sc-041",
@@ -485,7 +485,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.32
+      "elapsed_ms": 22.34
     },
     {
       "scenario_id": "sc-042",
@@ -496,7 +496,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.41
+      "elapsed_ms": 17.28
     },
     {
       "scenario_id": "sc-043",
@@ -507,7 +507,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.5
+      "elapsed_ms": 19.53
     },
     {
       "scenario_id": "sc-044",
@@ -518,7 +518,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.03
+      "elapsed_ms": 19.3
     },
     {
       "scenario_id": "sc-045",
@@ -529,7 +529,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.43
+      "elapsed_ms": 20.3
     },
     {
       "scenario_id": "sc-046",
@@ -540,7 +540,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.53
+      "elapsed_ms": 19.5
     },
     {
       "scenario_id": "sc-047",
@@ -551,7 +551,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.97
+      "elapsed_ms": 21.16
     },
     {
       "scenario_id": "sc-048",
@@ -562,7 +562,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.41
+      "elapsed_ms": 19.33
     },
     {
       "scenario_id": "sc-049",
@@ -573,7 +573,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.16
+      "elapsed_ms": 17.49
     },
     {
       "scenario_id": "sc-050",
@@ -584,7 +584,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.43
+      "elapsed_ms": 17.99
     },
     {
       "scenario_id": "sc-051",
@@ -595,7 +595,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.88
+      "elapsed_ms": 17.77
     },
     {
       "scenario_id": "sc-052",
@@ -606,7 +606,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.44
+      "elapsed_ms": 20.59
     },
     {
       "scenario_id": "sc-053",
@@ -617,7 +617,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.14
+      "elapsed_ms": 20.1
     },
     {
       "scenario_id": "sc-054",
@@ -628,7 +628,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.75
+      "elapsed_ms": 19.75
     },
     {
       "scenario_id": "sc-055",
@@ -639,7 +639,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.02
+      "elapsed_ms": 18.95
     },
     {
       "scenario_id": "sc-056",
@@ -650,7 +650,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 19.74
+      "elapsed_ms": 19.51
     },
     {
       "scenario_id": "sc-057",
@@ -661,7 +661,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.56
+      "elapsed_ms": 19.57
     },
     {
       "scenario_id": "sc-058",
@@ -672,7 +672,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 30.08
+      "elapsed_ms": 27.67
     },
     {
       "scenario_id": "sc-059",
@@ -683,7 +683,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.23
+      "elapsed_ms": 19.46
     },
     {
       "scenario_id": "sc-060",
@@ -694,7 +694,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.61
+      "elapsed_ms": 19.96
     },
     {
       "scenario_id": "sc-061",
@@ -705,7 +705,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 15.94
+      "elapsed_ms": 18.43
     },
     {
       "scenario_id": "sc-062",
@@ -716,7 +716,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.65
+      "elapsed_ms": 18.92
     },
     {
       "scenario_id": "sc-063",
@@ -727,7 +727,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.86
+      "elapsed_ms": 18.38
     },
     {
       "scenario_id": "sc-064",
@@ -738,7 +738,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.18
+      "elapsed_ms": 18.57
     },
     {
       "scenario_id": "sc-065",
@@ -749,7 +749,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.7
+      "elapsed_ms": 18.94
     },
     {
       "scenario_id": "sc-066",
@@ -760,7 +760,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.35
+      "elapsed_ms": 16.93
     },
     {
       "scenario_id": "sc-067",
@@ -771,7 +771,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.55
+      "elapsed_ms": 18.97
     },
     {
       "scenario_id": "sc-068",
@@ -782,7 +782,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.35
+      "elapsed_ms": 18.5
     },
     {
       "scenario_id": "sc-069",
@@ -793,7 +793,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.47
+      "elapsed_ms": 19.47
     },
     {
       "scenario_id": "sc-070",
@@ -804,7 +804,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.44
+      "elapsed_ms": 17.15
     },
     {
       "scenario_id": "sc-071",
@@ -815,7 +815,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.59
+      "elapsed_ms": 19.16
     },
     {
       "scenario_id": "sc-072",
@@ -826,7 +826,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.55
+      "elapsed_ms": 18.93
     },
     {
       "scenario_id": "sc-073",
@@ -837,7 +837,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.94
+      "elapsed_ms": 21.0
     },
     {
       "scenario_id": "sc-074",
@@ -848,7 +848,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.86
+      "elapsed_ms": 20.53
     },
     {
       "scenario_id": "sc-075",
@@ -859,7 +859,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.22
+      "elapsed_ms": 20.89
     },
     {
       "scenario_id": "sc-076",
@@ -870,7 +870,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.45
+      "elapsed_ms": 17.32
     },
     {
       "scenario_id": "sc-077",
@@ -881,7 +881,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.45
+      "elapsed_ms": 18.92
     },
     {
       "scenario_id": "sc-078",
@@ -892,7 +892,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.37
+      "elapsed_ms": 18.35
     },
     {
       "scenario_id": "sc-079",
@@ -903,7 +903,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.88
+      "elapsed_ms": 20.85
     },
     {
       "scenario_id": "sc-080",
@@ -914,7 +914,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.78
+      "elapsed_ms": 18.61
     },
     {
       "scenario_id": "sc-081",
@@ -925,7 +925,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.22
+      "elapsed_ms": 20.44
     },
     {
       "scenario_id": "sc-082",
@@ -936,7 +936,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 24.78
+      "elapsed_ms": 26.46
     },
     {
       "scenario_id": "sc-083",
@@ -947,7 +947,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.41
+      "elapsed_ms": 19.21
     },
     {
       "scenario_id": "sc-084",
@@ -958,7 +958,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.46
+      "elapsed_ms": 18.57
     },
     {
       "scenario_id": "sc-085",
@@ -969,7 +969,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.2
+      "elapsed_ms": 19.69
     },
     {
       "scenario_id": "sc-086",
@@ -980,7 +980,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.53
+      "elapsed_ms": 20.25
     },
     {
       "scenario_id": "sc-087",
@@ -991,7 +991,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.5
+      "elapsed_ms": 18.56
     },
     {
       "scenario_id": "sc-088",
@@ -1002,7 +1002,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.38
+      "elapsed_ms": 19.55
     },
     {
       "scenario_id": "sc-089",
@@ -1013,7 +1013,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.85
+      "elapsed_ms": 17.91
     },
     {
       "scenario_id": "sc-090",
@@ -1024,7 +1024,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.71
+      "elapsed_ms": 19.13
     },
     {
       "scenario_id": "sc-091",
@@ -1035,7 +1035,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.84
+      "elapsed_ms": 22.13
     },
     {
       "scenario_id": "sc-092",
@@ -1046,7 +1046,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.59
+      "elapsed_ms": 19.73
     },
     {
       "scenario_id": "sc-093",
@@ -1057,7 +1057,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.93
+      "elapsed_ms": 17.29
     },
     {
       "scenario_id": "sc-094",
@@ -1079,7 +1079,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.67
+      "elapsed_ms": 19.96
     },
     {
       "scenario_id": "sc-096",
@@ -1090,7 +1090,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.31
+      "elapsed_ms": 20.69
     },
     {
       "scenario_id": "sc-097",
@@ -1101,7 +1101,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.36
+      "elapsed_ms": 17.8
     },
     {
       "scenario_id": "sc-098",
@@ -1112,7 +1112,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 18.11
+      "elapsed_ms": 19.81
     },
     {
       "scenario_id": "sc-099",
@@ -1123,7 +1123,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 16.61
+      "elapsed_ms": 20.04
     },
     {
       "scenario_id": "sc-100",
@@ -1134,7 +1134,7 @@
       "candidate_passed_first_pass": true,
       "critic_score": 96,
       "verification_status": "PASS",
-      "elapsed_ms": 17.32
+      "elapsed_ms": 19.48
     }
   ]
 }

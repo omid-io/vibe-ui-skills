@@ -181,9 +181,15 @@
   - **Dedicated CHANGELOG Tab**: Created [`packages/vibe-ui-vscode/CHANGELOG.md`](file:///E:/programming/vibe-ui-skills/packages/vibe-ui-vscode/CHANGELOG.md) documenting versions from `v2.3.0` up to `v3.1.1`, registered in VSIX package manifest.
   - **Manifest & VSIX Builder Upgrade**: Added `Microsoft.VisualStudio.Services.Content.Changelog` asset in `package_vsix.py` and upgraded `publish.yml` to naturally select the latest VSIX package (`ls -v | tail -n 1`).
   - **Version Synchronization & Quality Gates**: Synchronized `version.manifest.json` for `vibe-ui-vscode@3.1.1`, verified 100% pass across all 8 quality gate suites in 2924ms, and dispatched multi-registry publish workflow to Open-VSX.
+- [x] **R27: Suite-Wide v3.1.1 Harmonization & Automated Multi-Registry Release [2026-09-04]**:
+  - **Full Suite Version Harmonization (3.1.1)**: Harmonized canonical version to `3.1.1` across `version.manifest.json`, `version.json`, `packages/tokens`, `examples/nextjs-starter`, `evals/run_evals.py`, and `ARCHITECTURE.md`.
+  - **Tokens NPM Package Bump (`@omid-io/tokens@3.1.1`)**: Generated production dist assets (CLI, ESM, CJS, v4.css, `.d.ts`) ready for NPM deployment.
+  - **Changelog & Documentation Sync**: Authored `[3.1.1]` release notes in `CHANGELOG.md` covering the VS Code extension overhaul, Open-VSX live publication, Visual Studio Marketplace automated headless deployment, and namespace claim.
+  - **Certified Quality Gates**: 100% PASS across all 8 validation suites in 3206ms. Zero regressions.
 
 ## Immediate Next Steps & Execution Plan
-1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
+1. **GitHub Release v3.1.1 & Multi-Registry Automated Deployment**: Publish official release `v3.1.1` on GitHub with `vibe-ui-vscode-3.1.1.vsix` asset attached, triggering automated NPM publication via GitHub Actions.
+2. **Social & Multi-Channel Distribution**: Execute automated publishing to LinkedIn and Twitter/X using the prepared launch kit.
 
 ## Modified / Created Files Index
 - [`vibe_cli.py`](vibe_cli.py)
