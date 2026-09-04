@@ -1,8 +1,8 @@
 # Project State: Vibe UI Suite
 
 ## Real-Time Status & Active Milestone
-- **Active Phase**: Production Complete — Worldwide Multi-Registry Release Live (NPM + Open-VSX + GitHub Releases v3.1.0).
-- **Status**: **Multi-Registry Publication v3.1.0 100% Live**. Package [`@omid-io/tokens@3.1.0`](https://www.npmjs.com/package/@omid-io/tokens) is published live on NPM. VS Code extension [`vibe-ui-vscode@3.1.0`](https://open-vsx.org/extension/omid-io/vibe-ui-vscode) is live on Open-VSX and attached to GitHub Release [`v3.1.0`](https://github.com/omid-io/vibe-ui-suite/releases/tag/v3.1.0). All 8 quality gate suites pass 100% in 2929ms. Dual beginner-to-pro AI agent workflows established. Zero regressions. Zero open bugs.
+- **Active Phase**: Production Complete — Worldwide Multi-Registry Release Live (NPM + Open-VSX + VS Code Marketplace + GitHub Releases v3.1.1).
+- **Status**: **Multi-Registry Publication v3.1.1 100% Live**. Package [`@omid-io/tokens@3.1.0`](https://www.npmjs.com/package/@omid-io/tokens) is live on NPM. VS Code extension [`vibe-ui-vscode@3.1.1`](https://marketplace.visualstudio.com/items?itemName=omid-io.vibe-ui-vscode) is live worldwide on both Visual Studio Marketplace and Open-VSX, and attached to GitHub Releases. All 8 quality gate suites pass 100% in 3307ms. Dual beginner-to-pro AI agent workflows established. Zero regressions. Zero open bugs.
 
 ## Completed Milestones
 - [x] **Hardening M1: AutoRefiner HTML Repair & Hard-Gate Anti-Regression**:
