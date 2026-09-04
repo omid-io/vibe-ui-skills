@@ -176,6 +176,12 @@
   - **Enhanced Natural Language Compiler**: Updated `compileStudioPrompt()` keyword resolver covering all 26 domains and styles in both English and Persian.
   - **100% Quality Gates**: All 8 test suites pass cleanly in 3020ms. Pushed to `origin main` for instant GitHub Pages deployment.
 
+- [x] **R26: VS Code & Open-VSX Extension Overhaul & Version 3.1.1 [2026-09-04]**:
+  - **Comprehensive Extension README**: Overhauled [`packages/vibe-ui-vscode/README.md`](file:///E:/programming/vibe-ui-skills/packages/vibe-ui-vscode/README.md) with dynamic Open-VSX badges, core feature pillars, command palette reference, installation guides, and complete ecosystem links.
+  - **Dedicated CHANGELOG Tab**: Created [`packages/vibe-ui-vscode/CHANGELOG.md`](file:///E:/programming/vibe-ui-skills/packages/vibe-ui-vscode/CHANGELOG.md) documenting versions from `v2.3.0` up to `v3.1.1`, registered in VSIX package manifest.
+  - **Manifest & VSIX Builder Upgrade**: Added `Microsoft.VisualStudio.Services.Content.Changelog` asset in `package_vsix.py` and upgraded `publish.yml` to naturally select the latest VSIX package (`ls -v | tail -n 1`).
+  - **Version Synchronization & Quality Gates**: Synchronized `version.manifest.json` for `vibe-ui-vscode@3.1.1`, verified 100% pass across all 8 quality gate suites in 2924ms, and dispatched multi-registry publish workflow to Open-VSX.
+
 ## Immediate Next Steps & Execution Plan
 1. **Community & Content Launch**: Record and publish video demonstration of the Design Compiler Studio and CLI workflow on social channels.
 
