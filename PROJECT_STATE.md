@@ -185,10 +185,10 @@
   - **Full Suite Version Harmonization (3.1.1)**: Harmonized canonical version to `3.1.1` across `version.manifest.json`, `version.json`, `packages/tokens`, `examples/nextjs-starter`, `evals/run_evals.py`, and `ARCHITECTURE.md`.
   - **Tokens NPM Package Bump (`@omid-io/tokens@3.1.1`)**: Generated production dist assets (CLI, ESM, CJS, v4.css, `.d.ts`) ready for NPM deployment.
   - **Changelog & Documentation Sync**: Authored `[3.1.1]` release notes in `CHANGELOG.md` covering the VS Code extension overhaul, Open-VSX live publication, Visual Studio Marketplace automated headless deployment, and namespace claim.
-- [x] **R28: Instagram Story & Post Campaign Assets (7 Slides 9:16 Optimized) [2026-09-04]**:
-  - **7-Slide High-Converting Story Funnel**: Ordered and generated pristine 9:16 assets (`1080x1920`) in [`assets/instagram_stories/`](file:///E:/programming/vibe-ui-skills/assets/instagram_stories/): `01_hook_can_ai_understand_good_ui.jpg` (Hook), `02_pain_vibe_coder_generic_ui.jpg` (Pain), `03_contrast_ai_slop_vs_vibe_ui.jpg` (AI Slop vs Vibe UI), `04_solution_contract_not_prompt.jpg` (Contract Paradigm), `05_architecture_three_pillars.jpg` (3 Pillars), `06_pipeline_schema_to_playwright.jpg` (Playwright Proof), and `07_cta_reply_ui.jpg` (Lead Magnet CTA).
-  - **Lanczos Resampling & Progressive JPEG Optimization**: Upscaled from base `768x1376` to standard `1080x1920` with 89% quality compression, keeping file sizes between 234 KB and 354 KB for instant loading without lossy CDN degradation.
-  - **Safe Zone & Typography Audit**: Audited top Instagram UI header margins (~200px) and bottom direct reply box (~280px). Confirmed slide 7 hand pointer directly targets the story reply box.
+- [x] **R28: Instagram Story & Feed Carousel Campaign Assets [2026-09-04]**:
+  - **7-Slide Story Funnel (9:16 / 1080x1920)**: Generated in [`assets/instagram_stories/`](file:///E:/programming/vibe-ui-skills/assets/instagram_stories/): Hook, Pain, Contrast (AI Slop), Paradigm, 3 Pillars, Playwright, and CTA.
+  - **7-Slide Feed Carousel Post (4:5 / 1080x1350 & 3:4 / 1080x1446)**: Generated in [`assets/instagram_carousel/`](file:///E:/programming/vibe-ui-skills/assets/instagram_carousel/): 4:5 safe-padded version (zero cropping of titles/badges) and full 3:4 version.
+  - **Safe Zone & Typography Audit**: Audited top header and bottom comment/CTA margins, confirmed Slide 7 hand pointer directly points to the comment box. Progressive JPEG optimized (162 KB - 272 KB).
 
 ## Immediate Next Steps & Execution Plan
 1. **Instagram Campaign Rollout**: Publish the 7-slide story sequence on Instagram (`@omid.zaferi`), pin as `Vibe UI` Highlight, and optionally create a 25-second Lo-Fi musical Photo Reel for Explore feed reach.
