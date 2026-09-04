@@ -25,6 +25,7 @@ vsix_manifest = f"""<?xml version="1.0" encoding="utf-8"?>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/>
+    <Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/media/icon.png" Addressable="true"/>
   </Assets>
 </PackageManifest>"""
@@ -42,6 +43,7 @@ content_types = """<?xml version="1.0" encoding="utf-8"?>
 files_to_pack = [
     ("package.json", "extension/package.json"),
     ("README.md", "extension/README.md"),
+    ("CHANGELOG.md", "extension/CHANGELOG.md"),
     ("media/icon.png", "extension/media/icon.png"),
     ("media/icon.svg", "extension/media/icon.svg"),
     ("dist/extension.js", "extension/dist/extension.js"),

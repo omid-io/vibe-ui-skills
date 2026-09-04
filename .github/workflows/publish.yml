@@ -52,7 +52,8 @@ jobs:
         env:
           OPENVSX_TOKEN: ${{ secrets.OPENVSX_TOKEN }}
         run: |
-          VSIX_FILE=$(ls *.vsix | head -n 1)
+          VSIX_FILE=$(ls -v vibe-ui-vscode-*.vsix | tail -n 1)
+          echo "[INFO] Publishing $VSIX_FILE to Open-VSX..."
           npx --yes ovsx publish "$VSIX_FILE" -p "$OPENVSX_TOKEN"
 
       - name: Upload VSIX to GitHub Release
@@ -60,5 +61,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VSIX_FILE=$(ls packages/vibe-ui-vscode/*.vsix | head -n 1)
+          VSIX_FILE=$(ls -v packages/vibe-ui-vscode/vibe-ui-vscode-*.vsix | tail -n 1)
+          echo "[INFO] Uploading $VSIX_FILE to GitHub Release..."
           gh release upload ${{ github.event.release.tag_name }} "$VSIX_FILE" --clobber
