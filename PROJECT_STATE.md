@@ -186,9 +186,8 @@
   - **Tokens NPM Package Bump (`@omid-io/tokens@3.1.1`)**: Generated production dist assets (CLI, ESM, CJS, v4.css, `.d.ts`) ready for NPM deployment.
   - **Changelog & Documentation Sync**: Authored `[3.1.1]` release notes in `CHANGELOG.md` covering the VS Code extension overhaul, Open-VSX live publication, Visual Studio Marketplace automated headless deployment, and namespace claim.
 - [x] **R28: Instagram Story & Feed Carousel Campaign Assets [2026-09-04]**:
-  - **7-Slide Story Funnel (9:16 / 1080x1920)**: Generated in [`assets/instagram_stories/`](file:///E:/programming/vibe-ui-skills/assets/instagram_stories/): Hook, Pain, Contrast (AI Slop), Paradigm, 3 Pillars, Playwright, and CTA.
-  - **7-Slide Feed Carousel Post (4:5 / 1080x1350 & 3:4 / 1080x1446)**: Generated in [`assets/instagram_carousel/`](file:///E:/programming/vibe-ui-skills/assets/instagram_carousel/): 4:5 safe-padded version (zero cropping of titles/badges) and full 3:4 version.
-  - **Safe Zone & Typography Audit**: Audited top header and bottom comment/CTA margins, confirmed Slide 7 hand pointer directly points to the comment box. Progressive JPEG optimized (162 KB - 272 KB).
+  - **Single Source of Truth Centralization**: All social media campaign assets (7 Story frames 9:16, 7 Carousel slides 4:5, and 7 Carousel slides 3:4) centralized into the master distribution hub at [`omid-core/DISTRIBUTION/PROJECTS/vibe-ui-suite/`](file:///e:/programming/omid-core/DISTRIBUTION/PROJECTS/vibe-ui-suite/) with complete playbooks and captions.
+  - **Clean Codebase**: Removed duplicate marketing folders from `vibe-ui-skills/assets/` preserving codebase focus purely on code, packages, and skills.
 
 ## Immediate Next Steps & Execution Plan
 1. **Instagram Campaign Rollout**: Publish the 7-slide story sequence on Instagram (`@omid.zaferi`), pin as `Vibe UI` Highlight, and optionally create a 25-second Lo-Fi musical Photo Reel for Explore feed reach.
